@@ -1,0 +1,27 @@
+# input: "./for_auto_test/00sy/10_var_defn_func.sy"
+ 15   label global_0: 
+ 0    global Fn[]->getint_ret_0 getint_0 
+ 1    global Fn[]->getch_ret_0 getch_0 
+ 2    global Fn[zz_array_3]->getarray_ret_0 getarray_0 
+ 3    global Fn[]->getfloat_ret_0 getfloat_0 
+ 4    global Fn[zz_array_5]->getfarray_ret_0 getfarray_0 
+ 5    global Fn[zz_int_6]->putint_ret_0 putint_0 
+ 6    global Fn[zz_ch_7]->putch_ret_0 putch_0 
+ 7    global Fn[x_8, zz_array_8]->putarray_ret_0 putarray_0 
+ 8    global Fn[zz_float_9]->putfloat_ret_0 putfloat_0 
+ 9    global Fn[zz_len_10, zz_farray_10]->putfarray_ret_0 putfarray_0 
+ 10   global Fn[]->putf_ret_0 putf_0 
+ 11   global Fn[]->starttime_ret_0 starttime_0 
+ 12   global Fn[]->stoptime_ret_0 stoptime_0 
+ 13   global Fn[zz_ptr_14, zz_val_14, zz_len_14]->memset_ret_0 memset_0 
+ 14   global Fn[zz_dest_15, zz_ptr_15, zz_len_15]->memcpy_ret_0 memcpy_0 
+ 17   Define main_0 "" -> main_ret_0 
+         22   alloc i32 [temp_0_ret_of_defn_20] 
+         25   alloc i32 [a_20] 
+          label L0_0: 
+         23   temp_0_ret_of_defn_20_0 =  Call i32 defn_0() 
+         24   (nop) 
+         27   ret temp_0_ret_of_defn_20_0 
+ 16   Define defn_0 "" -> defn_ret_0 
+          label L1_0: 
+         19   ret 4_0 

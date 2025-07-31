@@ -1,0 +1,619 @@
+# input: "./for_auto_test/00sy/09_BFS.sy"
+ 38   label global_0: 
+ 37   global Array:i32:[Some(1005_0)] inq_0 
+ 35   global i32 tail_0 
+ 34   global i32 h_0 
+ 33   global Array:i32:[Some(1005_0)] que_0 
+ 31   global i32 cnt_0 
+ 28   global Array:i32:[Some(1005_0)] head_0 
+ 26   global Array:i32:[Some(5005_0)] next_0 
+ 24   global Array:i32:[Some(5005_0)] to_0 
+ 22   global i32 maxm_0 
+ 19   global i32 maxn_0 
+ 16   global i32 m_0 
+ 15   global i32 n_0 
+ 0    global Fn[]->getint_ret_0 getint_0 
+ 1    global Fn[]->getch_ret_0 getch_0 
+ 2    global Fn[zz_array_3]->getarray_ret_0 getarray_0 
+ 3    global Fn[]->getfloat_ret_0 getfloat_0 
+ 4    global Fn[zz_array_5]->getfarray_ret_0 getfarray_0 
+ 5    global Fn[zz_int_6]->putint_ret_0 putint_0 
+ 6    global Fn[zz_ch_7]->putch_ret_0 putch_0 
+ 7    global Fn[x_8, zz_array_8]->putarray_ret_0 putarray_0 
+ 8    global Fn[zz_float_9]->putfloat_ret_0 putfloat_0 
+ 9    global Fn[zz_len_10, zz_farray_10]->putfarray_ret_0 putfarray_0 
+ 10   global Fn[]->putf_ret_0 putf_0 
+ 11   global Fn[]->starttime_ret_0 starttime_0 
+ 12   global Fn[]->stoptime_ret_0 stoptime_0 
+ 13   global Fn[zz_ptr_14, zz_val_14, zz_len_14]->memset_ret_0 memset_0 
+ 14   global Fn[zz_dest_15, zz_ptr_15, zz_len_15]->memcpy_ret_0 memcpy_0 
+ 17   store 1005_0:i32 *maxn_0:ptr->i32 
+ 18   maxn_0 = chi maxn_0:17 
+ 20   store 5005_0:i32 *maxm_0:ptr->i32 
+ 21   maxm_0 = chi maxm_0:20 
+ 23    
+ 25    
+ 27    
+ 29   store 0_0:i32 *cnt_0:ptr->i32 
+ 30   cnt_0 = chi cnt_0:29 
+ 32    
+ 36    
+ 45   Define main_0 "" -> main_ret_0 
+         453  head_0_7 = chi head_0_0:45 
+         454  tail_0_10 = chi tail_0_0:45 
+         455  m_0_1 = chi m_0_0:45 
+         456  que_0_9 = chi que_0_0:45 
+         457  to_0_4 = chi to_0_0:45 
+         458  n_0_1 = chi n_0_0:45 
+         459  inq_0_11 = chi inq_0_0:45 
+         460  cnt_0_4 = chi cnt_0_0:45 
+         461  h_0_7 = chi h_0_0:45 
+         462  next_0_4 = chi next_0_0:45 
+         338  alloc i32 [temp_73_ret_of_quick_read_101] 
+         342  alloc i32 [temp_74_ret_of_quick_read_101] 
+         349  alloc i32 [temp_75_ret_of_getch_107] 
+         352  alloc i32 [ch_107] 
+         353  alloc i32 [temp_76_ret_of_quick_read_119] 
+         356  alloc i32 [x_119] 
+         357  alloc i32 [temp_77_ret_of_quick_read_119] 
+         360  alloc i32 [y_119] 
+         362  alloc i32 [temp_78_value_from_ptr_107] 
+         365  alloc i32 [temp_79_arithop_107] 
+         369  alloc i32 [temp_80_ret_of_quick_read_115] 
+         372  alloc i32 [x_115] 
+         373  alloc i32 [temp_81_ret_of_quick_read_115] 
+         376  alloc i32 [y_115] 
+         377  alloc i32 [temp_82_ret_of_same_115] 
+         381  alloc i32 [temp_83_ret_of_getch_111] 
+         384  alloc i32 [temp_84_value_from_ptr_105] 
+         387  alloc i1 [temp_85__2966] 
+         395  alloc i1 [temp_86_cmp_109] 
+         397  alloc i1 [temp_87_cmp_109] 
+         406  alloc i1 [temp_88_cmp_113] 
+          label L0_0: 
+         339  temp_73_ret_of_quick_read_101_0 =  Call i32 quick_read_0() 
+         340  store temp_73_ret_of_quick_read_101_0:i32 *n_0:ptr->i32 
+         623  untrack temp_73_ret_of_quick_read_101_0 
+         341  n_0_2 = chi n_0_1:340 
+         343  temp_74_ret_of_quick_read_101_0 =  Call i32 quick_read_0() 
+         344  store temp_74_ret_of_quick_read_101_0:i32 *m_0:ptr->i32 
+         622  untrack temp_74_ret_of_quick_read_101_0 
+         345  m_0_2 = chi m_0_1:344 
+         346   Call void init_0() 
+         463  mu head_0_7:346 
+         464  head_0_8 = chi head_0_7:346 
+              jump label: while.head_106 
+     389  label while.head_106: 
+         385  temp_84_value_from_ptr_105_0 = load *m_0:ptr->i32 
+         386  mu m_0_3:385 
+         388  temp_85__2966_0 = icmp i32 Ne temp_84_value_from_ptr_105_0, 0_0 
+         392  br i1 temp_85__2966_0, label while.body_106, label while.exit_106 
+     390  label while.body_106: 
+         350  temp_75_ret_of_getch_107_0 =  Call i32 getch_0() 
+         351  (nop) 
+         555  ch_107_1 = i32 temp_75_ret_of_getch_107_0 
+              jump label: while.head_110 
+     404  label while.head_110: 
+         396  temp_86_cmp_109_0 = icmp i32 Ne ch_107_1, 81_0 
+         405  br i1 temp_86_cmp_109_0, label branch_short_circuit_p_true_573, label branch_short_circuit_c_false_573 
+     401  label branch_short_circuit_p_true_573: 
+         398  temp_87_cmp_109_0 = icmp i32 Ne ch_107_1, 85_0 
+         403  br i1 temp_87_cmp_109_0, label branch_short_circuit_c_true_573, label branch_short_circuit_c_false_573 
+     399  label branch_short_circuit_c_true_573: 
+         382  temp_83_ret_of_getch_111_0 =  Call i32 getch_0() 
+         383  (nop) 
+         556  ch_107_1 = i32 temp_83_ret_of_getch_111_0 
+              jump label: while.head_110 
+     400  label branch_short_circuit_c_false_573: 
+         407  temp_88_cmp_113_0 = icmp i32 Eq ch_107_1, 81_0 
+         410  br i1 temp_88_cmp_113_0, label branch_true_114, label branch_false_114 
+     408  label branch_true_114: 
+         629  untrack temp_76_ret_of_quick_read_119_0 
+         628  untrack temp_88_cmp_113_0 
+         627  untrack ch_107_1 
+         626  untrack temp_77_ret_of_quick_read_119_0 
+         625  untrack temp_75_ret_of_getch_107_0 
+         624  untrack temp_85__2966_0 
+         370  temp_80_ret_of_quick_read_115_0 =  Call i32 quick_read_0() 
+         371  (nop) 
+         374  temp_81_ret_of_quick_read_115_0 =  Call i32 quick_read_0() 
+         375  (nop) 
+         378  temp_82_ret_of_same_115_0 =  Call i32 same_0(temp_80_ret_of_quick_read_115_0, temp_81_ret_of_quick_read_115_0) 
+         632  untrack temp_80_ret_of_quick_read_115_0 
+         630  untrack temp_81_ret_of_quick_read_115_0 
+         465  mu tail_0_11:378 
+         466  mu que_0_10:378 
+         467  mu h_0_8:378 
+         468  mu inq_0_12:378 
+         469  inq_0_13 = chi inq_0_12:378 
+         470  tail_0_12 = chi tail_0_11:378 
+         471  h_0_9 = chi h_0_8:378 
+         472  que_0_11 = chi que_0_10:378 
+         379   Call void putint_0(temp_82_ret_of_same_115_0) 
+         631  untrack temp_82_ret_of_same_115_0 
+         380   Call void putch_0(10_0) 
+              jump label: gather_56 
+     411  label gather_56: 
+              jump label: L1_0 
+          label L1_0: 
+         363  (nop) 
+         364  mu m_0_3:363 
+         366  temp_79_arithop_107_0 = Sub i32 temp_84_value_from_ptr_105_0, 1_0 
+         367  store temp_79_arithop_107_0:i32 *m_0:ptr->i32 
+         368  m_0_4 = chi m_0_3:367 
+              jump label: while.head_106 
+     409  label branch_false_114: 
+         354  temp_76_ret_of_quick_read_119_0 =  Call i32 quick_read_0() 
+         355  (nop) 
+         358  temp_77_ret_of_quick_read_119_0 =  Call i32 quick_read_0() 
+         359  (nop) 
+         361   Call void add_edge_0(temp_76_ret_of_quick_read_119_0, temp_77_ret_of_quick_read_119_0) 
+         473  mu cnt_0_5:361 
+         474  mu head_0_9:361 
+         475  mu next_0_5:361 
+         476  mu to_0_5:361 
+         477  cnt_0_7 = chi cnt_0_5:361 
+         478  head_0_11 = chi head_0_9:361 
+         479  next_0_7 = chi next_0_5:361 
+         480  to_0_7 = chi to_0_5:361 
+              jump label: gather_56 
+     391  label while.exit_106: 
+         481  mu head_0_9:348 
+         482  mu tail_0_11:348 
+         483  mu m_0_3:348 
+         484  mu que_0_10:348 
+         485  mu to_0_5:348 
+         486  mu n_0_2:348 
+         487  mu inq_0_12:348 
+         488  mu cnt_0_5:348 
+         489  mu h_0_8:348 
+         490  mu next_0_5:348 
+         348  ret 0_0 
+ 44   Define same_0 "s_71_0,t_71_0," -> same_ret_0 
+         430  inq_0_3 = chi inq_0_0:44 
+         431  tail_0_3 = chi tail_0_0:44 
+         432  h_0_3 = chi h_0_0:44 
+         433  que_0_3 = chi que_0_0:44 
+         247  alloc i32 [res_73] 
+         249  alloc i32 [i_73] 
+         252  alloc ptr->i32 [temp_49_ptr_of_*que_0_96] 
+         254  alloc i32 [temp_50_ele_of_*que_0_96] 
+         257  alloc ptr->i32 [temp_51_ptr_of_*inq_0_96] 
+         261  alloc i32 [temp_52_arithop_96] 
+         264  alloc i32 [temp_53_ret_of_pop_queue_80] 
+         267  alloc i32 [x_80] 
+         268  alloc ptr->i32 [temp_54_ptr_of_*head_0_80] 
+         270  alloc i32 [temp_55_ele_of_*head_0_80] 
+         274  alloc i32 [i_80] 
+         275  alloc ptr->i32 [temp_56_ptr_of_*next_0_88] 
+         277  alloc i32 [temp_57_ele_of_*next_0_88] 
+         281  alloc ptr->i32 [temp_58_ptr_of_*to_0_89] 
+         283  alloc i32 [temp_59_ele_of_*to_0_89] 
+         288  alloc i32 [temp_60_value_from_ptr_78] 
+         291  alloc i32 [temp_61_value_from_ptr_78] 
+         294  alloc i1 [temp_62_cmp_78] 
+         300  alloc i32 [temp_63_value_from_ptr_94] 
+         303  alloc i1 [temp_64_cmp_94] 
+         311  alloc i1 [temp_65_cmp_82] 
+         316  alloc i1 [temp_66_cmp_86] 
+         321  alloc ptr->i32 [temp_67_ptr_of_*to_0_89] 
+         323  alloc i32 [temp_68_ele_of_*to_0_89] 
+         326  alloc ptr->i32 [temp_69_ptr_of_*inq_0_89] 
+         328  alloc i32 [temp_70_ele_of_*inq_0_89] 
+         331  alloc i1 [temp_71_booltrans_89] 
+         333  alloc i1 [temp_72_logicnot_89] 
+          label L2_0: 
+         241  store 0_0:i32 *h_0:ptr->i32 
+         242  h_0_4 = chi h_0_3:241 
+         243  store 0_0:i32 *tail_0:ptr->i32 
+         244  tail_0_4 = chi tail_0_3:243 
+         245   Call void inqueue_0(s_71_0) 
+         603  untrack s_71_0 
+         434  mu que_0_3:245 
+         435  mu inq_0_3:245 
+         436  mu tail_0_4:245 
+         437  inq_0_4 = chi inq_0_3:245 
+         438  tail_0_5 = chi tail_0_4:245 
+         439  que_0_4 = chi que_0_3:245 
+         246  (nop) 
+         547  res_73_1 = i32 0_0 
+              jump label: while.head_79 
+     296  label while.head_79: 
+         289  temp_60_value_from_ptr_78_0 = load *tail_0:ptr->i32 
+         290  mu tail_0_6:289 
+         292  temp_61_value_from_ptr_78_0 = load *h_0:ptr->i32 
+         293  mu h_0_5:292 
+         295  temp_62_cmp_78_0 = icmp i32 Slt temp_61_value_from_ptr_78_0, temp_60_value_from_ptr_78_0 
+         299  br i1 temp_62_cmp_78_0, label while.body_79, label while.exit_79 
+     297  label while.body_79: 
+         265  temp_53_ret_of_pop_queue_80_0 =  Call i32 pop_queue_0() 
+         440  mu h_0_5:265 
+         441  mu que_0_5:265 
+         442  h_0_6 = chi h_0_5:265 
+         266  (nop) 
+              jump label: L3_0 
+          label L3_0: 
+         312  temp_65_cmp_82_0 = icmp i32 Eq temp_53_ret_of_pop_queue_80_0, t_71_0 
+         315  br i1 temp_65_cmp_82_0, label branch_true_83, label UP_14_0 
+     313  label branch_true_83: 
+         613  untrack temp_65_cmp_82_0 
+         612  untrack temp_51_ptr_of_*inq_0_96 
+         611  untrack temp_60_value_from_ptr_78_0 
+         610  untrack temp_52_arithop_96_0 
+         609  untrack temp_50_ele_of_*que_0_96_0 
+         608  untrack temp_49_ptr_of_*que_0_96 
+         607  untrack temp_64_cmp_94_0 
+         606  untrack temp_61_value_from_ptr_78_0 
+         605  untrack temp_62_cmp_78_0 
+         287  (nop) 
+         548  res_73_3 = i32 1_0 
+              jump label: branch_false_83 
+     314  label branch_false_83: 
+              jump label: L4_0 
+          label L4_0: 
+         269  temp_54_ptr_of_*head_0_80 = GEP *head_0:Array:i32:[None] [Some(temp_53_ret_of_pop_queue_80_0)] 
+         271  temp_55_ele_of_*head_0_80_0 = load temp_54_ptr_of_*head_0_80:ptr->i32 
+         272  mu head_0_0:271 
+         273  (nop) 
+         549  i_80_1 = i32 temp_55_ele_of_*head_0_80_0 
+              jump label: while.head_87 
+     318  label while.head_87: 
+         317  temp_66_cmp_86_0 = icmp i32 Ne i_80_1, -1_0 
+         320  br i1 temp_66_cmp_86_0, label while.body_87, label UP_27_0 
+     319  label while.body_87: 
+         322  temp_67_ptr_of_*to_0_89 = GEP *to_0:Array:i32:[None] [Some(i_80_1)] 
+         324  temp_68_ele_of_*to_0_89_0 = load temp_67_ptr_of_*to_0_89:ptr->i32 
+         325  mu to_0_0:324 
+         327  temp_69_ptr_of_*inq_0_89 = GEP *inq_0:Array:i32:[None] [Some(temp_68_ele_of_*to_0_89_0)] 
+         329  temp_70_ele_of_*inq_0_89_0 = load temp_69_ptr_of_*inq_0_89:ptr->i32 
+         330  mu inq_0_6:329 
+         332  temp_71_booltrans_89_0 = icmp i32 Ne temp_70_ele_of_*inq_0_89_0, 0_0 
+         334  temp_72_logicnot_89_0 = xor i1 temp_71_booltrans_89_0, true 
+         337  br i1 temp_72_logicnot_89_0, label branch_true_90, label branch_false_90 
+     335  label branch_true_90: 
+         619  untrack temp_70_ele_of_*inq_0_89_0 
+         618  untrack temp_66_cmp_86_0 
+         617  untrack temp_69_ptr_of_*inq_0_89 
+         616  untrack temp_72_logicnot_89_0 
+         615  untrack temp_67_ptr_of_*to_0_89 
+         614  untrack temp_71_booltrans_89_0 
+         282  (nop) 
+         284  (nop) 
+         285  mu to_0_0:284 
+         286   Call void inqueue_0(temp_68_ele_of_*to_0_89_0) 
+         620  untrack temp_68_ele_of_*to_0_89_0 
+         443  mu que_0_6:286 
+         444  mu inq_0_6:286 
+         445  mu tail_0_7:286 
+         446  inq_0_7 = chi inq_0_6:286 
+         447  tail_0_8 = chi tail_0_7:286 
+         448  que_0_7 = chi que_0_6:286 
+              jump label: branch_false_90 
+     336  label branch_false_90: 
+              jump label: L5_0 
+          label L5_0: 
+         276  temp_56_ptr_of_*next_0_88 = GEP *next_0:Array:i32:[None] [Some(i_80_1)] 
+         278  temp_57_ele_of_*next_0_88_0 = load temp_56_ptr_of_*next_0_88:ptr->i32 
+         279  mu next_0_0:278 
+         280  (nop) 
+         550  i_80_1 = i32 temp_57_ele_of_*next_0_88_0 
+              jump label: while.head_87 
+     545  label UP_27_0: 
+         551  res_73_1 = i32 res_73_3 
+              jump label: while.head_79 
+     546  label UP_14_0: 
+         552  res_73_3 = i32 res_73_1 
+              jump label: branch_false_83 
+     298  label while.exit_79: 
+         604  untrack t_71_0 
+         248  (nop) 
+         301  (nop) 
+         302  mu tail_0_6:301 
+         553  i_73_1 = i32 0_0 
+              jump label: while.head_95 
+     305  label while.head_95: 
+         304  temp_64_cmp_94_0 = icmp i32 Sle i_73_1, temp_60_value_from_ptr_78_0 
+         308  br i1 temp_64_cmp_94_0, label while.body_95, label while.exit_95 
+     306  label while.body_95: 
+         253  temp_49_ptr_of_*que_0_96 = GEP *que_0:Array:i32:[None] [Some(i_73_1)] 
+         255  temp_50_ele_of_*que_0_96_0 = load temp_49_ptr_of_*que_0_96:ptr->i32 
+         256  mu que_0_5:255 
+         258  temp_51_ptr_of_*inq_0_96 = GEP *inq_0:ptr->i32 [Some(temp_50_ele_of_*que_0_96_0)] 
+         259  store 0_0:i32 temp_51_ptr_of_*inq_0_96:ptr->i32 
+         260  inq_0_10 = chi inq_0_9:259 
+         262  temp_52_arithop_96_0 = Add i32 i_73_1, 1_0 
+         263  (nop) 
+         554  i_73_1 = i32 temp_52_arithop_96_0 
+              jump label: while.head_95 
+     307  label while.exit_95: 
+         621  untrack i_73_1 
+         449  mu inq_0_9:251 
+         450  mu tail_0_6:251 
+         451  mu h_0_5:251 
+         452  mu que_0_5:251 
+         251  ret res_73_1 
+ 43   Define pop_queue_0 "" -> pop_queue_ret_0 
+         428  h_0_1 = chi h_0_0:43 
+         212  alloc i32 [temp_41_value_from_ptr_67] 
+         215  alloc i32 [temp_42_arithop_67] 
+         219  alloc i32 [temp_43_value_from_ptr_67] 
+         222  alloc ptr->i32 [temp_44_ptr_of_*que_0_67] 
+         224  alloc i32 [temp_45_ele_of_*que_0_67] 
+         228  alloc i32 [res_67] 
+         230  alloc i32 [temp_46_value_from_ptr_67] 
+         233  alloc ptr->i32 [temp_47_ptr_of_*que_0_67] 
+         235  alloc i32 [temp_48_ele_of_*que_0_67] 
+          label L6_0: 
+         213  temp_41_value_from_ptr_67_0 = load *h_0:ptr->i32 
+         214  mu h_0_1:213 
+         216  temp_42_arithop_67_0 = Add i32 temp_41_value_from_ptr_67_0, 1_0 
+         601  untrack temp_41_value_from_ptr_67_0 
+         217  store temp_42_arithop_67_0:i32 *h_0:ptr->i32 
+         600  untrack temp_42_arithop_67_0 
+         218  h_0_2 = chi h_0_1:217 
+         220  temp_43_value_from_ptr_67_0 = load *h_0:ptr->i32 
+         221  mu h_0_2:220 
+         223  temp_44_ptr_of_*que_0_67 = GEP *que_0:Array:i32:[None] [Some(temp_43_value_from_ptr_67_0)] 
+         602  untrack temp_43_value_from_ptr_67_0 
+         225  temp_45_ele_of_*que_0_67_0 = load temp_44_ptr_of_*que_0_67:ptr->i32 
+         599  untrack temp_44_ptr_of_*que_0_67 
+         226  mu que_0_0:225 
+         227  (nop) 
+         231  (nop) 
+         232  mu h_0_2:231 
+         234  (nop) 
+         236  (nop) 
+         237  mu que_0_0:236 
+         429  mu h_0_2:238 
+         238  ret temp_45_ele_of_*que_0_67_0 
+ 42   Define inqueue_0 "x_60_0," -> inqueue_ret_0 
+         422  inq_0_1 = chi inq_0_0:42 
+         423  tail_0_1 = chi tail_0_0:42 
+         424  que_0_1 = chi que_0_0:42 
+         192  alloc ptr->i32 [temp_36_ptr_of_*inq_0_62] 
+         196  alloc i32 [temp_37_value_from_ptr_62] 
+         199  alloc i32 [temp_38_arithop_62] 
+         203  alloc i32 [temp_39_value_from_ptr_62] 
+         206  alloc ptr->i32 [temp_40_ptr_of_*que_0_62] 
+          label L7_0: 
+         193  temp_36_ptr_of_*inq_0_62 = GEP *inq_0:ptr->i32 [Some(x_60_0)] 
+         194  store 1_0:i32 temp_36_ptr_of_*inq_0_62:ptr->i32 
+         594  untrack temp_36_ptr_of_*inq_0_62 
+         195  inq_0_2 = chi inq_0_1:194 
+         197  temp_37_value_from_ptr_62_0 = load *tail_0:ptr->i32 
+         198  mu tail_0_1:197 
+         200  temp_38_arithop_62_0 = Add i32 temp_37_value_from_ptr_62_0, 1_0 
+         593  untrack temp_37_value_from_ptr_62_0 
+         201  store temp_38_arithop_62_0:i32 *tail_0:ptr->i32 
+         598  untrack temp_38_arithop_62_0 
+         202  tail_0_2 = chi tail_0_1:201 
+         204  temp_39_value_from_ptr_62_0 = load *tail_0:ptr->i32 
+         205  mu tail_0_2:204 
+         207  temp_40_ptr_of_*que_0_62 = GEP *que_0:ptr->i32 [Some(temp_39_value_from_ptr_62_0)] 
+         597  untrack temp_39_value_from_ptr_62_0 
+         208  store x_60_0:i32 temp_40_ptr_of_*que_0_62:ptr->i32 
+         596  untrack x_60_0 
+         595  untrack temp_40_ptr_of_*que_0_62 
+         209  que_0_2 = chi que_0_1:208 
+              jump label: exit_24 
+     211  label exit_24: 
+         425  mu inq_0_2:210 
+         426  mu tail_0_2:210 
+         427  mu que_0_2:210 
+         210  ret 
+ 41   Define init_0 "" -> init_ret_0 
+         420  head_0_4 = chi head_0_0:41 
+         177  alloc i32 [i_53] 
+         178  alloc ptr->i32 [temp_33_ptr_of_*head_0_57] 
+         182  alloc i32 [temp_34_arithop_57] 
+         185  alloc i1 [temp_35_cmp_55] 
+          label L8_0: 
+         176  (nop) 
+         543  i_53_1 = i32 0_0 
+              jump label: while.head_56 
+     187  label while.head_56: 
+         186  temp_35_cmp_55_0 = icmp i32 Slt i_53_1, 1005_0 
+         190  br i1 temp_35_cmp_55_0, label while.body_56, label while.exit_56 
+     188  label while.body_56: 
+         179  temp_33_ptr_of_*head_0_57 = GEP *head_0:ptr->i32 [Some(i_53_1)] 
+         180  store -1_0:i32 temp_33_ptr_of_*head_0_57:ptr->i32 
+         181  head_0_6 = chi head_0_5:180 
+         183  temp_34_arithop_57_0 = Add i32 i_53_1, 1_0 
+         184  (nop) 
+         544  i_53_1 = i32 temp_34_arithop_57_0 
+              jump label: while.head_56 
+     189  label while.exit_56: 
+         592  untrack i_53_1 
+         421  mu head_0_5:191 
+         191  ret 
+ 40   Define add_edge_0 "from_41_0,To_41_0," -> add_edge_ret_0 
+         412  cnt_0_1 = chi cnt_0_0:40 
+         413  head_0_1 = chi head_0_0:40 
+         414  next_0_1 = chi next_0_0:40 
+         415  to_0_1 = chi to_0_0:40 
+         108  alloc i32 [temp_13_value_from_ptr_43] 
+         111  alloc ptr->i32 [temp_14_ptr_of_*to_0_43] 
+         115  alloc i32 [temp_15_value_from_ptr_43] 
+         118  alloc ptr->i32 [temp_16_ptr_of_*next_0_43] 
+         120  alloc ptr->i32 [temp_17_ptr_of_*head_0_43] 
+         122  alloc i32 [temp_18_ele_of_*head_0_43] 
+         127  alloc ptr->i32 [temp_19_ptr_of_*head_0_43] 
+         129  alloc i32 [temp_20_value_from_ptr_43] 
+         134  alloc i32 [temp_21_value_from_ptr_43] 
+         137  alloc i32 [temp_22_arithop_43] 
+         141  alloc i32 [temp_23_value_from_ptr_43] 
+         144  alloc ptr->i32 [temp_24_ptr_of_*to_0_43] 
+         148  alloc i32 [temp_25_value_from_ptr_43] 
+         151  alloc ptr->i32 [temp_26_ptr_of_*next_0_43] 
+         153  alloc ptr->i32 [temp_27_ptr_of_*head_0_43] 
+         155  alloc i32 [temp_28_ele_of_*head_0_43] 
+         160  alloc ptr->i32 [temp_29_ptr_of_*head_0_43] 
+         162  alloc i32 [temp_30_value_from_ptr_43] 
+         167  alloc i32 [temp_31_value_from_ptr_43] 
+         170  alloc i32 [temp_32_arithop_43] 
+          label L9_0: 
+         109  temp_13_value_from_ptr_43_0 = load *cnt_0:ptr->i32 
+         110  mu cnt_0_1:109 
+         112  temp_14_ptr_of_*to_0_43 = GEP *to_0:ptr->i32 [Some(temp_13_value_from_ptr_43_0)] 
+         113  store To_41_0:i32 temp_14_ptr_of_*to_0_43:ptr->i32 
+         581  untrack temp_14_ptr_of_*to_0_43 
+         114  to_0_2 = chi to_0_1:113 
+         116  (nop) 
+         117  mu cnt_0_1:116 
+         119  temp_16_ptr_of_*next_0_43 = GEP *next_0:ptr->i32 [Some(temp_13_value_from_ptr_43_0)] 
+         121  temp_17_ptr_of_*head_0_43 = GEP *head_0:Array:i32:[None] [Some(from_41_0)] 
+         123  temp_18_ele_of_*head_0_43_0 = load temp_17_ptr_of_*head_0_43:ptr->i32 
+         124  mu head_0_1:123 
+         125  store temp_18_ele_of_*head_0_43_0:i32 temp_16_ptr_of_*next_0_43:ptr->i32 
+         586  untrack temp_18_ele_of_*head_0_43_0 
+         580  untrack temp_16_ptr_of_*next_0_43 
+         126  next_0_2 = chi next_0_1:125 
+         128  (nop) 
+         130  (nop) 
+         131  mu cnt_0_1:130 
+         132  store temp_13_value_from_ptr_43_0:i32 temp_17_ptr_of_*head_0_43:ptr->i32 
+         585  untrack temp_17_ptr_of_*head_0_43 
+         133  head_0_2 = chi head_0_1:132 
+         135  (nop) 
+         136  mu cnt_0_1:135 
+         138  temp_22_arithop_43_0 = Add i32 temp_13_value_from_ptr_43_0, 1_0 
+         578  untrack temp_13_value_from_ptr_43_0 
+         139  store temp_22_arithop_43_0:i32 *cnt_0:ptr->i32 
+         587  untrack temp_22_arithop_43_0 
+         140  cnt_0_2 = chi cnt_0_1:139 
+         142  temp_23_value_from_ptr_43_0 = load *cnt_0:ptr->i32 
+         143  mu cnt_0_2:142 
+         145  temp_24_ptr_of_*to_0_43 = GEP *to_0:ptr->i32 [Some(temp_23_value_from_ptr_43_0)] 
+         146  store from_41_0:i32 temp_24_ptr_of_*to_0_43:ptr->i32 
+         590  untrack temp_24_ptr_of_*to_0_43 
+         589  untrack from_41_0 
+         147  to_0_3 = chi to_0_2:146 
+         149  (nop) 
+         150  mu cnt_0_2:149 
+         152  temp_26_ptr_of_*next_0_43 = GEP *next_0:ptr->i32 [Some(temp_23_value_from_ptr_43_0)] 
+         154  temp_27_ptr_of_*head_0_43 = GEP *head_0:Array:i32:[None] [Some(To_41_0)] 
+         583  untrack To_41_0 
+         156  temp_28_ele_of_*head_0_43_0 = load temp_27_ptr_of_*head_0_43:ptr->i32 
+         157  mu head_0_2:156 
+         158  store temp_28_ele_of_*head_0_43_0:i32 temp_26_ptr_of_*next_0_43:ptr->i32 
+         584  untrack temp_26_ptr_of_*next_0_43 
+         582  untrack temp_28_ele_of_*head_0_43_0 
+         159  next_0_3 = chi next_0_2:158 
+         161  (nop) 
+         163  (nop) 
+         164  mu cnt_0_2:163 
+         165  store temp_23_value_from_ptr_43_0:i32 temp_27_ptr_of_*head_0_43:ptr->i32 
+         588  untrack temp_27_ptr_of_*head_0_43 
+         166  head_0_3 = chi head_0_2:165 
+         168  (nop) 
+         169  mu cnt_0_2:168 
+         171  temp_32_arithop_43_0 = Add i32 temp_23_value_from_ptr_43_0, 1_0 
+         579  untrack temp_23_value_from_ptr_43_0 
+         172  store temp_32_arithop_43_0:i32 *cnt_0:ptr->i32 
+         591  untrack temp_32_arithop_43_0 
+         173  cnt_0_3 = chi cnt_0_2:172 
+              jump label: exit_16 
+     175  label exit_16: 
+         416  mu cnt_0_3:174 
+         417  mu head_0_3:174 
+         418  mu next_0_3:174 
+         419  mu to_0_3:174 
+         174  ret 
+ 39   Define quick_read_0 "" -> quick_read_ret_0 
+         46   alloc i32 [temp_0_ret_of_getch_22] 
+         49   alloc i32 [ch_22] 
+         51   alloc i32 [x_22] 
+         53   alloc i32 [f_22] 
+         57   alloc i32 [temp_1__37] 
+         60   alloc i32 [temp_2_arithop_34] 
+         62   alloc i32 [temp_3_arithop_34] 
+         64   alloc i32 [temp_4_arithop_34] 
+         67   alloc i32 [temp_5_ret_of_getch_34] 
+         70   alloc i32 [temp_6_ret_of_getch_27] 
+         74   alloc i1 [temp_7_cmp_25] 
+         76   alloc i1 [temp_8_cmp_25] 
+         85   alloc i1 [temp_9_cmp_32] 
+         87   alloc i1 [temp_10_cmp_32] 
+         95   alloc i1 [temp_11__803] 
+         103  alloc i1 [temp_12_cmp_28] 
+          label L10_0: 
+         47   temp_0_ret_of_getch_22_0 =  Call i32 getch_0() 
+         48   (nop) 
+         50   (nop) 
+         52   (nop) 
+         533  ch_22_1 = i32 temp_0_ret_of_getch_22_0 
+         557  untrack temp_0_ret_of_getch_22_0 
+         534  f_22_1 = i32 0_0 
+              jump label: while.head_26 
+     83   label while.head_26: 
+         75   temp_7_cmp_25_0 = icmp i32 Slt ch_22_1, 48_0 
+         84   br i1 temp_7_cmp_25_0, label branch_short_circuit_c_true_204, label branch_short_circuit_p_false_204 
+     78   label branch_short_circuit_c_true_204: 
+         104  temp_12_cmp_28_0 = icmp i32 Eq ch_22_1, 45_0 
+         107  br i1 temp_12_cmp_28_0, label branch_true_29, label UP_48_0 
+     105  label branch_true_29: 
+         568  untrack temp_10_cmp_32_0 
+         567  untrack temp_4_arithop_34_0 
+         566  untrack ch_22_3 
+         565  untrack temp_5_ret_of_getch_34_0 
+         564  untrack temp_9_cmp_32_0 
+         563  untrack x_22_1 
+         562  untrack temp_2_arithop_34_0 
+         561  untrack temp_8_cmp_25_0 
+         560  untrack temp_12_cmp_28_0 
+         559  untrack temp_7_cmp_25_0 
+         558  untrack temp_3_arithop_34_0 
+         73   (nop) 
+         535  f_22_3 = i32 1_0 
+              jump label: branch_false_29 
+     106  label branch_false_29: 
+              jump label: L11_0 
+          label L11_0: 
+         71   temp_6_ret_of_getch_27_0 =  Call i32 getch_0() 
+         72   (nop) 
+         536  f_22_1 = i32 f_22_3 
+         537  ch_22_1 = i32 temp_6_ret_of_getch_27_0 
+              jump label: while.head_26 
+     531  label UP_48_0: 
+         538  f_22_3 = i32 f_22_1 
+              jump label: branch_false_29 
+     80   label branch_short_circuit_p_false_204: 
+         77   temp_8_cmp_25_0 = icmp i32 Sgt ch_22_1, 57_0 
+         82   br i1 temp_8_cmp_25_0, label branch_short_circuit_c_true_204, label UP_30_0 
+     532  label UP_30_0: 
+         573  untrack temp_6_ret_of_getch_27_0 
+         572  untrack temp_7_cmp_25_0 
+         571  untrack temp_8_cmp_25_0 
+         570  untrack temp_12_cmp_28_0 
+         569  untrack f_22_3 
+         539  ch_22_3 = i32 ch_22_1 
+         540  x_22_1 = i32 0_0 
+              jump label: branch_short_circuit_c_false_204 
+     79   label branch_short_circuit_c_false_204: 
+         86   temp_9_cmp_32_0 = icmp i32 Sge ch_22_3, 48_0 
+         94   br i1 temp_9_cmp_32_0, label branch_short_circuit_p_true_220, label branch_short_circuit_c_false_220 
+     91   label branch_short_circuit_p_true_220: 
+         88   temp_10_cmp_32_0 = icmp i32 Sle ch_22_3, 57_0 
+         93   br i1 temp_10_cmp_32_0, label branch_short_circuit_c_true_220, label branch_short_circuit_c_false_220 
+     89   label branch_short_circuit_c_true_220: 
+         61   temp_2_arithop_34_0 = Mul i32 x_22_1, 10_0 
+         63   temp_3_arithop_34_0 = Add i32 temp_2_arithop_34_0, ch_22_3 
+         65   temp_4_arithop_34_0 = Sub i32 temp_3_arithop_34_0, 48_0 
+         66   (nop) 
+         68   temp_5_ret_of_getch_34_0 =  Call i32 getch_0() 
+         69   (nop) 
+         541  ch_22_3 = i32 temp_5_ret_of_getch_34_0 
+         542  x_22_1 = i32 temp_4_arithop_34_0 
+              jump label: branch_short_circuit_c_false_204 
+     90   label branch_short_circuit_c_false_220: 
+         96   temp_11__803_0 = icmp i32 Ne f_22_1, 0_0 
+         574  untrack f_22_1 
+         99   br i1 temp_11__803_0, label branch_true_38, label branch_false_38 
+     97   label branch_true_38: 
+         575  untrack temp_11__803_0 
+         58   temp_1__37_0 = Sub i32 0_0, x_22_1 
+         59   ret temp_1__37_0 
+     98   label branch_false_38: 
+         577  untrack temp_1__37_0 
+         576  untrack temp_11__803_0 
+         55   ret x_22_1 

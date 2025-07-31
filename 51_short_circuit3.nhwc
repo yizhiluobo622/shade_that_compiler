@@ -1,0 +1,374 @@
+# input: "./for_auto_test/00sy/51_short_circuit3.sy"
+ 18   label global_0: 
+ 17   global i32 d_0 
+ 16   global i32 b_0 
+ 15   global i32 a_0 
+ 0    global Fn[]->getint_ret_0 getint_0 
+ 1    global Fn[]->getch_ret_0 getch_0 
+ 2    global Fn[zz_array_3]->getarray_ret_0 getarray_0 
+ 3    global Fn[]->getfloat_ret_0 getfloat_0 
+ 4    global Fn[zz_array_5]->getfarray_ret_0 getfarray_0 
+ 5    global Fn[zz_int_6]->putint_ret_0 putint_0 
+ 6    global Fn[zz_ch_7]->putch_ret_0 putch_0 
+ 7    global Fn[x_8, zz_array_8]->putarray_ret_0 putarray_0 
+ 8    global Fn[zz_float_9]->putfloat_ret_0 putfloat_0 
+ 9    global Fn[zz_len_10, zz_farray_10]->putfarray_ret_0 putfarray_0 
+ 10   global Fn[]->putf_ret_0 putf_0 
+ 11   global Fn[]->starttime_ret_0 starttime_0 
+ 12   global Fn[]->stoptime_ret_0 stoptime_0 
+ 13   global Fn[zz_ptr_14, zz_val_14, zz_len_14]->memset_ret_0 memset_0 
+ 14   global Fn[zz_dest_15, zz_ptr_15, zz_len_15]->memcpy_ret_0 memcpy_0 
+ 22   Define main_0 "" -> main_ret_0 
+         285  a_0_3 = chi a_0_0:22 
+         286  d_0_3 = chi d_0_0:22 
+         287  b_0_3 = chi b_0_0:22 
+         54   alloc i32 [temp_3_value_from_ptr_33] 
+         59   alloc i32 [temp_4_value_from_ptr_33] 
+         68   alloc i32 [temp_5_value_from_ptr_33] 
+         73   alloc i32 [temp_6_value_from_ptr_33] 
+         79   alloc i32 [c_33] 
+         82   alloc i32 [temp_7_value_from_ptr_33] 
+         87   alloc i32 [temp_8_value_from_ptr_33] 
+         94   alloc i32 [i0_33] 
+         96   alloc i32 [i1_33] 
+         98   alloc i32 [i2_33] 
+         100  alloc i32 [i3_33] 
+         102  alloc i32 [i4_33] 
+         118  alloc i32 [temp_9_ret_of_set_a_36] 
+         120  alloc i32 [temp_10_ret_of_set_b_36] 
+         122  alloc i1 [temp_11_i32_to_bool_36] 
+         124  alloc i1 [temp_12_i32_to_bool_36] 
+         131  alloc i32 [temp_13_ret_of_set_a_45] 
+         133  alloc i32 [temp_14_ret_of_set_b_45] 
+         135  alloc i1 [temp_15_i32_to_bool_45] 
+         137  alloc i1 [temp_16_i32_to_bool_45] 
+         145  alloc i32 [temp_17_ret_of_set_d_54] 
+         147  alloc i1 [temp_18_i32_to_bool_54] 
+         155  alloc i32 [temp_19_ret_of_set_d_59] 
+         157  alloc i1 [temp_20_i32_to_bool_59] 
+         170  alloc i32 [temp_21__71] 
+         172  alloc i1 [temp_22_cmp_71] 
+         177  alloc i32 [temp_23__75] 
+         179  alloc i1 [temp_24_cmp_75] 
+         184  alloc i32 [temp_25__79] 
+         186  alloc i1 [temp_26_cmp_79] 
+         194  alloc i1 [temp_27_i32_to_bool_87] 
+         196  alloc i1 [temp_28_i32_to_bool_87] 
+         205  alloc i1 [temp_29_i32_to_bool_90] 
+         207  alloc i1 [temp_30_i32_to_bool_90] 
+         215  alloc i1 [temp_31_cmp_93] 
+         217  alloc i1 [temp_32_cmp_93] 
+         225  alloc i1 [temp_33_cmp_96] 
+         227  alloc i1 [temp_34_cmp_96] 
+         235  alloc i1 [temp_35_booltrans_100] 
+         237  alloc i1 [temp_36_logicnot_100] 
+         239  alloc i32 [temp_37__100] 
+         241  alloc i1 [temp_38_cmp_100] 
+         243  alloc i1 [temp_39_cmp_100] 
+         250  alloc i1 [temp_40_cmp_100] 
+         256  alloc i1 [temp_41_booltrans_104] 
+         258  alloc i1 [temp_42_logicnot_104] 
+         260  alloc i32 [temp_43__104] 
+         262  alloc i1 [temp_44_cmp_104] 
+         264  alloc i1 [temp_45_cmp_104] 
+         266  alloc i1 [temp_46_cmp_104] 
+          label L0_0: 
+         50   store 2_0:i32 *a_0:ptr->i32 
+         51   a_0_4 = chi a_0_3:50 
+         52   store 3_0:i32 *b_0:ptr->i32 
+         53   b_0_4 = chi b_0_3:52 
+              jump label: L1_0 
+          label L1_0: 
+         119  temp_9_ret_of_set_a_36_0 =  Call i32 set_a_0(0_0) 
+         288  mu a_0_4:119 
+         289  a_0_5 = chi a_0_4:119 
+         123  temp_11_i32_to_bool_36_0 = icmp i32 Ne temp_9_ret_of_set_a_36_0, 0_0 
+         310  untrack temp_9_ret_of_set_a_36_0 
+         130  br i1 temp_11_i32_to_bool_36_0, label branch_short_circuit_p_true_311, label branch_short_circuit_c_true_311 
+     127  label branch_short_circuit_p_true_311: 
+         314  untrack temp_11_i32_to_bool_36_0 
+         121  temp_10_ret_of_set_b_36_0 =  Call i32 set_b_0(1_0) 
+         301  mu b_0_4:121 
+         302  b_0_9 = chi b_0_4:121 
+         125  temp_12_i32_to_bool_36_0 = icmp i32 Ne temp_10_ret_of_set_b_36_0, 0_0 
+         339  untrack temp_10_ret_of_set_b_36_0 
+         129  br i1 temp_12_i32_to_bool_36_0, label branch_short_circuit_c_true_311, label branch_short_circuit_c_true_311 
+     126  label branch_short_circuit_c_true_311: 
+         341  untrack temp_12_i32_to_bool_36_0 
+         340  untrack temp_12_i32_to_bool_36_0 
+         313  untrack temp_11_i32_to_bool_36_0 
+         312  untrack temp_12_i32_to_bool_36_0 
+         311  untrack temp_10_ret_of_set_b_36_0 
+              jump label: L2_0 
+          label L2_0: 
+         55   temp_3_value_from_ptr_33_0 = load *a_0:ptr->i32 
+         56   mu a_0_5:55 
+         57    Call void putint_0(temp_3_value_from_ptr_33_0) 
+         316  untrack temp_3_value_from_ptr_33_0 
+         58    Call void putch_0(32_0) 
+         60   temp_4_value_from_ptr_33_0 = load *b_0:ptr->i32 
+         61   mu b_0_5:60 
+         62    Call void putint_0(temp_4_value_from_ptr_33_0) 
+         315  untrack temp_4_value_from_ptr_33_0 
+         63    Call void putch_0(32_0) 
+         64   store 2_0:i32 *a_0:ptr->i32 
+         65   a_0_6 = chi a_0_5:64 
+         66   store 3_0:i32 *b_0:ptr->i32 
+         67   b_0_6 = chi b_0_5:66 
+              jump label: L3_0 
+          label L3_0: 
+         132  temp_13_ret_of_set_a_45_0 =  Call i32 set_a_0(0_0) 
+         290  mu a_0_6:132 
+         291  a_0_7 = chi a_0_6:132 
+         136  temp_15_i32_to_bool_45_0 = icmp i32 Ne temp_13_ret_of_set_a_45_0, 0_0 
+         317  untrack temp_13_ret_of_set_a_45_0 
+         144  br i1 temp_15_i32_to_bool_45_0, label branch_short_circuit_p_true_329, label branch_short_circuit_c_false_329 
+     141  label branch_short_circuit_p_true_329: 
+         321  untrack temp_15_i32_to_bool_45_0 
+         134  temp_14_ret_of_set_b_45_0 =  Call i32 set_b_0(1_0) 
+         299  mu b_0_6:134 
+         300  b_0_8 = chi b_0_6:134 
+         138  temp_16_i32_to_bool_45_0 = icmp i32 Ne temp_14_ret_of_set_b_45_0, 0_0 
+         336  untrack temp_14_ret_of_set_b_45_0 
+         143  br i1 temp_16_i32_to_bool_45_0, label branch_short_circuit_c_true_329, label branch_short_circuit_c_false_329 
+     139  label branch_short_circuit_c_true_329: 
+         337  untrack temp_16_i32_to_bool_45_0 
+              jump label: branch_short_circuit_c_false_329 
+     140  label branch_short_circuit_c_false_329: 
+         338  untrack temp_16_i32_to_bool_45_0 
+         320  untrack temp_16_i32_to_bool_45_0 
+         319  untrack temp_14_ret_of_set_b_45_0 
+         318  untrack temp_15_i32_to_bool_45_0 
+              jump label: L4_0 
+          label L4_0: 
+         69   temp_5_value_from_ptr_33_0 = load *a_0:ptr->i32 
+         70   mu a_0_7:69 
+         71    Call void putint_0(temp_5_value_from_ptr_33_0) 
+         322  untrack temp_5_value_from_ptr_33_0 
+         72    Call void putch_0(32_0) 
+         74   temp_6_value_from_ptr_33_0 = load *b_0:ptr->i32 
+         75   mu b_0_7:74 
+         76    Call void putint_0(temp_6_value_from_ptr_33_0) 
+         323  untrack temp_6_value_from_ptr_33_0 
+         77    Call void putch_0(10_0) 
+         78   (nop) 
+         80   store 2_0:i32 *d_0:ptr->i32 
+         81   d_0_4 = chi d_0_3:80 
+              jump label: L5_0 
+          label L5_0: 
+              jump label: branch_short_circuit_p_true_347 
+     151  label branch_short_circuit_p_true_347: 
+         146  temp_17_ret_of_set_d_54_0 =  Call i32 set_d_0(3_0) 
+         297  mu d_0_4:146 
+         298  d_0_8 = chi d_0_4:146 
+         148  temp_18_i32_to_bool_54_0 = icmp i32 Ne temp_17_ret_of_set_d_54_0, 0_0 
+         333  untrack temp_17_ret_of_set_d_54_0 
+         153  br i1 temp_18_i32_to_bool_54_0, label branch_short_circuit_c_true_347, label branch_short_circuit_c_false_347 
+     149  label branch_short_circuit_c_true_347: 
+         334  untrack temp_18_i32_to_bool_54_0 
+              jump label: branch_short_circuit_c_false_347 
+     150  label branch_short_circuit_c_false_347: 
+         335  untrack temp_18_i32_to_bool_54_0 
+         325  untrack temp_17_ret_of_set_d_54_0 
+         324  untrack temp_18_i32_to_bool_54_0 
+              jump label: L6_0 
+          label L6_0: 
+         83   temp_7_value_from_ptr_33_0 = load *d_0:ptr->i32 
+         84   mu d_0_5:83 
+         85    Call void putint_0(temp_7_value_from_ptr_33_0) 
+         326  untrack temp_7_value_from_ptr_33_0 
+         86    Call void putch_0(32_0) 
+              jump label: L7_0 
+          label L7_0: 
+              jump label: branch_short_circuit_c_true_361 
+     159  label branch_short_circuit_c_true_361: 
+         332  untrack temp_20_i32_to_bool_59_0 
+         331  untrack temp_20_i32_to_bool_59_0 
+         328  untrack temp_19_ret_of_set_d_59_0 
+         327  untrack temp_20_i32_to_bool_59_0 
+              jump label: L8_0 
+          label L8_0: 
+         88   temp_8_value_from_ptr_33_0 = load *d_0:ptr->i32 
+         89   mu d_0_6:88 
+         90    Call void putint_0(temp_8_value_from_ptr_33_0) 
+         329  untrack temp_8_value_from_ptr_33_0 
+         91    Call void putch_0(10_0) 
+              jump label: L9_0 
+          label L9_0: 
+              jump label: branch_true_65 
+     164  label branch_true_65: 
+         117   Call void putch_0(65_0) 
+              jump label: branch_false_65 
+     165  label branch_false_65: 
+              jump label: L10_0 
+          label L10_0: 
+              jump label: branch_false_69 
+     167  label branch_true_69: 
+         116   Call void putch_0(66_0) 
+              jump label: branch_false_69 
+     168  label branch_false_69: 
+              jump label: L11_0 
+          label L11_0: 
+         171  (nop) 
+         173  (nop) 
+              jump label: branch_false_72 
+     174  label branch_true_72: 
+         115   Call void putch_0(67_0) 
+              jump label: branch_false_72 
+     175  label branch_false_72: 
+              jump label: L12_0 
+          label L12_0: 
+         178  (nop) 
+         180  (nop) 
+              jump label: branch_true_76 
+     181  label branch_true_76: 
+         114   Call void putch_0(68_0) 
+              jump label: branch_false_76 
+     182  label branch_false_76: 
+              jump label: L13_0 
+          label L13_0: 
+         185  (nop) 
+         187  (nop) 
+              jump label: branch_false_80 
+     188  label branch_true_80: 
+         113   Call void putch_0(69_0) 
+              jump label: branch_false_80 
+     189  label branch_false_80: 
+              jump label: L14_0 
+          label L14_0: 
+              jump label: branch_true_83 
+     191  label branch_true_83: 
+         112   Call void putch_0(70_0) 
+              jump label: branch_false_83 
+     192  label branch_false_83: 
+              jump label: L15_0 
+          label L15_0: 
+         92    Call void putch_0(10_0) 
+         93   (nop) 
+         95   (nop) 
+         97   (nop) 
+         99   (nop) 
+         101  (nop) 
+              jump label: while.head_88 
+     203  label while.head_88: 
+         195  (nop) 
+              jump label: branch_short_circuit_c_false_444 
+     200  label branch_short_circuit_p_true_444: 
+         197  (nop) 
+              jump label: branch_short_circuit_c_true_444 
+     198  label branch_short_circuit_c_true_444: 
+         111   Call void putch_0(32_0) 
+              jump label: while.head_88 
+     199  label branch_short_circuit_c_false_444: 
+         206  (nop) 
+              jump label: branch_short_circuit_p_false_452 
+     209  label branch_short_circuit_c_true_452: 
+         110   Call void putch_0(67_0) 
+              jump label: branch_short_circuit_c_false_452 
+     210  label branch_short_circuit_c_false_452: 
+              jump label: L16_0 
+          label L16_0: 
+         216  (nop) 
+              jump label: branch_short_circuit_p_false_460 
+     219  label branch_short_circuit_c_true_460: 
+         109   Call void putch_0(72_0) 
+              jump label: branch_short_circuit_c_false_460 
+     220  label branch_short_circuit_c_false_460: 
+              jump label: L17_0 
+          label L17_0: 
+         226  (nop) 
+              jump label: branch_short_circuit_p_true_472 
+     231  label branch_short_circuit_p_true_472: 
+         228  (nop) 
+              jump label: branch_short_circuit_c_true_472 
+     229  label branch_short_circuit_c_true_472: 
+         108   Call void putch_0(73_0) 
+              jump label: branch_short_circuit_c_false_472 
+     230  label branch_short_circuit_c_false_472: 
+              jump label: L18_0 
+          label L18_0: 
+         236  (nop) 
+         238  (nop) 
+         240  (nop) 
+         242  (nop) 
+              jump label: branch_short_circuit_p_true_487 
+     247  label branch_short_circuit_p_true_487: 
+         244  (nop) 
+              jump label: branch_short_circuit_c_false_487 
+     245  label branch_short_circuit_c_true_487: 
+         107   Call void putch_0(74_0) 
+              jump label: branch_short_circuit_c_false_485 
+     252  label branch_short_circuit_c_false_485: 
+              jump label: L19_0 
+          label L19_0: 
+         257  (nop) 
+         259  (nop) 
+         261  (nop) 
+         263  (nop) 
+              jump label: branch_short_circuit_c_true_510 
+     268  label branch_short_circuit_c_true_510: 
+         106   Call void putch_0(75_0) 
+              jump label: branch_short_circuit_c_false_510 
+     269  label branch_short_circuit_c_false_510: 
+              jump label: L20_0 
+          label L20_0: 
+         103   Call void putch_0(10_0) 
+         292  mu a_0_7:105 
+         293  mu d_0_6:105 
+         294  mu b_0_7:105 
+         105  ret 0_0 
+     273  label branch_short_circuit_p_false_504: 
+         265  (nop) 
+              jump label: branch_short_circuit_c_false_510 
+     270  label branch_short_circuit_p_true_510: 
+         267  (nop) 
+              jump label: branch_short_circuit_c_true_510 
+     246  label branch_short_circuit_c_false_487: 
+         251  (nop) 
+              jump label: branch_short_circuit_c_true_487 
+     221  label branch_short_circuit_p_false_460: 
+         218  (nop) 
+              jump label: branch_short_circuit_c_false_460 
+     211  label branch_short_circuit_p_false_452: 
+         208  (nop) 
+              jump label: branch_short_circuit_c_true_452 
+     160  label branch_short_circuit_p_false_361: 
+         156  temp_19_ret_of_set_d_59_0 =  Call i32 set_d_0(4_0) 
+         295  mu d_0_5:156 
+         296  d_0_7 = chi d_0_5:156 
+         158  temp_20_i32_to_bool_59_0 = icmp i32 Ne temp_19_ret_of_set_d_59_0, 0_0 
+         330  untrack temp_19_ret_of_set_d_59_0 
+         162  br i1 temp_20_i32_to_bool_59_0, label branch_short_circuit_c_true_361, label branch_short_circuit_c_true_361 
+ 21   Define set_d_0 "val_27_0," -> set_d_ret_0 
+         283  d_0_1 = chi d_0_0:21 
+         44   alloc i32 [temp_2_value_from_ptr_29] 
+          label L21_0: 
+         41   store val_27_0:i32 *d_0:ptr->i32 
+         309  untrack val_27_0 
+         42   d_0_2 = chi d_0_1:41 
+         45   temp_2_value_from_ptr_29_0 = load *d_0:ptr->i32 
+         46   mu d_0_2:45 
+         284  mu d_0_2:47 
+         47   ret temp_2_value_from_ptr_29_0 
+ 20   Define set_b_0 "val_22_0," -> set_b_ret_0 
+         281  b_0_1 = chi b_0_0:20 
+         35   alloc i32 [temp_1_value_from_ptr_24] 
+          label L22_0: 
+         32   store val_22_0:i32 *b_0:ptr->i32 
+         308  untrack val_22_0 
+         33   b_0_2 = chi b_0_1:32 
+         36   temp_1_value_from_ptr_24_0 = load *b_0:ptr->i32 
+         37   mu b_0_2:36 
+         282  mu b_0_2:38 
+         38   ret temp_1_value_from_ptr_24_0 
+ 19   Define set_a_0 "val_17_0," -> set_a_ret_0 
+         279  a_0_1 = chi a_0_0:19 
+         26   alloc i32 [temp_0_value_from_ptr_19] 
+          label L23_0: 
+         23   store val_17_0:i32 *a_0:ptr->i32 
+         307  untrack val_17_0 
+         24   a_0_2 = chi a_0_1:23 
+         27   temp_0_value_from_ptr_19_0 = load *a_0:ptr->i32 
+         28   mu a_0_2:27 
+         280  mu a_0_2:29 
+         29   ret temp_0_value_from_ptr_19_0 

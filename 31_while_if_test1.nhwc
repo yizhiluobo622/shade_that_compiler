@@ -1,0 +1,83 @@
+# input: "./for_auto_test/00sy/31_while_if_test1.sy"
+ 15   label global_0: 
+ 0    global Fn[]->getint_ret_0 getint_0 
+ 1    global Fn[]->getch_ret_0 getch_0 
+ 2    global Fn[zz_array_3]->getarray_ret_0 getarray_0 
+ 3    global Fn[]->getfloat_ret_0 getfloat_0 
+ 4    global Fn[zz_array_5]->getfarray_ret_0 getfarray_0 
+ 5    global Fn[zz_int_6]->putint_ret_0 putint_0 
+ 6    global Fn[zz_ch_7]->putch_ret_0 putch_0 
+ 7    global Fn[x_8, zz_array_8]->putarray_ret_0 putarray_0 
+ 8    global Fn[zz_float_9]->putfloat_ret_0 putfloat_0 
+ 9    global Fn[zz_len_10, zz_farray_10]->putfarray_ret_0 putfarray_0 
+ 10   global Fn[]->putf_ret_0 putf_0 
+ 11   global Fn[]->starttime_ret_0 starttime_0 
+ 12   global Fn[]->stoptime_ret_0 stoptime_0 
+ 13   global Fn[zz_ptr_14, zz_val_14, zz_len_14]->memset_ret_0 memset_0 
+ 14   global Fn[zz_dest_15, zz_ptr_15, zz_len_15]->memcpy_ret_0 memcpy_0 
+ 17   Define main_0 "" -> main_ret_0 
+         55   alloc i32 [temp_5_ret_of_whileIf_38] 
+          label L0_0: 
+         56   temp_5_ret_of_whileIf_38_0 =  Call i32 whileIf_0() 
+         57   ret temp_5_ret_of_whileIf_38_0 
+ 16   Define whileIf_0 "" -> whileIf_ret_0 
+         18   alloc i32 [a_17] 
+         21   alloc i32 [b_17] 
+         26   alloc i32 [temp_0_arithop_33] 
+         29   alloc i32 [temp_1_arithop_24] 
+         34   alloc i1 [temp_2_cmp_22] 
+         42   alloc i1 [temp_3_cmp_25] 
+         47   alloc i1 [temp_4_cmp_29] 
+          label L1_0: 
+         19    
+         20   (nop) 
+         22    
+         23   (nop) 
+         64   b_17_2 = i32 0_0 
+         65   a_17_2 = i32 0_0 
+              jump label: while.head_23 
+     36   label while.head_23: 
+         35   temp_2_cmp_22_0 = icmp i32 Slt a_17_2, 100_0 
+         39   br i1 temp_2_cmp_22_0, label while.body_23, label while.exit_23 
+     37   label while.body_23: 
+         43   temp_3_cmp_25_0 = icmp i32 Eq a_17_2, 5_0 
+         46   br i1 temp_3_cmp_25_0, label branch_true_26, label branch_false_26 
+     44   label branch_true_26: 
+         77   untrack b_17_6 
+         76   untrack temp_0_arithop_33_0 
+         75   untrack temp_3_cmp_25_0 
+         74   untrack temp_2_cmp_22_0 
+         73   untrack temp_4_cmp_29_0 
+         33   (nop) 
+         66   b_17_4 = i32 25_0 
+              jump label: gather_10 
+     53   label gather_10: 
+              jump label: L2_0 
+          label L2_0: 
+         30   temp_1_arithop_24_0 = Add i32 a_17_2, 1_0 
+         31   (nop) 
+         67   b_17_2 = i32 b_17_4 
+         68   a_17_2 = i32 temp_1_arithop_24_0 
+              jump label: while.head_23 
+     45   label branch_false_26: 
+         48   temp_4_cmp_29_0 = icmp i32 Eq a_17_2, 10_0 
+         51   br i1 temp_4_cmp_29_0, label branch_true_30, label branch_false_30 
+     49   label branch_true_30: 
+         81   untrack temp_3_cmp_25_0 
+         80   untrack temp_0_arithop_33_0 
+         79   untrack temp_2_cmp_22_0 
+         78   untrack temp_4_cmp_29_0 
+         32   (nop) 
+         69   b_17_6 = i32 42_0 
+              jump label: gather_8 
+     52   label gather_8: 
+         70   b_17_4 = i32 b_17_6 
+              jump label: gather_10 
+     50   label branch_false_30: 
+         27   temp_0_arithop_33_0 = Mul i32 a_17_2, 2_0 
+         28   (nop) 
+         71   b_17_6 = i32 temp_0_arithop_33_0 
+              jump label: gather_8 
+     38   label while.exit_23: 
+         72   untrack a_17_2 
+         25   ret b_17_2 

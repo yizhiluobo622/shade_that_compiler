@@ -1,0 +1,61 @@
+# input: "./for_auto_test/00sy/22_if_test3.sy"
+ 15   label global_0: 
+ 0    global Fn[]->getint_ret_0 getint_0 
+ 1    global Fn[]->getch_ret_0 getch_0 
+ 2    global Fn[zz_array_3]->getarray_ret_0 getarray_0 
+ 3    global Fn[]->getfloat_ret_0 getfloat_0 
+ 4    global Fn[zz_array_5]->getfarray_ret_0 getfarray_0 
+ 5    global Fn[zz_int_6]->putint_ret_0 putint_0 
+ 6    global Fn[zz_ch_7]->putch_ret_0 putch_0 
+ 7    global Fn[x_8, zz_array_8]->putarray_ret_0 putarray_0 
+ 8    global Fn[zz_float_9]->putfloat_ret_0 putfloat_0 
+ 9    global Fn[zz_len_10, zz_farray_10]->putfarray_ret_0 putfarray_0 
+ 10   global Fn[]->putf_ret_0 putf_0 
+ 11   global Fn[]->starttime_ret_0 starttime_0 
+ 12   global Fn[]->stoptime_ret_0 stoptime_0 
+ 13   global Fn[zz_ptr_14, zz_val_14, zz_len_14]->memset_ret_0 memset_0 
+ 14   global Fn[zz_dest_15, zz_ptr_15, zz_len_15]->memcpy_ret_0 memcpy_0 
+ 17   Define main_0 "" -> main_ret_0 
+         44   alloc i32 [temp_3_ret_of_ififElse_30] 
+          label L0_0: 
+         45   temp_3_ret_of_ififElse_30_0 =  Call i32 ififElse_0() 
+         46   ret temp_3_ret_of_ififElse_30_0 
+ 16   Define ififElse_0 "" -> ififElse_ret_0 
+         18   alloc i32 [a_17] 
+         21   alloc i32 [b_17] 
+         26   alloc i32 [temp_0_arithop_24] 
+         30   alloc i1 [temp_1_cmp_22] 
+         37   alloc i1 [temp_2_cmp_24] 
+          label L1_0: 
+         19    
+         20   (nop) 
+         22    
+         23   (nop) 
+              jump label: L2_0 
+          label L2_0: 
+         31   (nop) 
+              jump label: branch_true_23 
+     32   label branch_true_23: 
+         38   (nop) 
+              jump label: branch_true_25 
+     39   label branch_true_25: 
+         29   (nop) 
+         52   a_17_3 = i32 25_0 
+              jump label: gather_7 
+     42   label gather_7: 
+         53   a_17_5 = i32 a_17_3 
+         57   untrack a_17_3 
+              jump label: branch_false_23 
+     33   label branch_false_23: 
+              jump label: L3_0 
+          label L3_0: 
+         25   ret a_17_5 
+     40   label branch_false_25: 
+         27   (nop) 
+         28   (nop) 
+         54   a_17_3 = i32 20_0 
+              jump label: gather_7 
+     51   label UP_12_0: 
+         56   untrack a_17_3 
+         55   a_17_5 = i32 5_0 
+              jump label: branch_false_23 

@@ -1,0 +1,99 @@
+# input: "./for_auto_test/00sy/53_scope2.sy"
+ 16   label global_0: 
+ 15   global i32 k_0 
+ 0    global Fn[]->getint_ret_0 getint_0 
+ 1    global Fn[]->getch_ret_0 getch_0 
+ 2    global Fn[zz_array_3]->getarray_ret_0 getarray_0 
+ 3    global Fn[]->getfloat_ret_0 getfloat_0 
+ 4    global Fn[zz_array_5]->getfarray_ret_0 getfarray_0 
+ 5    global Fn[zz_int_6]->putint_ret_0 putint_0 
+ 6    global Fn[zz_ch_7]->putch_ret_0 putch_0 
+ 7    global Fn[x_8, zz_array_8]->putarray_ret_0 putarray_0 
+ 8    global Fn[zz_float_9]->putfloat_ret_0 putfloat_0 
+ 9    global Fn[zz_len_10, zz_farray_10]->putfarray_ret_0 putfarray_0 
+ 10   global Fn[]->putf_ret_0 putf_0 
+ 11   global Fn[]->starttime_ret_0 starttime_0 
+ 12   global Fn[]->stoptime_ret_0 stoptime_0 
+ 13   global Fn[zz_ptr_14, zz_val_14, zz_len_14]->memset_ret_0 memset_0 
+ 14   global Fn[zz_dest_15, zz_ptr_15, zz_len_15]->memcpy_ret_0 memcpy_0 
+ 17   Define main_0 "" -> main_ret_0 
+         74   k_0_1 = chi k_0_0:17 
+         21   alloc i32 [temp_0_value_from_ptr_18] 
+         25   alloc i32 [temp_1_value_from_ptr_22] 
+         28   alloc i32 [temp_2_arithop_22] 
+         33   alloc i32 [k_22] 
+         35   alloc i32 [temp_3_arithop_27] 
+         39   alloc i32 [g_31] 
+         41   alloc i32 [l_33] 
+         43   alloc i32 [temp_4_arithop_35] 
+         47   alloc i32 [g_35] 
+         48   alloc i32 [temp_5_arithop_35] 
+         50   alloc i32 [temp_6_arithop_35] 
+         53   alloc i32 [temp_7_value_from_ptr_20] 
+         56   alloc i1 [temp_8_cmp_20] 
+         63   alloc i1 [temp_9_cmp_25] 
+         69   alloc i1 [temp_10_cmp_29] 
+          label L0_0: 
+         18   store 3389_0:i32 *k_0:ptr->i32 
+         19   k_0_2 = chi k_0_1:18 
+              jump label: L1_0 
+          label L1_0: 
+         54   temp_7_value_from_ptr_20_0 = load *k_0:ptr->i32 
+         55   mu k_0_2:54 
+         57   temp_8_cmp_20_0 = icmp i32 Slt temp_7_value_from_ptr_20_0, 10000_0 
+         60   br i1 temp_8_cmp_20_0, label branch_true_21, label branch_false_21 
+     58   label branch_true_21: 
+         84   untrack temp_8_cmp_20_0 
+         26   (nop) 
+         27   mu k_0_2:26 
+         29   temp_2_arithop_22_0 = Add i32 temp_7_value_from_ptr_20_0, 1_0 
+         89   untrack temp_7_value_from_ptr_20_0 
+         30   store temp_2_arithop_22_0:i32 *k_0:ptr->i32 
+         90   untrack temp_2_arithop_22_0 
+         31   k_0_3 = chi k_0_2:30 
+         32   (nop) 
+         80   k_22_1 = i32 112_0 
+              jump label: while.head_26 
+     65   label while.head_26: 
+         64   temp_9_cmp_25_0 = icmp i32 Sgt k_22_1, 10_0 
+         68   br i1 temp_9_cmp_25_0, label while.body_26, label while.exit_26 
+     66   label while.body_26: 
+         36   temp_3_arithop_27_0 = Sub i32 k_22_1, 88_0 
+         37   (nop) 
+              jump label: L2_0 
+          label L2_0: 
+         70   temp_10_cmp_29_0 = icmp i32 Slt temp_3_arithop_27_0, 1000_0 
+         73   br i1 temp_10_cmp_29_0, label branch_true_30, label UP_2_0 
+     71   label branch_true_30: 
+         38   (nop) 
+         40   (nop) 
+         42   (nop) 
+         44   temp_4_arithop_35_0 = Sub i32 temp_3_arithop_27_0, 10_0 
+         45   (nop) 
+         46   (nop) 
+         49   temp_5_arithop_35_0 = Add i32 temp_4_arithop_35_0, 11_0 
+         51   temp_6_arithop_35_0 = Add i32 temp_5_arithop_35_0, 11_0 
+         52   (nop) 
+         81   k_22_5 = i32 temp_6_arithop_35_0 
+              jump label: branch_false_30 
+     72   label branch_false_30: 
+         82   k_22_1 = i32 k_22_5 
+              jump label: while.head_26 
+     79   label UP_2_0: 
+         83   k_22_5 = i32 temp_3_arithop_27_0 
+              jump label: branch_false_30 
+     67   label while.exit_26: 
+         34    Call void putint_0(k_22_1) 
+         91   untrack k_22_1 
+              jump label: branch_false_21 
+     59   label branch_false_21: 
+         88   untrack temp_2_arithop_22_0 
+         87   untrack temp_8_cmp_20_0 
+         86   untrack temp_7_value_from_ptr_20_0 
+         85   untrack k_22_1 
+              jump label: L3_0 
+          label L3_0: 
+         22   temp_0_value_from_ptr_18_0 = load *k_0:ptr->i32 
+         23   mu k_0_4:22 
+         75   mu k_0_4:24 
+         24   ret temp_0_value_from_ptr_18_0 

@@ -1,0 +1,57 @@
+# input: "./for_auto_test/00sy/40_unary_op.sy"
+ 15   label global_0: 
+ 0    global Fn[]->getint_ret_0 getint_0 
+ 1    global Fn[]->getch_ret_0 getch_0 
+ 2    global Fn[zz_array_3]->getarray_ret_0 getarray_0 
+ 3    global Fn[]->getfloat_ret_0 getfloat_0 
+ 4    global Fn[zz_array_5]->getfarray_ret_0 getfarray_0 
+ 5    global Fn[zz_int_6]->putint_ret_0 putint_0 
+ 6    global Fn[zz_ch_7]->putch_ret_0 putch_0 
+ 7    global Fn[x_8, zz_array_8]->putarray_ret_0 putarray_0 
+ 8    global Fn[zz_float_9]->putfloat_ret_0 putfloat_0 
+ 9    global Fn[zz_len_10, zz_farray_10]->putfarray_ret_0 putfarray_0 
+ 10   global Fn[]->putf_ret_0 putf_0 
+ 11   global Fn[]->starttime_ret_0 starttime_0 
+ 12   global Fn[]->stoptime_ret_0 stoptime_0 
+ 13   global Fn[zz_ptr_14, zz_val_14, zz_len_14]->memset_ret_0 memset_0 
+ 14   global Fn[zz_dest_15, zz_ptr_15, zz_len_15]->memcpy_ret_0 memcpy_0 
+ 16   Define main_0 "" -> main_ret_0 
+         17   alloc i32 [a_17] 
+         24   alloc i1 [temp_0_booltrans_20] 
+         26   alloc i1 [temp_1_logicnot_20] 
+         28   alloc i1 [temp_2_booltrans_20] 
+         30   alloc i1 [temp_3_logicnot_20] 
+         32   alloc i1 [temp_4_booltrans_20] 
+         34   alloc i1 [temp_5_logicnot_20] 
+         36   alloc i1 [temp_6__20] 
+          label L0_0: 
+         18    
+         19   (nop) 
+              jump label: L1_0 
+          label L1_0: 
+         25   (nop) 
+         27   (nop) 
+         29   temp_2_booltrans_20_0 = icmp i1 Ne false_0, 0_0 
+         31   temp_3_logicnot_20_0 = xor i1 temp_2_booltrans_20_0, true 
+         49   untrack temp_2_booltrans_20_0 
+         33   temp_4_booltrans_20_0 = icmp i1 Ne temp_3_logicnot_20_0, 0_0 
+         48   untrack temp_3_logicnot_20_0 
+         35   temp_5_logicnot_20_0 = xor i1 temp_4_booltrans_20_0, true 
+         50   untrack temp_4_booltrans_20_0 
+         37   temp_6__20_0 = Sub i1 0_0, temp_5_logicnot_20_0 
+         47   untrack temp_5_logicnot_20_0 
+         40   br i1 temp_6__20_0, label branch_true_21, label branch_false_21 
+     38   label branch_true_21: 
+         51   untrack temp_6__20_0 
+         23   (nop) 
+         45   a_17_3 = i32 -1_0 
+              jump label: gather_7 
+     41   label gather_7: 
+              jump label: L2_0 
+          label L2_0: 
+         22   ret a_17_3 
+     39   label branch_false_21: 
+         52   untrack temp_6__20_0 
+         20   (nop) 
+         46   a_17_3 = i32 0_0 
+              jump label: gather_7 

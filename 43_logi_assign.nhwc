@@ -1,0 +1,75 @@
+# input: "./for_auto_test/00sy/43_logi_assign.sy"
+ 17   label global_0: 
+ 16   global i32 b_0 
+ 15   global i32 a_0 
+ 0    global Fn[]->getint_ret_0 getint_0 
+ 1    global Fn[]->getch_ret_0 getch_0 
+ 2    global Fn[zz_array_3]->getarray_ret_0 getarray_0 
+ 3    global Fn[]->getfloat_ret_0 getfloat_0 
+ 4    global Fn[zz_array_5]->getfarray_ret_0 getfarray_0 
+ 5    global Fn[zz_int_6]->putint_ret_0 putint_0 
+ 6    global Fn[zz_ch_7]->putch_ret_0 putch_0 
+ 7    global Fn[x_8, zz_array_8]->putarray_ret_0 putarray_0 
+ 8    global Fn[zz_float_9]->putfloat_ret_0 putfloat_0 
+ 9    global Fn[zz_len_10, zz_farray_10]->putfarray_ret_0 putfarray_0 
+ 10   global Fn[]->putf_ret_0 putf_0 
+ 11   global Fn[]->starttime_ret_0 starttime_0 
+ 12   global Fn[]->stoptime_ret_0 stoptime_0 
+ 13   global Fn[zz_ptr_14, zz_val_14, zz_len_14]->memset_ret_0 memset_0 
+ 14   global Fn[zz_dest_15, zz_ptr_15, zz_len_15]->memcpy_ret_0 memcpy_0 
+ 18   Define main_0 "" -> main_ret_0 
+         55   a_0_1 = chi a_0_0:18 
+         56   b_0_1 = chi b_0_0:18 
+         19   alloc i32 [temp_0_ret_of_getint_19] 
+         23   alloc i32 [temp_1_ret_of_getint_19] 
+         27   alloc i32 [c_19] 
+         33   alloc i32 [temp_2_value_from_ptr_23] 
+         36   alloc i32 [temp_3_value_from_ptr_23] 
+         39   alloc i1 [temp_4_cmp_23] 
+         41   alloc i32 [temp_5_value_from_ptr_23] 
+         44   alloc i1 [temp_6_cmp_23] 
+          label L0_0: 
+         20   temp_0_ret_of_getint_19_0 =  Call i32 getint_0() 
+         21   store temp_0_ret_of_getint_19_0:i32 *a_0:ptr->i32 
+         63   untrack temp_0_ret_of_getint_19_0 
+         22   a_0_2 = chi a_0_1:21 
+         24   temp_1_ret_of_getint_19_0 =  Call i32 getint_0() 
+         25   store temp_1_ret_of_getint_19_0:i32 *b_0:ptr->i32 
+         62   untrack temp_1_ret_of_getint_19_0 
+         26   b_0_2 = chi b_0_1:25 
+         28    
+              jump label: L1_0 
+          label L1_0: 
+         34   temp_2_value_from_ptr_23_0 = load *b_0:ptr->i32 
+         35   mu b_0_2:34 
+         37   temp_3_value_from_ptr_23_0 = load *a_0:ptr->i32 
+         38   mu a_0_2:37 
+         40   temp_4_cmp_23_0 = icmp i32 Eq temp_3_value_from_ptr_23_0, temp_2_value_from_ptr_23_0 
+         64   untrack temp_2_value_from_ptr_23_0 
+         51   br i1 temp_4_cmp_23_0, label branch_short_circuit_p_true_93, label branch_short_circuit_c_false_93 
+     48   label branch_short_circuit_p_true_93: 
+         68   untrack temp_4_cmp_23_0 
+         42   (nop) 
+         43   mu a_0_2:42 
+         45   temp_6_cmp_23_0 = icmp i32 Ne temp_3_value_from_ptr_23_0, 3_0 
+         69   untrack temp_3_value_from_ptr_23_0 
+         50   br i1 temp_6_cmp_23_0, label branch_short_circuit_c_true_93, label branch_short_circuit_c_false_93 
+     46   label branch_short_circuit_c_true_93: 
+         70   untrack temp_6_cmp_23_0 
+         32   (nop) 
+         61   c_19_2 = i32 1_0 
+              jump label: gather_7 
+     52   label gather_7: 
+              jump label: L2_0 
+          label L2_0: 
+         57   mu a_0_2:31 
+         58   mu b_0_2:31 
+         31   ret c_19_2 
+     47   label branch_short_circuit_c_false_93: 
+         71   untrack temp_6_cmp_23_0 
+         67   untrack temp_4_cmp_23_0 
+         66   untrack temp_6_cmp_23_0 
+         65   untrack temp_3_value_from_ptr_23_0 
+         29   (nop) 
+         60   c_19_2 = i32 0_0 
+              jump label: gather_7 

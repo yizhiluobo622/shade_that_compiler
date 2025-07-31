@@ -1,0 +1,39 @@
+# input: "./for_auto_test/00sy/86_long_code2.sy"
+ 17   label global_0: 
+ 16   global Array:i32:[Some(5_0), Some(20000_0)] a_0 
+ 0    global Fn[]->getint_ret_0 getint_0 
+ 1    global Fn[]->getch_ret_0 getch_0 
+ 2    global Fn[zz_array_3]->getarray_ret_0 getarray_0 
+ 3    global Fn[]->getfloat_ret_0 getfloat_0 
+ 4    global Fn[zz_array_5]->getfarray_ret_0 getfarray_0 
+ 5    global Fn[zz_int_6]->putint_ret_0 putint_0 
+ 6    global Fn[zz_ch_7]->putch_ret_0 putch_0 
+ 7    global Fn[x_8, zz_array_8]->putarray_ret_0 putarray_0 
+ 8    global Fn[zz_float_9]->putfloat_ret_0 putfloat_0 
+ 9    global Fn[zz_len_10, zz_farray_10]->putfarray_ret_0 putfarray_0 
+ 10   global Fn[]->putf_ret_0 putf_0 
+ 11   global Fn[]->starttime_ret_0 starttime_0 
+ 12   global Fn[]->stoptime_ret_0 stoptime_0 
+ 13   global Fn[zz_ptr_14, zz_val_14, zz_len_14]->memset_ret_0 memset_0 
+ 14   global Fn[zz_dest_15, zz_ptr_15, zz_len_15]->memcpy_ret_0 memcpy_0 
+ 15    
+ 18   Define main_0 "" -> main_ret_0 
+         36   a_0_1 = chi a_0_0:18 
+         19   alloc ptr->i32 [temp_0_ptr_of_*a_0_18] 
+         23   alloc ptr->i32 [temp_1_ptr_of_*a_0_18] 
+         25   alloc i32 [temp_2_ele_of_*a_0_18] 
+         28   alloc i32 [temp_3_arithop_18] 
+         31   alloc i32 [ans_18] 
+          label L0_0: 
+         20   temp_0_ptr_of_*a_0_18 = GEP *a_0:ptr->Array:i32:[Some(20000_0)] [Some(4_0), Some(19999_0)] 
+         21   store 1_0:i32 temp_0_ptr_of_*a_0_18:ptr->i32 
+         22   a_0_2 = chi a_0_1:21 
+         24   (nop) 
+         26   temp_2_ele_of_*a_0_18_0 = load temp_0_ptr_of_*a_0_18:ptr->i32 
+         39   untrack temp_0_ptr_of_*a_0_18 
+         27   mu a_0_2:26 
+         29   temp_3_arithop_18_0 = Mul i32 temp_2_ele_of_*a_0_18_0, 4000_0 
+         38   untrack temp_2_ele_of_*a_0_18_0 
+         30   (nop) 
+         37   mu a_0_2:33 
+         33   ret temp_3_arithop_18_0 

@@ -1,0 +1,200 @@
+# input: "./for_auto_test/00sy/73_int_io.sy"
+ 18   label global_0: 
+ 17   global i32 ascii_0_0 
+ 0    global Fn[]->getint_ret_0 getint_0 
+ 1    global Fn[]->getch_ret_0 getch_0 
+ 2    global Fn[zz_array_3]->getarray_ret_0 getarray_0 
+ 3    global Fn[]->getfloat_ret_0 getfloat_0 
+ 4    global Fn[zz_array_5]->getfarray_ret_0 getfarray_0 
+ 5    global Fn[zz_int_6]->putint_ret_0 putint_0 
+ 6    global Fn[zz_ch_7]->putch_ret_0 putch_0 
+ 7    global Fn[x_8, zz_array_8]->putarray_ret_0 putarray_0 
+ 8    global Fn[zz_float_9]->putfloat_ret_0 putfloat_0 
+ 9    global Fn[zz_len_10, zz_farray_10]->putfarray_ret_0 putfarray_0 
+ 10   global Fn[]->putf_ret_0 putf_0 
+ 11   global Fn[]->starttime_ret_0 starttime_0 
+ 12   global Fn[]->stoptime_ret_0 stoptime_0 
+ 13   global Fn[zz_ptr_14, zz_val_14, zz_len_14]->memset_ret_0 memset_0 
+ 14   global Fn[zz_dest_15, zz_ptr_15, zz_len_15]->memcpy_ret_0 memcpy_0 
+ 15   store 48_0:i32 *ascii_0_0:ptr->i32 
+ 16   ascii_0_0 = chi ascii_0_0:15 
+ 21   Define main_0 "" -> main_ret_0 
+         119  alloc i32 [temp_22_ret_of_my_getint_58] 
+         122  alloc i32 [n_58] 
+         125  alloc i32 [temp_23_ret_of_my_getint_62] 
+         128  alloc i32 [m_62] 
+         131  alloc i32 [temp_24_arithop_62] 
+         134  alloc i1 [temp_25_cmp_60] 
+          label L0_0: 
+         120  temp_22_ret_of_my_getint_58_0 =  Call i32 my_getint_0() 
+         121  (nop) 
+         166  n_58_1 = i32 temp_22_ret_of_my_getint_58_0 
+         195  untrack temp_22_ret_of_my_getint_58_0 
+              jump label: while.head_61 
+     136  label while.head_61: 
+         135  temp_25_cmp_60_0 = icmp i32 Sgt n_58_1, 0_0 
+         139  br i1 temp_25_cmp_60_0, label while.body_61, label while.exit_61 
+     137  label while.body_61: 
+         126  temp_23_ret_of_my_getint_62_0 =  Call i32 my_getint_0() 
+         127  (nop) 
+         129   Call void my_putint_0(temp_23_ret_of_my_getint_62_0) 
+         130   Call void putch_0(10_0) 
+         132  temp_24_arithop_62_0 = Sub i32 n_58_1, 1_0 
+         133  (nop) 
+         167  n_58_1 = i32 temp_24_arithop_62_0 
+              jump label: while.head_61 
+     138  label while.exit_61: 
+         196  untrack n_58_1 
+         124  ret 0_0 
+ 20   Define my_putint_0 "a_42_0," -> my_putint_ret_0 
+         81   alloc Array:i32:[Some(16_0)] [b_44] 
+         83   alloc i32 [i_44] 
+         84   alloc i32 [temp_12_arithop_54] 
+         87   alloc ptr->i32 [temp_13_ptr_of_b_44_54] 
+         89   alloc i32 [temp_14_ele_of_b_44_54] 
+         93   alloc ptr->i32 [temp_15_ptr_of_b_44_48] 
+         95   alloc i32 [temp_16_arithop_48] 
+         97   alloc i32 [temp_17_arithop_48] 
+         101  alloc i32 [temp_18_arithop_48] 
+         104  alloc i32 [temp_19_arithop_48] 
+         107  alloc i1 [temp_20_cmp_46] 
+         113  alloc i1 [temp_21_cmp_52] 
+          label L1_0: 
+         80    
+         82   (nop) 
+         160  a_42_1 = i32 a_42_0 
+         188  untrack a_42_0 
+         161  i_44_1 = i32 0_0 
+              jump label: while.head_47 
+     109  label while.head_47: 
+         108  temp_20_cmp_46_0 = icmp i32 Sgt a_42_1, 0_0 
+         112  br i1 temp_20_cmp_46_0, label while.body_47, label UP_8_0 
+     110  label while.body_47: 
+         94   temp_15_ptr_of_b_44_48 = GEP b_44_1:Array:i32:[Some(16_0)] [Some(i_44_1)] 
+         96   temp_16_arithop_48_0 = Mod i32 a_42_1, 10_0 
+         98   temp_17_arithop_48_0 = Add i32 temp_16_arithop_48_0, 48_0 
+         99   store temp_17_arithop_48_0:i32 temp_15_ptr_of_b_44_48:ptr->i32 
+         100  b_44_2 = chi b_44_1:99 
+         102  temp_18_arithop_48_0 = Div i32 a_42_1, 10_0 
+         103  (nop) 
+         105  temp_19_arithop_48_0 = Add i32 i_44_1, 1_0 
+         106  (nop) 
+         162  i_44_1 = i32 temp_19_arithop_48_0 
+         163  a_42_1 = i32 temp_18_arithop_48_0 
+              jump label: while.head_47 
+     159  label UP_8_0: 
+         194  untrack temp_17_arithop_48_0 
+         193  untrack temp_20_cmp_46_0 
+         192  untrack temp_18_arithop_48_0 
+         191  untrack temp_16_arithop_48_0 
+         190  untrack temp_15_ptr_of_b_44_48 
+         189  untrack temp_19_arithop_48_0 
+         164  i_44_3 = i32 i_44_1 
+              jump label: while.exit_47 
+     111  label while.exit_47: 
+         114  temp_21_cmp_52_0 = icmp i32 Sgt i_44_3, 0_0 
+         117  br i1 temp_21_cmp_52_0, label while.body_53, label while.exit_53 
+     115  label while.body_53: 
+         85   temp_12_arithop_54_0 = Sub i32 i_44_3, 1_0 
+         86   (nop) 
+         88   temp_13_ptr_of_b_44_54 = GEP b_44_1:Array:i32:[Some(16_0)] [Some(temp_12_arithop_54_0)] 
+         90   temp_14_ele_of_b_44_54_0 = load temp_13_ptr_of_b_44_54:ptr->i32 
+         91   mu b_44_1:90 
+         92    Call void putch_0(temp_14_ele_of_b_44_54_0) 
+         165  i_44_3 = i32 temp_12_arithop_54_0 
+              jump label: while.exit_47 
+     116  label while.exit_53: 
+         118  ret 
+ 19   Define my_getint_0 "" -> my_getint_ret_0 
+         23   alloc i32 [sum_18] 
+         24   alloc i32 [c_18] 
+         29   alloc i32 [temp_0_ret_of_getch_33] 
+         31   alloc i32 [temp_1_arithop_33] 
+         34   alloc i32 [temp_2_arithop_37] 
+         36   alloc i32 [temp_3_arithop_37] 
+         39   alloc i32 [temp_4_ret_of_getch_22] 
+         41   alloc i32 [temp_5_arithop_22] 
+         44   alloc i1 [temp_6__480] 
+         50   alloc i1 [temp_7__660] 
+         58   alloc i1 [temp_8_cmp_35] 
+         60   alloc i1 [temp_9_cmp_35] 
+         69   alloc i1 [temp_10_cmp_24] 
+         71   alloc i1 [temp_11_cmp_24] 
+          label L2_0: 
+         22   (nop) 
+         25    
+         153  c_18_1 = i32 c_18_0 
+         168  untrack c_18_0 
+              jump label: while.head_21 
+     46   label while.head_21: 
+         45   (nop) 
+              jump label: while.body_21 
+     47   label while.body_21: 
+         40   temp_4_ret_of_getch_22_0 =  Call i32 getch_0() 
+         42   temp_5_arithop_22_0 = Sub i32 temp_4_ret_of_getch_22_0, 48_0 
+         43   (nop) 
+              jump label: L3_0 
+          label L3_0: 
+         70   temp_10_cmp_24_0 = icmp i32 Slt temp_5_arithop_22_0, 0_0 
+         78   br i1 temp_10_cmp_24_0, label branch_short_circuit_c_true_142, label branch_short_circuit_p_false_142 
+     73   label branch_short_circuit_c_true_142: 
+         154  c_18_1 = i32 temp_5_arithop_22_0 
+              jump label: while.head_21 
+     75   label branch_short_circuit_p_false_142: 
+         72   temp_11_cmp_24_0 = icmp i32 Sgt temp_5_arithop_22_0, 9_0 
+         77   br i1 temp_11_cmp_24_0, label branch_short_circuit_c_true_142, label branch_short_circuit_c_false_142 
+     74   label branch_short_circuit_c_false_142: 
+         171  untrack temp_11_cmp_24_0 
+         170  untrack temp_4_ret_of_getch_22_0 
+         169  untrack temp_10_cmp_24_0 
+         155  c_18_3 = i32 temp_5_arithop_22_0 
+         172  untrack temp_5_arithop_22_0 
+              jump label: while.exit_21 
+     48   label while.exit_21: 
+         26   sum_18_1 = i32 c_18_3 
+         156  sum_18_2 = i32 sum_18_1 
+         173  untrack sum_18_1 
+              jump label: while.head_32 
+     52   label while.head_32: 
+         174  untrack c_18_3 
+         51   (nop) 
+              jump label: while.body_32 
+     53   label while.body_32: 
+         30   temp_0_ret_of_getch_33_0 =  Call i32 getch_0() 
+         32   temp_1_arithop_33_0 = Sub i32 temp_0_ret_of_getch_33_0, 48_0 
+         33   (nop) 
+              jump label: L4_0 
+          label L4_0: 
+         59   temp_8_cmp_35_0 = icmp i32 Sge temp_1_arithop_33_0, 0_0 
+         67   br i1 temp_8_cmp_35_0, label branch_short_circuit_p_true_144, label branch_short_circuit_c_false_144 
+     64   label branch_short_circuit_p_true_144: 
+         61   temp_9_cmp_35_0 = icmp i32 Sle temp_1_arithop_33_0, 9_0 
+         66   br i1 temp_9_cmp_35_0, label branch_short_circuit_c_true_144, label branch_short_circuit_c_false_144 
+     62   label branch_short_circuit_c_true_144: 
+         35   temp_2_arithop_37_0 = Mul i32 sum_18_2, 10_0 
+         37   temp_3_arithop_37_0 = Add i32 temp_2_arithop_37_0, temp_1_arithop_33_0 
+         38   (nop) 
+              jump label: gather_15 
+     68   label gather_15: 
+         157  sum_18_2 = i32 temp_3_arithop_37_0 
+              jump label: while.head_32 
+     63   label branch_short_circuit_c_false_144: 
+         186  untrack temp_3_arithop_37_0 
+         185  untrack temp_0_ret_of_getch_33_0 
+         184  untrack temp_1_arithop_33_0 
+         183  untrack temp_9_cmp_35_0 
+         182  untrack temp_2_arithop_37_0 
+         181  untrack temp_8_cmp_35_0 
+         180  untrack temp_2_arithop_37_0 
+         179  untrack temp_1_arithop_33_0 
+         178  untrack temp_0_ret_of_getch_33_0 
+         177  untrack temp_8_cmp_35_0 
+         176  untrack temp_9_cmp_35_0 
+         175  untrack temp_3_arithop_37_0 
+              jump label: while.exit_32 
+     54   label while.exit_32: 
+         28   ret sum_18_2 
+     152  label UP_26_0: 
+         158  c_18_3 = i32 c_18_1 
+         187  untrack c_18_1 
+              jump label: while.exit_21 

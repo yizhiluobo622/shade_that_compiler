@@ -1,11 +1,11 @@
 int main() {
 	int a=0;
 	int i = 0;
-	while (i < 3) {
+	while (i < 1) {
 		int j = 0;
-		while (j < 4) {
+		while (j < 1) {
 			int k = 0;
-			while (k < 5) {
+			while (k < 2) {
 				int ii = 0;
 				while (ii < 3) {
 					int jj = 0;
@@ -21,9 +21,9 @@ int main() {
 										int iiii = 0;
 										while (iiii < 3) {
 											int jjjj = 0;
-											while (jjjj < 6) {
+											while (jjjj < 2) {
 												int kkkk = 0;
-												while (kkkk < 7) {
+												while (kkkk < 5) {
 													int iiiii = 0;
 													while (iiiii < 5) {
 														int jjjjj = 0;

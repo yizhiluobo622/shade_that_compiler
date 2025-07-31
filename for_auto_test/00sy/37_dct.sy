@@ -1,7 +1,7 @@
 // reference:
 // https://stackoverflow.com/questions/8310749/discrete-cosine-transform-dct-implementation-c
-
 const int MAX_DIM_X = 8, MAX_DIM_Y = 8;
+
 float test_block[MAX_DIM_X][MAX_DIM_Y];
 float test_dct[MAX_DIM_X][MAX_DIM_Y];
 float test_idct[MAX_DIM_X][MAX_DIM_Y];

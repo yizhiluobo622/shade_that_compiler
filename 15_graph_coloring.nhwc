@@ -1,0 +1,380 @@
+# input: "./for_auto_test/00sy/15_graph_coloring.sy"
+ 24   label global_0: 
+ 23   global i32 LF_0 
+ 20   global i32 space_0 
+ 17   global i32 V_0 
+ 0    global Fn[]->getint_ret_0 getint_0 
+ 1    global Fn[]->getch_ret_0 getch_0 
+ 2    global Fn[zz_array_3]->getarray_ret_0 getarray_0 
+ 3    global Fn[]->getfloat_ret_0 getfloat_0 
+ 4    global Fn[zz_array_5]->getfarray_ret_0 getfarray_0 
+ 5    global Fn[zz_int_6]->putint_ret_0 putint_0 
+ 6    global Fn[zz_ch_7]->putch_ret_0 putch_0 
+ 7    global Fn[x_8, zz_array_8]->putarray_ret_0 putarray_0 
+ 8    global Fn[zz_float_9]->putfloat_ret_0 putfloat_0 
+ 9    global Fn[zz_len_10, zz_farray_10]->putfarray_ret_0 putfarray_0 
+ 10   global Fn[]->putf_ret_0 putf_0 
+ 11   global Fn[]->starttime_ret_0 starttime_0 
+ 12   global Fn[]->stoptime_ret_0 stoptime_0 
+ 13   global Fn[zz_ptr_14, zz_val_14, zz_len_14]->memset_ret_0 memset_0 
+ 14   global Fn[zz_dest_15, zz_ptr_15, zz_len_15]->memcpy_ret_0 memcpy_0 
+ 15   store 4_0:i32 *V_0:ptr->i32 
+ 16   V_0 = chi V_0:15 
+ 18   store 32_0:i32 *space_0:ptr->i32 
+ 19   space_0 = chi space_0:18 
+ 21   store 10_0:i32 *LF_0:ptr->i32 
+ 22   LF_0 = chi LF_0:21 
+ 34   Define main_0 "" -> main_ret_0 
+         174  alloc ptr->i32 [temp_27_array_init_ptr_82] 
+         177  alloc ptr->i32 [temp_28_array_init_ptr_82] 
+         181  alloc ptr->i32 [temp_29_array_init_ptr_82] 
+         185  alloc ptr->i32 [temp_30_array_init_ptr_82] 
+         189  alloc ptr->i32 [temp_31_array_init_ptr_82] 
+         193  alloc ptr->i32 [temp_32_array_init_ptr_82] 
+         197  alloc ptr->i32 [temp_33_array_init_ptr_82] 
+         201  alloc ptr->i32 [temp_34_array_init_ptr_82] 
+         205  alloc ptr->i32 [temp_35_array_init_ptr_82] 
+         209  alloc ptr->i32 [temp_36_array_init_ptr_82] 
+         213  alloc ptr->i32 [temp_37_array_init_ptr_82] 
+         217  alloc ptr->i32 [temp_38_array_init_ptr_82] 
+         221  alloc ptr->i32 [temp_39_array_init_ptr_82] 
+         225  alloc ptr->i32 [temp_40_array_init_ptr_82] 
+         229  alloc ptr->i32 [temp_41_array_init_ptr_82] 
+         233  alloc ptr->i32 [temp_42_array_init_ptr_82] 
+         237  alloc ptr->i32 [temp_43_array_init_ptr_82] 
+         241  alloc Array:i32:[Some(4_0), Some(4_0)] [graph_82] 
+         243  alloc i32 [m_82] 
+         245  alloc Array:i32:[Some(4_0)] [color_82] 
+         247  alloc i32 [i_82] 
+         251  alloc ptr->i32 [temp_44_ptr_of_color_82_87] 
+         255  alloc i32 [temp_45_arithop_87] 
+         258  alloc i1 [temp_46_cmp_85] 
+         264  alloc ptr->Array:i32:[Some(4_0)] [temp_47_ele_ptr_of_graph_82_90] 
+         266  alloc ptr->i32 [temp_48_ele_ptr_of_color_82_90] 
+         268  alloc i32 [temp_49_ret_of_graphColoring_90] 
+         270  alloc i1 [temp_50_booltrans_90] 
+         272  alloc i1 [temp_51_logicnot_90] 
+          label L0_0: 
+         173   
+         175  temp_27_array_init_ptr_82 = GEP graph_82_0:Array:i32:[Some(4_0), Some(4_0)] [] 
+         176   Call void memset_0(temp_27_array_init_ptr_82, 0_0, 64_0) 
+         355  untrack temp_27_array_init_ptr_82 
+         283  mu graph_82_0:176 
+         284  graph_82_1 = chi graph_82_0:176 
+         178  temp_28_array_init_ptr_82 = GEP graph_82_1:Array:i32:[Some(4_0), Some(4_0)] [Some(2_0), Some(3_0)] 
+         179  store 1_0:i32 temp_28_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
+         361  untrack temp_28_array_init_ptr_82 
+         180  graph_82_2 = chi graph_82_1:179 
+         182  temp_29_array_init_ptr_82 = GEP graph_82_2:Array:i32:[Some(4_0), Some(4_0)] [Some(2_0), Some(0_0)] 
+         183  store 1_0:i32 temp_29_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
+         354  untrack temp_29_array_init_ptr_82 
+         184  graph_82_3 = chi graph_82_2:183 
+         186  temp_30_array_init_ptr_82 = GEP graph_82_3:Array:i32:[Some(4_0), Some(4_0)] [Some(3_0), Some(1_0)] 
+         187  store 0_0:i32 temp_30_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
+         347  untrack temp_30_array_init_ptr_82 
+         188  graph_82_4 = chi graph_82_3:187 
+         190  temp_31_array_init_ptr_82 = GEP graph_82_4:Array:i32:[Some(4_0), Some(4_0)] [Some(0_0), Some(2_0)] 
+         191  store 1_0:i32 temp_31_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
+         349  untrack temp_31_array_init_ptr_82 
+         192  graph_82_5 = chi graph_82_4:191 
+         194  temp_32_array_init_ptr_82 = GEP graph_82_5:Array:i32:[Some(4_0), Some(4_0)] [Some(2_0), Some(1_0)] 
+         195  store 1_0:i32 temp_32_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
+         360  untrack temp_32_array_init_ptr_82 
+         196  graph_82_6 = chi graph_82_5:195 
+         198  temp_33_array_init_ptr_82 = GEP graph_82_6:Array:i32:[Some(4_0), Some(4_0)] [Some(1_0), Some(1_0)] 
+         199  store 0_0:i32 temp_33_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
+         346  untrack temp_33_array_init_ptr_82 
+         200  graph_82_7 = chi graph_82_6:199 
+         202  temp_34_array_init_ptr_82 = GEP graph_82_7:Array:i32:[Some(4_0), Some(4_0)] [Some(3_0), Some(3_0)] 
+         203  store 0_0:i32 temp_34_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
+         359  untrack temp_34_array_init_ptr_82 
+         204  graph_82_8 = chi graph_82_7:203 
+         206  temp_35_array_init_ptr_82 = GEP graph_82_8:Array:i32:[Some(4_0), Some(4_0)] [Some(1_0), Some(2_0)] 
+         207  store 1_0:i32 temp_35_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
+         357  untrack temp_35_array_init_ptr_82 
+         208  graph_82_9 = chi graph_82_8:207 
+         210  temp_36_array_init_ptr_82 = GEP graph_82_9:Array:i32:[Some(4_0), Some(4_0)] [Some(2_0), Some(2_0)] 
+         211  store 0_0:i32 temp_36_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
+         353  untrack temp_36_array_init_ptr_82 
+         212  graph_82_10 = chi graph_82_9:211 
+         214  temp_37_array_init_ptr_82 = GEP graph_82_10:Array:i32:[Some(4_0), Some(4_0)] [Some(3_0), Some(2_0)] 
+         215  store 1_0:i32 temp_37_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
+         351  untrack temp_37_array_init_ptr_82 
+         216  graph_82_11 = chi graph_82_10:215 
+         218  temp_38_array_init_ptr_82 = GEP graph_82_11:Array:i32:[Some(4_0), Some(4_0)] [Some(1_0), Some(3_0)] 
+         219  store 0_0:i32 temp_38_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
+         358  untrack temp_38_array_init_ptr_82 
+         220  graph_82_12 = chi graph_82_11:219 
+         222  temp_39_array_init_ptr_82 = GEP graph_82_12:Array:i32:[Some(4_0), Some(4_0)] [Some(0_0), Some(1_0)] 
+         223  store 1_0:i32 temp_39_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
+         356  untrack temp_39_array_init_ptr_82 
+         224  graph_82_13 = chi graph_82_12:223 
+         226  temp_40_array_init_ptr_82 = GEP graph_82_13:Array:i32:[Some(4_0), Some(4_0)] [Some(0_0), Some(3_0)] 
+         227  store 1_0:i32 temp_40_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
+         350  untrack temp_40_array_init_ptr_82 
+         228  graph_82_14 = chi graph_82_13:227 
+         230  temp_41_array_init_ptr_82 = GEP graph_82_14:Array:i32:[Some(4_0), Some(4_0)] [Some(0_0), Some(0_0)] 
+         231  store 0_0:i32 temp_41_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
+         362  untrack temp_41_array_init_ptr_82 
+         232  graph_82_15 = chi graph_82_14:231 
+         234  temp_42_array_init_ptr_82 = GEP graph_82_15:Array:i32:[Some(4_0), Some(4_0)] [Some(1_0), Some(0_0)] 
+         235  store 1_0:i32 temp_42_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
+         352  untrack temp_42_array_init_ptr_82 
+         236  graph_82_16 = chi graph_82_15:235 
+         238  temp_43_array_init_ptr_82 = GEP graph_82_16:Array:i32:[Some(4_0), Some(4_0)] [Some(3_0), Some(0_0)] 
+         239  store 1_0:i32 temp_43_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
+         348  untrack temp_43_array_init_ptr_82 
+         240  graph_82_17 = chi graph_82_16:239 
+         242  (nop) 
+         244   
+         246  (nop) 
+         304  i_82_1 = i32 0_0 
+              jump label: while.head_86 
+     260  label while.head_86: 
+         259  temp_46_cmp_85_0 = icmp i32 Slt i_82_1, 4_0 
+         263  br i1 temp_46_cmp_85_0, label while.body_86, label while.exit_86 
+     261  label while.body_86: 
+         252  temp_44_ptr_of_color_82_87 = GEP color_82_1:Array:i32:[Some(4_0)] [Some(i_82_1)] 
+         253  store 0_0:i32 temp_44_ptr_of_color_82_87:ptr->i32 
+         254  color_82_2 = chi color_82_1:253 
+         256  temp_45_arithop_87_0 = Add i32 i_82_1, 1_0 
+         257  (nop) 
+         305  i_82_1 = i32 temp_45_arithop_87_0 
+              jump label: while.head_86 
+     262  label while.exit_86: 
+         363  untrack i_82_1 
+         265  temp_47_ele_ptr_of_graph_82_90 = GEP graph_82_17:Array:i32:[Some(4_0), Some(4_0)] [] 
+         267  temp_48_ele_ptr_of_color_82_90 = GEP color_82_1:Array:i32:[Some(4_0)] [] 
+         269  temp_49_ret_of_graphColoring_90_0 =  Call i32 graphColoring_0(temp_47_ele_ptr_of_graph_82_90, 3_0, 0_0, temp_48_ele_ptr_of_color_82_90) 
+         366  untrack temp_47_ele_ptr_of_graph_82_90 
+         364  untrack temp_48_ele_ptr_of_color_82_90 
+         285  mu graph_82_17:269 
+         286  mu color_82_1:269 
+         287  graph_82_18 = chi graph_82_17:269 
+         288  color_82_3 = chi color_82_1:269 
+         271  temp_50_booltrans_90_0 = icmp i32 Ne temp_49_ret_of_graphColoring_90_0, 0_0 
+         365  untrack temp_49_ret_of_graphColoring_90_0 
+         273  temp_51_logicnot_90_0 = xor i1 temp_50_booltrans_90_0, true 
+         367  untrack temp_50_booltrans_90_0 
+         276  br i1 temp_51_logicnot_90_0, label branch_true_91, label branch_false_91 
+     274  label branch_true_91: 
+         368  untrack temp_51_logicnot_90_0 
+         250   Call void printMessage_0() 
+              jump label: branch_false_91 
+     275  label branch_false_91: 
+         369  untrack temp_51_logicnot_90_0 
+              jump label: L1_0 
+          label L1_0: 
+         249  ret 0_0 
+ 33   Define graphColoring_0 "graph_58,m_58_0,i_58_0,color_58," -> graphColoring_ret_0 
+         123  alloc i32 [j_60] 
+         126  alloc ptr->i32 [temp_17_ptr_of_color_58_73] 
+         130  alloc ptr->i32 [temp_18_ptr_of_color_58_73] 
+         134  alloc i32 [temp_19_arithop_73] 
+         144  alloc i1 [temp_20_cmp_61] 
+         149  alloc i1 [temp_21_cmp_71] 
+         157  alloc i32 [temp_22_arithop_75] 
+         159  alloc i32 [temp_23_ret_of_graphColoring_75] 
+         161  alloc i1 [temp_24__2042] 
+         166  alloc i32 [temp_25_ret_of_isSafe_64] 
+         168  alloc i1 [temp_26__1762] 
+          label L2_0: 
+         31    
+         32    
+         145  temp_20_cmp_61_0 = icmp i32 Eq i_58_0, 4_0 
+         148  br i1 temp_20_cmp_61_0, label branch_true_62, label branch_false_62 
+     146  label branch_true_62: 
+         324  untrack j_60_1 
+         323  untrack m_58_0 
+         322  untrack temp_22_arithop_75_0 
+         321  untrack i_58_0 
+         320  untrack temp_20_cmp_61_0 
+         167  temp_25_ret_of_isSafe_64_0 =  Call i32 isSafe_0(graph_58, color_58) 
+         328  untrack graph_58 
+         169  temp_26__1762_0 = icmp i32 Ne temp_25_ret_of_isSafe_64_0, 0_0 
+         329  untrack temp_25_ret_of_isSafe_64_0 
+         172  br i1 temp_26__1762_0, label branch_true_65, label branch_false_65 
+     170  label branch_true_65: 
+         330  untrack temp_26__1762_0 
+         141   Call void printSolution_0(color_58) 
+         279  mu color_58:143 
+         332  untrack color_58 
+         143  ret 1_0 
+     171  label branch_false_65: 
+         331  untrack temp_26__1762_0 
+              jump label: L3_0 
+          label L3_0: 
+         280  mu color_58:140 
+         333  untrack color_58 
+         140  ret 0_0 
+     147  label branch_false_62: 
+         327  untrack temp_25_ret_of_isSafe_64_0 
+         326  untrack temp_26__1762_0 
+         325  untrack temp_20_cmp_61_0 
+              jump label: L4_0 
+          label L4_0: 
+         122  (nop) 
+         158  temp_22_arithop_75_0 = Add i32 i_58_0, 1_0 
+         302  j_60_1 = i32 1_0 
+              jump label: while.head_72 
+     151  label while.head_72: 
+         150  temp_21_cmp_71_0 = icmp i32 Sle j_60_1, m_58_0 
+         154  br i1 temp_21_cmp_71_0, label while.body_72, label while.exit_72 
+     152  label while.body_72: 
+         127  temp_17_ptr_of_color_58_73 = GEP color_58:ptr->i32 [Some(i_58_0)] 
+         128  store j_60_1:i32 temp_17_ptr_of_color_58_73:ptr->i32 
+         129  color_58 = chi color_58:128 
+              jump label: L5_0 
+          label L5_0: 
+         160  temp_23_ret_of_graphColoring_75_0 =  Call i32 graphColoring_0(graph_58, m_58_0, temp_22_arithop_75_0, color_58) 
+         162  temp_24__2042_0 = icmp i32 Ne temp_23_ret_of_graphColoring_75_0, 0_0 
+         165  br i1 temp_24__2042_0, label branch_true_76, label branch_false_76 
+     163  label branch_true_76: 
+         344  untrack temp_23_ret_of_graphColoring_75_0 
+         343  untrack temp_17_ptr_of_color_58_73 
+         342  untrack temp_19_arithop_73_0 
+         341  untrack temp_21_cmp_71_0 
+         340  untrack temp_24__2042_0 
+         339  untrack temp_18_ptr_of_color_58_73 
+         281  mu color_58:138 
+         138  ret 1_0 
+     164  label branch_false_76: 
+              jump label: L6_0 
+          label L6_0: 
+         131  temp_18_ptr_of_color_58_73 = GEP color_58:ptr->i32 [Some(i_58_0)] 
+         132  store 0_0:i32 temp_18_ptr_of_color_58_73:ptr->i32 
+         133  color_58 = chi color_58:132 
+         135  temp_19_arithop_73_0 = Add i32 j_60_1, 1_0 
+         136  (nop) 
+         303  j_60_1 = i32 temp_19_arithop_73_0 
+              jump label: while.head_72 
+     153  label while.exit_72: 
+         338  untrack graph_58 
+         337  untrack m_58_0 
+         336  untrack j_60_1 
+         335  untrack temp_22_arithop_75_0 
+         334  untrack i_58_0 
+         282  mu color_58:125 
+         345  untrack color_58 
+         125  ret 0_0 
+ 30   Define isSafe_0 "graph_41,color_41," -> isSafe_ret_0 
+         68   alloc i32 [i_43] 
+         71   alloc i32 [temp_4_arithop_47] 
+         74   alloc i32 [j_47] 
+         75   alloc i32 [temp_5_arithop_47] 
+         78   alloc i32 [temp_6_arithop_51] 
+         83   alloc i1 [temp_7_cmp_45] 
+         91   alloc i1 [temp_8_cmp_49] 
+         97   alloc ptr->i32 [temp_9_ptr_of_graph_41_52] 
+         99   alloc i32 [temp_10_ele_of_graph_41_52] 
+         102  alloc ptr->i32 [temp_11_ptr_of_color_41_52] 
+         104  alloc i32 [temp_12_ele_of_color_41_52] 
+         107  alloc ptr->i32 [temp_13_ptr_of_color_41_52] 
+         109  alloc i32 [temp_14_ele_of_color_41_52] 
+         112  alloc i1 [temp_15_cmp_52] 
+         114  alloc i1 [temp_16_i32_to_bool_52] 
+          label L7_0: 
+         28    
+         29    
+         67   (nop) 
+         298  i_43_1 = i32 0_0 
+              jump label: while.head_46 
+     85   label while.head_46: 
+         84   temp_7_cmp_45_0 = icmp i32 Slt i_43_1, 4_0 
+         88   br i1 temp_7_cmp_45_0, label while.body_46, label while.exit_46 
+     86   label while.body_46: 
+         72   temp_4_arithop_47_0 = Add i32 i_43_1, 1_0 
+         73   (nop) 
+         103  temp_11_ptr_of_color_41_52 = GEP color_41:Array:i32:[None] [Some(i_43_1)] 
+         299  j_47_1 = i32 temp_4_arithop_47_0 
+              jump label: while.head_50 
+     93   label while.head_50: 
+         92   temp_8_cmp_49_0 = icmp i32 Slt j_47_1, 4_0 
+         96   br i1 temp_8_cmp_49_0, label while.body_50, label while.exit_50 
+     94   label while.body_50: 
+         98   temp_9_ptr_of_graph_41_52 = GEP graph_41:Array:i32:[None, Some(4_0)] [Some(i_43_1), Some(j_47_1)] 
+         100  temp_10_ele_of_graph_41_52_0 = load temp_9_ptr_of_graph_41_52:ptr->i32 
+         101  mu graph_41:100 
+         115  temp_16_i32_to_bool_52_0 = icmp i32 Ne temp_10_ele_of_graph_41_52_0, 0_0 
+         121  br i1 temp_16_i32_to_bool_52_0, label branch_short_circuit_p_true_267, label branch_short_circuit_c_false_267 
+     118  label branch_short_circuit_p_true_267: 
+         105  temp_12_ele_of_color_41_52_0 = load temp_11_ptr_of_color_41_52:ptr->i32 
+         106  mu color_41:105 
+         108  temp_13_ptr_of_color_41_52 = GEP color_41:Array:i32:[None] [Some(j_47_1)] 
+         110  temp_14_ele_of_color_41_52_0 = load temp_13_ptr_of_color_41_52:ptr->i32 
+         111  mu color_41:110 
+         113  temp_15_cmp_52_0 = icmp i32 Eq temp_14_ele_of_color_41_52_0, temp_12_ele_of_color_41_52_0 
+         120  br i1 temp_15_cmp_52_0, label branch_short_circuit_c_true_267, label branch_short_circuit_c_false_267 
+     116  label branch_short_circuit_c_true_267: 
+         319  untrack temp_14_ele_of_color_41_52_0 
+         318  untrack temp_12_ele_of_color_41_52_0 
+         317  untrack temp_15_cmp_52_0 
+         316  untrack temp_9_ptr_of_graph_41_52 
+         315  untrack temp_10_ele_of_graph_41_52_0 
+         314  untrack temp_6_arithop_51_0 
+         313  untrack temp_8_cmp_49_0 
+         312  untrack temp_16_i32_to_bool_52_0 
+         311  untrack temp_13_ptr_of_color_41_52 
+         82   ret 0_0 
+     117  label branch_short_circuit_c_false_267: 
+              jump label: L8_0 
+          label L8_0: 
+         79   temp_6_arithop_51_0 = Add i32 j_47_1, 1_0 
+         80   (nop) 
+         300  j_47_1 = i32 temp_6_arithop_51_0 
+              jump label: while.head_50 
+     95   label while.exit_50: 
+         76   (nop) 
+         77   (nop) 
+         301  i_43_1 = i32 temp_4_arithop_47_0 
+              jump label: while.head_46 
+     87   label while.exit_46: 
+         310  untrack color_41 
+         309  untrack i_43_1 
+         308  untrack graph_41 
+         70   ret 1_0 
+ 27   Define printMessage_0 "" -> printMessage_ret_0 
+          label L9_0: 
+         56    Call void putch_0(78_0) 
+         57    Call void putch_0(111_0) 
+         58    Call void putch_0(116_0) 
+         59    Call void putch_0(32_0) 
+         60    Call void putch_0(101_0) 
+         61    Call void putch_0(120_0) 
+         62    Call void putch_0(105_0) 
+         63    Call void putch_0(115_0) 
+         64    Call void putch_0(116_0) 
+              jump label: exit_8 
+     66   label exit_8: 
+         65   ret 
+ 26   Define printSolution_0 "color_19," -> printSolution_ret_0 
+         36   alloc i32 [i_21] 
+         38   alloc ptr->i32 [temp_0_ptr_of_color_19_25] 
+         40   alloc i32 [temp_1_ele_of_color_19_25] 
+         45   alloc i32 [temp_2_arithop_25] 
+         48   alloc i1 [temp_3_cmp_23] 
+          label L10_0: 
+         25    
+         35   (nop) 
+         296  i_21_1 = i32 0_0 
+              jump label: while.head_24 
+     50   label while.head_24: 
+         49   temp_3_cmp_23_0 = icmp i32 Slt i_21_1, 4_0 
+         53   br i1 temp_3_cmp_23_0, label while.body_24, label while.exit_24 
+     51   label while.body_24: 
+         39   temp_0_ptr_of_color_19_25 = GEP color_19:Array:i32:[None] [Some(i_21_1)] 
+         41   temp_1_ele_of_color_19_25_0 = load temp_0_ptr_of_color_19_25:ptr->i32 
+         42   mu color_19:41 
+         43    Call void putint_0(temp_1_ele_of_color_19_25_0) 
+         44    Call void putch_0(32_0) 
+         46   temp_2_arithop_25_0 = Add i32 i_21_1, 1_0 
+         47   (nop) 
+         297  i_21_1 = i32 temp_2_arithop_25_0 
+              jump label: while.head_24 
+     52   label while.exit_24: 
+         307  untrack color_19 
+         306  untrack i_21_1 
+         37    Call void putch_0(10_0) 
+              jump label: exit_2 
+     55   label exit_2: 
+         54   ret 

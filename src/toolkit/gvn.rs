@@ -52,75 +52,13 @@ pub fn gvn(instr_et:&mut EtTree,dom_tree:&mut DjGraph, cfg_graph:&mut CfgGraph, 
                                 eval_et::compress_et_for_gvn(instr_et, et_node, &mut |op_found_et_node,et_node,et_tree|{
                                     // println!("merge {:?} to {:?}", first_rc_symidx_in_et_node(et_node, et_tree), op_found_et_node);
                                     true
-                                    // if let Some(found_et_node) = op_found_et_node{
-                                    //     match &node!(at found_et_node in et_tree).et_node_type{
-                                    //         super::et_node::EtNodeType::Symbol { rc_symidx, ast_node, text, decldef_def_or_use } => {
-                                    //             // if found et's first symidx is temp then true
-                                    //             first_rc_symidx_in_et_node(found_et_node, et_tree).unwrap().as_ref_borrow().is_temp(symtab).unwrap()
-                                    //         },
-                                    //         super::et_node::EtNodeType::Operator { op, ast_node, text, op_rc_symidx } => {
-                                    //             match first_rc_symidx_in_et_node(et_node, et_tree){
-                                    //                 Result::Ok(rc_symidx) => {
-                                    //                     rc_symidx.as_ref_borrow().is_temp(symtab).unwrap()
-                                    //                 },
-                                    //                 Err(_) => {true},
-                                    //             }
-                                    //         },
-                                    //         super::et_node::EtNodeType::Literal { rc_literal_symidx, ast_node, text } => true,
-                                    //         super::et_node::EtNodeType::Separator { ast_node, text } => todo!(),
-                                    //     }
-                                    // }else {
-                                    //     match &node!(at et_node in et_tree).et_node_type{
-                                    //         super::et_node::EtNodeType::Symbol { rc_symidx, ast_node, text, decldef_def_or_use } => {
-                                    //             // if found et's first symidx is temp then true
-                                    //             first_rc_symidx_in_et_node(et_node, et_tree).unwrap().as_ref_borrow().is_temp(symtab).unwrap()
-                                    //         },
-                                    //         super::et_node::EtNodeType::Operator { op, ast_node, text, op_rc_symidx } => {
-                                    //             match first_rc_symidx_in_et_node(et_node, et_tree){
-                                    //                 Result::Ok(rc_symidx) => {
-                                    //                     rc_symidx.as_ref_borrow().is_temp(symtab).unwrap()
-                                    //                 },
-                                    //                 Err(_) => {true},
-                                    //             }
-                                    //         },
-                                    //         super::et_node::EtNodeType::Literal { rc_literal_symidx, ast_node, text } => true,
-                                    //         super::et_node::EtNodeType::Separator { ast_node, text } => todo!(),
-                                    //     }
-                                    // }
+                                    
                                 } ,symtab, 0, scope_tree, &mut expr_hash_map)?;
 
-                                // if !node!(at et_node in instr_et).gvn_instr_generated{
-                                //     let rpo_vec = rpo_with_priority(instr_et, et_node, &mut |e:&EdgeReference<'_,EtEdge>|{
-                                //         let target= e.target();
-                                //         if instr_et.node_weight(target).unwrap().gvn_instr_generated{
-                                //             return -1
-                                //         }
-                                //         match &instr_et.node_weight(target).unwrap().et_node_type{
-                                //             super::et_node::EtNodeType::Operator { op, ast_node, text, op_rc_symidx } => {2},
-                                //             super::et_node::EtNodeType::Literal { rc_literal_symidx, ast_node, text } => {1},
-                                //             super::et_node::EtNodeType::Symbol { rc_symidx, ast_node, text, decldef_def_or_use } => {1},
-                                //             super::et_node::EtNodeType::Separator { ast_node, text } => {panic!()},
-                                //         }
-                                //     }); 
-                                    // println!("rpo {:?}", rpo_vec);
-                                    // for instr_et_node in rpo_vec {
-                                        // to prevent repreated generation
-                                    //     if !node!(at instr_et_node in instr_et).gvn_instr_generated && !node!(at instr_et_node in instr_et).common_eliminated{
-                                            // println!("instr_et_node:{} is generated by instr:{} in cfg_node:{}",instr_et_node,instr,instr_et_node);
-                                            // process_instr_et(instr_et_node, instr_et,&mut new_instr_list, symtab,&instr_et_node_bimap,instr_slab,&mut |sym_name,ty,symtab,instr_et, instr_slab| {
-                                            //     process_temp_symbol(cfg_graph, symtab, &ty, 0, cor_cfg_node, instr_slab, None, instr_et,sym_name)
-                                            // })?;
-                                            // node_mut!(at instr_et_node in instr_et).gvn_instr_generated = true;
-                                    //     }
-                                    // }
-                                // }
-                            // }
+                                
                         }
                     }
-                    // node_mut!(at cor_cfg_node  in cfg_graph).add_cor_instr_et_node_bimap(instr_et_node_bimap);
-                    // if cfg_entry != cor_cfg_node{
-                    //     mem::swap(&mut new_instr_list, &mut node_mut!(at cor_cfg_node in cfg_graph).instrs)
-                    // }
+                    
                 },
                 super::etc::AccessState::Exit => {
                     // remove hash of outdated(not dominant after) instr_et_nodes
@@ -135,7 +73,7 @@ pub fn gvn(instr_et:&mut EtTree,dom_tree:&mut DjGraph, cfg_graph:&mut CfgGraph, 
                                         if &first_rc_symidx_in_et_node(et_node, instr_et)? == def_symidx{
                                             if let Some(hash ) = &node!(at et_node in instr_et).hash{
                                                 expr_hash_map.remove(hash);
-                                                // println!("remove hash of {et_node} with symidx:{:?} in expr_hash_map {:?}", first_rc_symidx_in_et_node(et_node,instr_et).unwrap(),expr_hash_map);
+                                                
                                             }else {
                                                 // panic!();
                                             }
@@ -147,23 +85,14 @@ pub fn gvn(instr_et:&mut EtTree,dom_tree:&mut DjGraph, cfg_graph:&mut CfgGraph, 
                         }
                     }
 
-                    // if node!(at cor_cfg_node in cfg_graph).cfg_node_type.is_while_loop(){
-                    //     debug_info_red!("clear expr hash map {:?}",expr_hash_map);
-                    //     expr_hash_map = node!(at cor_cfg_node in cfg_graph).get_gvn_while_cor_expr_hash_map()?.clone();
-                    //     // expr_hash_map.clear();
-                    // }
+                    
                 },
             }
             // before visit next node we should ensure the et_node expr_hash_map should be deleted 
         }
 
         
-            // eval_et::_compress_et(instr_et, 0, &mut |et_node,et_tree|true
-            //     ,symtab, 0, scope_tree, &mut expr_hash_map,false)?;
-            // eval_et::_compress_et(instr_et, 1, &mut |et_node,et_tree|true
-            //     ,symtab, 0, scope_tree, &mut expr_hash_map,false)?;
-            // eval_et::_compress_et(instr_et, 4, &mut |et_node,et_tree|true
-            //     ,symtab, 0, scope_tree, &mut expr_hash_map,false)?;
+
     }
     update_ssa_def_instr(cfg_graph, symtab, instr_slab)?;
     for node_idx in instr_et.node_indices(){

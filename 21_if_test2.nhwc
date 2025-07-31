@@ -1,0 +1,90 @@
+# input: "./for_auto_test/00sy/21_if_test2.sy"
+ 15   label global_0: 
+ 0    global Fn[]->getint_ret_0 getint_0 
+ 1    global Fn[]->getch_ret_0 getch_0 
+ 2    global Fn[zz_array_3]->getarray_ret_0 getarray_0 
+ 3    global Fn[]->getfloat_ret_0 getfloat_0 
+ 4    global Fn[zz_array_5]->getfarray_ret_0 getfarray_0 
+ 5    global Fn[zz_int_6]->putint_ret_0 putint_0 
+ 6    global Fn[zz_ch_7]->putch_ret_0 putch_0 
+ 7    global Fn[x_8, zz_array_8]->putarray_ret_0 putarray_0 
+ 8    global Fn[zz_float_9]->putfloat_ret_0 putfloat_0 
+ 9    global Fn[zz_len_10, zz_farray_10]->putfarray_ret_0 putfarray_0 
+ 10   global Fn[]->putf_ret_0 putf_0 
+ 11   global Fn[]->starttime_ret_0 starttime_0 
+ 12   global Fn[]->stoptime_ret_0 stoptime_0 
+ 13   global Fn[zz_ptr_14, zz_val_14, zz_len_14]->memset_ret_0 memset_0 
+ 14   global Fn[zz_dest_15, zz_ptr_15, zz_len_15]->memcpy_ret_0 memcpy_0 
+ 17   Define main_0 "" -> main_ret_0 
+         70   alloc i32 [temp_8_ret_of_ifElseIf_36] 
+          label L0_0: 
+         71   temp_8_ret_of_ifElseIf_36_0 =  Call i32 ifElseIf_0() 
+         72    Call void putint_0(temp_8_ret_of_ifElseIf_36_0) 
+         89   untrack temp_8_ret_of_ifElseIf_36_0 
+         74   ret 0_0 
+ 16   Define ifElseIf_0 "" -> ifElseIf_ret_0 
+         18   alloc i32 [a_17] 
+         21   alloc i32 [b_17] 
+         24   alloc i32 [temp_0__30] 
+         29   alloc i32 [temp_1_arithop_30] 
+         35   alloc i1 [temp_2_cmp_22] 
+         37   alloc i1 [temp_3_cmp_22] 
+         45   alloc i1 [temp_4_cmp_27] 
+         47   alloc i1 [temp_5_cmp_27] 
+         55   alloc i1 [temp_6_cmp_30] 
+         57   alloc i1 [temp_7_cmp_30] 
+          label L1_0: 
+         19    
+         20   (nop) 
+         22    
+         23   (nop) 
+              jump label: L2_0 
+          label L2_0: 
+         36   (nop) 
+              jump label: branch_short_circuit_p_false_107 
+     39   label branch_short_circuit_c_true_107: 
+         86   untrack a_17_5 
+         85   untrack a_17_3 
+         84   untrack a_17_5 
+         83   untrack a_17_3 
+         34   ret 5_0 
+     41   label branch_short_circuit_p_false_107: 
+         38   (nop) 
+              jump label: branch_short_circuit_c_false_107 
+     40   label branch_short_circuit_c_false_107: 
+         46   (nop) 
+              jump label: branch_short_circuit_p_true_121 
+     51   label branch_short_circuit_p_true_121: 
+         48   (nop) 
+              jump label: branch_short_circuit_c_false_121 
+     49   label branch_short_circuit_c_true_121: 
+         88   untrack a_17_3 
+         32   (nop) 
+         82   a_17_5 = i32 25_0 
+              jump label: gather_11 
+     66   label gather_11: 
+              jump label: gather_13 
+     67   label gather_13: 
+              jump label: L3_0 
+          label L3_0: 
+         28   ret a_17_5 
+     50   label branch_short_circuit_c_false_121: 
+         56   (nop) 
+              jump label: branch_short_circuit_p_true_133 
+     61   label branch_short_circuit_p_true_133: 
+         58   (nop) 
+              jump label: branch_short_circuit_c_false_133 
+     59   label branch_short_circuit_c_true_133: 
+         30   (nop) 
+         31   (nop) 
+         81   a_17_3 = i32 20_0 
+              jump label: gather_9 
+     65   label gather_9: 
+         80   a_17_5 = i32 a_17_3 
+         87   untrack a_17_3 
+              jump label: gather_11 
+     60   label branch_short_circuit_c_false_133: 
+         25   (nop) 
+         26   (nop) 
+         79   a_17_3 = i32 -5_0 
+              jump label: gather_9 

@@ -1,0 +1,246 @@
+# input: "./for_auto_test/00sy/05_arr_defn4.sy"
+ 15   label global_0: 
+ 0    global Fn[]->getint_ret_0 getint_0 
+ 1    global Fn[]->getch_ret_0 getch_0 
+ 2    global Fn[zz_array_3]->getarray_ret_0 getarray_0 
+ 3    global Fn[]->getfloat_ret_0 getfloat_0 
+ 4    global Fn[zz_array_5]->getfarray_ret_0 getfarray_0 
+ 5    global Fn[zz_int_6]->putint_ret_0 putint_0 
+ 6    global Fn[zz_ch_7]->putch_ret_0 putch_0 
+ 7    global Fn[x_8, zz_array_8]->putarray_ret_0 putarray_0 
+ 8    global Fn[zz_float_9]->putfloat_ret_0 putfloat_0 
+ 9    global Fn[zz_len_10, zz_farray_10]->putfarray_ret_0 putfarray_0 
+ 10   global Fn[]->putf_ret_0 putf_0 
+ 11   global Fn[]->starttime_ret_0 starttime_0 
+ 12   global Fn[]->stoptime_ret_0 stoptime_0 
+ 13   global Fn[zz_ptr_14, zz_val_14, zz_len_14]->memset_ret_0 memset_0 
+ 14   global Fn[zz_dest_15, zz_ptr_15, zz_len_15]->memcpy_ret_0 memcpy_0 
+ 16   Define main_0 "" -> main_ret_0 
+         18   alloc ptr->i32 [temp_0_array_init_ptr_17] 
+         21   alloc ptr->i32 [temp_1_array_init_ptr_17] 
+         25   alloc ptr->i32 [temp_2_array_init_ptr_17] 
+         29   alloc ptr->i32 [temp_3_array_init_ptr_17] 
+         33   alloc ptr->i32 [temp_4_array_init_ptr_17] 
+         37   alloc ptr->i32 [temp_5_array_init_ptr_17] 
+         41   alloc Array:i32:[Some(4_0), Some(2_0)] [a_17] 
+         43   alloc ptr->i32 [temp_6_array_init_ptr_17] 
+         46   alloc Array:i32:[Some(4_0), Some(2_0)] [b_17] 
+         48   alloc ptr->i32 [temp_7_array_init_ptr_17] 
+         51   alloc ptr->i32 [temp_8_array_init_ptr_17] 
+         55   alloc ptr->i32 [temp_9_array_init_ptr_17] 
+         59   alloc ptr->i32 [temp_10_array_init_ptr_17] 
+         63   alloc ptr->i32 [temp_11_array_init_ptr_17] 
+         67   alloc ptr->i32 [temp_12_array_init_ptr_17] 
+         71   alloc ptr->i32 [temp_13_array_init_ptr_17] 
+         75   alloc ptr->i32 [temp_14_array_init_ptr_17] 
+         79   alloc ptr->i32 [temp_15_array_init_ptr_17] 
+         83   alloc Array:i32:[Some(4_0), Some(2_0)] [c_17] 
+         85   alloc ptr->i32 [temp_16_ptr_of_a_17_17] 
+         87   alloc i32 [temp_17_ele_of_a_17_17] 
+         90   alloc ptr->i32 [temp_18_array_init_ptr_17] 
+         93   alloc ptr->i32 [temp_19_array_init_ptr_17] 
+         97   alloc ptr->i32 [temp_20_array_init_ptr_17] 
+         101  alloc ptr->i32 [temp_21_array_init_ptr_17] 
+         105  alloc ptr->i32 [temp_22_array_init_ptr_17] 
+         109  alloc ptr->i32 [temp_23_array_init_ptr_17] 
+         113  alloc ptr->i32 [temp_24_array_init_ptr_17] 
+         117  alloc Array:i32:[Some(4_0), Some(2_0)] [d_17] 
+         119  alloc ptr->i32 [temp_25_ptr_of_d_17_17] 
+         121  alloc i32 [temp_26_ele_of_d_17_17] 
+         124  alloc ptr->i32 [temp_27_ptr_of_c_17_17] 
+         126  alloc i32 [temp_28_ele_of_c_17_17] 
+         129  alloc ptr->i32 [temp_29_array_init_ptr_17] 
+         132  alloc ptr->i32 [temp_30_array_init_ptr_17] 
+         136  alloc ptr->i32 [temp_31_array_init_ptr_17] 
+         140  alloc ptr->i32 [temp_32_array_init_ptr_17] 
+         144  alloc ptr->i32 [temp_33_array_init_ptr_17] 
+         148  alloc ptr->i32 [temp_34_array_init_ptr_17] 
+         152  alloc ptr->i32 [temp_35_array_init_ptr_17] 
+         156  alloc ptr->i32 [temp_36_array_init_ptr_17] 
+         160  alloc ptr->i32 [temp_37_array_init_ptr_17] 
+         164  alloc Array:i32:[Some(4_0), Some(2_0), Some(1_0)] [e_17] 
+         166  alloc ptr->i32 [temp_38_ptr_of_e_17_17] 
+         168  alloc i32 [temp_39_ele_of_e_17_17] 
+         171  alloc ptr->i32 [temp_40_ptr_of_e_17_17] 
+         173  alloc i32 [temp_41_ele_of_e_17_17] 
+         176  alloc i32 [temp_42_arithop_17] 
+         178  alloc ptr->i32 [temp_43_ptr_of_e_17_17] 
+         180  alloc i32 [temp_44_ele_of_e_17_17] 
+         183  alloc i32 [temp_45_arithop_17] 
+         185  alloc ptr->i32 [temp_46_ptr_of_d_17_17] 
+         187  alloc i32 [temp_47_ele_of_d_17_17] 
+         190  alloc i32 [temp_48_arithop_17] 
+          label L0_0: 
+         17    
+         19   temp_0_array_init_ptr_17 = GEP a_17_0:Array:i32:[Some(4_0), Some(2_0)] [] 
+         20    Call void memset_0(temp_0_array_init_ptr_17, 0_0, 32_0) 
+         229  untrack temp_0_array_init_ptr_17 
+         195  mu a_17_0:20 
+         196  a_17_1 = chi a_17_0:20 
+         22   temp_1_array_init_ptr_17 = GEP a_17_1:Array:i32:[Some(4_0), Some(2_0)] [Some(0_0), Some(1_0)] 
+         23   store 2_0:i32 temp_1_array_init_ptr_17:ptr->Array:i32:[Some(2_0)] 
+         242  untrack temp_1_array_init_ptr_17 
+         24   a_17_2 = chi a_17_1:23 
+         26   temp_2_array_init_ptr_17 = GEP a_17_2:Array:i32:[Some(4_0), Some(2_0)] [Some(3_0), Some(0_0)] 
+         27   store 7_0:i32 temp_2_array_init_ptr_17:ptr->Array:i32:[Some(2_0)] 
+         28   a_17_3 = chi a_17_2:27 
+         30   temp_3_array_init_ptr_17 = GEP a_17_3:Array:i32:[Some(4_0), Some(2_0)] [Some(1_0), Some(1_0)] 
+         31   store 4_0:i32 temp_3_array_init_ptr_17:ptr->Array:i32:[Some(2_0)] 
+         238  untrack temp_3_array_init_ptr_17 
+         32   a_17_4 = chi a_17_3:31 
+         34   temp_4_array_init_ptr_17 = GEP a_17_4:Array:i32:[Some(4_0), Some(2_0)] [Some(0_0), Some(0_0)] 
+         35   store 1_0:i32 temp_4_array_init_ptr_17:ptr->Array:i32:[Some(2_0)] 
+         226  untrack temp_4_array_init_ptr_17 
+         36   a_17_5 = chi a_17_4:35 
+         38   temp_5_array_init_ptr_17 = GEP a_17_5:Array:i32:[Some(4_0), Some(2_0)] [Some(1_0), Some(0_0)] 
+         39   store 3_0:i32 temp_5_array_init_ptr_17:ptr->Array:i32:[Some(2_0)] 
+         235  untrack temp_5_array_init_ptr_17 
+         40   a_17_6 = chi a_17_5:39 
+         42    
+         44   temp_6_array_init_ptr_17 = GEP b_17_0:Array:i32:[Some(4_0), Some(2_0)] [] 
+         45    Call void memset_0(temp_6_array_init_ptr_17, 0_0, 32_0) 
+         236  untrack temp_6_array_init_ptr_17 
+         197  mu b_17_0:45 
+         198  b_17_1 = chi b_17_0:45 
+         47    
+         49   temp_7_array_init_ptr_17 = GEP c_17_0:Array:i32:[Some(4_0), Some(2_0)] [] 
+         50    Call void memset_0(temp_7_array_init_ptr_17, 0_0, 32_0) 
+         233  untrack temp_7_array_init_ptr_17 
+         199  mu c_17_0:50 
+         200  c_17_1 = chi c_17_0:50 
+         52   temp_8_array_init_ptr_17 = GEP c_17_1:Array:i32:[Some(4_0), Some(2_0)] [Some(1_0), Some(1_0)] 
+         53   store 4_0:i32 temp_8_array_init_ptr_17:ptr->Array:i32:[Some(2_0)] 
+         208  untrack temp_8_array_init_ptr_17 
+         54   c_17_2 = chi c_17_1:53 
+         56   temp_9_array_init_ptr_17 = GEP c_17_2:Array:i32:[Some(4_0), Some(2_0)] [Some(3_0), Some(1_0)] 
+         57   store 8_0:i32 temp_9_array_init_ptr_17:ptr->Array:i32:[Some(2_0)] 
+         211  untrack temp_9_array_init_ptr_17 
+         58   c_17_3 = chi c_17_2:57 
+         60   temp_10_array_init_ptr_17 = GEP c_17_3:Array:i32:[Some(4_0), Some(2_0)] [Some(1_0), Some(0_0)] 
+         61   store 3_0:i32 temp_10_array_init_ptr_17:ptr->Array:i32:[Some(2_0)] 
+         214  untrack temp_10_array_init_ptr_17 
+         62   c_17_4 = chi c_17_3:61 
+         64   temp_11_array_init_ptr_17 = GEP c_17_4:Array:i32:[Some(4_0), Some(2_0)] [Some(3_0), Some(0_0)] 
+         65   store 7_0:i32 temp_11_array_init_ptr_17:ptr->Array:i32:[Some(2_0)] 
+         210  untrack temp_11_array_init_ptr_17 
+         66   c_17_5 = chi c_17_4:65 
+         68   temp_12_array_init_ptr_17 = GEP c_17_5:Array:i32:[Some(4_0), Some(2_0)] [Some(0_0), Some(0_0)] 
+         69   store 1_0:i32 temp_12_array_init_ptr_17:ptr->Array:i32:[Some(2_0)] 
+         234  untrack temp_12_array_init_ptr_17 
+         70   c_17_6 = chi c_17_5:69 
+         72   temp_13_array_init_ptr_17 = GEP c_17_6:Array:i32:[Some(4_0), Some(2_0)] [Some(2_0), Some(1_0)] 
+         73   store 6_0:i32 temp_13_array_init_ptr_17:ptr->Array:i32:[Some(2_0)] 
+         74   c_17_7 = chi c_17_6:73 
+         76   temp_14_array_init_ptr_17 = GEP c_17_7:Array:i32:[Some(4_0), Some(2_0)] [Some(0_0), Some(1_0)] 
+         77   store 2_0:i32 temp_14_array_init_ptr_17:ptr->Array:i32:[Some(2_0)] 
+         227  untrack temp_14_array_init_ptr_17 
+         78   c_17_8 = chi c_17_7:77 
+         80   temp_15_array_init_ptr_17 = GEP c_17_8:Array:i32:[Some(4_0), Some(2_0)] [Some(2_0), Some(0_0)] 
+         81   store 5_0:i32 temp_15_array_init_ptr_17:ptr->Array:i32:[Some(2_0)] 
+         244  untrack temp_15_array_init_ptr_17 
+         82   c_17_9 = chi c_17_8:81 
+         84    
+         86   (nop) 
+         88   temp_17_ele_of_a_17_17_0 = load temp_2_array_init_ptr_17:ptr->i32 
+         221  untrack temp_2_array_init_ptr_17 
+         89   mu a_17_6:88 
+         91   temp_18_array_init_ptr_17 = GEP d_17_0:Array:i32:[Some(4_0), Some(2_0)] [] 
+         92    Call void memset_0(temp_18_array_init_ptr_17, 0_0, 32_0) 
+         212  untrack temp_18_array_init_ptr_17 
+         201  mu d_17_0:92 
+         202  d_17_1 = chi d_17_0:92 
+         94   temp_19_array_init_ptr_17 = GEP d_17_1:Array:i32:[Some(4_0), Some(2_0)] [Some(3_0), Some(1_0)] 
+         95   store 8_0:i32 temp_19_array_init_ptr_17:ptr->Array:i32:[Some(2_0)] 
+         213  untrack temp_19_array_init_ptr_17 
+         96   d_17_2 = chi d_17_1:95 
+         98   temp_20_array_init_ptr_17 = GEP d_17_2:Array:i32:[Some(4_0), Some(2_0)] [Some(1_0), Some(0_0)] 
+         99   store 3_0:i32 temp_20_array_init_ptr_17:ptr->Array:i32:[Some(2_0)] 
+         223  untrack temp_20_array_init_ptr_17 
+         100  d_17_3 = chi d_17_2:99 
+         102  temp_21_array_init_ptr_17 = GEP d_17_3:Array:i32:[Some(4_0), Some(2_0)] [Some(0_0), Some(0_0)] 
+         103  store 1_0:i32 temp_21_array_init_ptr_17:ptr->Array:i32:[Some(2_0)] 
+         237  untrack temp_21_array_init_ptr_17 
+         104  d_17_4 = chi d_17_3:103 
+         106  temp_22_array_init_ptr_17 = GEP d_17_4:Array:i32:[Some(4_0), Some(2_0)] [Some(0_0), Some(1_0)] 
+         107  store 2_0:i32 temp_22_array_init_ptr_17:ptr->Array:i32:[Some(2_0)] 
+         220  untrack temp_22_array_init_ptr_17 
+         108  d_17_5 = chi d_17_4:107 
+         110  temp_23_array_init_ptr_17 = GEP d_17_5:Array:i32:[Some(4_0), Some(2_0)] [Some(2_0), Some(0_0)] 
+         111  store 5_0:i32 temp_23_array_init_ptr_17:ptr->Array:i32:[Some(2_0)] 
+         209  untrack temp_23_array_init_ptr_17 
+         112  d_17_6 = chi d_17_5:111 
+         114  temp_24_array_init_ptr_17 = GEP d_17_6:Array:i32:[Some(4_0), Some(2_0)] [Some(3_0), Some(0_0)] 
+         115  store temp_17_ele_of_a_17_17_0:i32 temp_24_array_init_ptr_17:ptr->Array:i32:[Some(2_0)] 
+         219  untrack temp_17_ele_of_a_17_17_0 
+         116  d_17_7 = chi d_17_6:115 
+         118   
+         120  temp_25_ptr_of_d_17_17 = GEP d_17_7:Array:i32:[Some(4_0), Some(2_0)] [Some(2_0), Some(1_0)] 
+         122  temp_26_ele_of_d_17_17_0 = load temp_25_ptr_of_d_17_17:ptr->i32 
+         241  untrack temp_25_ptr_of_d_17_17 
+         123  mu d_17_7:122 
+         125  (nop) 
+         127  temp_28_ele_of_c_17_17_0 = load temp_13_array_init_ptr_17:ptr->i32 
+         222  untrack temp_13_array_init_ptr_17 
+         128  mu c_17_9:127 
+         130  temp_29_array_init_ptr_17 = GEP e_17_0:Array:i32:[Some(4_0), Some(2_0), Some(1_0)] [] 
+         131   Call void memset_0(temp_29_array_init_ptr_17, 0_0, 32_0) 
+         217  untrack temp_29_array_init_ptr_17 
+         203  mu e_17_0:131 
+         204  e_17_1 = chi e_17_0:131 
+         133  temp_30_array_init_ptr_17 = GEP e_17_1:Array:i32:[Some(4_0), Some(2_0), Some(1_0)] [Some(1_0), Some(0_0), Some(0_0)] 
+         134  store 3_0:i32 temp_30_array_init_ptr_17:ptr->Array:i32:[Some(2_0), Some(1_0)] 
+         239  untrack temp_30_array_init_ptr_17 
+         135  e_17_2 = chi e_17_1:134 
+         137  temp_31_array_init_ptr_17 = GEP e_17_2:Array:i32:[Some(4_0), Some(2_0), Some(1_0)] [Some(0_0), Some(1_0), Some(0_0)] 
+         138  store temp_28_ele_of_c_17_17_0:i32 temp_31_array_init_ptr_17:ptr->Array:i32:[Some(2_0), Some(1_0)] 
+         245  untrack temp_28_ele_of_c_17_17_0 
+         139  e_17_3 = chi e_17_2:138 
+         141  temp_32_array_init_ptr_17 = GEP e_17_3:Array:i32:[Some(4_0), Some(2_0), Some(1_0)] [Some(1_0), Some(1_0), Some(0_0)] 
+         142  store 4_0:i32 temp_32_array_init_ptr_17:ptr->Array:i32:[Some(2_0), Some(1_0)] 
+         207  untrack temp_32_array_init_ptr_17 
+         143  e_17_4 = chi e_17_3:142 
+         145  temp_33_array_init_ptr_17 = GEP e_17_4:Array:i32:[Some(4_0), Some(2_0), Some(1_0)] [Some(2_0), Some(0_0), Some(0_0)] 
+         146  store 5_0:i32 temp_33_array_init_ptr_17:ptr->Array:i32:[Some(2_0), Some(1_0)] 
+         230  untrack temp_33_array_init_ptr_17 
+         147  e_17_5 = chi e_17_4:146 
+         149  temp_34_array_init_ptr_17 = GEP e_17_5:Array:i32:[Some(4_0), Some(2_0), Some(1_0)] [Some(3_0), Some(0_0), Some(0_0)] 
+         150  store 7_0:i32 temp_34_array_init_ptr_17:ptr->Array:i32:[Some(2_0), Some(1_0)] 
+         225  untrack temp_34_array_init_ptr_17 
+         151  e_17_6 = chi e_17_5:150 
+         153  temp_35_array_init_ptr_17 = GEP e_17_6:Array:i32:[Some(4_0), Some(2_0), Some(1_0)] [Some(3_0), Some(1_0), Some(0_0)] 
+         154  store 8_0:i32 temp_35_array_init_ptr_17:ptr->Array:i32:[Some(2_0), Some(1_0)] 
+         155  e_17_7 = chi e_17_6:154 
+         157  temp_36_array_init_ptr_17 = GEP e_17_7:Array:i32:[Some(4_0), Some(2_0), Some(1_0)] [Some(0_0), Some(0_0), Some(0_0)] 
+         158  store temp_26_ele_of_d_17_17_0:i32 temp_36_array_init_ptr_17:ptr->Array:i32:[Some(2_0), Some(1_0)] 
+         215  untrack temp_26_ele_of_d_17_17_0 
+         159  e_17_8 = chi e_17_7:158 
+         161  temp_37_array_init_ptr_17 = GEP e_17_8:Array:i32:[Some(4_0), Some(2_0), Some(1_0)] [Some(2_0), Some(1_0), Some(0_0)] 
+         162  store 6_0:i32 temp_37_array_init_ptr_17:ptr->Array:i32:[Some(2_0), Some(1_0)] 
+         243  untrack temp_37_array_init_ptr_17 
+         163  e_17_9 = chi e_17_8:162 
+         167  (nop) 
+         169  temp_39_ele_of_e_17_17_0 = load temp_35_array_init_ptr_17:ptr->i32 
+         206  untrack temp_35_array_init_ptr_17 
+         170  mu e_17_9:169 
+         172  (nop) 
+         174  temp_41_ele_of_e_17_17_0 = load temp_36_array_init_ptr_17:ptr->i32 
+         224  untrack temp_36_array_init_ptr_17 
+         175  mu e_17_9:174 
+         177  temp_42_arithop_17_0 = Add i32 temp_39_ele_of_e_17_17_0, temp_41_ele_of_e_17_17_0 
+         228  untrack temp_39_ele_of_e_17_17_0 
+         216  untrack temp_41_ele_of_e_17_17_0 
+         179  (nop) 
+         181  temp_44_ele_of_e_17_17_0 = load temp_31_array_init_ptr_17:ptr->i32 
+         232  untrack temp_31_array_init_ptr_17 
+         182  mu e_17_9:181 
+         184  temp_45_arithop_17_0 = Add i32 temp_42_arithop_17_0, temp_44_ele_of_e_17_17_0 
+         246  untrack temp_42_arithop_17_0 
+         231  untrack temp_44_ele_of_e_17_17_0 
+         186  (nop) 
+         188  temp_47_ele_of_d_17_17_0 = load temp_24_array_init_ptr_17:ptr->i32 
+         218  untrack temp_24_array_init_ptr_17 
+         189  mu d_17_7:188 
+         191  temp_48_arithop_17_0 = Add i32 temp_45_arithop_17_0, temp_47_ele_of_d_17_17_0 
+         240  untrack temp_45_arithop_17_0 
+         205  untrack temp_47_ele_of_d_17_17_0 
+         192  ret temp_48_arithop_17_0 

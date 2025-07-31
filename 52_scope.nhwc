@@ -1,0 +1,104 @@
+# input: "./for_auto_test/00sy/52_scope.sy"
+ 18   label global_0: 
+ 17   global i32 a_0 
+ 0    global Fn[]->getint_ret_0 getint_0 
+ 1    global Fn[]->getch_ret_0 getch_0 
+ 2    global Fn[zz_array_3]->getarray_ret_0 getarray_0 
+ 3    global Fn[]->getfloat_ret_0 getfloat_0 
+ 4    global Fn[zz_array_5]->getfarray_ret_0 getfarray_0 
+ 5    global Fn[zz_int_6]->putint_ret_0 putint_0 
+ 6    global Fn[zz_ch_7]->putch_ret_0 putch_0 
+ 7    global Fn[x_8, zz_array_8]->putarray_ret_0 putarray_0 
+ 8    global Fn[zz_float_9]->putfloat_ret_0 putfloat_0 
+ 9    global Fn[zz_len_10, zz_farray_10]->putfarray_ret_0 putfarray_0 
+ 10   global Fn[]->putf_ret_0 putf_0 
+ 11   global Fn[]->starttime_ret_0 starttime_0 
+ 12   global Fn[]->stoptime_ret_0 stoptime_0 
+ 13   global Fn[zz_ptr_14, zz_val_14, zz_len_14]->memset_ret_0 memset_0 
+ 14   global Fn[zz_dest_15, zz_ptr_15, zz_len_15]->memcpy_ret_0 memcpy_0 
+ 15   store 7_0:i32 *a_0:ptr->i32 
+ 16   a_0 = chi a_0:15 
+ 20   Define main_0 "" -> main_ret_0 
+         44   alloc i32 [result_28] 
+         46   alloc i32 [i_28] 
+         51   alloc i32 [temp_3_arithop_33] 
+         54   alloc i32 [temp_4_arithop_34] 
+         57   alloc i1 [temp_5_cmp_31] 
+         63   alloc i1 [temp_6_cmp_38] 
+         71   alloc i32 [temp_7_ret_of_func_34] 
+         73   alloc i1 [temp_8_cmp_34] 
+          label L0_0: 
+         43   (nop) 
+         45   (nop) 
+         83   i_28_1 = i32 0_0 
+         84   result_28_1 = i32 0_0 
+              jump label: while.head_32 
+     59   label while.head_32: 
+         58   temp_5_cmp_31_0 = icmp i32 Slt i_28_1, 100_0 
+         62   br i1 temp_5_cmp_31_0, label while.body_32, label while.exit_32 
+     60   label while.body_32: 
+         72   temp_7_ret_of_func_34_0 =  Call i32 func_0() 
+         78   mu a_0_0:72 
+         74   temp_8_cmp_34_0 = icmp i32 Eq temp_7_ret_of_func_34_0, 1_0 
+         77   br i1 temp_8_cmp_34_0, label branch_true_35, label UP_9_0 
+     75   label branch_true_35: 
+         95   untrack temp_7_ret_of_func_34_0 
+         94   untrack temp_8_cmp_34_0 
+         93   untrack temp_5_cmp_31_0 
+         55   temp_4_arithop_34_0 = Add i32 result_28_1, 1_0 
+         56   (nop) 
+         85   result_28_3 = i32 temp_4_arithop_34_0 
+         96   untrack temp_4_arithop_34_0 
+              jump label: branch_false_35 
+     76   label branch_false_35: 
+              jump label: L1_0 
+          label L1_0: 
+         52   temp_3_arithop_33_0 = Add i32 i_28_1, 1_0 
+         53   (nop) 
+         86   i_28_1 = i32 temp_3_arithop_33_0 
+         87   result_28_1 = i32 result_28_3 
+              jump label: while.head_32 
+     82   label UP_9_0: 
+         88   result_28_3 = i32 result_28_1 
+              jump label: branch_false_35 
+     61   label while.exit_32: 
+         92   untrack i_28_1 
+         64   temp_6_cmp_38_0 = icmp i32 Slt result_28_1, 100_0 
+         97   untrack result_28_1 
+         67   br i1 temp_6_cmp_38_0, label branch_true_39, label branch_false_39 
+     65   label branch_true_39: 
+         98   untrack temp_6_cmp_38_0 
+         50    Call void putint_0(1_0) 
+              jump label: gather_19 
+     68   label gather_19: 
+              jump label: L2_0 
+          label L2_0: 
+         49   ret 0_0 
+     66   label branch_false_39: 
+         99   untrack temp_6_cmp_38_0 
+         47    Call void putint_0(0_0) 
+              jump label: gather_19 
+ 19   Define func_0 "" -> func_ret_0 
+         21   alloc i32 [temp_0_value_from_ptr_18] 
+         25   alloc i32 [b_18] 
+         27   alloc i32 [a_18] 
+         30   alloc i32 [temp_1_arithop_23] 
+         35   alloc i1 [temp_2_cmp_21] 
+          label L3_0: 
+         22   temp_0_value_from_ptr_18_0 = load *a_0:ptr->i32 
+         23   mu a_0_0:22 
+         24   (nop) 
+         26   (nop) 
+              jump label: L4_0 
+          label L4_0: 
+         36   temp_2_cmp_21_0 = icmp i32 Eq 1_0, temp_0_value_from_ptr_18_0 
+         89   untrack temp_0_value_from_ptr_18_0 
+         39   br i1 temp_2_cmp_21_0, label branch_true_22, label branch_false_22 
+     37   label branch_true_22: 
+         90   untrack temp_2_cmp_21_0 
+         31   (nop) 
+         32   (nop) 
+         34   ret 1_0 
+     38   label branch_false_22: 
+         91   untrack temp_2_cmp_21_0 
+         29   ret 0_0 

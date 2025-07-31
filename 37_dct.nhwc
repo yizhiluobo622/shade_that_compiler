@@ -1,0 +1,711 @@
+# input: "./for_auto_test/00sy/37_dct.sy"
+ 36   label global_0: 
+ 35   global f32 EPSILON_0 
+ 32   global f32 TWO_PI_0 
+ 29   global f32 PI_0 
+ 26   global Array:f32:[Some(8_0), Some(8_0)] test_idct_0 
+ 24   global Array:f32:[Some(8_0), Some(8_0)] test_dct_0 
+ 22   global Array:f32:[Some(8_0), Some(8_0)] test_block_0 
+ 20   global i32 MAX_DIM_Y_0 
+ 17   global i32 MAX_DIM_X_0 
+ 0    global Fn[]->getint_ret_0 getint_0 
+ 1    global Fn[]->getch_ret_0 getch_0 
+ 2    global Fn[zz_array_3]->getarray_ret_0 getarray_0 
+ 3    global Fn[]->getfloat_ret_0 getfloat_0 
+ 4    global Fn[zz_array_5]->getfarray_ret_0 getfarray_0 
+ 5    global Fn[zz_int_6]->putint_ret_0 putint_0 
+ 6    global Fn[zz_ch_7]->putch_ret_0 putch_0 
+ 7    global Fn[x_8, zz_array_8]->putarray_ret_0 putarray_0 
+ 8    global Fn[zz_float_9]->putfloat_ret_0 putfloat_0 
+ 9    global Fn[zz_len_10, zz_farray_10]->putfarray_ret_0 putfarray_0 
+ 10   global Fn[]->putf_ret_0 putf_0 
+ 11   global Fn[]->starttime_ret_0 starttime_0 
+ 12   global Fn[]->stoptime_ret_0 stoptime_0 
+ 13   global Fn[zz_ptr_14, zz_val_14, zz_len_14]->memset_ret_0 memset_0 
+ 14   global Fn[zz_dest_15, zz_ptr_15, zz_len_15]->memcpy_ret_0 memcpy_0 
+ 15   store 8_0:i32 *MAX_DIM_X_0:ptr->i32 
+ 16   MAX_DIM_X_0 = chi MAX_DIM_X_0:15 
+ 18   store 8_0:i32 *MAX_DIM_Y_0:ptr->i32 
+ 19   MAX_DIM_Y_0 = chi MAX_DIM_Y_0:18 
+ 21    
+ 23    
+ 25    
+ 27   store 3.14159265359_0:f32 *PI_0:ptr->f32 
+ 28   PI_0 = chi PI_0:27 
+ 30   store 6.28318530718_0:f32 *TWO_PI_0:ptr->f32 
+ 31   TWO_PI_0 = chi TWO_PI_0:30 
+ 33   store 1e-6_0:f32 *EPSILON_0:ptr->f32 
+ 34   EPSILON_0 = chi EPSILON_0:33 
+ 50   Define main_0 "" -> main_ret_0 
+         526  test_block_0_1 = chi test_block_0_0:50 
+         480  alloc i32 [temp_134_ret_of_getint_141] 
+         483  alloc i32 [dim_x_141] 
+         484  alloc i32 [temp_135_ret_of_getint_141] 
+         487  alloc i32 [dim_y_141] 
+         489  alloc i32 [i_141] 
+         497  alloc i32 [j_146] 
+         498  alloc i32 [temp_136_arithop_146] 
+         501  alloc ptr->f32 [temp_137_ptr_of_*test_block_0_150] 
+         503  alloc f32 [temp_138_ret_of_getfloat_150] 
+         507  alloc i32 [temp_139_arithop_150] 
+         510  alloc i1 [temp_140_cmp_144] 
+         518  alloc i1 [temp_141_cmp_148] 
+          label L0_0: 
+         481  temp_134_ret_of_getint_141_0 =  Call i32 getint_0() 
+         482  (nop) 
+         485  temp_135_ret_of_getint_141_0 =  Call i32 getint_0() 
+         486  (nop) 
+         488  (nop) 
+         603  i_141_1 = i32 0_0 
+              jump label: while.head_145 
+     512  label while.head_145: 
+         511  temp_140_cmp_144_0 = icmp i32 Slt i_141_1, temp_134_ret_of_getint_141_0 
+         515  br i1 temp_140_cmp_144_0, label while.body_145, label while.exit_145 
+     513  label while.body_145: 
+         496  (nop) 
+         604  j_146_1 = i32 0_0 
+              jump label: while.head_149 
+     520  label while.head_149: 
+         519  temp_141_cmp_148_0 = icmp i32 Slt j_146_1, temp_135_ret_of_getint_141_0 
+         523  br i1 temp_141_cmp_148_0, label while.body_149, label while.exit_149 
+     521  label while.body_149: 
+         502  temp_137_ptr_of_*test_block_0_150 = GEP *test_block_0:ptr->Array:f32:[Some(8_0)] [Some(i_141_1), Some(j_146_1)] 
+         504  temp_138_ret_of_getfloat_150_0 =  Call f32 getfloat_0() 
+         505  store temp_138_ret_of_getfloat_150_0:f32 temp_137_ptr_of_*test_block_0_150:ptr->f32 
+         506  test_block_0_4 = chi test_block_0_3:505 
+         508  temp_139_arithop_150_0 = Add i32 j_146_1, 1_0 
+         509  (nop) 
+         605  j_146_1 = i32 temp_139_arithop_150_0 
+              jump label: while.head_149 
+     522  label while.exit_149: 
+         499  temp_136_arithop_146_0 = Add i32 i_141_1, 1_0 
+         500  (nop) 
+         606  i_141_1 = i32 temp_136_arithop_146_0 
+              jump label: while.head_145 
+     514  label while.exit_145: 
+         699  untrack i_141_1 
+         490   Call void dct_0(*test_dct_0, *test_block_0, temp_134_ret_of_getint_141_0, temp_135_ret_of_getint_141_0) 
+         527  mu test_dct_0_0:490 
+         528  mu test_block_0_2:490 
+         529  test_dct_0_1 = chi test_dct_0_0:490 
+         530  test_block_0_5 = chi test_block_0_2:490 
+         491   Call void write_mat_0(*test_dct_0, temp_134_ret_of_getint_141_0, temp_135_ret_of_getint_141_0) 
+         531  mu test_dct_0_1:491 
+         532  test_dct_0_2 = chi test_dct_0_1:491 
+         492   Call void idct_0(*test_idct_0, *test_dct_0, temp_134_ret_of_getint_141_0, temp_135_ret_of_getint_141_0) 
+         533  mu test_dct_0_2:492 
+         534  mu test_idct_0_0:492 
+         535  test_dct_0_3 = chi test_dct_0_2:492 
+         536  test_idct_0_1 = chi test_idct_0_0:492 
+         493   Call void write_mat_0(*test_idct_0, temp_134_ret_of_getint_141_0, temp_135_ret_of_getint_141_0) 
+         701  untrack temp_135_ret_of_getint_141_0 
+         700  untrack temp_134_ret_of_getint_141_0 
+         537  mu test_idct_0_1:493 
+         538  test_idct_0_2 = chi test_idct_0_1:493 
+         539  mu test_block_0_5:495 
+         495  ret 0_0 
+ 49   Define idct_0 "mat_101,dct_mat_101,n_101_0,m_101_0," -> idct_ret_0 
+         294  alloc i32 [u_103] 
+         296  alloc i32 [v_107] 
+         297  alloc i32 [temp_71_arithop_107] 
+         300  alloc ptr->f32 [temp_72_ptr_of_mat_101_111] 
+         302  alloc ptr->f32 [temp_73_ptr_of_dct_mat_101_111] 
+         304  alloc f32 [temp_74_ele_of_dct_mat_101_111] 
+         307  alloc f32 [temp_75_arithop_111] 
+         311  alloc i32 [i_111] 
+         313  alloc i32 [j_111] 
+         318  alloc ptr->f32 [temp_76_ptr_of_mat_101_111] 
+         320  alloc ptr->f32 [temp_77_ptr_of_mat_101_111] 
+         322  alloc f32 [temp_78_ele_of_mat_101_111] 
+         325  alloc f32 [temp_79_arithop_111] 
+         327  alloc f32 [temp_80__111] 
+         329  alloc f32 [temp_81_arithop_111] 
+         331  alloc f32 [temp_82_arithop_111] 
+         333  alloc f32 [temp_83__111] 
+         335  alloc f32 [temp_84_arithop_111] 
+         339  alloc i32 [temp_85_arithop_111] 
+         343  alloc i32 [temp_86_arithop_129] 
+         346  alloc ptr->f32 [temp_87_ptr_of_mat_101_133] 
+         348  alloc ptr->f32 [temp_88_ptr_of_mat_101_133] 
+         350  alloc f32 [temp_89_ele_of_mat_101_133] 
+         353  alloc ptr->f32 [temp_90_ptr_of_dct_mat_101_133] 
+         355  alloc f32 [temp_91_ele_of_dct_mat_101_133] 
+         358  alloc f32 [temp_92__133] 
+         360  alloc f32 [temp_93_arithop_133] 
+         362  alloc f32 [temp_94__133] 
+         364  alloc f32 [temp_95_arithop_133] 
+         366  alloc f32 [temp_96_arithop_133] 
+         368  alloc f32 [temp_97__133] 
+         370  alloc f32 [temp_98_arithop_133] 
+         372  alloc f32 [temp_99_ret_of_my_cos_133] 
+         374  alloc f32 [temp_100_arithop_133] 
+         376  alloc f32 [temp_101__133] 
+         378  alloc f32 [temp_102_arithop_133] 
+         380  alloc f32 [temp_103__133] 
+         382  alloc f32 [temp_104_arithop_133] 
+         384  alloc f32 [temp_105_arithop_133] 
+         386  alloc f32 [temp_106__133] 
+         388  alloc f32 [temp_107_arithop_133] 
+         390  alloc f32 [temp_108_ret_of_my_cos_133] 
+         392  alloc f32 [temp_109_arithop_133] 
+         394  alloc f32 [temp_110_arithop_133] 
+         398  alloc i32 [temp_111_arithop_133] 
+         401  alloc ptr->f32 [temp_112_ptr_of_mat_101_123] 
+         403  alloc ptr->f32 [temp_113_ptr_of_mat_101_123] 
+         405  alloc f32 [temp_114_ele_of_mat_101_123] 
+         408  alloc ptr->f32 [temp_115_ptr_of_dct_mat_101_123] 
+         410  alloc f32 [temp_116_ele_of_dct_mat_101_123] 
+         413  alloc f32 [temp_117_arithop_123] 
+         415  alloc f32 [temp_118_arithop_123] 
+         419  alloc i32 [temp_119_arithop_123] 
+         422  alloc ptr->f32 [temp_120_ptr_of_mat_101_117] 
+         424  alloc ptr->f32 [temp_121_ptr_of_mat_101_117] 
+         426  alloc f32 [temp_122_ele_of_mat_101_117] 
+         429  alloc ptr->f32 [temp_123_ptr_of_dct_mat_101_117] 
+         431  alloc f32 [temp_124_ele_of_dct_mat_101_117] 
+         434  alloc f32 [temp_125_arithop_117] 
+         436  alloc f32 [temp_126_arithop_117] 
+         440  alloc i32 [temp_127_arithop_117] 
+         443  alloc i1 [temp_128_cmp_105] 
+         450  alloc i1 [temp_129_cmp_109] 
+         456  alloc i1 [temp_130_cmp_115] 
+         462  alloc i1 [temp_131_cmp_121] 
+         468  alloc i1 [temp_132_cmp_127] 
+         474  alloc i1 [temp_133_cmp_131] 
+          label L1_0: 
+         47    
+         48    
+         293  (nop) 
+         359  temp_92__133_0 = sitofp i32 n_101_0 to f32 
+         377  temp_101__133_0 = sitofp i32 m_101_0 to f32 
+         328  (nop) 
+         334  (nop) 
+         591  u_103_1 = i32 0_0 
+              jump label: while.head_106 
+     445  label while.head_106: 
+         444  temp_128_cmp_105_0 = icmp i32 Slt u_103_1, n_101_0 
+         448  br i1 temp_128_cmp_105_0, label while.body_106, label while.exit_106 
+     446  label while.body_106: 
+         295  (nop) 
+         303  temp_73_ptr_of_dct_mat_101_111 = GEP dct_mat_101:Array:f32:[None, Some(8_0)] [Some(0_0), Some(0_0)] 
+         361  temp_93_arithop_133_0 = Div f32 3.1415927_0, temp_92__133_0 
+         363  temp_94__133_0 = sitofp i32 u_103_1 to f32 
+         379  temp_102_arithop_133_0 = Div f32 3.1415927_0, temp_101__133_0 
+         592  v_107_1 = i32 0_0 
+              jump label: while.head_110 
+     452  label while.head_110: 
+         451  temp_129_cmp_109_0 = icmp i32 Slt v_107_1, m_101_0 
+         455  br i1 temp_129_cmp_109_0, label while.body_110, label while.exit_110 
+     453  label while.body_110: 
+         301  temp_72_ptr_of_mat_101_111 = GEP mat_101:ptr->Array:f32:[Some(8_0)] [Some(u_103_1), Some(v_107_1)] 
+         305  temp_74_ele_of_dct_mat_101_111_0 = load temp_73_ptr_of_dct_mat_101_111:ptr->f32 
+         306  mu dct_mat_101:305 
+         308  temp_75_arithop_111_0 = Mul f32 0.25_0, temp_74_ele_of_dct_mat_101_111_0 
+         309  store temp_75_arithop_111_0:f32 temp_72_ptr_of_mat_101_111:ptr->f32 
+         310  mat_101 = chi mat_101:309 
+         312   
+         314   
+         315  (nop) 
+         593  i_111_2 = i32 1_0 
+              jump label: while.head_116 
+     458  label while.head_116: 
+         457  temp_130_cmp_115_0 = icmp i32 Slt i_111_2, n_101_0 
+         461  br i1 temp_130_cmp_115_0, label while.body_116, label while.exit_116 
+     459  label while.body_116: 
+         423  temp_120_ptr_of_mat_101_117 = GEP mat_101:ptr->Array:f32:[Some(8_0)] [Some(u_103_1), Some(v_107_1)] 
+         425  (nop) 
+         427  temp_122_ele_of_mat_101_117_0 = load temp_120_ptr_of_mat_101_117:ptr->f32 
+         428  mu mat_101:427 
+         430  temp_123_ptr_of_dct_mat_101_117 = GEP dct_mat_101:Array:f32:[None, Some(8_0)] [Some(i_111_2), Some(0_0)] 
+         432  temp_124_ele_of_dct_mat_101_117_0 = load temp_123_ptr_of_dct_mat_101_117:ptr->f32 
+         433  mu dct_mat_101:432 
+         435  temp_125_arithop_117_0 = Mul f32 0.5_0, temp_124_ele_of_dct_mat_101_117_0 
+         437  temp_126_arithop_117_0 = Add f32 temp_122_ele_of_mat_101_117_0, temp_125_arithop_117_0 
+         438  store temp_126_arithop_117_0:f32 temp_120_ptr_of_mat_101_117:ptr->f32 
+         439  mat_101 = chi mat_101:438 
+         441  temp_127_arithop_117_0 = Add i32 i_111_2, 1_0 
+         442  (nop) 
+         594  i_111_2 = i32 temp_127_arithop_117_0 
+              jump label: while.head_116 
+     460  label while.exit_116: 
+         316  (nop) 
+         595  j_111_2 = i32 1_0 
+              jump label: while.head_122 
+     464  label while.head_122: 
+         463  temp_131_cmp_121_0 = icmp i32 Slt j_111_2, m_101_0 
+         467  br i1 temp_131_cmp_121_0, label while.body_122, label while.exit_122 
+     465  label while.body_122: 
+         681  untrack temp_122_ele_of_mat_101_117_0 
+         680  untrack temp_124_ele_of_dct_mat_101_117_0 
+         679  untrack temp_123_ptr_of_dct_mat_101_117 
+         678  untrack temp_126_arithop_117_0 
+         677  untrack temp_127_arithop_117_0 
+         676  untrack temp_120_ptr_of_mat_101_117 
+         675  untrack temp_130_cmp_115_0 
+         674  untrack temp_125_arithop_117_0 
+         402  temp_112_ptr_of_mat_101_123 = GEP mat_101:ptr->Array:f32:[Some(8_0)] [Some(u_103_1), Some(v_107_1)] 
+         404  (nop) 
+         406  temp_114_ele_of_mat_101_123_0 = load temp_112_ptr_of_mat_101_123:ptr->f32 
+         407  mu mat_101:406 
+         409  temp_115_ptr_of_dct_mat_101_123 = GEP dct_mat_101:Array:f32:[None, Some(8_0)] [Some(0_0), Some(j_111_2)] 
+         411  temp_116_ele_of_dct_mat_101_123_0 = load temp_115_ptr_of_dct_mat_101_123:ptr->f32 
+         412  mu dct_mat_101:411 
+         414  temp_117_arithop_123_0 = Mul f32 0.5_0, temp_116_ele_of_dct_mat_101_123_0 
+         416  temp_118_arithop_123_0 = Add f32 temp_114_ele_of_mat_101_123_0, temp_117_arithop_123_0 
+         417  store temp_118_arithop_123_0:f32 temp_112_ptr_of_mat_101_123:ptr->f32 
+         418  mat_101 = chi mat_101:417 
+         420  temp_119_arithop_123_0 = Add i32 j_111_2, 1_0 
+         421  (nop) 
+         596  j_111_2 = i32 temp_119_arithop_123_0 
+              jump label: while.head_122 
+     466  label while.exit_122: 
+         317  (nop) 
+         365  temp_95_arithop_133_0 = Add f32 temp_94__133_0, 0.5_0 
+         381  temp_103__133_0 = sitofp i32 v_107_1 to f32 
+         597  i_111_5 = i32 1_0 
+              jump label: while.head_128 
+     470  label while.head_128: 
+         469  temp_132_cmp_127_0 = icmp i32 Slt i_111_5, n_101_0 
+         473  br i1 temp_132_cmp_127_0, label while.body_128, label while.exit_128 
+     471  label while.body_128: 
+         697  untrack temp_126_arithop_117_0 
+         696  untrack temp_131_cmp_121_0 
+         695  untrack temp_117_arithop_123_0 
+         694  untrack temp_120_ptr_of_mat_101_117 
+         693  untrack temp_125_arithop_117_0 
+         692  untrack temp_118_arithop_123_0 
+         691  untrack temp_124_ele_of_dct_mat_101_117_0 
+         690  untrack temp_116_ele_of_dct_mat_101_123_0 
+         689  untrack temp_114_ele_of_mat_101_123_0 
+         688  untrack temp_112_ptr_of_mat_101_123 
+         687  untrack temp_130_cmp_115_0 
+         686  untrack temp_119_arithop_123_0 
+         685  untrack temp_115_ptr_of_dct_mat_101_123 
+         684  untrack temp_123_ptr_of_dct_mat_101_117 
+         683  untrack temp_122_ele_of_mat_101_117_0 
+         682  untrack temp_127_arithop_117_0 
+         342  (nop) 
+         367  temp_96_arithop_133_0 = Mul f32 temp_93_arithop_133_0, temp_95_arithop_133_0 
+         369  temp_97__133_0 = sitofp i32 i_111_5 to f32 
+         383  temp_104_arithop_133_0 = Add f32 temp_103__133_0, 0.5_0 
+         598  j_111_6 = i32 1_0 
+              jump label: while.head_132 
+     476  label while.head_132: 
+         475  temp_133_cmp_131_0 = icmp i32 Slt j_111_6, m_101_0 
+         479  br i1 temp_133_cmp_131_0, label while.body_132, label while.exit_132 
+     477  label while.body_132: 
+         347  temp_87_ptr_of_mat_101_133 = GEP mat_101:ptr->Array:f32:[Some(8_0)] [Some(u_103_1), Some(v_107_1)] 
+         349  (nop) 
+         351  temp_89_ele_of_mat_101_133_0 = load temp_87_ptr_of_mat_101_133:ptr->f32 
+         352  mu mat_101:351 
+         354  temp_90_ptr_of_dct_mat_101_133 = GEP dct_mat_101:Array:f32:[None, Some(8_0)] [Some(i_111_5), Some(j_111_6)] 
+         356  temp_91_ele_of_dct_mat_101_133_0 = load temp_90_ptr_of_dct_mat_101_133:ptr->f32 
+         357  mu dct_mat_101:356 
+         371  temp_98_arithop_133_0 = Mul f32 temp_96_arithop_133_0, temp_97__133_0 
+         373  temp_99_ret_of_my_cos_133_0 =  Call f32 my_cos_0(temp_98_arithop_133_0) 
+         375  temp_100_arithop_133_0 = Mul f32 temp_91_ele_of_dct_mat_101_133_0, temp_99_ret_of_my_cos_133_0 
+         385  temp_105_arithop_133_0 = Mul f32 temp_102_arithop_133_0, temp_104_arithop_133_0 
+         387  temp_106__133_0 = sitofp i32 j_111_6 to f32 
+         389  temp_107_arithop_133_0 = Mul f32 temp_105_arithop_133_0, temp_106__133_0 
+         391  temp_108_ret_of_my_cos_133_0 =  Call f32 my_cos_0(temp_107_arithop_133_0) 
+         393  temp_109_arithop_133_0 = Mul f32 temp_100_arithop_133_0, temp_108_ret_of_my_cos_133_0 
+         395  temp_110_arithop_133_0 = Add f32 temp_89_ele_of_mat_101_133_0, temp_109_arithop_133_0 
+         396  store temp_110_arithop_133_0:f32 temp_87_ptr_of_mat_101_133:ptr->f32 
+         397  mat_101 = chi mat_101:396 
+         399  temp_111_arithop_133_0 = Add i32 j_111_6, 1_0 
+         400  (nop) 
+         599  j_111_6 = i32 temp_111_arithop_133_0 
+              jump label: while.head_132 
+     478  label while.exit_132: 
+         344  temp_86_arithop_129_0 = Add i32 i_111_5, 1_0 
+         345  (nop) 
+         600  i_111_5 = i32 temp_86_arithop_129_0 
+              jump label: while.head_128 
+     472  label while.exit_128: 
+         319  temp_76_ptr_of_mat_101_111 = GEP mat_101:ptr->Array:f32:[Some(8_0)] [Some(u_103_1), Some(v_107_1)] 
+         321  (nop) 
+         323  temp_78_ele_of_mat_101_111_0 = load temp_76_ptr_of_mat_101_111:ptr->f32 
+         324  mu mat_101:323 
+         326  temp_79_arithop_111_0 = Mul f32 temp_78_ele_of_mat_101_111_0, 2._0 
+         330  temp_81_arithop_111_0 = Div f32 temp_79_arithop_111_0, temp_92__133_0 
+         332  temp_82_arithop_111_0 = Mul f32 temp_81_arithop_111_0, 2._0 
+         336  temp_84_arithop_111_0 = Div f32 temp_82_arithop_111_0, temp_101__133_0 
+         337  store temp_84_arithop_111_0:f32 temp_76_ptr_of_mat_101_111:ptr->f32 
+         338  mat_101 = chi mat_101:337 
+         340  temp_85_arithop_111_0 = Add i32 v_107_1, 1_0 
+         341  (nop) 
+         601  v_107_1 = i32 temp_85_arithop_111_0 
+              jump label: while.head_110 
+     454  label while.exit_110: 
+         298  temp_71_arithop_107_0 = Add i32 u_103_1, 1_0 
+         299  (nop) 
+         602  u_103_1 = i32 temp_71_arithop_107_0 
+              jump label: while.head_106 
+     447  label while.exit_106: 
+         673  untrack temp_101__133_0 
+         672  untrack temp_92__133_0 
+         671  untrack m_101_0 
+         670  untrack n_101_0 
+         669  untrack dct_mat_101 
+         668  untrack u_103_1 
+         525  mu mat_101:449 
+         698  untrack mat_101 
+         449  ret 
+ 46   Define dct_0 "dct_mat_76,mat_76,n_76_0,m_76_0," -> dct_ret_0 
+         191  alloc i32 [u_78] 
+         193  alloc i32 [v_82] 
+         194  alloc i32 [temp_37_arithop_82] 
+         197  alloc ptr->f32 [temp_38_ptr_of_dct_mat_76_86] 
+         199  alloc f32 [temp_39__86] 
+         204  alloc i32 [i_86] 
+         205  alloc i32 [temp_40_arithop_86] 
+         209  alloc i32 [j_91] 
+         210  alloc i32 [temp_41_arithop_91] 
+         213  alloc ptr->f32 [temp_42_ptr_of_dct_mat_76_95] 
+         215  alloc ptr->f32 [temp_43_ptr_of_dct_mat_76_95] 
+         217  alloc f32 [temp_44_ele_of_dct_mat_76_95] 
+         220  alloc ptr->f32 [temp_45_ptr_of_mat_76_95] 
+         222  alloc f32 [temp_46_ele_of_mat_76_95] 
+         225  alloc f32 [temp_47__95] 
+         227  alloc f32 [temp_48_arithop_95] 
+         229  alloc f32 [temp_49__95] 
+         231  alloc f32 [temp_50_arithop_95] 
+         233  alloc f32 [temp_51_arithop_95] 
+         235  alloc f32 [temp_52__95] 
+         237  alloc f32 [temp_53_arithop_95] 
+         239  alloc f32 [temp_54_ret_of_my_cos_95] 
+         241  alloc f32 [temp_55_arithop_95] 
+         243  alloc f32 [temp_56__95] 
+         245  alloc f32 [temp_57_arithop_95] 
+         247  alloc f32 [temp_58__95] 
+         249  alloc f32 [temp_59_arithop_95] 
+         251  alloc f32 [temp_60_arithop_95] 
+         253  alloc f32 [temp_61__95] 
+         255  alloc f32 [temp_62_arithop_95] 
+         257  alloc f32 [temp_63_ret_of_my_cos_95] 
+         259  alloc f32 [temp_64_arithop_95] 
+         261  alloc f32 [temp_65_arithop_95] 
+         265  alloc i32 [temp_66_arithop_95] 
+         268  alloc i1 [temp_67_cmp_80] 
+         275  alloc i1 [temp_68_cmp_84] 
+         281  alloc i1 [temp_69_cmp_89] 
+         287  alloc i1 [temp_70_cmp_93] 
+          label L2_0: 
+         44    
+         45    
+         190  (nop) 
+         226  temp_47__95_0 = sitofp i32 n_76_0 to f32 
+         244  temp_56__95_0 = sitofp i32 m_76_0 to f32 
+         583  u_78_1 = i32 0_0 
+              jump label: while.head_81 
+     270  label while.head_81: 
+         269  temp_67_cmp_80_0 = icmp i32 Slt u_78_1, n_76_0 
+         273  br i1 temp_67_cmp_80_0, label while.body_81, label while.exit_81 
+     271  label while.body_81: 
+         192  (nop) 
+         228  temp_48_arithop_95_0 = Div f32 3.1415927_0, temp_47__95_0 
+         236  temp_52__95_0 = sitofp i32 u_78_1 to f32 
+         246  temp_57_arithop_95_0 = Div f32 3.1415927_0, temp_56__95_0 
+         584  v_82_1 = i32 0_0 
+              jump label: while.head_85 
+     277  label while.head_85: 
+         276  temp_68_cmp_84_0 = icmp i32 Slt v_82_1, m_76_0 
+         280  br i1 temp_68_cmp_84_0, label while.body_85, label while.exit_85 
+     278  label while.body_85: 
+         198  temp_38_ptr_of_dct_mat_76_86 = GEP dct_mat_76:ptr->Array:f32:[Some(8_0)] [Some(u_78_1), Some(v_82_1)] 
+         200  (nop) 
+         201  store 0._0:f32 temp_38_ptr_of_dct_mat_76_86:ptr->f32 
+         202  dct_mat_76 = chi dct_mat_76:201 
+         203  (nop) 
+         254  temp_61__95_0 = sitofp i32 v_82_1 to f32 
+         585  i_86_1 = i32 0_0 
+              jump label: while.head_90 
+     283  label while.head_90: 
+         282  temp_69_cmp_89_0 = icmp i32 Slt i_86_1, n_76_0 
+         286  br i1 temp_69_cmp_89_0, label while.body_90, label while.exit_90 
+     284  label while.body_90: 
+         208  (nop) 
+         230  temp_49__95_0 = sitofp i32 i_86_1 to f32 
+         586  j_91_1 = i32 0_0 
+              jump label: while.head_94 
+     289  label while.head_94: 
+         288  temp_70_cmp_93_0 = icmp i32 Slt j_91_1, m_76_0 
+         292  br i1 temp_70_cmp_93_0, label while.body_94, label while.exit_94 
+     290  label while.body_94: 
+         214  temp_42_ptr_of_dct_mat_76_95 = GEP dct_mat_76:ptr->Array:f32:[Some(8_0)] [Some(u_78_1), Some(v_82_1)] 
+         216  (nop) 
+         218  temp_44_ele_of_dct_mat_76_95_0 = load temp_42_ptr_of_dct_mat_76_95:ptr->f32 
+         219  mu dct_mat_76:218 
+         221  temp_45_ptr_of_mat_76_95 = GEP mat_76:Array:f32:[None, Some(8_0)] [Some(i_86_1), Some(j_91_1)] 
+         223  temp_46_ele_of_mat_76_95_0 = load temp_45_ptr_of_mat_76_95:ptr->f32 
+         224  mu mat_76:223 
+         232  temp_50_arithop_95_0 = Add f32 temp_49__95_0, 0.5_0 
+         234  temp_51_arithop_95_0 = Mul f32 temp_48_arithop_95_0, temp_50_arithop_95_0 
+         238  temp_53_arithop_95_0 = Mul f32 temp_51_arithop_95_0, temp_52__95_0 
+         240  temp_54_ret_of_my_cos_95_0 =  Call f32 my_cos_0(temp_53_arithop_95_0) 
+         242  temp_55_arithop_95_0 = Mul f32 temp_46_ele_of_mat_76_95_0, temp_54_ret_of_my_cos_95_0 
+         248  temp_58__95_0 = sitofp i32 j_91_1 to f32 
+         250  temp_59_arithop_95_0 = Add f32 temp_58__95_0, 0.5_0 
+         252  temp_60_arithop_95_0 = Mul f32 temp_57_arithop_95_0, temp_59_arithop_95_0 
+         256  temp_62_arithop_95_0 = Mul f32 temp_60_arithop_95_0, temp_61__95_0 
+         258  temp_63_ret_of_my_cos_95_0 =  Call f32 my_cos_0(temp_62_arithop_95_0) 
+         260  temp_64_arithop_95_0 = Mul f32 temp_55_arithop_95_0, temp_63_ret_of_my_cos_95_0 
+         262  temp_65_arithop_95_0 = Add f32 temp_44_ele_of_dct_mat_76_95_0, temp_64_arithop_95_0 
+         263  store temp_65_arithop_95_0:f32 temp_42_ptr_of_dct_mat_76_95:ptr->f32 
+         264  dct_mat_76 = chi dct_mat_76:263 
+         266  temp_66_arithop_95_0 = Add i32 j_91_1, 1_0 
+         267  (nop) 
+         587  j_91_1 = i32 temp_66_arithop_95_0 
+              jump label: while.head_94 
+     291  label while.exit_94: 
+         211  temp_41_arithop_91_0 = Add i32 i_86_1, 1_0 
+         212  (nop) 
+         588  i_86_1 = i32 temp_41_arithop_91_0 
+              jump label: while.head_90 
+     285  label while.exit_90: 
+         206  temp_40_arithop_86_0 = Add i32 v_82_1, 1_0 
+         207  (nop) 
+         589  v_82_1 = i32 temp_40_arithop_86_0 
+              jump label: while.head_85 
+     279  label while.exit_85: 
+         195  temp_37_arithop_82_0 = Add i32 u_78_1, 1_0 
+         196  (nop) 
+         590  u_78_1 = i32 temp_37_arithop_82_0 
+              jump label: while.head_81 
+     272  label while.exit_81: 
+         666  untrack m_76_0 
+         665  untrack temp_56__95_0 
+         664  untrack mat_76 
+         663  untrack n_76_0 
+         662  untrack u_78_1 
+         661  untrack temp_47__95_0 
+         524  mu dct_mat_76:274 
+         667  untrack dct_mat_76 
+         274  ret 
+ 43   Define write_mat_0 "mat_58,n_58_0,m_58_0," -> write_mat_ret_0 
+         152  alloc i32 [i_60] 
+         154  alloc ptr->f32 [temp_29_ptr_of_mat_58_64] 
+         156  alloc f32 [temp_30_ele_of_mat_58_64] 
+         161  alloc i32 [j_64] 
+         163  alloc i32 [temp_31_arithop_64] 
+         167  alloc ptr->f32 [temp_32_ptr_of_mat_58_69] 
+         169  alloc f32 [temp_33_ele_of_mat_58_69] 
+         173  alloc i32 [temp_34_arithop_69] 
+         176  alloc i1 [temp_35_cmp_62] 
+         184  alloc i1 [temp_36_cmp_67] 
+          label L3_0: 
+         42    
+         151  (nop) 
+         579  i_60_1 = i32 0_0 
+              jump label: while.head_63 
+     178  label while.head_63: 
+         177  temp_35_cmp_62_0 = icmp i32 Slt i_60_1, n_58_0 
+         181  br i1 temp_35_cmp_62_0, label while.body_63, label while.exit_63 
+     179  label while.body_63: 
+         155  temp_29_ptr_of_mat_58_64 = GEP mat_58:Array:f32:[None, Some(8_0)] [Some(i_60_1), Some(0_0)] 
+         157  temp_30_ele_of_mat_58_64_0 = load temp_29_ptr_of_mat_58_64:ptr->f32 
+         158  mu mat_58:157 
+         159   Call void putfloat_0(temp_30_ele_of_mat_58_64_0) 
+         160  (nop) 
+         580  j_64_1 = i32 1_0 
+              jump label: while.head_68 
+     186  label while.head_68: 
+         185  temp_36_cmp_67_0 = icmp i32 Slt j_64_1, m_58_0 
+         189  br i1 temp_36_cmp_67_0, label while.body_68, label while.exit_68 
+     187  label while.body_68: 
+         166   Call void putch_0(32_0) 
+         168  temp_32_ptr_of_mat_58_69 = GEP mat_58:Array:f32:[None, Some(8_0)] [Some(i_60_1), Some(j_64_1)] 
+         170  temp_33_ele_of_mat_58_69_0 = load temp_32_ptr_of_mat_58_69:ptr->f32 
+         171  mu mat_58:170 
+         172   Call void putfloat_0(temp_33_ele_of_mat_58_69_0) 
+         174  temp_34_arithop_69_0 = Add i32 j_64_1, 1_0 
+         175  (nop) 
+         581  j_64_1 = i32 temp_34_arithop_69_0 
+              jump label: while.head_68 
+     188  label while.exit_68: 
+         162   Call void putch_0(10_0) 
+         164  temp_31_arithop_64_0 = Add i32 i_60_1, 1_0 
+         165  (nop) 
+         582  i_60_1 = i32 temp_31_arithop_64_0 
+              jump label: while.head_63 
+     180  label while.exit_63: 
+         660  untrack mat_58 
+         659  untrack n_58_0 
+         658  untrack m_58_0 
+         657  untrack i_60_1 
+         153   Call void putch_0(10_0) 
+              jump label: exit_32 
+     183  label exit_32: 
+         182  ret 
+ 41   Define my_cos_0 "x_54_0," -> my_cos_ret_0 
+         145  alloc f32 [temp_27_arithop_56] 
+         147  alloc f32 [temp_28_ret_of_my_sin_56] 
+          label L4_0: 
+         146  temp_27_arithop_56_0 = Add f32 x_54_0, 1.5707964_0 
+         655  untrack x_54_0 
+         148  temp_28_ret_of_my_sin_56_0 =  Call f32 my_sin_0(temp_27_arithop_56_0) 
+         656  untrack temp_27_arithop_56_0 
+         149  ret temp_28_ret_of_my_sin_56_0 
+ 40   Define my_sin_0 "x_39_0," -> my_sin_ret_0 
+         101  alloc f32 [temp_15_ret_of_my_sin_impl_41] 
+         104  alloc f32 [temp_16_arithop_50] 
+         107  alloc f32 [temp_17_arithop_47] 
+         110  alloc f32 [temp_18_arithop_44] 
+         112  alloc i32 [temp_19__44] 
+         115  alloc i32 [xx_44] 
+         116  alloc f32 [temp_20__44] 
+         118  alloc f32 [temp_21_arithop_44] 
+         120  alloc f32 [temp_22_arithop_44] 
+         123  alloc i1 [temp_23_cmp_42] 
+         125  alloc i1 [temp_24_cmp_42] 
+         133  alloc i1 [temp_25_cmp_47] 
+         138  alloc i1 [temp_26_cmp_50] 
+          label L5_0: 
+         124  temp_23_cmp_42_0 = fcmp f32 Ogt x_39_0, 6.2831855_0 
+         132  br i1 temp_23_cmp_42_0, label branch_short_circuit_c_true_309, label branch_short_circuit_p_false_309 
+     127  label branch_short_circuit_c_true_309: 
+         647  untrack temp_24_cmp_42_0 
+         626  untrack temp_24_cmp_42_0 
+         625  untrack temp_23_cmp_42_0 
+         111  temp_18_arithop_44_0 = Div f32 x_39_0, 6.2831855_0 
+         113  temp_19__44_0 = fptosi f32 temp_18_arithop_44_0 to i32 
+         629  untrack temp_18_arithop_44_0 
+         114  (nop) 
+         117  temp_20__44_0 = sitofp i32 temp_19__44_0 to f32 
+         632  untrack temp_19__44_0 
+         119  temp_21_arithop_44_0 = Mul f32 temp_20__44_0, 6.2831855_0 
+         633  untrack temp_20__44_0 
+         121  temp_22_arithop_44_0 = Sub f32 x_39_0, temp_21_arithop_44_0 
+         630  untrack temp_21_arithop_44_0 
+         628  untrack x_39_0 
+         122  (nop) 
+         573  x_39_2 = f32 temp_22_arithop_44_0 
+         631  untrack temp_22_arithop_44_0 
+              jump label: branch_short_circuit_c_false_309 
+     128  label branch_short_circuit_c_false_309: 
+              jump label: L6_0 
+          label L6_0: 
+         134  temp_25_cmp_47_0 = fcmp f32 Ogt x_39_2, 3.1415927_0 
+         137  br i1 temp_25_cmp_47_0, label branch_true_48, label UP_29_0 
+     135  label branch_true_48: 
+         634  untrack temp_25_cmp_47_0 
+         108  temp_17_arithop_47_0 = Sub f32 x_39_2, 6.2831855_0 
+         638  untrack x_39_2 
+         109  (nop) 
+         574  x_39_4 = f32 temp_17_arithop_47_0 
+         637  untrack temp_17_arithop_47_0 
+              jump label: branch_false_48 
+     136  label branch_false_48: 
+              jump label: L7_0 
+          label L7_0: 
+         139  temp_26_cmp_50_0 = fcmp f32 Olt x_39_4, -3.1415927_0 
+         142  br i1 temp_26_cmp_50_0, label branch_true_51, label UP_17_0 
+     140  label branch_true_51: 
+         639  untrack temp_26_cmp_50_0 
+         105  temp_16_arithop_50_0 = Add f32 x_39_4, 6.2831855_0 
+         643  untrack x_39_4 
+         106  (nop) 
+         575  x_39_6 = f32 temp_16_arithop_50_0 
+         642  untrack temp_16_arithop_50_0 
+              jump label: branch_false_51 
+     141  label branch_false_51: 
+              jump label: L8_0 
+          label L8_0: 
+         102  temp_15_ret_of_my_sin_impl_41_0 =  Call f32 my_sin_impl_0(x_39_6) 
+         644  untrack x_39_6 
+         103  ret temp_15_ret_of_my_sin_impl_41_0 
+     572  label UP_17_0: 
+         641  untrack temp_26_cmp_50_0 
+         640  untrack temp_16_arithop_50_0 
+         576  x_39_6 = f32 x_39_4 
+         645  untrack x_39_4 
+              jump label: branch_false_51 
+     571  label UP_29_0: 
+         636  untrack temp_17_arithop_47_0 
+         635  untrack temp_25_cmp_47_0 
+         577  x_39_4 = f32 x_39_2 
+         646  untrack x_39_2 
+              jump label: branch_false_48 
+     129  label branch_short_circuit_p_false_309: 
+         627  untrack temp_23_cmp_42_0 
+         126  temp_24_cmp_42_0 = fcmp f32 Olt x_39_0, -6.2831855_0 
+         131  br i1 temp_24_cmp_42_0, label branch_short_circuit_c_true_309, label UP_75_0 
+     570  label UP_75_0: 
+         653  untrack temp_18_arithop_44_0 
+         652  untrack temp_20__44_0 
+         651  untrack temp_24_cmp_42_0 
+         650  untrack temp_19__44_0 
+         649  untrack temp_22_arithop_44_0 
+         648  untrack temp_21_arithop_44_0 
+         578  x_39_2 = f32 x_39_0 
+         654  untrack x_39_0 
+              jump label: branch_short_circuit_c_false_309 
+ 39   Define my_sin_impl_0 "x_32_0," -> my_sin_impl_ret_0 
+         83   alloc f32 [temp_10_arithop_34] 
+         85   alloc f32 [temp_11_ret_of_my_sin_impl_34] 
+         87   alloc f32 [temp_12_ret_of_p_34] 
+         92   alloc f32 [temp_13_ret_of_my_fabs_35] 
+         94   alloc i1 [temp_14_cmp_35] 
+          label L9_0: 
+         93   temp_13_ret_of_my_fabs_35_0 =  Call f32 my_fabs_0(x_32_0) 
+         95   temp_14_cmp_35_0 = fcmp f32 Ole temp_13_ret_of_my_fabs_35_0, 0.000001_0 
+         616  untrack temp_13_ret_of_my_fabs_35_0 
+         98   br i1 temp_14_cmp_35_0, label branch_true_36, label branch_false_36 
+     96   label branch_true_36: 
+         620  untrack temp_10_arithop_34_0 
+         619  untrack temp_11_ret_of_my_sin_impl_34_0 
+         618  untrack temp_14_cmp_35_0 
+         617  untrack temp_12_ret_of_p_34_0 
+         91   ret x_32_0 
+     97   label branch_false_36: 
+         621  untrack temp_14_cmp_35_0 
+              jump label: L10_0 
+          label L10_0: 
+         84   temp_10_arithop_34_0 = Div f32 x_32_0, 3.0_0 
+         623  untrack x_32_0 
+         86   temp_11_ret_of_my_sin_impl_34_0 =  Call f32 my_sin_impl_0(temp_10_arithop_34_0) 
+         622  untrack temp_10_arithop_34_0 
+         88   temp_12_ret_of_p_34_0 =  Call f32 p_0(temp_11_ret_of_my_sin_impl_34_0) 
+         624  untrack temp_11_ret_of_my_sin_impl_34_0 
+         89   ret temp_12_ret_of_p_34_0 
+ 38   Define p_0 "x_28_0," -> p_ret_0 
+         66   alloc f32 [temp_3__30] 
+         68   alloc f32 [temp_4_arithop_30] 
+         70   alloc f32 [temp_5__30] 
+         72   alloc f32 [temp_6_arithop_30] 
+         74   alloc f32 [temp_7_arithop_30] 
+         76   alloc f32 [temp_8_arithop_30] 
+         78   alloc f32 [temp_9_arithop_30] 
+          label L11_0: 
+         67   (nop) 
+         69   temp_4_arithop_30_0 = Mul f32 3._0, x_28_0 
+         71   (nop) 
+         73   temp_6_arithop_30_0 = Mul f32 4._0, x_28_0 
+         75   temp_7_arithop_30_0 = Mul f32 temp_6_arithop_30_0, x_28_0 
+         611  untrack temp_6_arithop_30_0 
+         77   temp_8_arithop_30_0 = Mul f32 temp_7_arithop_30_0, x_28_0 
+         614  untrack temp_7_arithop_30_0 
+         612  untrack x_28_0 
+         79   temp_9_arithop_30_0 = Sub f32 temp_4_arithop_30_0, temp_8_arithop_30_0 
+         615  untrack temp_4_arithop_30_0 
+         613  untrack temp_8_arithop_30_0 
+         80   ret temp_9_arithop_30_0 
+ 37   Define my_fabs_0 "x_21_0," -> my_fabs_ret_0 
+         52   alloc f32 [temp_0__23] 
+         57   alloc f32 [temp_1__24] 
+         59   alloc i1 [temp_2_cmp_24] 
+          label L12_0: 
+         58   (nop) 
+         60   temp_2_cmp_24_0 = fcmp f32 Ogt x_21_0, 0._0 
+         63   br i1 temp_2_cmp_24_0, label branch_true_25, label branch_false_25 
+     61   label branch_true_25: 
+         608  untrack temp_0__23_0 
+         607  untrack temp_2_cmp_24_0 
+         56   ret x_21_0 
+     62   label branch_false_25: 
+         609  untrack temp_2_cmp_24_0 
+              jump label: L13_0 
+          label L13_0: 
+         53   temp_0__23_0 = Sub f32 0.0_0, x_21_0 
+         610  untrack x_21_0 
+         54   ret temp_0__23_0 

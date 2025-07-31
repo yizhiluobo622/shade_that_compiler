@@ -1,0 +1,88 @@
+# input: "./for_auto_test/00sy/72_hanoi.sy"
+ 15   label global_0: 
+ 0    global Fn[]->getint_ret_0 getint_0 
+ 1    global Fn[]->getch_ret_0 getch_0 
+ 2    global Fn[zz_array_3]->getarray_ret_0 getarray_0 
+ 3    global Fn[]->getfloat_ret_0 getfloat_0 
+ 4    global Fn[zz_array_5]->getfarray_ret_0 getfarray_0 
+ 5    global Fn[zz_int_6]->putint_ret_0 putint_0 
+ 6    global Fn[zz_ch_7]->putch_ret_0 putch_0 
+ 7    global Fn[x_8, zz_array_8]->putarray_ret_0 putarray_0 
+ 8    global Fn[zz_float_9]->putfloat_ret_0 putfloat_0 
+ 9    global Fn[zz_len_10, zz_farray_10]->putfarray_ret_0 putfarray_0 
+ 10   global Fn[]->putf_ret_0 putf_0 
+ 11   global Fn[]->starttime_ret_0 starttime_0 
+ 12   global Fn[]->stoptime_ret_0 stoptime_0 
+ 13   global Fn[zz_ptr_14, zz_val_14, zz_len_14]->memset_ret_0 memset_0 
+ 14   global Fn[zz_dest_15, zz_ptr_15, zz_len_15]->memcpy_ret_0 memcpy_0 
+ 18   Define main_0 "" -> main_ret_0 
+         42   alloc i32 [temp_3_ret_of_getint_35] 
+         45   alloc i32 [n_35] 
+         48   alloc i32 [temp_4_ret_of_getint_39] 
+         52   alloc i32 [temp_5_arithop_39] 
+         55   alloc i1 [temp_6_cmp_37] 
+          label L0_0: 
+         43   temp_3_ret_of_getint_35_0 =  Call i32 getint_0() 
+         44   (nop) 
+         64   n_35_1 = i32 temp_3_ret_of_getint_35_0 
+         80   untrack temp_3_ret_of_getint_35_0 
+              jump label: while.head_38 
+     57   label while.head_38: 
+         56   temp_6_cmp_37_0 = icmp i32 Sgt n_35_1, 0_0 
+         60   br i1 temp_6_cmp_37_0, label while.body_38, label while.exit_38 
+     58   label while.body_38: 
+         49   temp_4_ret_of_getint_39_0 =  Call i32 getint_0() 
+         50    Call void hanoi_0(temp_4_ret_of_getint_39_0, 1_0, 2_0, 3_0) 
+         51    Call void putch_0(10_0) 
+         53   temp_5_arithop_39_0 = Sub i32 n_35_1, 1_0 
+         54   (nop) 
+         65   n_35_1 = i32 temp_5_arithop_39_0 
+              jump label: while.head_38 
+     59   label while.exit_38: 
+         81   untrack n_35_1 
+         47   ret 0_0 
+ 17   Define hanoi_0 "n_24_0,one_24_0,two_24_0,three_24_0," -> hanoi_ret_0 
+         26   alloc i32 [temp_0_arithop_30] 
+         30   alloc i32 [temp_1_arithop_30] 
+         34   alloc i1 [temp_2_cmp_27] 
+          label L1_0: 
+         35   temp_2_cmp_27_0 = icmp i32 Eq n_24_0, 1_0 
+         38   br i1 temp_2_cmp_27_0, label branch_true_28, label branch_false_28 
+     36   label branch_true_28: 
+         71   untrack temp_2_cmp_27_0 
+         70   untrack n_24_0 
+         69   untrack two_24_0 
+         68   untrack temp_0_arithop_30_0 
+         33    Call void move_0(one_24_0, three_24_0) 
+         74   untrack three_24_0 
+         73   untrack one_24_0 
+              jump label: gather_9 
+     39   label gather_9: 
+              jump label: exit_5 
+     41   label exit_5: 
+         40   ret 
+     37   label branch_false_28: 
+         72   untrack temp_2_cmp_27_0 
+         27   temp_0_arithop_30_0 = Sub i32 n_24_0, 1_0 
+         78   untrack n_24_0 
+         28    Call void hanoi_0(temp_0_arithop_30_0, one_24_0, three_24_0, two_24_0) 
+         29    Call void move_0(one_24_0, three_24_0) 
+         31   (nop) 
+         32    Call void hanoi_0(temp_0_arithop_30_0, two_24_0, one_24_0, three_24_0) 
+         79   untrack two_24_0 
+         77   untrack three_24_0 
+         76   untrack temp_0_arithop_30_0 
+         75   untrack one_24_0 
+              jump label: gather_9 
+ 16   Define move_0 "x_16_0,y_16_0," -> move_ret_0 
+          label L2_0: 
+         19    Call void putint_0(x_16_0) 
+         67   untrack x_16_0 
+         20    Call void putch_0(32_0) 
+         21    Call void putint_0(y_16_0) 
+         66   untrack y_16_0 
+         22    Call void putch_0(44_0) 
+         23    Call void putch_0(32_0) 
+              jump label: exit_2 
+     25   label exit_2: 
+         24   ret 

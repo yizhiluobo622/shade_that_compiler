@@ -1,0 +1,368 @@
+# input: "./for_auto_test/00sy/95_float.sy"
+ 65   label global_0: 
+ 64   global i32 FIVE_0 
+ 61   global i32 THREE_0 
+ 57   global i32 TWO_0 
+ 53   global i32 MAX_0 
+ 49   global f32 CONV2_0 
+ 45   global f32 CONV1_0 
+ 41   global f32 EVAL3_0 
+ 38   global f32 EVAL2_0 
+ 35   global f32 EVAL1_0 
+ 32   global f32 FACT_0 
+ 29   global f32 HEX2_0 
+ 26   global f32 PI_HEX_0 
+ 23   global f32 EPS_0 
+ 20   global f32 PI_0 
+ 17   global f32 RADIUS_0 
+ 0    global Fn[]->getint_ret_0 getint_0 
+ 1    global Fn[]->getch_ret_0 getch_0 
+ 2    global Fn[zz_array_3]->getarray_ret_0 getarray_0 
+ 3    global Fn[]->getfloat_ret_0 getfloat_0 
+ 4    global Fn[zz_array_5]->getfarray_ret_0 getfarray_0 
+ 5    global Fn[zz_int_6]->putint_ret_0 putint_0 
+ 6    global Fn[zz_ch_7]->putch_ret_0 putch_0 
+ 7    global Fn[x_8, zz_array_8]->putarray_ret_0 putarray_0 
+ 8    global Fn[zz_float_9]->putfloat_ret_0 putfloat_0 
+ 9    global Fn[zz_len_10, zz_farray_10]->putfarray_ret_0 putfarray_0 
+ 10   global Fn[]->putf_ret_0 putf_0 
+ 11   global Fn[]->starttime_ret_0 starttime_0 
+ 12   global Fn[]->stoptime_ret_0 stoptime_0 
+ 13   global Fn[zz_ptr_14, zz_val_14, zz_len_14]->memset_ret_0 memset_0 
+ 14   global Fn[zz_dest_15, zz_ptr_15, zz_len_15]->memcpy_ret_0 memcpy_0 
+ 15   store 5.5_0:f32 *RADIUS_0:ptr->f32 
+ 16   RADIUS_0 = chi RADIUS_0:15 
+ 18   store 03.141592653589793_0:f32 *PI_0:ptr->f32 
+ 19   PI_0 = chi PI_0:18 
+ 21   store 1e-6_0:f32 *EPS_0:ptr->f32 
+ 22   EPS_0 = chi EPS_0:21 
+ 24   store 0x1.921fb6p+1_0:f32 *PI_HEX_0:ptr->f32 
+ 25   PI_HEX_0 = chi PI_HEX_0:24 
+ 27   store 0x.AP-3_0:f32 *HEX2_0:ptr->f32 
+ 28   HEX2_0 = chi HEX2_0:27 
+ 30   store -33000._0:f32 *FACT_0:ptr->f32 
+ 31   FACT_0 = chi FACT_0:30 
+ 33   store 95.03319_0:f32 *EVAL1_0:ptr->f32 
+ 34   EVAL1_0 = chi EVAL1_0:33 
+ 36   store 34.55752_0:f32 *EVAL2_0:ptr->f32 
+ 37   EVAL2_0 = chi EVAL2_0:36 
+ 39   store 34.55752_0:f32 *EVAL3_0:ptr->f32 
+ 40   EVAL3_0 = chi EVAL3_0:39 
+ 42   temp_0__0 = sitofp i32 233_0 to f32 
+ 43   store temp_0__0:i32 *CONV1_0:ptr->f32 
+ 44   CONV1_0 = chi CONV1_0:43 
+ 46   temp_1__0 = sitofp i32 0xfff_0 to f32 
+ 47   store temp_1__0:i32 *CONV2_0:ptr->f32 
+ 48   CONV2_0 = chi CONV2_0:47 
+ 50   temp_2__0 = fptosi f32 1e9_0 to i32 
+ 51   store temp_2__0:f32 *MAX_0:ptr->i32 
+ 52   MAX_0 = chi MAX_0:51 
+ 54   temp_3__0 = fptosi f32 2.9_0 to i32 
+ 55   store temp_3__0:f32 *TWO_0:ptr->i32 
+ 56   TWO_0 = chi TWO_0:55 
+ 58   temp_4__0 = fptosi f32 3.2_0 to i32 
+ 59   store temp_4__0:f32 *THREE_0:ptr->i32 
+ 60   THREE_0 = chi THREE_0:59 
+ 62   store 5_0:i32 *FIVE_0:ptr->i32 
+ 63   FIVE_0 = chi FIVE_0:62 
+ 73   Define main_0 "" -> main_ret_0 
+         158  alloc i32 [temp_22_ret_of_float_eq_73] 
+         161  alloc i32 [temp_23_ret_of_float_eq_73] 
+         164  alloc i32 [temp_24_ret_of_float_eq_73] 
+         167  alloc i32 [temp_25__73] 
+         169  alloc f32 [temp_26_ret_of_circle_area_73] 
+         171  alloc f32 [temp_27_ret_of_circle_area_73] 
+         173  alloc i32 [temp_28_ret_of_float_eq_73] 
+         176  alloc i32 [temp_29_ret_of_float_eq_73] 
+         180  alloc i32 [i_73] 
+         182  alloc i32 [p_73] 
+         184  alloc ptr->f32 [temp_30_array_init_ptr_73] 
+         187  alloc ptr->f32 [temp_31_array_init_ptr_73] 
+         191  alloc ptr->f32 [temp_32_array_init_ptr_73] 
+         195  alloc Array:f32:[Some(10_0)] [arr_73] 
+         196  alloc ptr->f32 [temp_33_ele_ptr_of_arr_73_73] 
+         198  alloc i32 [temp_34_ret_of_getfarray_73] 
+         201  alloc i32 [len_73] 
+         202  alloc ptr->f32 [temp_35_ele_ptr_of_arr_73_73] 
+         207  alloc f32 [temp_36_ret_of_getfloat_96] 
+         210  alloc f32 [input_96] 
+         211  alloc f32 [temp_37_arithop_96] 
+         213  alloc f32 [temp_38_arithop_96] 
+         216  alloc f32 [area_96] 
+         217  alloc i32 [temp_39__96] 
+         219  alloc f32 [temp_40_ret_of_circle_area_96] 
+         222  alloc f32 [area_trunc_96] 
+         223  alloc ptr->f32 [temp_41_ptr_of_arr_73_96] 
+         225  alloc ptr->f32 [temp_42_ptr_of_arr_73_96] 
+         227  alloc f32 [temp_43_ele_of_arr_73_96] 
+         230  alloc f32 [temp_44_arithop_96] 
+         236  alloc i32 [temp_45__96] 
+         240  alloc f32 [temp_46__96] 
+         242  alloc f32 [temp_47_arithop_96] 
+         244  alloc i32 [temp_48__96] 
+         247  alloc i32 [temp_49_arithop_96] 
+         254  alloc i1 [temp_50__2374] 
+         259  alloc i1 [temp_51_booltrans_82] 
+         261  alloc i1 [temp_52_logicnot_82] 
+         263  alloc i1 [temp_53_booltrans_82] 
+         265  alloc i1 [temp_54_logicnot_82] 
+         270  alloc i1 [temp_55_f32_to_bool_85] 
+         272  alloc i1 [temp_56_i32_to_bool_85] 
+         280  alloc i1 [temp_57_i32_to_bool_88] 
+         282  alloc i1 [temp_58_f32_to_bool_88] 
+         290  alloc i1 [temp_59_cmp_94] 
+          label L0_0: 
+         159  temp_22_ret_of_float_eq_73_0 =  Call i32 float_eq_0(0.078125_0, -33000._0) 
+         160   Call void assert_not_0(temp_22_ret_of_float_eq_73_0) 
+         336  untrack temp_22_ret_of_float_eq_73_0 
+         162  temp_23_ret_of_float_eq_73_0 =  Call i32 float_eq_0(95.03319_0, 34.55752_0) 
+         163   Call void assert_not_0(temp_23_ret_of_float_eq_73_0) 
+         337  untrack temp_23_ret_of_float_eq_73_0 
+         165  temp_24_ret_of_float_eq_73_0 =  Call i32 float_eq_0(34.55752_0, 34.55752_0) 
+         166   Call void assert_0(temp_24_ret_of_float_eq_73_0) 
+         335  untrack temp_24_ret_of_float_eq_73_0 
+         168  (nop) 
+         170  temp_26_ret_of_circle_area_73_0 =  Call f32 circle_area_0(5_0) 
+         172  temp_27_ret_of_circle_area_73_0 =  Call f32 circle_area_0(5_0) 
+         174  temp_28_ret_of_float_eq_73_0 =  Call i32 float_eq_0(temp_26_ret_of_circle_area_73_0, temp_27_ret_of_circle_area_73_0) 
+         339  untrack temp_26_ret_of_circle_area_73_0 
+         334  untrack temp_27_ret_of_circle_area_73_0 
+         175   Call void assert_0(temp_28_ret_of_float_eq_73_0) 
+         333  untrack temp_28_ret_of_float_eq_73_0 
+         177  temp_29_ret_of_float_eq_73_0 =  Call i32 float_eq_0(233._0, 4095._0) 
+         178   Call void assert_not_0(temp_29_ret_of_float_eq_73_0) 
+         338  untrack temp_29_ret_of_float_eq_73_0 
+              jump label: L1_0 
+          label L1_0: 
+         255  (nop) 
+              jump label: branch_true_80 
+     256  label branch_true_80: 
+         253   Call void ok_0() 
+              jump label: branch_false_80 
+     257  label branch_false_80: 
+              jump label: L2_0 
+          label L2_0: 
+         260  (nop) 
+         262  (nop) 
+         264  temp_53_booltrans_82_0 = icmp i1 Ne false_0, 0_0 
+         266  temp_54_logicnot_82_0 = xor i1 temp_53_booltrans_82_0, true 
+         340  untrack temp_53_booltrans_82_0 
+         269  br i1 temp_54_logicnot_82_0, label branch_true_83, label branch_false_83 
+     267  label branch_true_83: 
+         341  untrack temp_54_logicnot_82_0 
+         252   Call void ok_0() 
+              jump label: branch_false_83 
+     268  label branch_false_83: 
+         342  untrack temp_54_logicnot_82_0 
+              jump label: L3_0 
+          label L3_0: 
+         271  (nop) 
+              jump label: branch_short_circuit_c_false_486 
+     276  label branch_short_circuit_p_true_486: 
+         273  (nop) 
+              jump label: branch_short_circuit_c_true_486 
+     274  label branch_short_circuit_c_true_486: 
+         251   Call void error_0() 
+              jump label: branch_short_circuit_c_false_486 
+     275  label branch_short_circuit_c_false_486: 
+              jump label: L4_0 
+          label L4_0: 
+         281  (nop) 
+              jump label: branch_short_circuit_p_false_494 
+     284  label branch_short_circuit_c_true_494: 
+         250   Call void ok_0() 
+              jump label: branch_short_circuit_c_false_494 
+     285  label branch_short_circuit_c_false_494: 
+              jump label: L5_0 
+          label L5_0: 
+         179  (nop) 
+         181  (nop) 
+         183   
+         185  temp_30_array_init_ptr_73 = GEP arr_73_0:Array:f32:[Some(10_0)] [] 
+         186   Call void memset_0(temp_30_array_init_ptr_73, 0_0, 40_0) 
+         346  untrack temp_30_array_init_ptr_73 
+         298  mu arr_73_0:186 
+         299  arr_73_1 = chi arr_73_0:186 
+         188  temp_31_array_init_ptr_73 = GEP arr_73_1:Array:f32:[Some(10_0)] [Some(0_0)] 
+         189  store 1._0:f32 temp_31_array_init_ptr_73:ptr->f32 
+         345  untrack temp_31_array_init_ptr_73 
+         190  arr_73_2 = chi arr_73_1:189 
+         192  temp_32_array_init_ptr_73 = GEP arr_73_2:Array:f32:[Some(10_0)] [Some(1_0)] 
+         193  store 2._0:f32 temp_32_array_init_ptr_73:ptr->f32 
+         344  untrack temp_32_array_init_ptr_73 
+         194  arr_73_3 = chi arr_73_2:193 
+         197  temp_33_ele_ptr_of_arr_73_73 = GEP arr_73_3:Array:f32:[Some(10_0)] [] 
+         199  temp_34_ret_of_getfarray_73_0 =  Call i32 getfarray_0(temp_33_ele_ptr_of_arr_73_73) 
+         343  untrack temp_33_ele_ptr_of_arr_73_73 
+         300  mu arr_73_3:199 
+         301  arr_73_4 = chi arr_73_3:199 
+         200  (nop) 
+         307  p_73_1 = i32 0_0 
+         308  i_73_1 = i32 1_0 
+              jump label: while.head_95 
+     292  label while.head_95: 
+         291  temp_59_cmp_94_0 = icmp i32 Slt i_73_1, 1000000000_0 
+         295  br i1 temp_59_cmp_94_0, label while.body_95, label while.exit_95 
+     293  label while.body_95: 
+         208  temp_36_ret_of_getfloat_96_0 =  Call f32 getfloat_0() 
+         209  (nop) 
+         212  temp_37_arithop_96_0 = Mul f32 3.1415927_0, temp_36_ret_of_getfloat_96_0 
+         214  temp_38_arithop_96_0 = Mul f32 temp_37_arithop_96_0, temp_36_ret_of_getfloat_96_0 
+         215  (nop) 
+         218  temp_39__96_0 = fptosi f32 temp_36_ret_of_getfloat_96_0 to i32 
+         220  temp_40_ret_of_circle_area_96_0 =  Call f32 circle_area_0(temp_39__96_0) 
+         221  (nop) 
+         224  temp_41_ptr_of_arr_73_96 = GEP arr_73_5:Array:f32:[Some(10_0)] [Some(p_73_1)] 
+         226  (nop) 
+         228  temp_43_ele_of_arr_73_96_0 = load temp_41_ptr_of_arr_73_96:ptr->f32 
+         229  mu arr_73_5:228 
+         231  temp_44_arithop_96_0 = Add f32 temp_43_ele_of_arr_73_96_0, temp_36_ret_of_getfloat_96_0 
+         232  store temp_44_arithop_96_0:f32 temp_41_ptr_of_arr_73_96:ptr->f32 
+         233  arr_73_6 = chi arr_73_5:232 
+         234   Call void putfloat_0(temp_38_arithop_96_0) 
+         235   Call void putch_0(32_0) 
+         237  temp_45__96_0 = fptosi f32 temp_40_ret_of_circle_area_96_0 to i32 
+         238   Call void putint_0(temp_45__96_0) 
+         239   Call void putch_0(10_0) 
+         241  temp_46__96_0 = sitofp i32 i_73_1 to f32 
+         243  temp_47_arithop_96_0 = Mul f32 temp_46__96_0, 10._0 
+         245  temp_48__96_0 = fptosi f32 temp_47_arithop_96_0 to i32 
+         246  (nop) 
+         248  temp_49_arithop_96_0 = Add i32 p_73_1, 1_0 
+         249  (nop) 
+         309  p_73_1 = i32 temp_49_arithop_96_0 
+         310  i_73_1 = i32 temp_48__96_0 
+              jump label: while.head_95 
+     294  label while.exit_95: 
+         348  untrack p_73_1 
+         347  untrack i_73_1 
+         203  temp_35_ele_ptr_of_arr_73_73 = GEP arr_73_5:Array:f32:[Some(10_0)] [] 
+         204   Call void putfarray_0(temp_34_ret_of_getfarray_73_0, temp_35_ele_ptr_of_arr_73_73) 
+         350  untrack temp_35_ele_ptr_of_arr_73_73 
+         349  untrack temp_34_ret_of_getfarray_73_0 
+         302  mu arr_73_5:204 
+         303  arr_73_7 = chi arr_73_5:204 
+         206  ret 0_0 
+     286  label branch_short_circuit_p_false_494: 
+         283  (nop) 
+              jump label: branch_short_circuit_c_true_494 
+ 72   Define assert_not_0 "cond_63_0," -> assert_not_ret_0 
+         150  alloc i1 [temp_21__1818] 
+          label L6_0: 
+         151  temp_21__1818_0 = icmp i32 Ne cond_63_0, 0_0 
+         330  untrack cond_63_0 
+         154  br i1 temp_21__1818_0, label branch_true_67, label branch_false_67 
+     152  label branch_true_67: 
+         331  untrack temp_21__1818_0 
+         149   Call void error_0() 
+              jump label: gather_33 
+     155  label gather_33: 
+              jump label: exit_29 
+     157  label exit_29: 
+         156  ret 
+     153  label branch_false_67: 
+         332  untrack temp_21__1818_0 
+         148   Call void ok_0() 
+              jump label: gather_33 
+ 71   Define assert_0 "cond_54_0," -> assert_ret_0 
+         138  alloc i1 [temp_19_booltrans_57] 
+         140  alloc i1 [temp_20_logicnot_57] 
+          label L7_0: 
+         139  temp_19_booltrans_57_0 = icmp i32 Ne cond_54_0, 0_0 
+         326  untrack cond_54_0 
+         141  temp_20_logicnot_57_0 = xor i1 temp_19_booltrans_57_0, true 
+         327  untrack temp_19_booltrans_57_0 
+         144  br i1 temp_20_logicnot_57_0, label branch_true_58, label branch_false_58 
+     142  label branch_true_58: 
+         328  untrack temp_20_logicnot_57_0 
+         137   Call void error_0() 
+              jump label: gather_27 
+     145  label gather_27: 
+              jump label: exit_23 
+     147  label exit_23: 
+         146  ret 
+     143  label branch_false_58: 
+         329  untrack temp_20_logicnot_57_0 
+         136   Call void ok_0() 
+              jump label: gather_27 
+ 70   Define ok_0 "" -> ok_ret_0 
+          label L8_0: 
+         131   Call void putch_0(111_0) 
+         132   Call void putch_0(107_0) 
+         133   Call void putch_0(10_0) 
+              jump label: exit_20 
+     135  label exit_20: 
+         134  ret 
+ 69   Define error_0 "" -> error_ret_0 
+          label L9_0: 
+         123   Call void putch_0(101_0) 
+         124   Call void putch_0(114_0) 
+         125   Call void putch_0(114_0) 
+         126   Call void putch_0(111_0) 
+         127   Call void putch_0(114_0) 
+         128   Call void putch_0(10_0) 
+              jump label: exit_17 
+     130  label exit_17: 
+         129  ret 
+ 68   Define float_eq_0 "a_32_0,b_32_0," -> float_eq_ret_0 
+         108  alloc i32 [temp_15__38] 
+         111  alloc f32 [temp_16_arithop_35] 
+         113  alloc f32 [temp_17_ret_of_float_abs_35] 
+         115  alloc i1 [temp_18_cmp_35] 
+          label L10_0: 
+         112  temp_16_arithop_35_0 = Sub f32 a_32_0, b_32_0 
+         323  untrack b_32_0 
+         322  untrack a_32_0 
+         114  temp_17_ret_of_float_abs_35_0 =  Call f32 float_abs_0(temp_16_arithop_35_0) 
+         321  untrack temp_16_arithop_35_0 
+         116  temp_18_cmp_35_0 = fcmp f32 Olt temp_17_ret_of_float_abs_35_0, 0.000001_0 
+         320  untrack temp_17_ret_of_float_abs_35_0 
+         119  br i1 temp_18_cmp_35_0, label branch_true_36, label branch_false_36 
+     117  label branch_true_36: 
+         324  untrack temp_18_cmp_35_0 
+         109  (nop) 
+         110  ret 1_0 
+     118  label branch_false_36: 
+         325  untrack temp_18_cmp_35_0 
+         106  ret 0_0 
+ 67   Define circle_area_0 "radius_28_0," -> circle_area_ret_0 
+         89   alloc i32 [temp_8_arithop_30] 
+         91   alloc f32 [temp_9__30] 
+         93   alloc f32 [temp_10_arithop_30] 
+         95   alloc f32 [temp_11__30] 
+         97   alloc f32 [temp_12_arithop_30] 
+         99   alloc f32 [temp_13__30] 
+         101  alloc f32 [temp_14_arithop_30] 
+          label L11_0: 
+         90   temp_8_arithop_30_0 = Mul i32 radius_28_0, radius_28_0 
+         315  untrack radius_28_0 
+         92   temp_9__30_0 = sitofp i32 temp_8_arithop_30_0 to f32 
+         319  untrack temp_8_arithop_30_0 
+         94   temp_10_arithop_30_0 = Mul f32 temp_9__30_0, 3.1415927_0 
+         316  untrack temp_9__30_0 
+         96   (nop) 
+         98   temp_12_arithop_30_0 = Mul f32 temp_10_arithop_30_0, 2._0 
+         318  untrack temp_10_arithop_30_0 
+         100  (nop) 
+         102  temp_14_arithop_30_0 = Div f32 temp_12_arithop_30_0, 2._0 
+         317  untrack temp_12_arithop_30_0 
+         103  ret temp_14_arithop_30_0 
+ 66   Define float_abs_0 "x_21_0," -> float_abs_ret_0 
+         77   alloc f32 [temp_5__24] 
+         80   alloc f32 [temp_6__24] 
+         82   alloc i1 [temp_7_cmp_24] 
+          label L12_0: 
+         81   (nop) 
+         83   temp_7_cmp_24_0 = fcmp f32 Olt x_21_0, 0._0 
+         86   br i1 temp_7_cmp_24_0, label branch_true_25, label branch_false_25 
+     84   label branch_true_25: 
+         311  untrack temp_7_cmp_24_0 
+         78   temp_5__24_0 = Sub f32 0.0_0, x_21_0 
+         314  untrack x_21_0 
+         79   ret temp_5__24_0 
+     85   label branch_false_25: 
+         313  untrack temp_7_cmp_24_0 
+         312  untrack temp_5__24_0 
+              jump label: L13_0 
+          label L13_0: 
+         75   ret x_21_0 

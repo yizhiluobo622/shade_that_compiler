@@ -1,0 +1,178 @@
+# input: "./for_auto_test/00sy/66_exgcd.sy"
+ 15   label global_0: 
+ 0    global Fn[]->getint_ret_0 getint_0 
+ 1    global Fn[]->getch_ret_0 getch_0 
+ 2    global Fn[zz_array_3]->getarray_ret_0 getarray_0 
+ 3    global Fn[]->getfloat_ret_0 getfloat_0 
+ 4    global Fn[zz_array_5]->getfarray_ret_0 getfarray_0 
+ 5    global Fn[zz_int_6]->putint_ret_0 putint_0 
+ 6    global Fn[zz_ch_7]->putch_ret_0 putch_0 
+ 7    global Fn[x_8, zz_array_8]->putarray_ret_0 putarray_0 
+ 8    global Fn[zz_float_9]->putfloat_ret_0 putfloat_0 
+ 9    global Fn[zz_len_10, zz_farray_10]->putfarray_ret_0 putfarray_0 
+ 10   global Fn[]->putf_ret_0 putf_0 
+ 11   global Fn[]->starttime_ret_0 starttime_0 
+ 12   global Fn[]->stoptime_ret_0 stoptime_0 
+ 13   global Fn[zz_ptr_14, zz_val_14, zz_len_14]->memset_ret_0 memset_0 
+ 14   global Fn[zz_dest_15, zz_ptr_15, zz_len_15]->memcpy_ret_0 memcpy_0 
+ 19   Define main_0 "" -> main_ret_0 
+         78   alloc i32 [a_32] 
+         80   alloc i32 [b_32] 
+         82   alloc ptr->i32 [temp_16_array_init_ptr_32] 
+         85   alloc ptr->i32 [temp_17_array_init_ptr_32] 
+         89   alloc Array:i32:[Some(1_0)] [x_32] 
+         91   alloc ptr->i32 [temp_18_array_init_ptr_32] 
+         94   alloc ptr->i32 [temp_19_array_init_ptr_32] 
+         98   alloc Array:i32:[Some(1_0)] [y_32] 
+         99   alloc ptr->i32 [temp_20_ele_ptr_of_x_32_32] 
+         101  alloc ptr->i32 [temp_21_ele_ptr_of_y_32_32] 
+         103  alloc i32 [temp_22_ret_of_exgcd_32] 
+         105  alloc ptr->i32 [temp_23_ptr_of_x_32_32] 
+         107  alloc ptr->i32 [temp_24_ptr_of_x_32_32] 
+         109  alloc i32 [temp_25_ele_of_x_32_32] 
+         112  alloc i32 [temp_26_arithop_32] 
+         114  alloc i32 [temp_27_arithop_32] 
+         116  alloc i32 [temp_28_arithop_32] 
+         120  alloc ptr->i32 [temp_29_ptr_of_x_32_32] 
+         122  alloc i32 [temp_30_ele_of_x_32_32] 
+          label L0_0: 
+         77   (nop) 
+         79   (nop) 
+         81    
+         83   temp_16_array_init_ptr_32 = GEP x_32_0:Array:i32:[Some(1_0)] [] 
+         84    Call void memset_0(temp_16_array_init_ptr_32, 0_0, 4_0) 
+         178  untrack temp_16_array_init_ptr_32 
+         134  mu x_32_0:84 
+         135  x_32_1 = chi x_32_0:84 
+         86   temp_17_array_init_ptr_32 = GEP x_32_1:Array:i32:[Some(1_0)] [Some(0_0)] 
+         87   store 1_0:i32 temp_17_array_init_ptr_32:ptr->i32 
+         88   x_32_2 = chi x_32_1:87 
+         90    
+         92   temp_18_array_init_ptr_32 = GEP y_32_0:Array:i32:[Some(1_0)] [] 
+         93    Call void memset_0(temp_18_array_init_ptr_32, 0_0, 4_0) 
+         177  untrack temp_18_array_init_ptr_32 
+         136  mu y_32_0:93 
+         137  y_32_1 = chi y_32_0:93 
+         95   temp_19_array_init_ptr_32 = GEP y_32_1:Array:i32:[Some(1_0)] [Some(0_0)] 
+         96   store 1_0:i32 temp_19_array_init_ptr_32:ptr->i32 
+         180  untrack temp_19_array_init_ptr_32 
+         97   y_32_2 = chi y_32_1:96 
+         100  temp_20_ele_ptr_of_x_32_32 = GEP x_32_2:Array:i32:[Some(1_0)] [] 
+         102  temp_21_ele_ptr_of_y_32_32 = GEP y_32_2:Array:i32:[Some(1_0)] [] 
+         104  temp_22_ret_of_exgcd_32_0 =  Call i32 exgcd_0(7_0, 15_0, temp_20_ele_ptr_of_x_32_32, temp_21_ele_ptr_of_y_32_32) 
+         176  untrack temp_20_ele_ptr_of_x_32_32 
+         175  untrack temp_21_ele_ptr_of_y_32_32 
+         138  mu y_32_2:104 
+         139  mu x_32_2:104 
+         140  x_32_3 = chi x_32_2:104 
+         141  y_32_3 = chi y_32_2:104 
+         106  (nop) 
+         108  (nop) 
+         110  temp_25_ele_of_x_32_32_0 = load temp_17_array_init_ptr_32:ptr->i32 
+         111  mu x_32_3:110 
+         113  temp_26_arithop_32_0 = Mod i32 temp_25_ele_of_x_32_32_0, 15_0 
+         174  untrack temp_25_ele_of_x_32_32_0 
+         115  temp_27_arithop_32_0 = Add i32 temp_26_arithop_32_0, 15_0 
+         173  untrack temp_26_arithop_32_0 
+         117  temp_28_arithop_32_0 = Mod i32 temp_27_arithop_32_0, 15_0 
+         172  untrack temp_27_arithop_32_0 
+         118  store temp_28_arithop_32_0:i32 temp_17_array_init_ptr_32:ptr->i32 
+         179  untrack temp_28_arithop_32_0 
+         119  x_32_4 = chi x_32_3:118 
+         121  (nop) 
+         123  temp_30_ele_of_x_32_32_0 = load temp_17_array_init_ptr_32:ptr->i32 
+         181  untrack temp_17_array_init_ptr_32 
+         124  mu x_32_4:123 
+         125   Call void putint_0(temp_30_ele_of_x_32_32_0) 
+         182  untrack temp_30_ele_of_x_32_32_0 
+         127  ret 0_0 
+ 18   Define exgcd_0 "a_16_0,b_16_0,x_16,y_16," -> exgcd_ret_0 
+         20   alloc i32 [temp_0_arithop_25] 
+         22   alloc i32 [temp_1_ret_of_exgcd_25] 
+         25   alloc i32 [r_25] 
+         26   alloc ptr->i32 [temp_2_ptr_of_x_16_25] 
+         28   alloc i32 [temp_3_ele_of_x_16_25] 
+         32   alloc i32 [t_25] 
+         33   alloc ptr->i32 [temp_4_ptr_of_x_16_25] 
+         35   alloc ptr->i32 [temp_5_ptr_of_y_16_25] 
+         37   alloc i32 [temp_6_ele_of_y_16_25] 
+         42   alloc ptr->i32 [temp_7_ptr_of_y_16_25] 
+         44   alloc i32 [temp_8_arithop_25] 
+         46   alloc ptr->i32 [temp_9_ptr_of_y_16_25] 
+         48   alloc i32 [temp_10_ele_of_y_16_25] 
+         51   alloc i32 [temp_11_arithop_25] 
+         53   alloc i32 [temp_12_arithop_25] 
+         59   alloc ptr->i32 [temp_13_ptr_of_x_16_21] 
+         63   alloc ptr->i32 [temp_14_ptr_of_y_16_21] 
+         69   alloc i1 [temp_15_cmp_19] 
+          label L1_0: 
+         16    
+         17    
+         70   temp_15_cmp_19_0 = icmp i32 Eq b_16_0, 0_0 
+         73   br i1 temp_15_cmp_19_0, label branch_true_20, label branch_false_20 
+     71   label branch_true_20: 
+         152  untrack temp_8_arithop_25_0 
+         151  untrack temp_1_ret_of_exgcd_25_0 
+         150  untrack temp_15_cmp_19_0 
+         149  untrack temp_3_ele_of_x_16_25_0 
+         148  untrack temp_11_arithop_25_0 
+         147  untrack temp_2_ptr_of_x_16_25 
+         146  untrack temp_5_ptr_of_y_16_25 
+         145  untrack temp_0_arithop_25_0 
+         144  untrack temp_12_arithop_25_0 
+         143  untrack b_16_0 
+         142  untrack temp_6_ele_of_y_16_25_0 
+         60   temp_13_ptr_of_x_16_21 = GEP x_16:ptr->i32 [Some(0_0)] 
+         61   store 1_0:i32 temp_13_ptr_of_x_16_21:ptr->i32 
+         158  untrack temp_13_ptr_of_x_16_21 
+         62   x_16 = chi x_16:61 
+         64   temp_14_ptr_of_y_16_21 = GEP y_16:ptr->i32 [Some(0_0)] 
+         65   store 0_0:i32 temp_14_ptr_of_y_16_21:ptr->i32 
+         159  untrack temp_14_ptr_of_y_16_21 
+         66   y_16 = chi y_16:65 
+         130  mu x_16:68 
+         156  untrack x_16 
+         131  mu y_16:68 
+         157  untrack y_16 
+         68   ret a_16_0 
+     72   label branch_false_20: 
+         155  untrack temp_15_cmp_19_0 
+         154  untrack temp_14_ptr_of_y_16_21 
+         153  untrack temp_13_ptr_of_x_16_21 
+         21   temp_0_arithop_25_0 = Mod i32 a_16_0, b_16_0 
+         23   temp_1_ret_of_exgcd_25_0 =  Call i32 exgcd_0(b_16_0, temp_0_arithop_25_0, x_16, y_16) 
+         170  untrack temp_0_arithop_25_0 
+         24   (nop) 
+         27   temp_2_ptr_of_x_16_25 = GEP x_16:Array:i32:[None] [Some(0_0)] 
+         29   temp_3_ele_of_x_16_25_0 = load temp_2_ptr_of_x_16_25:ptr->i32 
+         30   mu x_16:29 
+         31   (nop) 
+         34   (nop) 
+         36   temp_5_ptr_of_y_16_25 = GEP y_16:Array:i32:[None] [Some(0_0)] 
+         38   temp_6_ele_of_y_16_25_0 = load temp_5_ptr_of_y_16_25:ptr->i32 
+         39   mu y_16:38 
+         40   store temp_6_ele_of_y_16_25_0:i32 temp_2_ptr_of_x_16_25:ptr->i32 
+         168  untrack temp_2_ptr_of_x_16_25 
+         41   x_16 = chi x_16:40 
+         43   (nop) 
+         45   temp_8_arithop_25_0 = Div i32 a_16_0, b_16_0 
+         166  untrack b_16_0 
+         164  untrack a_16_0 
+         47   (nop) 
+         49   (nop) 
+         50   mu y_16:49 
+         52   temp_11_arithop_25_0 = Mul i32 temp_8_arithop_25_0, temp_6_ele_of_y_16_25_0 
+         167  untrack temp_8_arithop_25_0 
+         163  untrack temp_6_ele_of_y_16_25_0 
+         54   temp_12_arithop_25_0 = Sub i32 temp_3_ele_of_x_16_25_0, temp_11_arithop_25_0 
+         171  untrack temp_3_ele_of_x_16_25_0 
+         162  untrack temp_11_arithop_25_0 
+         55   store temp_12_arithop_25_0:i32 temp_5_ptr_of_y_16_25:ptr->i32 
+         169  untrack temp_12_arithop_25_0 
+         165  untrack temp_5_ptr_of_y_16_25 
+         56   y_16 = chi y_16:55 
+         132  mu x_16:58 
+         161  untrack x_16 
+         133  mu y_16:58 
+         160  untrack y_16 
+         58   ret temp_1_ret_of_exgcd_25_0 

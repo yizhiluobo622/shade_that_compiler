@@ -1,0 +1,299 @@
+# input: "./for_auto_test/00sy/60_sort_test6.sy"
+ 16   label global_0: 
+ 15   global i32 n_0 
+ 0    global Fn[]->getint_ret_0 getint_0 
+ 1    global Fn[]->getch_ret_0 getch_0 
+ 2    global Fn[zz_array_3]->getarray_ret_0 getarray_0 
+ 3    global Fn[]->getfloat_ret_0 getfloat_0 
+ 4    global Fn[zz_array_5]->getfarray_ret_0 getfarray_0 
+ 5    global Fn[zz_int_6]->putint_ret_0 putint_0 
+ 6    global Fn[zz_ch_7]->putch_ret_0 putch_0 
+ 7    global Fn[x_8, zz_array_8]->putarray_ret_0 putarray_0 
+ 8    global Fn[zz_float_9]->putfloat_ret_0 putfloat_0 
+ 9    global Fn[zz_len_10, zz_farray_10]->putfarray_ret_0 putfarray_0 
+ 10   global Fn[]->putf_ret_0 putf_0 
+ 11   global Fn[]->starttime_ret_0 starttime_0 
+ 12   global Fn[]->stoptime_ret_0 stoptime_0 
+ 13   global Fn[zz_ptr_14, zz_val_14, zz_len_14]->memset_ret_0 memset_0 
+ 14   global Fn[zz_dest_15, zz_ptr_15, zz_len_15]->memcpy_ret_0 memcpy_0 
+ 20   Define main_0 "" -> main_ret_0 
+         251  n_0_1 = chi n_0_0:20 
+         167  alloc Array:i32:[Some(10_0)] [a_52] 
+         168  alloc ptr->i32 [temp_43_ptr_of_a_52_52] 
+         172  alloc ptr->i32 [temp_44_ptr_of_a_52_52] 
+         176  alloc ptr->i32 [temp_45_ptr_of_a_52_52] 
+         180  alloc ptr->i32 [temp_46_ptr_of_a_52_52] 
+         184  alloc ptr->i32 [temp_47_ptr_of_a_52_52] 
+         188  alloc ptr->i32 [temp_48_ptr_of_a_52_52] 
+         192  alloc ptr->i32 [temp_49_ptr_of_a_52_52] 
+         196  alloc ptr->i32 [temp_50_ptr_of_a_52_52] 
+         200  alloc ptr->i32 [temp_51_ptr_of_a_52_52] 
+         204  alloc ptr->i32 [temp_52_ptr_of_a_52_52] 
+         208  alloc i32 [i_52] 
+         212  alloc Array:i32:[Some(10_0)] [b_52] 
+         213  alloc ptr->i32 [temp_53_ele_ptr_of_a_52_52] 
+         215  alloc ptr->i32 [temp_54_ele_ptr_of_b_52_52] 
+         217  alloc i32 [temp_55_value_from_ptr_52] 
+         220  alloc i32 [temp_56_ret_of_counting_sort_52] 
+         225  alloc i32 [tmp_71] 
+         227  alloc ptr->i32 [temp_57_ptr_of_b_52_71] 
+         229  alloc i32 [temp_58_ele_of_b_52_71] 
+         236  alloc i32 [temp_59_arithop_71] 
+         239  alloc i32 [temp_60_value_from_ptr_69] 
+         242  alloc i1 [temp_61_cmp_69] 
+          label L0_0: 
+         164  store 10_0:i32 *n_0:ptr->i32 
+         165  n_0_2 = chi n_0_1:164 
+         166   
+         169  temp_43_ptr_of_a_52_52 = GEP a_52_0:Array:i32:[Some(10_0)] [Some(0_0)] 
+         170  store 4_0:i32 temp_43_ptr_of_a_52_52:ptr->i32 
+         294  untrack temp_43_ptr_of_a_52_52 
+         171  a_52_1 = chi a_52_0:170 
+         173  temp_44_ptr_of_a_52_52 = GEP a_52_1:Array:i32:[Some(10_0)] [Some(1_0)] 
+         174  store 3_0:i32 temp_44_ptr_of_a_52_52:ptr->i32 
+         296  untrack temp_44_ptr_of_a_52_52 
+         175  a_52_2 = chi a_52_1:174 
+         177  temp_45_ptr_of_a_52_52 = GEP a_52_2:Array:i32:[Some(10_0)] [Some(2_0)] 
+         178  store 9_0:i32 temp_45_ptr_of_a_52_52:ptr->i32 
+         293  untrack temp_45_ptr_of_a_52_52 
+         179  a_52_3 = chi a_52_2:178 
+         181  temp_46_ptr_of_a_52_52 = GEP a_52_3:Array:i32:[Some(10_0)] [Some(3_0)] 
+         182  store 2_0:i32 temp_46_ptr_of_a_52_52:ptr->i32 
+         295  untrack temp_46_ptr_of_a_52_52 
+         183  a_52_4 = chi a_52_3:182 
+         185  temp_47_ptr_of_a_52_52 = GEP a_52_4:Array:i32:[Some(10_0)] [Some(4_0)] 
+         186  store 0_0:i32 temp_47_ptr_of_a_52_52:ptr->i32 
+         287  untrack temp_47_ptr_of_a_52_52 
+         187  a_52_5 = chi a_52_4:186 
+         189  temp_48_ptr_of_a_52_52 = GEP a_52_5:Array:i32:[Some(10_0)] [Some(5_0)] 
+         190  store 1_0:i32 temp_48_ptr_of_a_52_52:ptr->i32 
+         292  untrack temp_48_ptr_of_a_52_52 
+         191  a_52_6 = chi a_52_5:190 
+         193  temp_49_ptr_of_a_52_52 = GEP a_52_6:Array:i32:[Some(10_0)] [Some(6_0)] 
+         194  store 6_0:i32 temp_49_ptr_of_a_52_52:ptr->i32 
+         291  untrack temp_49_ptr_of_a_52_52 
+         195  a_52_7 = chi a_52_6:194 
+         197  temp_50_ptr_of_a_52_52 = GEP a_52_7:Array:i32:[Some(10_0)] [Some(7_0)] 
+         198  store 5_0:i32 temp_50_ptr_of_a_52_52:ptr->i32 
+         297  untrack temp_50_ptr_of_a_52_52 
+         199  a_52_8 = chi a_52_7:198 
+         201  temp_51_ptr_of_a_52_52 = GEP a_52_8:Array:i32:[Some(10_0)] [Some(8_0)] 
+         202  store 7_0:i32 temp_51_ptr_of_a_52_52:ptr->i32 
+         288  untrack temp_51_ptr_of_a_52_52 
+         203  a_52_9 = chi a_52_8:202 
+         205  temp_52_ptr_of_a_52_52 = GEP a_52_9:Array:i32:[Some(10_0)] [Some(9_0)] 
+         206  store 8_0:i32 temp_52_ptr_of_a_52_52:ptr->i32 
+         299  untrack temp_52_ptr_of_a_52_52 
+         207  a_52_10 = chi a_52_9:206 
+         209   
+         210  (nop) 
+         211   
+         214  temp_53_ele_ptr_of_a_52_52 = GEP a_52_10:Array:i32:[Some(10_0)] [] 
+         216  temp_54_ele_ptr_of_b_52_52 = GEP b_52_0:Array:i32:[Some(10_0)] [] 
+         218  temp_55_value_from_ptr_52_0 = load *n_0:ptr->i32 
+         219  mu n_0_2:218 
+         221  temp_56_ret_of_counting_sort_52_0 =  Call i32 counting_sort_0(temp_53_ele_ptr_of_a_52_52, temp_54_ele_ptr_of_b_52_52, temp_55_value_from_ptr_52_0) 
+         298  untrack temp_53_ele_ptr_of_a_52_52 
+         290  untrack temp_54_ele_ptr_of_b_52_52 
+         252  mu a_52_10:221 
+         253  mu b_52_0:221 
+         254  a_52_11 = chi a_52_10:221 
+         255  b_52_1 = chi b_52_0:221 
+         222  (nop) 
+         276  i_52_3 = i32 temp_56_ret_of_counting_sort_52_0 
+         289  untrack temp_56_ret_of_counting_sort_52_0 
+              jump label: while.head_70 
+     244  label while.head_70: 
+         240  (nop) 
+         241  mu n_0_2:240 
+         243  temp_61_cmp_69_0 = icmp i32 Slt i_52_3, temp_55_value_from_ptr_52_0 
+         247  br i1 temp_61_cmp_69_0, label while.body_70, label while.exit_70 
+     245  label while.body_70: 
+         226   
+         228  temp_57_ptr_of_b_52_71 = GEP b_52_1:Array:i32:[Some(10_0)] [Some(i_52_3)] 
+         230  temp_58_ele_of_b_52_71_0 = load temp_57_ptr_of_b_52_71:ptr->i32 
+         231  mu b_52_1:230 
+         232  (nop) 
+         233   Call void putint_0(temp_58_ele_of_b_52_71_0) 
+         234  (nop) 
+         235   Call void putch_0(10_0) 
+         237  temp_59_arithop_71_0 = Add i32 i_52_3, 1_0 
+         238  (nop) 
+         277  i_52_3 = i32 temp_59_arithop_71_0 
+              jump label: while.head_70 
+     246  label while.exit_70: 
+         301  untrack temp_55_value_from_ptr_52_0 
+         300  untrack i_52_3 
+         256  mu n_0_2:224 
+         224  ret 0_0 
+ 19   Define counting_sort_0 "ini_arr_17,sorted_arr_17,n_17_0," -> counting_sort_ret_0 
+         22   alloc Array:i32:[Some(10_0)] [count_arr_19] 
+         23   alloc i32 [i_19] 
+         25   alloc i32 [j_19] 
+         27   alloc i32 [k_19] 
+         36   alloc i32 [temp_0_arithop_46] 
+         38   alloc ptr->i32 [temp_1_ptr_of_ini_arr_17_46] 
+         40   alloc i32 [temp_2_ele_of_ini_arr_17_46] 
+         43   alloc ptr->i32 [temp_3_ptr_of_count_arr_19_46] 
+         45   alloc i32 [temp_4_arithop_46] 
+         47   alloc ptr->i32 [temp_5_ptr_of_ini_arr_17_46] 
+         49   alloc i32 [temp_6_ele_of_ini_arr_17_46] 
+         52   alloc ptr->i32 [temp_7_ptr_of_count_arr_19_46] 
+         54   alloc i32 [temp_8_ele_of_count_arr_19_46] 
+         57   alloc i32 [temp_9_arithop_46] 
+         61   alloc i32 [temp_10_arithop_46] 
+         63   alloc ptr->i32 [temp_11_ptr_of_ini_arr_17_46] 
+         65   alloc i32 [temp_12_ele_of_ini_arr_17_46] 
+         68   alloc ptr->i32 [temp_13_ptr_of_count_arr_19_46] 
+         70   alloc i32 [temp_14_ele_of_count_arr_19_46] 
+         73   alloc ptr->i32 [temp_15_ptr_of_sorted_arr_17_46] 
+         75   alloc i32 [temp_16_arithop_46] 
+         77   alloc ptr->i32 [temp_17_ptr_of_ini_arr_17_46] 
+         79   alloc i32 [temp_18_ele_of_ini_arr_17_46] 
+         84   alloc i32 [temp_19_arithop_46] 
+         87   alloc ptr->i32 [temp_20_ptr_of_count_arr_19_40] 
+         89   alloc ptr->i32 [temp_21_ptr_of_count_arr_19_40] 
+         91   alloc i32 [temp_22_ele_of_count_arr_19_40] 
+         94   alloc i32 [temp_23_arithop_40] 
+         96   alloc ptr->i32 [temp_24_ptr_of_count_arr_19_40] 
+         98   alloc i32 [temp_25_ele_of_count_arr_19_40] 
+         101  alloc i32 [temp_26_arithop_40] 
+         105  alloc i32 [temp_27_arithop_40] 
+         108  alloc ptr->i32 [temp_28_ptr_of_ini_arr_17_34] 
+         110  alloc i32 [temp_29_ele_of_ini_arr_17_34] 
+         113  alloc ptr->i32 [temp_30_ptr_of_count_arr_19_34] 
+         115  alloc ptr->i32 [temp_31_ptr_of_ini_arr_17_34] 
+         117  alloc i32 [temp_32_ele_of_ini_arr_17_34] 
+         120  alloc ptr->i32 [temp_33_ptr_of_count_arr_19_34] 
+         122  alloc i32 [temp_34_ele_of_count_arr_19_34] 
+         125  alloc i32 [temp_35_arithop_34] 
+         129  alloc i32 [temp_36_arithop_34] 
+         132  alloc ptr->i32 [temp_37_ptr_of_count_arr_19_29] 
+         136  alloc i32 [temp_38_arithop_29] 
+         139  alloc i1 [temp_39_cmp_27] 
+         145  alloc i1 [temp_40_cmp_32] 
+         150  alloc i1 [temp_41_cmp_38] 
+         156  alloc i1 [temp_42_cmp_44] 
+          label L1_0: 
+         17    
+         18    
+         21    
+         24    
+         26    
+         28    
+         29   (nop) 
+         30   (nop) 
+         31   (nop) 
+         268  k_19_2 = i32 0_0 
+              jump label: while.head_28 
+     141  label while.head_28: 
+         140  temp_39_cmp_27_0 = icmp i32 Slt k_19_2, 10_0 
+         144  br i1 temp_39_cmp_27_0, label while.body_28, label UP_16_0 
+     142  label while.body_28: 
+         133  temp_37_ptr_of_count_arr_19_29 = GEP count_arr_19_1:Array:i32:[Some(10_0)] [Some(k_19_2)] 
+         134  store 0_0:i32 temp_37_ptr_of_count_arr_19_29:ptr->i32 
+         135  count_arr_19_2 = chi count_arr_19_1:134 
+         137  temp_38_arithop_29_0 = Add i32 k_19_2, 1_0 
+         138  (nop) 
+         269  k_19_2 = i32 temp_38_arithop_29_0 
+              jump label: while.head_28 
+     267  label UP_16_0: 
+         280  untrack temp_37_ptr_of_count_arr_19_29 
+         279  untrack temp_39_cmp_27_0 
+         278  untrack temp_38_arithop_29_0 
+         270  i_19_2 = i32 0_0 
+              jump label: while.exit_28 
+     143  label while.exit_28: 
+         146  temp_40_cmp_32_0 = icmp i32 Slt i_19_2, n_17_0 
+         149  br i1 temp_40_cmp_32_0, label while.body_33, label while.exit_33 
+     147  label while.body_33: 
+         109  temp_28_ptr_of_ini_arr_17_34 = GEP ini_arr_17:Array:i32:[None] [Some(i_19_2)] 
+         111  temp_29_ele_of_ini_arr_17_34_0 = load temp_28_ptr_of_ini_arr_17_34:ptr->i32 
+         112  mu ini_arr_17:111 
+         114  temp_30_ptr_of_count_arr_19_34 = GEP count_arr_19_3:Array:i32:[Some(10_0)] [Some(temp_29_ele_of_ini_arr_17_34_0)] 
+         116  (nop) 
+         118  (nop) 
+         119  mu ini_arr_17:118 
+         121  (nop) 
+         123  temp_34_ele_of_count_arr_19_34_0 = load temp_30_ptr_of_count_arr_19_34:ptr->i32 
+         124  mu count_arr_19_3:123 
+         126  temp_35_arithop_34_0 = Add i32 temp_34_ele_of_count_arr_19_34_0, 1_0 
+         127  store temp_35_arithop_34_0:i32 temp_30_ptr_of_count_arr_19_34:ptr->i32 
+         128  count_arr_19_4 = chi count_arr_19_3:127 
+         130  temp_36_arithop_34_0 = Add i32 i_19_2, 1_0 
+         131  (nop) 
+         271  i_19_2 = i32 temp_36_arithop_34_0 
+              jump label: while.exit_28 
+     148  label while.exit_33: 
+         32   (nop) 
+         272  k_19_5 = i32 1_0 
+              jump label: while.head_39 
+     152  label while.head_39: 
+         151  temp_41_cmp_38_0 = icmp i32 Slt k_19_5, 10_0 
+         155  br i1 temp_41_cmp_38_0, label while.body_39, label while.exit_39 
+     153  label while.body_39: 
+         88   temp_20_ptr_of_count_arr_19_40 = GEP count_arr_19_5:Array:i32:[Some(10_0)] [Some(k_19_5)] 
+         90   (nop) 
+         92   temp_22_ele_of_count_arr_19_40_0 = load temp_20_ptr_of_count_arr_19_40:ptr->i32 
+         93   mu count_arr_19_5:92 
+         95   temp_23_arithop_40_0 = Sub i32 k_19_5, 1_0 
+         97   temp_24_ptr_of_count_arr_19_40 = GEP count_arr_19_5:Array:i32:[Some(10_0)] [Some(temp_23_arithop_40_0)] 
+         99   temp_25_ele_of_count_arr_19_40_0 = load temp_24_ptr_of_count_arr_19_40:ptr->i32 
+         100  mu count_arr_19_5:99 
+         102  temp_26_arithop_40_0 = Add i32 temp_22_ele_of_count_arr_19_40_0, temp_25_ele_of_count_arr_19_40_0 
+         103  store temp_26_arithop_40_0:i32 temp_20_ptr_of_count_arr_19_40:ptr->i32 
+         104  count_arr_19_6 = chi count_arr_19_5:103 
+         106  temp_27_arithop_40_0 = Add i32 k_19_5, 1_0 
+         107  (nop) 
+         273  k_19_5 = i32 temp_27_arithop_40_0 
+              jump label: while.head_39 
+     154  label while.exit_39: 
+         281  untrack k_19_5 
+         33   j_19_2 = i32 n_17_0 
+         283  untrack n_17_0 
+         274  j_19_3 = i32 j_19_2 
+         282  untrack j_19_2 
+              jump label: while.head_45 
+     158  label while.head_45: 
+         157  temp_42_cmp_44_0 = icmp i32 Sgt j_19_3, 0_0 
+         161  br i1 temp_42_cmp_44_0, label while.body_45, label while.exit_45 
+     159  label while.body_45: 
+         37   temp_0_arithop_46_0 = Sub i32 j_19_3, 1_0 
+         39   temp_1_ptr_of_ini_arr_17_46 = GEP ini_arr_17:Array:i32:[None] [Some(temp_0_arithop_46_0)] 
+         41   temp_2_ele_of_ini_arr_17_46_0 = load temp_1_ptr_of_ini_arr_17_46:ptr->i32 
+         42   mu ini_arr_17:41 
+         44   temp_3_ptr_of_count_arr_19_46 = GEP count_arr_19_7:Array:i32:[Some(10_0)] [Some(temp_2_ele_of_ini_arr_17_46_0)] 
+         46   (nop) 
+         48   (nop) 
+         50   (nop) 
+         51   mu ini_arr_17:50 
+         53   (nop) 
+         55   temp_8_ele_of_count_arr_19_46_0 = load temp_3_ptr_of_count_arr_19_46:ptr->i32 
+         56   mu count_arr_19_7:55 
+         58   temp_9_arithop_46_0 = Sub i32 temp_8_ele_of_count_arr_19_46_0, 1_0 
+         59   store temp_9_arithop_46_0:i32 temp_3_ptr_of_count_arr_19_46:ptr->i32 
+         60   count_arr_19_8 = chi count_arr_19_7:59 
+         62   (nop) 
+         64   (nop) 
+         66   (nop) 
+         67   mu ini_arr_17:66 
+         69   (nop) 
+         71   temp_14_ele_of_count_arr_19_46_0 = load temp_3_ptr_of_count_arr_19_46:ptr->i32 
+         72   mu count_arr_19_8:71 
+         74   temp_15_ptr_of_sorted_arr_17_46 = GEP sorted_arr_17:ptr->i32 [Some(temp_14_ele_of_count_arr_19_46_0)] 
+         76   (nop) 
+         78   (nop) 
+         80   (nop) 
+         81   mu ini_arr_17:80 
+         82   store temp_2_ele_of_ini_arr_17_46_0:i32 temp_15_ptr_of_sorted_arr_17_46:ptr->i32 
+         83   sorted_arr_17 = chi sorted_arr_17:82 
+         85   (nop) 
+         86   (nop) 
+         275  j_19_3 = i32 temp_0_arithop_46_0 
+              jump label: while.head_45 
+     160  label while.exit_45: 
+         285  untrack ini_arr_17 
+         284  untrack j_19_3 
+         250  mu sorted_arr_17:35 
+         286  untrack sorted_arr_17 
+         35   ret 0_0 

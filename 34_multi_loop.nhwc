@@ -1,0 +1,283 @@
+# input: "./for_auto_test/00sy/34_multi_loop.sy"
+ 15   label global_0: 
+ 0    global Fn[]->getint_ret_0 getint_0 
+ 1    global Fn[]->getch_ret_0 getch_0 
+ 2    global Fn[zz_array_3]->getarray_ret_0 getarray_0 
+ 3    global Fn[]->getfloat_ret_0 getfloat_0 
+ 4    global Fn[zz_array_5]->getfarray_ret_0 getfarray_0 
+ 5    global Fn[zz_int_6]->putint_ret_0 putint_0 
+ 6    global Fn[zz_ch_7]->putch_ret_0 putch_0 
+ 7    global Fn[x_8, zz_array_8]->putarray_ret_0 putarray_0 
+ 8    global Fn[zz_float_9]->putfloat_ret_0 putfloat_0 
+ 9    global Fn[zz_len_10, zz_farray_10]->putfarray_ret_0 putfarray_0 
+ 10   global Fn[]->putf_ret_0 putf_0 
+ 11   global Fn[]->starttime_ret_0 starttime_0 
+ 12   global Fn[]->stoptime_ret_0 stoptime_0 
+ 13   global Fn[zz_ptr_14, zz_val_14, zz_len_14]->memset_ret_0 memset_0 
+ 14   global Fn[zz_dest_15, zz_ptr_15, zz_len_15]->memcpy_ret_0 memcpy_0 
+ 16   Define main_0 "" -> main_ret_0 
+         18   alloc i32 [a_17] 
+         20   alloc i32 [i_17] 
+         24   alloc i32 [j_22] 
+         25   alloc i32 [temp_0_arithop_22] 
+         29   alloc i32 [k_26] 
+         30   alloc i32 [temp_1_arithop_26] 
+         34   alloc i32 [ii_30] 
+         35   alloc i32 [temp_2_arithop_30] 
+         39   alloc i32 [jj_34] 
+         40   alloc i32 [temp_3_arithop_34] 
+         44   alloc i32 [kk_38] 
+         45   alloc i32 [temp_4_arithop_38] 
+         49   alloc i32 [iii_42] 
+         50   alloc i32 [temp_5_arithop_42] 
+         54   alloc i32 [jjj_46] 
+         55   alloc i32 [temp_6_arithop_46] 
+         59   alloc i32 [kkk_50] 
+         60   alloc i32 [temp_7_arithop_50] 
+         64   alloc i32 [iiii_54] 
+         65   alloc i32 [temp_8_arithop_54] 
+         69   alloc i32 [jjjj_58] 
+         70   alloc i32 [temp_9_arithop_58] 
+         74   alloc i32 [kkkk_62] 
+         75   alloc i32 [temp_10_arithop_62] 
+         79   alloc i32 [iiiii_66] 
+         80   alloc i32 [temp_11_arithop_66] 
+         84   alloc i32 [jjjjj_70] 
+         85   alloc i32 [temp_12_arithop_70] 
+         89   alloc i32 [kkkkk_74] 
+         90   alloc i32 [temp_13_arithop_74] 
+         93   alloc i32 [temp_14_arithop_78] 
+         95   alloc i32 [temp_15_arithop_78] 
+         98   alloc i32 [temp_16_arithop_78] 
+         101  alloc i1 [temp_17_cmp_20] 
+         109  alloc i1 [temp_18_cmp_24] 
+         115  alloc i1 [temp_19_cmp_28] 
+         121  alloc i1 [temp_20_cmp_32] 
+         127  alloc i1 [temp_21_cmp_36] 
+         133  alloc i1 [temp_22_cmp_40] 
+         139  alloc i1 [temp_23_cmp_44] 
+         145  alloc i1 [temp_24_cmp_48] 
+         151  alloc i1 [temp_25_cmp_52] 
+         157  alloc i1 [temp_26_cmp_56] 
+         163  alloc i1 [temp_27_cmp_60] 
+         169  alloc i1 [temp_28_cmp_64] 
+         175  alloc i1 [temp_29_cmp_68] 
+         181  alloc i1 [temp_30_cmp_72] 
+         187  alloc i1 [temp_31_cmp_76] 
+          label L0_0: 
+         17   (nop) 
+         19   (nop) 
+         223  i_17_1 = i32 0_0 
+         224  a_17_1 = i32 0_0 
+              jump label: while.head_21 
+     103  label while.head_21: 
+         102  temp_17_cmp_20_0 = icmp i32 Slt i_17_1, 1_0 
+         106  br i1 temp_17_cmp_20_0, label while.body_21, label while.exit_21 
+     104  label while.body_21: 
+         23   (nop) 
+         225  a_17_2 = i32 a_17_1 
+         226  j_22_1 = i32 0_0 
+              jump label: while.head_25 
+     111  label while.head_25: 
+         110  temp_18_cmp_24_0 = icmp i32 Slt j_22_1, 1_0 
+         114  br i1 temp_18_cmp_24_0, label while.body_25, label while.exit_25 
+     112  label while.body_25: 
+         28   (nop) 
+         227  a_17_3 = i32 a_17_2 
+         228  k_26_1 = i32 0_0 
+              jump label: while.head_29 
+     117  label while.head_29: 
+         116  temp_19_cmp_28_0 = icmp i32 Slt k_26_1, 2_0 
+         120  br i1 temp_19_cmp_28_0, label while.body_29, label while.exit_29 
+     118  label while.body_29: 
+         33   (nop) 
+         229  a_17_4 = i32 a_17_3 
+         230  ii_30_1 = i32 0_0 
+              jump label: while.head_33 
+     123  label while.head_33: 
+         122  temp_20_cmp_32_0 = icmp i32 Slt ii_30_1, 3_0 
+         126  br i1 temp_20_cmp_32_0, label while.body_33, label while.exit_33 
+     124  label while.body_33: 
+         38   (nop) 
+         231  a_17_5 = i32 a_17_4 
+         232  jj_34_1 = i32 0_0 
+              jump label: while.head_37 
+     129  label while.head_37: 
+         128  temp_21_cmp_36_0 = icmp i32 Slt jj_34_1, 5_0 
+         132  br i1 temp_21_cmp_36_0, label while.body_37, label while.exit_37 
+     130  label while.body_37: 
+         43   (nop) 
+         233  a_17_6 = i32 a_17_5 
+         234  kk_38_1 = i32 0_0 
+              jump label: while.head_41 
+     135  label while.head_41: 
+         134  temp_22_cmp_40_0 = icmp i32 Slt kk_38_1, 4_0 
+         138  br i1 temp_22_cmp_40_0, label while.body_41, label while.exit_41 
+     136  label while.body_41: 
+         48   (nop) 
+         235  a_17_7 = i32 a_17_6 
+         236  iii_42_1 = i32 0_0 
+              jump label: while.head_45 
+     141  label while.head_45: 
+         140  temp_23_cmp_44_0 = icmp i32 Slt iii_42_1, 6_0 
+         144  br i1 temp_23_cmp_44_0, label while.body_45, label while.exit_45 
+     142  label while.body_45: 
+         53   (nop) 
+         237  a_17_8 = i32 a_17_7 
+         238  jjj_46_1 = i32 0_0 
+              jump label: while.head_49 
+     147  label while.head_49: 
+         146  temp_24_cmp_48_0 = icmp i32 Slt jjj_46_1, 5_0 
+         150  br i1 temp_24_cmp_48_0, label while.body_49, label while.exit_49 
+     148  label while.body_49: 
+         58   (nop) 
+         239  a_17_9 = i32 a_17_8 
+         240  kkk_50_1 = i32 0_0 
+              jump label: while.head_53 
+     153  label while.head_53: 
+         152  temp_25_cmp_52_0 = icmp i32 Slt kkk_50_1, 5_0 
+         156  br i1 temp_25_cmp_52_0, label while.body_53, label while.exit_53 
+     154  label while.body_53: 
+         63   (nop) 
+         241  a_17_10 = i32 a_17_9 
+         242  iiii_54_1 = i32 0_0 
+              jump label: while.head_57 
+     159  label while.head_57: 
+         158  temp_26_cmp_56_0 = icmp i32 Slt iiii_54_1, 3_0 
+         162  br i1 temp_26_cmp_56_0, label while.body_57, label while.exit_57 
+     160  label while.body_57: 
+         68   (nop) 
+         243  a_17_11 = i32 a_17_10 
+         244  jjjj_58_1 = i32 0_0 
+              jump label: while.head_61 
+     165  label while.head_61: 
+         164  temp_27_cmp_60_0 = icmp i32 Slt jjjj_58_1, 2_0 
+         168  br i1 temp_27_cmp_60_0, label while.body_61, label while.exit_61 
+     166  label while.body_61: 
+         73   (nop) 
+         245  a_17_12 = i32 a_17_11 
+         246  kkkk_62_1 = i32 0_0 
+              jump label: while.head_65 
+     171  label while.head_65: 
+         170  temp_28_cmp_64_0 = icmp i32 Slt kkkk_62_1, 5_0 
+         174  br i1 temp_28_cmp_64_0, label while.body_65, label while.exit_65 
+     172  label while.body_65: 
+         78   (nop) 
+         247  a_17_13 = i32 a_17_12 
+         248  iiiii_66_1 = i32 0_0 
+              jump label: while.head_69 
+     177  label while.head_69: 
+         176  temp_29_cmp_68_0 = icmp i32 Slt iiiii_66_1, 5_0 
+         180  br i1 temp_29_cmp_68_0, label while.body_69, label while.exit_69 
+     178  label while.body_69: 
+         83   (nop) 
+         249  a_17_14 = i32 a_17_13 
+         250  jjjjj_70_1 = i32 0_0 
+              jump label: while.head_73 
+     183  label while.head_73: 
+         182  temp_30_cmp_72_0 = icmp i32 Slt jjjjj_70_1, 3_0 
+         186  br i1 temp_30_cmp_72_0, label while.body_73, label while.exit_73 
+     184  label while.body_73: 
+         88   (nop) 
+         251  a_17_15 = i32 a_17_14 
+         252  kkkkk_74_1 = i32 0_0 
+              jump label: while.head_77 
+     189  label while.head_77: 
+         188  temp_31_cmp_76_0 = icmp i32 Slt kkkkk_74_1, 6_0 
+         192  br i1 temp_31_cmp_76_0, label while.body_77, label while.exit_77 
+     190  label while.body_77: 
+         94   temp_14_arithop_78_0 = Add i32 a_17_15, 3_0 
+         96   temp_15_arithop_78_0 = Mod i32 temp_14_arithop_78_0, 999_0 
+         97   (nop) 
+         99   temp_16_arithop_78_0 = Add i32 kkkkk_74_1, 3_0 
+         100  (nop) 
+         253  kkkkk_74_1 = i32 temp_16_arithop_78_0 
+         254  a_17_15 = i32 temp_15_arithop_78_0 
+              jump label: while.head_77 
+     191  label while.exit_77: 
+         91   temp_13_arithop_74_0 = Add i32 jjjjj_70_1, 1_0 
+         92   (nop) 
+         255  jjjjj_70_1 = i32 temp_13_arithop_74_0 
+         256  a_17_14 = i32 a_17_15 
+              jump label: while.head_73 
+     185  label while.exit_73: 
+         86   temp_12_arithop_70_0 = Add i32 iiiii_66_1, 2_0 
+         87   (nop) 
+         257  iiiii_66_1 = i32 temp_12_arithop_70_0 
+         258  a_17_13 = i32 a_17_14 
+              jump label: while.head_69 
+     179  label while.exit_69: 
+         81   temp_11_arithop_66_0 = Add i32 kkkk_62_1, 2_0 
+         82   (nop) 
+         259  a_17_12 = i32 a_17_13 
+         260  kkkk_62_1 = i32 temp_11_arithop_66_0 
+              jump label: while.head_65 
+     173  label while.exit_65: 
+         76   temp_10_arithop_62_0 = Add i32 jjjj_58_1, 2_0 
+         77   (nop) 
+         261  jjjj_58_1 = i32 temp_10_arithop_62_0 
+         262  a_17_11 = i32 a_17_12 
+              jump label: while.head_61 
+     167  label while.exit_61: 
+         71   temp_9_arithop_58_0 = Add i32 iiii_54_1, 1_0 
+         72   (nop) 
+         263  a_17_10 = i32 a_17_11 
+         264  iiii_54_1 = i32 temp_9_arithop_58_0 
+              jump label: while.head_57 
+     161  label while.exit_57: 
+         66   temp_8_arithop_54_0 = Add i32 kkk_50_1, 1_0 
+         67   (nop) 
+         265  kkk_50_1 = i32 temp_8_arithop_54_0 
+         266  a_17_9 = i32 a_17_10 
+              jump label: while.head_53 
+     155  label while.exit_53: 
+         61   temp_7_arithop_50_0 = Add i32 jjj_46_1, 1_0 
+         62   (nop) 
+         267  a_17_8 = i32 a_17_9 
+         268  jjj_46_1 = i32 temp_7_arithop_50_0 
+              jump label: while.head_49 
+     149  label while.exit_49: 
+         56   temp_6_arithop_46_0 = Add i32 iii_42_1, 1_0 
+         57   (nop) 
+         269  a_17_7 = i32 a_17_8 
+         270  iii_42_1 = i32 temp_6_arithop_46_0 
+              jump label: while.head_45 
+     143  label while.exit_45: 
+         51   temp_5_arithop_42_0 = Add i32 kk_38_1, 1_0 
+         52   (nop) 
+         271  a_17_6 = i32 a_17_7 
+         272  kk_38_1 = i32 temp_5_arithop_42_0 
+              jump label: while.head_41 
+     137  label while.exit_41: 
+         46   temp_4_arithop_38_0 = Add i32 jj_34_1, 1_0 
+         47   (nop) 
+         273  a_17_5 = i32 a_17_6 
+         274  jj_34_1 = i32 temp_4_arithop_38_0 
+              jump label: while.head_37 
+     131  label while.exit_37: 
+         41   temp_3_arithop_34_0 = Add i32 ii_30_1, 1_0 
+         42   (nop) 
+         275  a_17_4 = i32 a_17_5 
+         276  ii_30_1 = i32 temp_3_arithop_34_0 
+              jump label: while.head_33 
+     125  label while.exit_33: 
+         36   temp_2_arithop_30_0 = Add i32 k_26_1, 1_0 
+         37   (nop) 
+         277  k_26_1 = i32 temp_2_arithop_30_0 
+         278  a_17_3 = i32 a_17_4 
+              jump label: while.head_29 
+     119  label while.exit_29: 
+         31   temp_1_arithop_26_0 = Add i32 j_22_1, 1_0 
+         32   (nop) 
+         279  a_17_2 = i32 a_17_3 
+         280  j_22_1 = i32 temp_1_arithop_26_0 
+              jump label: while.head_25 
+     113  label while.exit_25: 
+         26   temp_0_arithop_22_0 = Add i32 i_17_1, 1_0 
+         27   (nop) 
+         281  i_17_1 = i32 temp_0_arithop_22_0 
+         282  a_17_1 = i32 a_17_2 
+              jump label: while.head_21 
+     105  label while.exit_21: 
+         283  untrack i_17_1 
+         22   ret a_17_1 

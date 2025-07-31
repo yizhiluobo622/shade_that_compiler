@@ -1,0 +1,125 @@
+# input: "./for_auto_test/00sy/25_scope3.sy"
+ 15   label global_0: 
+ 0    global Fn[]->getint_ret_0 getint_0 
+ 1    global Fn[]->getch_ret_0 getch_0 
+ 2    global Fn[zz_array_3]->getarray_ret_0 getarray_0 
+ 3    global Fn[]->getfloat_ret_0 getfloat_0 
+ 4    global Fn[zz_array_5]->getfarray_ret_0 getfarray_0 
+ 5    global Fn[zz_int_6]->putint_ret_0 putint_0 
+ 6    global Fn[zz_ch_7]->putch_ret_0 putch_0 
+ 7    global Fn[x_8, zz_array_8]->putarray_ret_0 putarray_0 
+ 8    global Fn[zz_float_9]->putfloat_ret_0 putfloat_0 
+ 9    global Fn[zz_len_10, zz_farray_10]->putfarray_ret_0 putfarray_0 
+ 10   global Fn[]->putf_ret_0 putf_0 
+ 11   global Fn[]->starttime_ret_0 starttime_0 
+ 12   global Fn[]->stoptime_ret_0 stoptime_0 
+ 13   global Fn[zz_ptr_14, zz_val_14, zz_len_14]->memset_ret_0 memset_0 
+ 14   global Fn[zz_dest_15, zz_ptr_15, zz_len_15]->memcpy_ret_0 memcpy_0 
+ 16   Define main_0 "" -> main_ret_0 
+         20   alloc i32 [a_17] 
+         22   alloc i32 [putch_17] 
+         23   alloc i32 [temp_0_arithop_21] 
+         26   alloc i32 [temp_1_arithop_21] 
+         29   alloc i32 [b_21] 
+         30   alloc i32 [temp_2_arithop_21] 
+         33   alloc i32 [temp_3_arithop_21] 
+         35   alloc i32 [temp_4_arithop_21] 
+         38   alloc i32 [temp_5_arithop_26] 
+         41   alloc i32 [temp_6_arithop_26] 
+         44   alloc i32 [main_26] 
+         45   alloc i32 [temp_7_arithop_26] 
+         48   alloc i32 [temp_8_arithop_26] 
+         50   alloc i32 [temp_9_arithop_26] 
+         52   alloc i32 [temp_10_arithop_26] 
+         55   alloc i32 [temp_11_arithop_31] 
+         58   alloc i32 [temp_12_arithop_31] 
+         61   alloc i32 [a_31] 
+         62   alloc i32 [temp_13_arithop_31] 
+         65   alloc i32 [temp_14_arithop_31] 
+         67   alloc i32 [temp_15_arithop_31] 
+         69   alloc i32 [temp_16_arithop_31] 
+         72   alloc i32 [temp_17_arithop_36] 
+         75   alloc i32 [temp_18_arithop_36] 
+         78   alloc i32 [b_36] 
+         79   alloc i32 [temp_19_arithop_36] 
+         83   alloc i32 [a_36] 
+         84   alloc i32 [temp_20_arithop_36] 
+         87   alloc i32 [temp_21_arithop_36] 
+         89   alloc i32 [temp_22_arithop_36] 
+         91   alloc i32 [temp_23_arithop_36] 
+         94   alloc i32 [temp_24_arithop_43] 
+         97   alloc i32 [temp_25_arithop_43] 
+         100  alloc i32 [main_43] 
+         101  alloc i32 [temp_26_arithop_43] 
+         104  alloc i32 [temp_27_arithop_43] 
+         106  alloc i32 [temp_28_arithop_43] 
+         108  alloc i32 [temp_29_arithop_43] 
+         111  alloc i32 [temp_30_arithop_36] 
+         114  alloc i32 [temp_31_arithop_31] 
+         117  alloc i32 [temp_32_arithop_26] 
+         121  alloc i32 [temp_33_arithop_17] 
+          label L0_0: 
+         17    Call void putch_0(97_0) 
+         18    Call void putch_0(10_0) 
+         19   (nop) 
+         21   (nop) 
+         24   (nop) 
+         25   (nop) 
+         27   (nop) 
+         28   (nop) 
+         31   (nop) 
+         32   (nop) 
+         34   (nop) 
+         36   (nop) 
+         37   (nop) 
+         39   (nop) 
+         40   (nop) 
+         42   (nop) 
+         43   (nop) 
+         46   (nop) 
+         47   (nop) 
+         49   (nop) 
+         51   (nop) 
+         53   (nop) 
+         54   (nop) 
+         56   (nop) 
+         57   (nop) 
+         59   (nop) 
+         60   (nop) 
+         63   (nop) 
+         64   (nop) 
+         66   (nop) 
+         68   (nop) 
+         70   (nop) 
+         71   (nop) 
+         73   (nop) 
+         74   (nop) 
+         76   (nop) 
+         77   (nop) 
+         80   (nop) 
+         81   (nop) 
+         82   (nop) 
+         85   (nop) 
+         86   (nop) 
+         88   (nop) 
+         90   (nop) 
+         92   (nop) 
+         93   (nop) 
+         95   (nop) 
+         96   (nop) 
+         98   (nop) 
+         99   (nop) 
+         102  (nop) 
+         103  (nop) 
+         105  (nop) 
+         107  (nop) 
+         109  (nop) 
+         110  (nop) 
+         112  (nop) 
+         113  (nop) 
+         115  (nop) 
+         116  (nop) 
+         118  (nop) 
+         119  (nop) 
+         122  (nop) 
+         123  ret 46_0 

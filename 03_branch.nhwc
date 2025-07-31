@@ -1,0 +1,72 @@
+# input: "./for_auto_test/00sy/03_branch.sy"
+ 15   label global_0: 
+ 0    global Fn[]->getint_ret_0 getint_0 
+ 1    global Fn[]->getch_ret_0 getch_0 
+ 2    global Fn[zz_array_3]->getarray_ret_0 getarray_0 
+ 3    global Fn[]->getfloat_ret_0 getfloat_0 
+ 4    global Fn[zz_array_5]->getfarray_ret_0 getfarray_0 
+ 5    global Fn[zz_int_6]->putint_ret_0 putint_0 
+ 6    global Fn[zz_ch_7]->putch_ret_0 putch_0 
+ 7    global Fn[x_8, zz_array_8]->putarray_ret_0 putarray_0 
+ 8    global Fn[zz_float_9]->putfloat_ret_0 putfloat_0 
+ 9    global Fn[zz_len_10, zz_farray_10]->putfarray_ret_0 putfarray_0 
+ 10   global Fn[]->putf_ret_0 putf_0 
+ 11   global Fn[]->starttime_ret_0 starttime_0 
+ 12   global Fn[]->stoptime_ret_0 stoptime_0 
+ 13   global Fn[zz_ptr_14, zz_val_14, zz_len_14]->memset_ret_0 memset_0 
+ 14   global Fn[zz_dest_15, zz_ptr_15, zz_len_15]->memcpy_ret_0 memcpy_0 
+ 16   Define main_0 "" -> main_ret_0 
+         18   alloc i32 [a_17] 
+         20   alloc i32 [b_17] 
+         22   alloc i32 [c_17] 
+         24   alloc i32 [d_17] 
+         26   alloc i32 [e_17] 
+         28   alloc i32 [f_17] 
+         83   alloc i1 [temp_0__1144] 
+          label L0_0: 
+         17   (nop) 
+         19   (nop) 
+         21   (nop) 
+         23   (nop) 
+         25   (nop) 
+         27   (nop) 
+              jump label: L1_0 
+          label L1_0: 
+              jump label: branch_true_25 
+     49   label branch_true_25: 
+              jump label: branch_true_28 
+     55   label branch_true_28: 
+              jump label: branch_false_31 
+     59   label branch_true_31: 
+         48   ret 3_0 
+     60   label branch_false_31: 
+              jump label: branch_false_35 
+     62   label branch_true_35: 
+         46   ret 4_0 
+     63   label branch_false_35: 
+              jump label: branch_true_39 
+     65   label branch_true_39: 
+              jump label: branch_false_42 
+     71   label branch_true_42: 
+         44   ret 6_0 
+     72   label branch_false_42: 
+              jump label: branch_true_46 
+     74   label branch_true_46: 
+              jump label: branch_true_49 
+     79   label branch_true_49: 
+         84   (nop) 
+              jump label: branch_false_52 
+     85   label branch_true_52: 
+         42   ret 9_0 
+     86   label branch_false_52: 
+         40   ret 10_0 
+     80   label branch_false_49: 
+         38   ret 8_0 
+     75   label branch_false_46: 
+         36   ret 7_0 
+     66   label branch_false_39: 
+         34   ret 5_0 
+     56   label branch_false_28: 
+         32   ret 2_0 
+     50   label branch_false_25: 
+         30   ret 1_0 

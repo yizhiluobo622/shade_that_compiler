@@ -5,7 +5,8 @@ reference: https://gist.github.com/maxcountryman/1699708
 
 // tape, input buffer, and read/write pointer
 const int TAPE_LEN = 65536, BUFFER_LEN = 32768;
-int tape[TAPE_LEN], program[BUFFER_LEN], ptr = 0;
+
+int tape[TAPE_LEN], program[BUFFER_LEN], ptr11 = 0;
 
 // read the input program
 void read_program() {
@@ -24,29 +25,29 @@ void interpret(int input[]) {
     cur_char = input[i];
     if (cur_char == 62) {
       // '>'
-      ptr = ptr + 1;
+      ptr11 = ptr11 + 1;
     }
     else if (cur_char == 60) {
       // '<'
-      ptr = ptr - 1;
+      ptr11 = ptr11 - 1;
     }
     else if (cur_char == 43) {
       // '+'
-      tape[ptr] = tape[ptr] + 1;
+      tape[ptr11] = tape[ptr11] + 1;
     }
     else if (cur_char == 45) {
       // '-'
-      tape[ptr] = tape[ptr] - 1;
+      tape[ptr11] = tape[ptr11] - 1;
     }
     else if (cur_char == 46) {
       // '.'
-      putch(tape[ptr]);
+      putch(tape[ptr11]);
     }
     else if (cur_char == 44) {
       // ','
-      tape[ptr] = getch();
+      tape[ptr11] = getch();
     }
-    else if (cur_char == 93 && tape[ptr]) {
+    else if (cur_char == 93 && tape[ptr11]) {
       // ']'
       loop = 1;
       while (loop > 0) {

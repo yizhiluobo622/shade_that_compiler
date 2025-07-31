@@ -1,0 +1,661 @@
+# input: "./for_auto_test/00sy/36_rotate.sy"
+ 34   label global_0: 
+ 33   global f32 EPSILON_0 
+ 30   global f32 TWO_PI_0 
+ 27   global f32 PI_0 
+ 24   global i32 height_0 
+ 23   global i32 width_0 
+ 22   global Array:i32:[Some(1048576_0)] image_0 
+ 20   global i32 MAX_HEIGHT_0 
+ 17   global i32 MAX_WIDTH_0 
+ 0    global Fn[]->getint_ret_0 getint_0 
+ 1    global Fn[]->getch_ret_0 getch_0 
+ 2    global Fn[zz_array_3]->getarray_ret_0 getarray_0 
+ 3    global Fn[]->getfloat_ret_0 getfloat_0 
+ 4    global Fn[zz_array_5]->getfarray_ret_0 getfarray_0 
+ 5    global Fn[zz_int_6]->putint_ret_0 putint_0 
+ 6    global Fn[zz_ch_7]->putch_ret_0 putch_0 
+ 7    global Fn[x_8, zz_array_8]->putarray_ret_0 putarray_0 
+ 8    global Fn[zz_float_9]->putfloat_ret_0 putfloat_0 
+ 9    global Fn[zz_len_10, zz_farray_10]->putfarray_ret_0 putfarray_0 
+ 10   global Fn[]->putf_ret_0 putf_0 
+ 11   global Fn[]->starttime_ret_0 starttime_0 
+ 12   global Fn[]->stoptime_ret_0 stoptime_0 
+ 13   global Fn[zz_ptr_14, zz_val_14, zz_len_14]->memset_ret_0 memset_0 
+ 14   global Fn[zz_dest_15, zz_ptr_15, zz_len_15]->memcpy_ret_0 memcpy_0 
+ 15   store 1024_0:i32 *MAX_WIDTH_0:ptr->i32 
+ 16   MAX_WIDTH_0 = chi MAX_WIDTH_0:15 
+ 18   store 1024_0:i32 *MAX_HEIGHT_0:ptr->i32 
+ 19   MAX_HEIGHT_0 = chi MAX_HEIGHT_0:18 
+ 21    
+ 25   store 3.14159265359_0:f32 *PI_0:ptr->f32 
+ 26   PI_0 = chi PI_0:25 
+ 28   store 6.28318530718_0:f32 *TWO_PI_0:ptr->f32 
+ 29   TWO_PI_0 = chi TWO_PI_0:28 
+ 31   store 1e-6_0:f32 *EPSILON_0:ptr->f32 
+ 32   EPSILON_0 = chi EPSILON_0:31 
+ 43   Define main_0 "" -> main_ret_0 
+         429  width_0_3 = chi width_0_0:43 
+         430  image_0_5 = chi image_0_0:43 
+         431  height_0_3 = chi height_0_0:43 
+         397  alloc f32 [temp_96_ret_of_getfloat_115] 
+         400  alloc f32 [rad_115] 
+         401  alloc i32 [temp_97_ret_of_getch_115] 
+         408  alloc i32 [temp_98_ret_of_read_image_118] 
+         410  alloc i1 [temp_99_cmp_118] 
+          label L0_0: 
+         398  temp_96_ret_of_getfloat_115_0 =  Call f32 getfloat_0() 
+         399  (nop) 
+         402  temp_97_ret_of_getch_115_0 =  Call i32 getch_0() 
+              jump label: L1_0 
+          label L1_0: 
+         409  temp_98_ret_of_read_image_118_0 =  Call i32 read_image_0() 
+         432  mu image_0_5:409 
+         433  mu width_0_3:409 
+         434  mu height_0_3:409 
+         435  image_0_6 = chi image_0_5:409 
+         436  height_0_4 = chi height_0_3:409 
+         437  width_0_4 = chi width_0_3:409 
+         411  temp_99_cmp_118_0 = icmp i32 Slt temp_98_ret_of_read_image_118_0, 0_0 
+         649  untrack temp_98_ret_of_read_image_118_0 
+         414  br i1 temp_99_cmp_118_0, label branch_true_119, label branch_false_119 
+     412  label branch_true_119: 
+         651  untrack temp_99_cmp_118_0 
+         650  untrack temp_96_ret_of_getfloat_115_0 
+         438  mu width_0_4:407 
+         439  mu image_0_6:407 
+         440  mu height_0_4:407 
+         407  ret -1_0 
+     413  label branch_false_119: 
+         652  untrack temp_99_cmp_118_0 
+              jump label: L2_0 
+          label L2_0: 
+         403   Call void write_pgm_0(temp_96_ret_of_getfloat_115_0) 
+         653  untrack temp_96_ret_of_getfloat_115_0 
+         441  mu width_0_4:405 
+         442  mu image_0_6:405 
+         443  mu height_0_4:405 
+         405  ret 0_0 
+ 42   Define write_pgm_0 "rad_89_0," -> write_pgm_ret_0 
+         351  alloc i32 [temp_87_value_from_ptr_91] 
+         356  alloc i32 [temp_88_value_from_ptr_91] 
+         364  alloc i32 [y_91] 
+         366  alloc i32 [x_104] 
+         368  alloc i32 [temp_89_arithop_104] 
+         371  alloc i32 [temp_90_ret_of_rotate_108] 
+         375  alloc i32 [temp_91_arithop_108] 
+         378  alloc i32 [temp_92_value_from_ptr_102] 
+         381  alloc i1 [temp_93_cmp_102] 
+         388  alloc i32 [temp_94_value_from_ptr_106] 
+         391  alloc i1 [temp_95_cmp_106] 
+          label L3_0: 
+         348   Call void putch_0(80_0) 
+         349   Call void putch_0(50_0) 
+         350   Call void putch_0(10_0) 
+         352  temp_87_value_from_ptr_91_0 = load *width_0:ptr->i32 
+         353  mu width_0_0:352 
+         354   Call void putint_0(temp_87_value_from_ptr_91_0) 
+         355   Call void putch_0(32_0) 
+         357  temp_88_value_from_ptr_91_0 = load *height_0:ptr->i32 
+         358  mu height_0_0:357 
+         359   Call void putint_0(temp_88_value_from_ptr_91_0) 
+         360   Call void putch_0(32_0) 
+         361   Call void putint_0(255_0) 
+         362   Call void putch_0(10_0) 
+         363  (nop) 
+         379  (nop) 
+         380  mu height_0_0:379 
+         389  (nop) 
+         390  mu width_0_0:389 
+         466  y_91_1 = i32 0_0 
+              jump label: while.head_103 
+     383  label while.head_103: 
+         382  temp_93_cmp_102_0 = icmp i32 Slt y_91_1, temp_88_value_from_ptr_91_0 
+         386  br i1 temp_93_cmp_102_0, label while.body_103, label while.exit_103 
+     384  label while.body_103: 
+         365  (nop) 
+         467  x_104_1 = i32 0_0 
+              jump label: while.head_107 
+     393  label while.head_107: 
+         392  temp_95_cmp_106_0 = icmp i32 Slt x_104_1, temp_87_value_from_ptr_91_0 
+         396  br i1 temp_95_cmp_106_0, label while.body_107, label while.exit_107 
+     394  label while.body_107: 
+         372  temp_90_ret_of_rotate_108_0 =  Call i32 rotate_0(x_104_1, y_91_1, rad_89_0) 
+         373   Call void putint_0(temp_90_ret_of_rotate_108_0) 
+         374   Call void putch_0(32_0) 
+         376  temp_91_arithop_108_0 = Add i32 x_104_1, 1_0 
+         377  (nop) 
+         468  x_104_1 = i32 temp_91_arithop_108_0 
+              jump label: while.head_107 
+     395  label while.exit_107: 
+         367   Call void putch_0(10_0) 
+         369  temp_89_arithop_104_0 = Add i32 y_91_1, 1_0 
+         370  (nop) 
+         469  y_91_1 = i32 temp_89_arithop_104_0 
+              jump label: while.head_103 
+     385  label while.exit_103: 
+         648  untrack rad_89_0 
+         647  untrack temp_88_value_from_ptr_91_0 
+         646  untrack temp_87_value_from_ptr_91_0 
+         645  untrack y_91_1 
+         387  ret 
+ 41   Define rotate_0 "x_78_0,y_78_0,rad_78_0," -> rotate_ret_0 
+         238  alloc f32 [temp_52_ret_of_my_sin_80] 
+         241  alloc f32 [sinma_80] 
+         242  alloc f32 [temp_53_ret_of_my_cos_80] 
+         245  alloc f32 [cosma_80] 
+         246  alloc i32 [temp_54_value_from_ptr_80] 
+         249  alloc i32 [temp_55_arithop_80] 
+         252  alloc i32 [hwidth_80] 
+         253  alloc i32 [temp_56_value_from_ptr_80] 
+         256  alloc i32 [temp_57_arithop_80] 
+         259  alloc i32 [hheight_80] 
+         260  alloc i32 [temp_58_arithop_80] 
+         263  alloc i32 [xt_80] 
+         264  alloc i32 [temp_59_arithop_80] 
+         267  alloc i32 [yt_80] 
+         268  alloc f32 [temp_60__80] 
+         270  alloc f32 [temp_61_arithop_80] 
+         272  alloc f32 [temp_62__80] 
+         274  alloc f32 [temp_63_arithop_80] 
+         276  alloc f32 [temp_64_arithop_80] 
+         278  alloc f32 [temp_65__80] 
+         280  alloc f32 [temp_66_arithop_80] 
+         282  alloc i32 [temp_67__80] 
+         285  alloc i32 [src_x_80] 
+         286  alloc f32 [temp_68__80] 
+         288  alloc f32 [temp_69_arithop_80] 
+         290  alloc f32 [temp_70__80] 
+         292  alloc f32 [temp_71_arithop_80] 
+         294  alloc f32 [temp_72_arithop_80] 
+         296  alloc f32 [temp_73__80] 
+         298  alloc f32 [temp_74_arithop_80] 
+         300  alloc i32 [temp_75__80] 
+         303  alloc i32 [src_y_80] 
+         305  alloc i32 [temp_76_value_from_ptr_80] 
+         308  alloc i32 [temp_77_arithop_80] 
+         310  alloc i32 [temp_78_arithop_80] 
+         312  alloc ptr->i32 [temp_79_ptr_of_*image_0_80] 
+         314  alloc i32 [temp_80_ele_of_*image_0_80] 
+         320  alloc i1 [temp_81_cmp_85] 
+         322  alloc i32 [temp_82_value_from_ptr_85] 
+         325  alloc i1 [temp_83_cmp_85] 
+         327  alloc i1 [temp_84_cmp_85] 
+         329  alloc i32 [temp_85_value_from_ptr_85] 
+         332  alloc i1 [temp_86_cmp_85] 
+          label L4_0: 
+         239  temp_52_ret_of_my_sin_80_0 =  Call f32 my_sin_0(rad_78_0) 
+         240  (nop) 
+         243  temp_53_ret_of_my_cos_80_0 =  Call f32 my_cos_0(rad_78_0) 
+         583  untrack rad_78_0 
+         244  (nop) 
+         247  temp_54_value_from_ptr_80_0 = load *width_0:ptr->i32 
+         248  mu width_0_0:247 
+         250  temp_55_arithop_80_0 = Div i32 temp_54_value_from_ptr_80_0, 2_0 
+         251  (nop) 
+         254  temp_56_value_from_ptr_80_0 = load *height_0:ptr->i32 
+         255  mu height_0_0:254 
+         257  temp_57_arithop_80_0 = Div i32 temp_56_value_from_ptr_80_0, 2_0 
+         258  (nop) 
+         261  temp_58_arithop_80_0 = Sub i32 x_78_0, temp_55_arithop_80_0 
+         579  untrack x_78_0 
+         262  (nop) 
+         265  temp_59_arithop_80_0 = Sub i32 y_78_0, temp_57_arithop_80_0 
+         586  untrack y_78_0 
+         266  (nop) 
+         269  temp_60__80_0 = sitofp i32 temp_58_arithop_80_0 to f32 
+         589  untrack temp_58_arithop_80_0 
+         271  temp_61_arithop_80_0 = Mul f32 temp_60__80_0, temp_53_ret_of_my_cos_80_0 
+         273  temp_62__80_0 = sitofp i32 temp_59_arithop_80_0 to f32 
+         592  untrack temp_59_arithop_80_0 
+         275  temp_63_arithop_80_0 = Mul f32 temp_62__80_0, temp_52_ret_of_my_sin_80_0 
+         277  temp_64_arithop_80_0 = Sub f32 temp_61_arithop_80_0, temp_63_arithop_80_0 
+         588  untrack temp_61_arithop_80_0 
+         573  untrack temp_63_arithop_80_0 
+         279  temp_65__80_0 = sitofp i32 temp_55_arithop_80_0 to f32 
+         580  untrack temp_55_arithop_80_0 
+         281  temp_66_arithop_80_0 = Add f32 temp_64_arithop_80_0, temp_65__80_0 
+         590  untrack temp_64_arithop_80_0 
+         584  untrack temp_65__80_0 
+         283  temp_67__80_0 = fptosi f32 temp_66_arithop_80_0 to i32 
+         582  untrack temp_66_arithop_80_0 
+         284  (nop) 
+         287  (nop) 
+         289  temp_69_arithop_80_0 = Mul f32 temp_60__80_0, temp_52_ret_of_my_sin_80_0 
+         577  untrack temp_52_ret_of_my_sin_80_0 
+         576  untrack temp_60__80_0 
+         291  (nop) 
+         293  temp_71_arithop_80_0 = Mul f32 temp_62__80_0, temp_53_ret_of_my_cos_80_0 
+         591  untrack temp_53_ret_of_my_cos_80_0 
+         575  untrack temp_62__80_0 
+         295  temp_72_arithop_80_0 = Add f32 temp_69_arithop_80_0, temp_71_arithop_80_0 
+         587  untrack temp_71_arithop_80_0 
+         578  untrack temp_69_arithop_80_0 
+         297  temp_73__80_0 = sitofp i32 temp_57_arithop_80_0 to f32 
+         581  untrack temp_57_arithop_80_0 
+         299  temp_74_arithop_80_0 = Add f32 temp_72_arithop_80_0, temp_73__80_0 
+         585  untrack temp_72_arithop_80_0 
+         572  untrack temp_73__80_0 
+         301  temp_75__80_0 = fptosi f32 temp_74_arithop_80_0 to i32 
+         574  untrack temp_74_arithop_80_0 
+         302  (nop) 
+              jump label: L5_0 
+          label L5_0: 
+         321  temp_81_cmp_85_0 = icmp i32 Slt temp_67__80_0, 0_0 
+         345  br i1 temp_81_cmp_85_0, label branch_short_circuit_c_true_485, label branch_short_circuit_p_false_475 
+     334  label branch_short_circuit_c_true_485: 
+         637  untrack temp_75__80_0 
+         636  untrack temp_54_value_from_ptr_80_0 
+         635  untrack temp_86_cmp_85_0 
+         634  untrack temp_78_arithop_80_0 
+         633  untrack temp_80_ele_of_*image_0_80_0 
+         632  untrack temp_79_ptr_of_*image_0_80 
+         631  untrack temp_77_arithop_80_0 
+         630  untrack temp_67__80_0 
+         627  untrack temp_86_cmp_85_0 
+         626  untrack temp_78_arithop_80_0 
+         625  untrack temp_75__80_0 
+         624  untrack temp_84_cmp_85_0 
+         623  untrack temp_54_value_from_ptr_80_0 
+         622  untrack temp_67__80_0 
+         621  untrack temp_77_arithop_80_0 
+         620  untrack temp_80_ele_of_*image_0_80_0 
+         619  untrack temp_56_value_from_ptr_80_0 
+         618  untrack temp_79_ptr_of_*image_0_80 
+         616  untrack temp_84_cmp_85_0 
+         615  untrack temp_79_ptr_of_*image_0_80 
+         614  untrack temp_67__80_0 
+         613  untrack temp_75__80_0 
+         612  untrack temp_80_ele_of_*image_0_80_0 
+         611  untrack temp_83_cmp_85_0 
+         610  untrack temp_56_value_from_ptr_80_0 
+         609  untrack temp_54_value_from_ptr_80_0 
+         608  untrack temp_86_cmp_85_0 
+         607  untrack temp_77_arithop_80_0 
+         606  untrack temp_78_arithop_80_0 
+         604  untrack temp_81_cmp_85_0 
+         603  untrack temp_75__80_0 
+         602  untrack temp_78_arithop_80_0 
+         601  untrack temp_77_arithop_80_0 
+         600  untrack temp_83_cmp_85_0 
+         599  untrack temp_67__80_0 
+         598  untrack temp_80_ele_of_*image_0_80_0 
+         597  untrack temp_79_ptr_of_*image_0_80 
+         596  untrack temp_54_value_from_ptr_80_0 
+         595  untrack temp_56_value_from_ptr_80_0 
+         594  untrack temp_84_cmp_85_0 
+         593  untrack temp_86_cmp_85_0 
+         319  ret 0_0 
+     342  label branch_short_circuit_p_false_475: 
+         605  untrack temp_81_cmp_85_0 
+         323  (nop) 
+         324  mu width_0_0:323 
+         326  temp_83_cmp_85_0 = icmp i32 Sge temp_67__80_0, temp_54_value_from_ptr_80_0 
+         344  br i1 temp_83_cmp_85_0, label branch_short_circuit_c_true_485, label branch_short_circuit_p_false_480 
+     339  label branch_short_circuit_p_false_480: 
+         617  untrack temp_83_cmp_85_0 
+         328  temp_84_cmp_85_0 = icmp i32 Slt temp_75__80_0, 0_0 
+         341  br i1 temp_84_cmp_85_0, label branch_short_circuit_c_true_485, label branch_short_circuit_p_false_485 
+     336  label branch_short_circuit_p_false_485: 
+         628  untrack temp_84_cmp_85_0 
+         330  (nop) 
+         331  mu height_0_0:330 
+         333  temp_86_cmp_85_0 = icmp i32 Sge temp_75__80_0, temp_56_value_from_ptr_80_0 
+         629  untrack temp_56_value_from_ptr_80_0 
+         338  br i1 temp_86_cmp_85_0, label branch_short_circuit_c_true_485, label branch_short_circuit_c_false_485 
+     335  label branch_short_circuit_c_false_485: 
+         638  untrack temp_86_cmp_85_0 
+              jump label: L6_0 
+          label L6_0: 
+         306  (nop) 
+         307  mu width_0_0:306 
+         309  temp_77_arithop_80_0 = Mul i32 temp_75__80_0, temp_54_value_from_ptr_80_0 
+         642  untrack temp_54_value_from_ptr_80_0 
+         640  untrack temp_75__80_0 
+         311  temp_78_arithop_80_0 = Add i32 temp_77_arithop_80_0, temp_67__80_0 
+         643  untrack temp_77_arithop_80_0 
+         639  untrack temp_67__80_0 
+         313  temp_79_ptr_of_*image_0_80 = GEP *image_0:Array:i32:[None] [Some(temp_78_arithop_80_0)] 
+         644  untrack temp_78_arithop_80_0 
+         315  temp_80_ele_of_*image_0_80_0 = load temp_79_ptr_of_*image_0_80:ptr->i32 
+         641  untrack temp_79_ptr_of_*image_0_80 
+         316  mu image_0_0:315 
+         317  ret temp_80_ele_of_*image_0_80_0 
+ 40   Define read_image_0 "" -> read_image_ret_0 
+         417  image_0_1 = chi image_0_0:40 
+         418  height_0_1 = chi height_0_0:40 
+         419  width_0_1 = chi width_0_0:40 
+         144  alloc i32 [temp_29_ret_of_getint_57] 
+         148  alloc i32 [temp_30_ret_of_getint_57] 
+         153  alloc i32 [y_57] 
+         157  alloc i32 [x_69] 
+         158  alloc i32 [temp_31_arithop_69] 
+         161  alloc i32 [temp_32_value_from_ptr_73] 
+         164  alloc i32 [temp_33_arithop_73] 
+         166  alloc i32 [temp_34_arithop_73] 
+         168  alloc ptr->i32 [temp_35_ptr_of_*image_0_73] 
+         170  alloc i32 [temp_36_ret_of_getint_73] 
+         174  alloc i32 [temp_37_arithop_73] 
+         181  alloc i32 [temp_38_ret_of_getch_58] 
+         183  alloc i1 [temp_39_cmp_58] 
+         185  alloc i32 [temp_40_ret_of_getch_58] 
+         187  alloc i1 [temp_41_cmp_58] 
+         195  alloc i32 [temp_42_value_from_ptr_63] 
+         198  alloc i1 [temp_43_cmp_63] 
+         200  alloc i32 [temp_44_value_from_ptr_63] 
+         203  alloc i1 [temp_45_cmp_63] 
+         205  alloc i32 [temp_46_ret_of_getint_63] 
+         207  alloc i1 [temp_47_cmp_63] 
+         218  alloc i32 [temp_48_value_from_ptr_67] 
+         221  alloc i1 [temp_49_cmp_67] 
+         229  alloc i32 [temp_50_value_from_ptr_71] 
+         232  alloc i1 [temp_51_cmp_71] 
+          label L7_0: 
+         182  temp_38_ret_of_getch_58_0 =  Call i32 getch_0() 
+         184  temp_39_cmp_58_0 = icmp i32 Ne temp_38_ret_of_getch_58_0, 80_0 
+         520  untrack temp_38_ret_of_getch_58_0 
+         194  br i1 temp_39_cmp_58_0, label branch_short_circuit_c_true_348, label branch_short_circuit_p_false_348 
+     189  label branch_short_circuit_c_true_348: 
+         544  untrack temp_30_ret_of_getint_57_0 
+         543  untrack y_57_1 
+         542  untrack temp_47_cmp_63_0 
+         541  untrack temp_44_value_from_ptr_63_0 
+         540  untrack temp_41_cmp_58_0 
+         539  untrack temp_45_cmp_63_0 
+         538  untrack temp_46_ret_of_getint_63_0 
+         537  untrack temp_42_value_from_ptr_63_0 
+         536  untrack temp_43_cmp_63_0 
+         535  untrack temp_29_ret_of_getint_57_0 
+         532  untrack temp_39_cmp_58_0 
+         531  untrack temp_40_ret_of_getch_58_0 
+         530  untrack temp_45_cmp_63_0 
+         529  untrack temp_29_ret_of_getint_57_0 
+         528  untrack temp_30_ret_of_getint_57_0 
+         527  untrack temp_46_ret_of_getint_63_0 
+         526  untrack temp_44_value_from_ptr_63_0 
+         525  untrack temp_41_cmp_58_0 
+         524  untrack temp_43_cmp_63_0 
+         523  untrack temp_42_value_from_ptr_63_0 
+         522  untrack y_57_1 
+         521  untrack temp_47_cmp_63_0 
+         420  mu image_0_1:180 
+         421  mu height_0_1:180 
+         422  mu width_0_1:180 
+         180  ret -1_0 
+     191  label branch_short_circuit_p_false_348: 
+         533  untrack temp_39_cmp_58_0 
+         186  temp_40_ret_of_getch_58_0 =  Call i32 getch_0() 
+         188  temp_41_cmp_58_0 = icmp i32 Ne temp_40_ret_of_getch_58_0, 50_0 
+         534  untrack temp_40_ret_of_getch_58_0 
+         193  br i1 temp_41_cmp_58_0, label branch_short_circuit_c_true_348, label branch_short_circuit_c_false_348 
+     190  label branch_short_circuit_c_false_348: 
+         545  untrack temp_41_cmp_58_0 
+              jump label: L8_0 
+          label L8_0: 
+         145  temp_29_ret_of_getint_57_0 =  Call i32 getint_0() 
+         146  store temp_29_ret_of_getint_57_0:i32 *width_0:ptr->i32 
+         547  untrack temp_29_ret_of_getint_57_0 
+         147  width_0_2 = chi width_0_1:146 
+         149  temp_30_ret_of_getint_57_0 =  Call i32 getint_0() 
+         150  store temp_30_ret_of_getint_57_0:i32 *height_0:ptr->i32 
+         546  untrack temp_30_ret_of_getint_57_0 
+         151  height_0_2 = chi height_0_1:150 
+              jump label: L9_0 
+          label L9_0: 
+         196  temp_42_value_from_ptr_63_0 = load *width_0:ptr->i32 
+         197  mu width_0_2:196 
+         199  temp_43_cmp_63_0 = icmp i32 Sgt temp_42_value_from_ptr_63_0, 1024_0 
+         217  br i1 temp_43_cmp_63_0, label branch_short_circuit_c_true_369, label branch_short_circuit_p_false_364 
+     209  label branch_short_circuit_c_true_369: 
+         567  untrack y_57_1 
+         566  untrack temp_44_value_from_ptr_63_0 
+         565  untrack temp_47_cmp_63_0 
+         564  untrack temp_42_value_from_ptr_63_0 
+         561  untrack temp_45_cmp_63_0 
+         560  untrack temp_44_value_from_ptr_63_0 
+         559  untrack temp_47_cmp_63_0 
+         558  untrack temp_46_ret_of_getint_63_0 
+         557  untrack y_57_1 
+         556  untrack temp_42_value_from_ptr_63_0 
+         554  untrack temp_43_cmp_63_0 
+         553  untrack temp_46_ret_of_getint_63_0 
+         552  untrack temp_45_cmp_63_0 
+         551  untrack temp_47_cmp_63_0 
+         550  untrack y_57_1 
+         549  untrack temp_42_value_from_ptr_63_0 
+         548  untrack temp_44_value_from_ptr_63_0 
+         423  mu image_0_1:178 
+         424  mu height_0_2:178 
+         425  mu width_0_2:178 
+         178  ret -1_0 
+     214  label branch_short_circuit_p_false_364: 
+         555  untrack temp_43_cmp_63_0 
+         201  temp_44_value_from_ptr_63_0 = load *height_0:ptr->i32 
+         202  mu height_0_2:201 
+         204  temp_45_cmp_63_0 = icmp i32 Sgt temp_44_value_from_ptr_63_0, 1024_0 
+         216  br i1 temp_45_cmp_63_0, label branch_short_circuit_c_true_369, label branch_short_circuit_p_false_369 
+     211  label branch_short_circuit_p_false_369: 
+         562  untrack temp_45_cmp_63_0 
+         206  temp_46_ret_of_getint_63_0 =  Call i32 getint_0() 
+         208  temp_47_cmp_63_0 = icmp i32 Ne temp_46_ret_of_getint_63_0, 255_0 
+         563  untrack temp_46_ret_of_getint_63_0 
+         213  br i1 temp_47_cmp_63_0, label branch_short_circuit_c_true_369, label branch_short_circuit_c_false_369 
+     210  label branch_short_circuit_c_false_369: 
+         568  untrack temp_47_cmp_63_0 
+              jump label: L10_0 
+          label L10_0: 
+         152  (nop) 
+         219  (nop) 
+         220  mu height_0_2:219 
+         230  (nop) 
+         231  mu width_0_2:230 
+         162  (nop) 
+         163  mu width_0_2:162 
+         462  y_57_1 = i32 0_0 
+              jump label: while.head_68 
+     223  label while.head_68: 
+         222  temp_49_cmp_67_0 = icmp i32 Slt y_57_1, temp_44_value_from_ptr_63_0 
+         226  br i1 temp_49_cmp_67_0, label while.body_68, label while.exit_68 
+     224  label while.body_68: 
+         156  (nop) 
+         165  temp_33_arithop_73_0 = Mul i32 y_57_1, temp_42_value_from_ptr_63_0 
+         463  x_69_1 = i32 0_0 
+              jump label: while.head_72 
+     234  label while.head_72: 
+         233  temp_51_cmp_71_0 = icmp i32 Slt x_69_1, temp_42_value_from_ptr_63_0 
+         237  br i1 temp_51_cmp_71_0, label while.body_72, label while.exit_72 
+     235  label while.body_72: 
+         167  temp_34_arithop_73_0 = Add i32 temp_33_arithop_73_0, x_69_1 
+         169  temp_35_ptr_of_*image_0_73 = GEP *image_0:ptr->i32 [Some(temp_34_arithop_73_0)] 
+         171  temp_36_ret_of_getint_73_0 =  Call i32 getint_0() 
+         172  store temp_36_ret_of_getint_73_0:i32 temp_35_ptr_of_*image_0_73:ptr->i32 
+         173  image_0_4 = chi image_0_3:172 
+         175  temp_37_arithop_73_0 = Add i32 x_69_1, 1_0 
+         176  (nop) 
+         464  x_69_1 = i32 temp_37_arithop_73_0 
+              jump label: while.head_72 
+     236  label while.exit_72: 
+         159  temp_31_arithop_69_0 = Add i32 y_57_1, 1_0 
+         160  (nop) 
+         465  y_57_1 = i32 temp_31_arithop_69_0 
+              jump label: while.head_68 
+     225  label while.exit_68: 
+         571  untrack temp_42_value_from_ptr_63_0 
+         570  untrack temp_44_value_from_ptr_63_0 
+         569  untrack y_57_1 
+         426  mu image_0_2:155 
+         427  mu height_0_2:155 
+         428  mu width_0_2:155 
+         155  ret 0_0 
+ 39   Define my_cos_0 "x_52_0," -> my_cos_ret_0 
+         138  alloc f32 [temp_27_arithop_54] 
+         140  alloc f32 [temp_28_ret_of_my_sin_54] 
+          label L11_0: 
+         139  temp_27_arithop_54_0 = Add f32 x_52_0, 1.5707964_0 
+         519  untrack x_52_0 
+         141  temp_28_ret_of_my_sin_54_0 =  Call f32 my_sin_0(temp_27_arithop_54_0) 
+         518  untrack temp_27_arithop_54_0 
+         142  ret temp_28_ret_of_my_sin_54_0 
+ 38   Define my_sin_0 "x_37_0," -> my_sin_ret_0 
+         94   alloc f32 [temp_15_ret_of_my_sin_impl_39] 
+         97   alloc f32 [temp_16_arithop_48] 
+         100  alloc f32 [temp_17_arithop_45] 
+         103  alloc f32 [temp_18_arithop_42] 
+         105  alloc i32 [temp_19__42] 
+         108  alloc i32 [xx_42] 
+         109  alloc f32 [temp_20__42] 
+         111  alloc f32 [temp_21_arithop_42] 
+         113  alloc f32 [temp_22_arithop_42] 
+         116  alloc i1 [temp_23_cmp_40] 
+         118  alloc i1 [temp_24_cmp_40] 
+         126  alloc i1 [temp_25_cmp_45] 
+         131  alloc i1 [temp_26_cmp_48] 
+          label L12_0: 
+         117  temp_23_cmp_40_0 = fcmp f32 Ogt x_37_0, 6.2831855_0 
+         125  br i1 temp_23_cmp_40_0, label branch_short_circuit_c_true_254, label branch_short_circuit_p_false_254 
+     120  label branch_short_circuit_c_true_254: 
+         510  untrack temp_24_cmp_40_0 
+         489  untrack temp_23_cmp_40_0 
+         488  untrack temp_24_cmp_40_0 
+         104  temp_18_arithop_42_0 = Div f32 x_37_0, 6.2831855_0 
+         106  temp_19__42_0 = fptosi f32 temp_18_arithop_42_0 to i32 
+         495  untrack temp_18_arithop_42_0 
+         107  (nop) 
+         110  temp_20__42_0 = sitofp i32 temp_19__42_0 to f32 
+         496  untrack temp_19__42_0 
+         112  temp_21_arithop_42_0 = Mul f32 temp_20__42_0, 6.2831855_0 
+         493  untrack temp_20__42_0 
+         114  temp_22_arithop_42_0 = Sub f32 x_37_0, temp_21_arithop_42_0 
+         494  untrack temp_21_arithop_42_0 
+         492  untrack x_37_0 
+         115  (nop) 
+         456  x_37_2 = f32 temp_22_arithop_42_0 
+         491  untrack temp_22_arithop_42_0 
+              jump label: branch_short_circuit_c_false_254 
+     121  label branch_short_circuit_c_false_254: 
+              jump label: L13_0 
+          label L13_0: 
+         127  temp_25_cmp_45_0 = fcmp f32 Ogt x_37_2, 3.1415927_0 
+         130  br i1 temp_25_cmp_45_0, label branch_true_46, label UP_48_0 
+     128  label branch_true_46: 
+         497  untrack temp_25_cmp_45_0 
+         101  temp_17_arithop_45_0 = Sub f32 x_37_2, 6.2831855_0 
+         500  untrack x_37_2 
+         102  (nop) 
+         457  x_37_4 = f32 temp_17_arithop_45_0 
+         501  untrack temp_17_arithop_45_0 
+              jump label: branch_false_46 
+     129  label branch_false_46: 
+              jump label: L14_0 
+          label L14_0: 
+         132  temp_26_cmp_48_0 = fcmp f32 Olt x_37_4, -3.1415927_0 
+         135  br i1 temp_26_cmp_48_0, label branch_true_49, label UP_32_0 
+     133  label branch_true_49: 
+         502  untrack temp_26_cmp_48_0 
+         98   temp_16_arithop_48_0 = Add f32 x_37_4, 6.2831855_0 
+         505  untrack x_37_4 
+         99   (nop) 
+         458  x_37_6 = f32 temp_16_arithop_48_0 
+         506  untrack temp_16_arithop_48_0 
+              jump label: branch_false_49 
+     134  label branch_false_49: 
+              jump label: L15_0 
+          label L15_0: 
+         95   temp_15_ret_of_my_sin_impl_39_0 =  Call f32 my_sin_impl_0(x_37_6) 
+         507  untrack x_37_6 
+         96   ret temp_15_ret_of_my_sin_impl_39_0 
+     455  label UP_32_0: 
+         504  untrack temp_16_arithop_48_0 
+         503  untrack temp_26_cmp_48_0 
+         459  x_37_6 = f32 x_37_4 
+         508  untrack x_37_4 
+              jump label: branch_false_49 
+     454  label UP_48_0: 
+         499  untrack temp_17_arithop_45_0 
+         498  untrack temp_25_cmp_45_0 
+         460  x_37_4 = f32 x_37_2 
+         509  untrack x_37_2 
+              jump label: branch_false_46 
+     122  label branch_short_circuit_p_false_254: 
+         490  untrack temp_23_cmp_40_0 
+         119  temp_24_cmp_40_0 = fcmp f32 Olt x_37_0, -6.2831855_0 
+         124  br i1 temp_24_cmp_40_0, label branch_short_circuit_c_true_254, label UP_63_0 
+     453  label UP_63_0: 
+         516  untrack temp_20__42_0 
+         515  untrack temp_21_arithop_42_0 
+         514  untrack temp_24_cmp_40_0 
+         513  untrack temp_19__42_0 
+         512  untrack temp_22_arithop_42_0 
+         511  untrack temp_18_arithop_42_0 
+         461  x_37_2 = f32 x_37_0 
+         517  untrack x_37_0 
+              jump label: branch_short_circuit_c_false_254 
+ 37   Define my_sin_impl_0 "x_30_0," -> my_sin_impl_ret_0 
+         76   alloc f32 [temp_10_arithop_32] 
+         78   alloc f32 [temp_11_ret_of_my_sin_impl_32] 
+         80   alloc f32 [temp_12_ret_of_p_32] 
+         85   alloc f32 [temp_13_ret_of_my_fabs_33] 
+         87   alloc i1 [temp_14_cmp_33] 
+          label L16_0: 
+         86   temp_13_ret_of_my_fabs_33_0 =  Call f32 my_fabs_0(x_30_0) 
+         88   temp_14_cmp_33_0 = fcmp f32 Ole temp_13_ret_of_my_fabs_33_0, 0.000001_0 
+         479  untrack temp_13_ret_of_my_fabs_33_0 
+         91   br i1 temp_14_cmp_33_0, label branch_true_34, label branch_false_34 
+     89   label branch_true_34: 
+         483  untrack temp_11_ret_of_my_sin_impl_32_0 
+         482  untrack temp_10_arithop_32_0 
+         481  untrack temp_14_cmp_33_0 
+         480  untrack temp_12_ret_of_p_32_0 
+         84   ret x_30_0 
+     90   label branch_false_34: 
+         484  untrack temp_14_cmp_33_0 
+              jump label: L17_0 
+          label L17_0: 
+         77   temp_10_arithop_32_0 = Div f32 x_30_0, 3.0_0 
+         485  untrack x_30_0 
+         79   temp_11_ret_of_my_sin_impl_32_0 =  Call f32 my_sin_impl_0(temp_10_arithop_32_0) 
+         487  untrack temp_10_arithop_32_0 
+         81   temp_12_ret_of_p_32_0 =  Call f32 p_0(temp_11_ret_of_my_sin_impl_32_0) 
+         486  untrack temp_11_ret_of_my_sin_impl_32_0 
+         82   ret temp_12_ret_of_p_32_0 
+ 36   Define p_0 "x_26_0," -> p_ret_0 
+         59   alloc f32 [temp_3__28] 
+         61   alloc f32 [temp_4_arithop_28] 
+         63   alloc f32 [temp_5__28] 
+         65   alloc f32 [temp_6_arithop_28] 
+         67   alloc f32 [temp_7_arithop_28] 
+         69   alloc f32 [temp_8_arithop_28] 
+         71   alloc f32 [temp_9_arithop_28] 
+          label L18_0: 
+         60   (nop) 
+         62   temp_4_arithop_28_0 = Mul f32 3._0, x_26_0 
+         64   (nop) 
+         66   temp_6_arithop_28_0 = Mul f32 4._0, x_26_0 
+         68   temp_7_arithop_28_0 = Mul f32 temp_6_arithop_28_0, x_26_0 
+         476  untrack temp_6_arithop_28_0 
+         70   temp_8_arithop_28_0 = Mul f32 temp_7_arithop_28_0, x_26_0 
+         478  untrack temp_7_arithop_28_0 
+         474  untrack x_26_0 
+         72   temp_9_arithop_28_0 = Sub f32 temp_4_arithop_28_0, temp_8_arithop_28_0 
+         477  untrack temp_8_arithop_28_0 
+         475  untrack temp_4_arithop_28_0 
+         73   ret temp_9_arithop_28_0 
+ 35   Define my_fabs_0 "x_19_0," -> my_fabs_ret_0 
+         45   alloc f32 [temp_0__21] 
+         50   alloc f32 [temp_1__22] 
+         52   alloc i1 [temp_2_cmp_22] 
+          label L19_0: 
+         51   (nop) 
+         53   temp_2_cmp_22_0 = fcmp f32 Ogt x_19_0, 0._0 
+         56   br i1 temp_2_cmp_22_0, label branch_true_23, label branch_false_23 
+     54   label branch_true_23: 
+         471  untrack temp_2_cmp_22_0 
+         470  untrack temp_0__21_0 
+         49   ret x_19_0 
+     55   label branch_false_23: 
+         472  untrack temp_2_cmp_22_0 
+              jump label: L20_0 
+          label L20_0: 
+         46   temp_0__21_0 = Sub f32 0.0_0, x_19_0 
+         473  untrack x_19_0 
+         47   ret temp_0__21_0 
