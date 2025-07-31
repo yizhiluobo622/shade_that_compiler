@@ -10,6 +10,12 @@ use crate::toolkit::cfg_node::CFG_ROOT;
 pub fn can_get_loop_info(cfg_node:u32,cfg_graph:&mut CfgGraph,instr_slab:&mut InstrSlab<NhwcInstr>,symtab:&SymTab) -> Result<Option<(RcSymIdx,RcSymIdx)>>{
     let while_loop_node = node!(at cfg_node in cfg_graph);
     let while_instr_vec = &while_loop_node.instrs.instr_vec;
+    
+    // 检查指令向量是否为空
+    if while_instr_vec.is_empty() {
+        return Ok(None);
+    }
+    
     let comp_instr = while_instr_vec[while_instr_vec.len()-1];
     let comp_use_rcsymidx = instr!(at comp_instr in instr_slab)?.get_ssa_direct_use_symidx_vec();
     if !comp_use_rcsymidx[0].as_ref_borrow().is_temp(symtab)? && comp_use_rcsymidx[1].as_ref_borrow().is_literal() {

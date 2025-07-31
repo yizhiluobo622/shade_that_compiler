@@ -21,12 +21,12 @@ pub struct CacheOptimizationConfig {
 impl Default for CacheOptimizationConfig {
     fn default() -> Self {
         Self {
-            max_unroll_factor: 8,           // 更激进的循环展开
-            max_register_pressure: 30,      // 更高的寄存器压力容忍
-            conservative_mode: false,        // 激进模式
-            enable_aggressive_opt: true,    // 启用激进优化
-            min_loop_iterations: 3,         // 更低的循环迭代阈值
-            max_code_size_increase: 0.5,   // 允许更大的代码膨胀
+            max_unroll_factor: 4,           // 更保守的循环展开
+            max_register_pressure: 20,      // 更保守的寄存器压力容忍
+            conservative_mode: true,         // 保守模式
+            enable_aggressive_opt: false,   // 禁用激进优化
+            min_loop_iterations: 5,         // 更高的循环迭代阈值
+            max_code_size_increase: 0.2,   // 更小的代码膨胀容忍
         }
     }
 }
@@ -105,17 +105,34 @@ impl Pass for CacheOptimizationPass {
         // 记录优化前的状态
         let before_metrics = self.collect_metrics(ctx)?;
         
-        // 1. 循环优化 - 利用现有的循环分析
-        self.optimize_loops(ctx)?;
+        // 在保守模式下，只进行最基本的优化
+        if self.config.conservative_mode {
+            // 只进行内存访问优化，避免破坏程序语义
+            self.optimize_memory_access(ctx)?;
+        } else {
+            // 1. 循环优化 - 利用现有的循环分析
+            self.optimize_loops(ctx)?;
+            
+            // 2. 内存访问优化
+            self.optimize_memory_access(ctx)?;
+            
+            // 3. 指令调度优化
+            self.optimize_instruction_scheduling(ctx)?;
+            
+            // 4. 常量传播增强
+            self.enhance_constant_propagation(ctx)?;
+        }
         
-        // 2. 内存访问优化
-        self.optimize_memory_access(ctx)?;
+        // 记录优化后的状态
+        let after_metrics = self.collect_metrics(ctx)?;
         
-        // 3. 指令调度优化
-        self.optimize_instruction_scheduling(ctx)?;
-        
-        // 4. 常量传播增强
-        self.enhance_constant_propagation(ctx)?;
+        // 检查是否需要回滚
+        if self.should_rollback(&before_metrics, &after_metrics) {
+            if self.debug {
+                println!("优化被回滚：性能下降或代码大小增加过多");
+            }
+            self.rollback_optimizations(ctx)?;
+        }
         
         // 记录优化后的状态
         let after_metrics = self.collect_metrics(ctx)?;
@@ -581,26 +598,50 @@ impl CacheOptimizationPass {
             println!("  - 执行内存访问优化");
         }
         
-        // 遍历所有基本块，优化load/store指令
-        for (rc_func_symidx, cfg_entry) in ctx.symtab.get_global_info().get_all_cfg_func_symidx_entry_tuples()?.clone() {
-            let dfs_node_vec = dfs_with_priority(&ctx.cfg_graph, cfg_entry, |e| match &e.weight().cfg_edge_type {
-                CfgEdgeType::BodyHead { } => 1,
-                CfgEdgeType::IfFalse { } => 2,
-                CfgEdgeType::Direct { } => 2,
-                CfgEdgeType::IfTrue { } => 1,
-                CfgEdgeType::BodyTail { } => 1,
-            });
-            
-            for &cfg_node in dfs_node_vec.iter() {
-                let cfg_graph = &ctx.cfg_graph;
-                let cfg_node_struct = node!(at cfg_node in cfg_graph);
+        // 在保守模式下，只进行最基本的内存优化
+        if self.config.conservative_mode {
+            // 只进行数组访问模式优化，避免破坏程序语义
+            for (rc_func_symidx, cfg_entry) in ctx.symtab.get_global_info().get_all_cfg_func_symidx_entry_tuples()?.clone() {
+                let dfs_node_vec = dfs_with_priority(&ctx.cfg_graph, cfg_entry, |e| match &e.weight().cfg_edge_type {
+                    CfgEdgeType::BodyHead { } => 1,
+                    CfgEdgeType::IfFalse { } => 2,
+                    CfgEdgeType::Direct { } => 2,
+                    CfgEdgeType::IfTrue { } => 1,
+                    CfgEdgeType::BodyTail { } => 1,
+                });
                 
-                if cfg_node_struct.cfg_node_type.is_basic_block() {
-                    // 优化数组访问模式
-                    self.optimize_array_access_pattern(ctx, cfg_node)?;
+                for &cfg_node in dfs_node_vec.iter() {
+                    let cfg_graph = &ctx.cfg_graph;
+                    let cfg_node_struct = node!(at cfg_node in cfg_graph);
                     
-                    // 合并连续的load/store
-                    self.merge_consecutive_memory_ops(ctx, cfg_node)?;
+                    if cfg_node_struct.cfg_node_type.is_basic_block() {
+                        // 只进行数组访问模式优化
+                        self.optimize_array_access_pattern(ctx, cfg_node)?;
+                    }
+                }
+            }
+        } else {
+            // 激进模式下的完整优化
+            for (rc_func_symidx, cfg_entry) in ctx.symtab.get_global_info().get_all_cfg_func_symidx_entry_tuples()?.clone() {
+                let dfs_node_vec = dfs_with_priority(&ctx.cfg_graph, cfg_entry, |e| match &e.weight().cfg_edge_type {
+                    CfgEdgeType::BodyHead { } => 1,
+                    CfgEdgeType::IfFalse { } => 2,
+                    CfgEdgeType::Direct { } => 2,
+                    CfgEdgeType::IfTrue { } => 1,
+                    CfgEdgeType::BodyTail { } => 1,
+                });
+                
+                for &cfg_node in dfs_node_vec.iter() {
+                    let cfg_graph = &ctx.cfg_graph;
+                    let cfg_node_struct = node!(at cfg_node in cfg_graph);
+                    
+                    if cfg_node_struct.cfg_node_type.is_basic_block() {
+                        // 优化数组访问模式
+                        self.optimize_array_access_pattern(ctx, cfg_node)?;
+                        
+                        // 合并连续的load/store
+                        self.merge_consecutive_memory_ops(ctx, cfg_node)?;
+                    }
                 }
             }
         }
@@ -729,35 +770,55 @@ impl CacheOptimizationPass {
         let nhwc_instr_slab = &ctx.nhwc_instr_slab;
         let cfg_node_struct = node!(at cfg_node in cfg_graph);
         
-        // 收集连续的load/store指令
-        let mut load_ops = Vec::new();
-        let mut store_ops = Vec::new();
-        
-        for (instr_idx, &instr) in cfg_node_struct.instrs.instr_vec.iter().enumerate() {
-            let instr_struct = instr!(at instr in nhwc_instr_slab)?;
+        // 在保守模式下，只进行最基本的内存访问分析
+        if self.config.conservative_mode {
+            // 只统计内存操作数量，不进行实际优化
+            let mut memory_op_count = 0;
             
-            match &instr_struct.instr_type {
-                NhwcInstrType::Load { ptr_symidx, .. } => {
-                    load_ops.push((instr_idx, instr, ptr_symidx.clone()));
-                },
-                NhwcInstrType::Store { ptr_symidx, .. } => {
-                    store_ops.push((instr_idx, instr, ptr_symidx.clone()));
-                },
-                _ => {}
+            for (instr_idx, &instr) in cfg_node_struct.instrs.instr_vec.iter().enumerate() {
+                let instr_struct = instr!(at instr in nhwc_instr_slab)?;
+                
+                match &instr_struct.instr_type {
+                    NhwcInstrType::Load { .. } | NhwcInstrType::Store { .. } => {
+                        memory_op_count += 1;
+                    },
+                    _ => {}
+                }
             }
+            
+            self.stats.memory_ops_optimized += memory_op_count;
+        } else {
+            // 激进模式下的完整优化
+            let mut load_ops = Vec::new();
+            let mut store_ops = Vec::new();
+            
+            for (instr_idx, &instr) in cfg_node_struct.instrs.instr_vec.iter().enumerate() {
+                let instr_struct = instr!(at instr in nhwc_instr_slab)?;
+                
+                match &instr_struct.instr_type {
+                    NhwcInstrType::Load { ptr_symidx, .. } => {
+                        load_ops.push((instr_idx, instr, ptr_symidx.clone()));
+                    },
+                    NhwcInstrType::Store { ptr_symidx, .. } => {
+                        store_ops.push((instr_idx, instr, ptr_symidx.clone()));
+                    },
+                    _ => {}
+                }
+            }
+            
+            // 优化连续的load操作
+            if load_ops.len() > 1 {
+                self.optimize_consecutive_loads(ctx, cfg_node, &load_ops)?;
+            }
+            
+            // 优化连续的store操作
+            if store_ops.len() > 1 {
+                self.optimize_consecutive_stores(ctx, cfg_node, &store_ops)?;
+            }
+            
+            self.stats.memory_ops_optimized += load_ops.len() + store_ops.len();
         }
         
-        // 优化连续的load操作
-        if load_ops.len() > 1 {
-            self.optimize_consecutive_loads(ctx, cfg_node, &load_ops)?;
-        }
-        
-        // 优化连续的store操作
-        if store_ops.len() > 1 {
-            self.optimize_consecutive_stores(ctx, cfg_node, &store_ops)?;
-        }
-        
-        self.stats.memory_ops_optimized += load_ops.len() + store_ops.len();
         Ok(())
     }
     
