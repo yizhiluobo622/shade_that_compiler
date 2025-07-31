@@ -128,7 +128,7 @@ fn main() {
             then ssa_deconstruction_pass
             then ncfg2djg_pass2
             then untrack_insertion_pass
-            then cache_optimization_pass
+            //then cache_optimization_pass
             then nhwc_dump_pass
             then mem_alloc_pass
             then cfg_debug_pass2
@@ -157,7 +157,7 @@ fn main() {
             then ssa_deconstruction_pass
             then ncfg2djg_pass2
             then untrack_insertion_pass
-            then cache_optimization_pass
+            //then cache_optimization_pass
             then nhwc_dump_pass
             then mem_alloc_pass
             then cfg_debug_pass2

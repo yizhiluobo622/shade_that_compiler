@@ -21,12 +21,12 @@ pub struct CacheOptimizationConfig {
 impl Default for CacheOptimizationConfig {
     fn default() -> Self {
         Self {
-            max_unroll_factor: 4,           // 更保守的循环展开
-            max_register_pressure: 20,      // 更保守的寄存器压力容忍
+            max_unroll_factor: 2,           // 更保守的循环展开
+            max_register_pressure: 15,      // 更保守的寄存器压力容忍
             conservative_mode: true,         // 保守模式
             enable_aggressive_opt: false,   // 禁用激进优化
-            min_loop_iterations: 5,         // 更高的循环迭代阈值
-            max_code_size_increase: 0.2,   // 更小的代码膨胀容忍
+            min_loop_iterations: 10,        // 更高的循环迭代阈值
+            max_code_size_increase: 0.1,   // 更小的代码膨胀容忍
         }
     }
 }
@@ -243,32 +243,32 @@ impl CacheOptimizationPass {
     fn estimate_performance_gain(&self, total_instrs: usize, memory_ops: usize, branch_ops: usize, arithmetic_ops: usize) -> f64 {
         let mut gain = 0.0;
         
-        // 内存操作优化增益（假设10-25%提升）
+        // 内存操作优化增益（更保守的估计）
         if memory_ops > 0 {
-            let memory_gain = (memory_ops as f64 / total_instrs as f64) * 0.15;
+            let memory_gain = (memory_ops as f64 / total_instrs as f64) * 0.08;
             gain += memory_gain;
         }
         
-        // 分支优化增益（假设5-15%提升）
+        // 分支优化增益（更保守的估计）
         if branch_ops > 0 {
-            let branch_gain = (branch_ops as f64 / total_instrs as f64) * 0.10;
+            let branch_gain = (branch_ops as f64 / total_instrs as f64) * 0.05;
             gain += branch_gain;
         }
         
-        // 算术指令优化增益（假设3-8%提升）
+        // 算术指令优化增益（更保守的估计）
         if arithmetic_ops > 0 {
-            let arithmetic_gain = (arithmetic_ops as f64 / total_instrs as f64) * 0.05;
+            let arithmetic_gain = (arithmetic_ops as f64 / total_instrs as f64) * 0.03;
             gain += arithmetic_gain;
         }
         
-        // 循环优化增益（基于统计信息）
+        // 循环优化增益（更保守的估计）
         if self.stats.loops_unrolled > 0 {
-            gain += self.stats.loops_unrolled as f64 * 0.05;
+            gain += self.stats.loops_unrolled as f64 * 0.02;
         }
         
-        // 常量表达式优化增益
+        // 常量表达式优化增益（更保守的估计）
         if self.stats.constant_expressions_optimized > 0 {
-            gain += self.stats.constant_expressions_optimized as f64 * 0.02;
+            gain += self.stats.constant_expressions_optimized as f64 * 0.01;
         }
         
         gain
@@ -283,6 +283,16 @@ impl CacheOptimizationPass {
         
         // 如果性能增益为负，回滚
         if after.estimated_performance_gain < 0.0 {
+            return true;
+        }
+        
+        // 如果性能增益太小（小于1%），也回滚
+        if after.estimated_performance_gain < 0.01 {
+            return true;
+        }
+        
+        // 如果代码大小增加超过5%，回滚
+        if after.code_size_change > before.code_size_change * 1.05 {
             return true;
         }
         
@@ -554,8 +564,20 @@ impl CacheOptimizationPass {
             }
             
             // 如果代码大小过大，不优化
-            if analysis.code_size > 100 {
+            if analysis.code_size > 50 {
                 return false;
+            }
+            
+            // 如果不是简单循环，不优化
+            if !analysis.is_simple_loop {
+                return false;
+            }
+            
+            // 如果迭代次数太少，不优化
+            if let Some(iterations) = analysis.iteration_count {
+                if iterations < self.config.min_loop_iterations {
+                    return false;
+                }
             }
         }
         
@@ -569,7 +591,7 @@ impl CacheOptimizationPass {
         }
         
         // 1. 循环体大小限制 - 避免过度展开
-        if analysis.code_size > 50 {
+        if analysis.code_size > 30 {
             if self.debug {
                 println!("        跳过展开：循环体过大 ({})", analysis.code_size);
             }
@@ -585,7 +607,7 @@ impl CacheOptimizationPass {
                 return false;
             }
             
-            if iterations > self.config.max_unroll_factor * 2 {
+            if iterations > self.config.max_unroll_factor {
                 if self.debug {
                     println!("        跳过展开：迭代次数过多 ({})", iterations);
                 }
@@ -594,7 +616,7 @@ impl CacheOptimizationPass {
         }
         
         // 3. 更严格的寄存器压力检查
-        if analysis.register_pressure > self.config.max_register_pressure / 3 {
+        if analysis.register_pressure > self.config.max_register_pressure / 4 {
             if self.debug {
                 println!("        跳过展开：寄存器压力过高 ({})", analysis.register_pressure);
             }
@@ -605,6 +627,14 @@ impl CacheOptimizationPass {
         if analysis.has_function_call {
             if self.debug {
                 println!("        跳过展开：包含函数调用");
+            }
+            return false;
+        }
+        
+        // 5. 检查是否有数组访问（可能不适合展开）
+        if analysis.has_array_access {
+            if self.debug {
+                println!("        跳过展开：包含数组访问");
             }
             return false;
         }
@@ -1228,29 +1258,134 @@ impl CacheOptimizationPass {
     
     /// 优化加法立即数
     fn optimize_add_immediate(&self, lhs: &RcSymIdx, a: &RcSymIdx, b: &RcSymIdx, vartype: &crate::toolkit::field::Type) -> Result<bool> {
-        // 总是尝试优化立即数操作
-        if self.debug {
-            println!("            优化加法立即数操作");
+        // 检查立即数优化机会
+        let mut optimized = false;
+        
+        // 检查 a 是否为立即数
+        if self.is_immediate_operand(a) {
+            if self.is_zero_immediate(a) {
+                // x + 0 = x，可以优化为直接赋值
+                if self.debug {
+                    println!("            优化: {} = {} + 0", lhs.as_ref_borrow().symbol_name, b.as_ref_borrow().symbol_name);
+                }
+                optimized = true;
+            } else if self.is_small_immediate(a) {
+                // 小立即数优化
+                if self.debug {
+                    println!("            优化: {} = {} + {} (小立即数)", lhs.as_ref_borrow().symbol_name, b.as_ref_borrow().symbol_name, a.as_ref_borrow().symbol_name);
+                }
+                optimized = true;
+            }
         }
-        Ok(true)
+        
+        // 检查 b 是否为立即数
+        if self.is_immediate_operand(b) {
+            if self.is_zero_immediate(b) {
+                // x + 0 = x，可以优化为直接赋值
+                if self.debug {
+                    println!("            优化: {} = {} + 0", lhs.as_ref_borrow().symbol_name, a.as_ref_borrow().symbol_name);
+                }
+                optimized = true;
+            } else if self.is_small_immediate(b) {
+                // 小立即数优化
+                if self.debug {
+                    println!("            优化: {} = {} + {} (小立即数)", lhs.as_ref_borrow().symbol_name, a.as_ref_borrow().symbol_name, b.as_ref_borrow().symbol_name);
+                }
+                optimized = true;
+            }
+        }
+        
+        Ok(optimized)
     }
     
     /// 优化减法立即数
     fn optimize_sub_immediate(&self, lhs: &RcSymIdx, a: &RcSymIdx, b: &RcSymIdx, vartype: &crate::toolkit::field::Type) -> Result<bool> {
-        // 总是尝试优化减法立即数操作
-        if self.debug {
-            println!("            优化减法立即数操作");
+        // 检查立即数优化机会
+        let mut optimized = false;
+        
+        // 检查 a 是否为立即数
+        if self.is_immediate_operand(a) {
+            if self.is_zero_immediate(a) {
+                // 0 - x = -x，可以优化为取负
+                if self.debug {
+                    println!("            优化: {} = 0 - {} (取负)", lhs.as_ref_borrow().symbol_name, b.as_ref_borrow().symbol_name);
+                }
+                optimized = true;
+            }
         }
-        Ok(true)
+        
+        // 检查 b 是否为立即数
+        if self.is_immediate_operand(b) {
+            if self.is_zero_immediate(b) {
+                // x - 0 = x，可以优化为直接赋值
+                if self.debug {
+                    println!("            优化: {} = {} - 0", lhs.as_ref_borrow().symbol_name, a.as_ref_borrow().symbol_name);
+                }
+                optimized = true;
+            } else if self.is_small_immediate(b) {
+                // 小立即数优化
+                if self.debug {
+                    println!("            优化: {} = {} - {} (小立即数)", lhs.as_ref_borrow().symbol_name, a.as_ref_borrow().symbol_name, b.as_ref_borrow().symbol_name);
+                }
+                optimized = true;
+            }
+        }
+        
+        Ok(optimized)
     }
     
     /// 优化乘法立即数
     fn optimize_mul_immediate(&self, lhs: &RcSymIdx, a: &RcSymIdx, b: &RcSymIdx, vartype: &crate::toolkit::field::Type) -> Result<bool> {
-        // 总是尝试优化乘法立即数操作
-        if self.debug {
-            println!("            优化乘法立即数操作");
+        // 检查立即数优化机会
+        let mut optimized = false;
+        
+        // 检查 a 是否为立即数
+        if self.is_immediate_operand(a) {
+            if self.is_zero_immediate(a) {
+                // 0 * x = 0，可以优化为直接赋值0
+                if self.debug {
+                    println!("            优化: {} = 0 * {} (直接赋值0)", lhs.as_ref_borrow().symbol_name, b.as_ref_borrow().symbol_name);
+                }
+                optimized = true;
+            } else if self.is_one_immediate(a) {
+                // 1 * x = x，可以优化为直接赋值
+                if self.debug {
+                    println!("            优化: {} = 1 * {} (直接赋值)", lhs.as_ref_borrow().symbol_name, b.as_ref_borrow().symbol_name);
+                }
+                optimized = true;
+            } else if self.is_power_of_two_immediate(a) {
+                // 2的幂次方乘法可以优化为左移
+                if self.debug {
+                    println!("            优化: {} = {} * {} (左移优化)", lhs.as_ref_borrow().symbol_name, a.as_ref_borrow().symbol_name, b.as_ref_borrow().symbol_name);
+                }
+                optimized = true;
+            }
         }
-        Ok(true)
+        
+        // 检查 b 是否为立即数
+        if self.is_immediate_operand(b) {
+            if self.is_zero_immediate(b) {
+                // x * 0 = 0，可以优化为直接赋值0
+                if self.debug {
+                    println!("            优化: {} = {} * 0 (直接赋值0)", lhs.as_ref_borrow().symbol_name, a.as_ref_borrow().symbol_name);
+                }
+                optimized = true;
+            } else if self.is_one_immediate(b) {
+                // x * 1 = x，可以优化为直接赋值
+                if self.debug {
+                    println!("            优化: {} = {} * 1 (直接赋值)", lhs.as_ref_borrow().symbol_name, a.as_ref_borrow().symbol_name);
+                }
+                optimized = true;
+            } else if self.is_power_of_two_immediate(b) {
+                // 2的幂次方乘法可以优化为左移
+                if self.debug {
+                    println!("            优化: {} = {} * {} (左移优化)", lhs.as_ref_borrow().symbol_name, a.as_ref_borrow().symbol_name, b.as_ref_borrow().symbol_name);
+                }
+                optimized = true;
+            }
+        }
+        
+        Ok(optimized)
     }
     
     /// 检查操作数是否是立即数
@@ -1260,26 +1395,55 @@ impl CacheOptimizationPass {
     
     /// 检查是否是0立即数
     fn is_zero_immediate(&self, operand: &RcSymIdx) -> bool {
-        // 简化版本：总是返回false，避免复杂的match模式
-        false
+        if !operand.as_ref_borrow().is_literal() {
+            return false;
+        }
+        
+        // 尝试解析为数值并检查是否为0
+        let symbol_name = operand.as_ref_borrow().symbol_name.clone();
+        symbol_name.parse::<i32>().map_or(false, |value| value == 0)
     }
     
     /// 检查是否是1立即数
     fn is_one_immediate(&self, operand: &RcSymIdx) -> bool {
-        // 简化版本：总是返回false，避免复杂的match模式
-        false
+        if !operand.as_ref_borrow().is_literal() {
+            return false;
+        }
+        
+        // 尝试解析为数值并检查是否为1
+        let symbol_name = operand.as_ref_borrow().symbol_name.clone();
+        symbol_name.parse::<i32>().map_or(false, |value| value == 1)
     }
     
     /// 检查是否是小的立即数
     fn is_small_immediate(&self, operand: &RcSymIdx) -> bool {
-        // 简化版本：总是返回false，避免复杂的match模式
-        false
+        if !operand.as_ref_borrow().is_literal() {
+            return false;
+        }
+        
+        // 尝试解析为数值并检查是否在RISC-V立即数范围内
+        let symbol_name = operand.as_ref_borrow().symbol_name.clone();
+        symbol_name.parse::<i32>().map_or(false, |value| {
+            // RISC-V I-type指令的立即数范围是12位有符号数
+            value >= -2048 && value <= 2047
+        })
     }
     
     /// 检查是否是2的幂次方立即数
     fn is_power_of_two_immediate(&self, operand: &RcSymIdx) -> bool {
-        // 简化版本：总是返回false，避免复杂的match模式
-        false
+        if !operand.as_ref_borrow().is_literal() {
+            return false;
+        }
+        
+        // 尝试解析为数值并检查是否为2的幂次方
+        let symbol_name = operand.as_ref_borrow().symbol_name.clone();
+        symbol_name.parse::<i32>().map_or(false, |value| {
+            if value <= 0 {
+                return false;
+            }
+            // 检查是否为2的幂次方：value & (value - 1) == 0
+            (value & (value - 1)) == 0
+        })
     }
     
     fn optimize_immediate_range(&mut self, ctx: &mut NhwcCtx, cfg_node: u32) -> Result<()> {
