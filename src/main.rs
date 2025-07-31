@@ -13,6 +13,32 @@ use clap::Parser;
 use passes::{ast2cfg_pass::Ast2CfgPass, ast2et_debug_pass::Ast2EtDebugPass, ast2st_pass::Ast2StPass, call_graph_pass::CallGraphPass, cfg2lpt_pass::Cfg2LptPass, cfg2ncfg_pass::Cfg2NcfgPass, chi_mu_insertion_pass::ChiMuInsertionPass, code2ast_pass::Code2AstPass, dead_code_elimination_pass::{self, DeadCodeEliminationPass}, gvngcm_pass::GvnGcmPass, nhwc2et_pass::Nhwc2EtPass, nhwc2riscv_pass::Nhwc2RiscvPass, nhwc_dump_pass::NhwcDumpPass, ssa_deconstruction_pass::SsaDeconstructionPass, symtab_debug_pass::SymtabDebugPass, untrack_insertion_pass::{self, UntrackInsertionPass}};
 use toolkit::symtab::SymIdx;
 
+
+
+
+
+
+
+
+
+
+
+use passes::cache_optimization_pass::CacheOptimizationPass;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 use crate::{passes::{cfg_debug_pass::CfgDebugPass, def_use_chain_debug_pass::DefUseChainPass, mem_alloc_pass::MemAllocPass, ncfg2djg_pass::Ncfg2DjgPass, simulator_debug_pass::SimulatorDebugPass, ssa_pass::SsaPass}, toolkit::{pass_manager::PassManager}};
 #[derive(Parser, Clone, Default, Debug)]
 #[command(author, version, about)]
@@ -79,6 +105,7 @@ fn main() {
     let dce_pass = DeadCodeEliminationPass::new(debug,debug);
     let gvngcm_pass = GvnGcmPass::new(debug,debug);
     let untrack_insertion_pass = UntrackInsertionPass::new(debug,debug);
+    let cache_optimization_pass = CacheOptimizationPass::new(debug);
     if pass_manager.ctx.args.test{
         add_passes!(
             code2ast_pass
@@ -101,6 +128,7 @@ fn main() {
             then ssa_deconstruction_pass
             then ncfg2djg_pass2
             then untrack_insertion_pass
+            then cache_optimization_pass
             then nhwc_dump_pass
             then mem_alloc_pass
             then cfg_debug_pass2
@@ -129,6 +157,7 @@ fn main() {
             then ssa_deconstruction_pass
             then ncfg2djg_pass2
             then untrack_insertion_pass
+            then cache_optimization_pass
             then nhwc_dump_pass
             then mem_alloc_pass
             then cfg_debug_pass2

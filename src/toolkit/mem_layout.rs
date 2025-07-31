@@ -71,6 +71,13 @@ impl MemLayout{
             mem: Vec::new(),
         }
     }
+    pub fn align_to(&mut self, alignment: usize) {  
+        self.align_mem_with_blank(alignment);  
+    }  
+      
+    pub fn clear(&mut self) {  
+        self.mem.clear();  
+    }  
     // return the idx of the mem_seg then the mem_start_pos of the mem_seg
     pub fn find_available(&mut self, align:usize,data_len:usize) -> Option<(usize,usize)>{
         // debug_info_blue!("{:?}",self);

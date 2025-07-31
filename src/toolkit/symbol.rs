@@ -27,6 +27,8 @@ reg_field_for_struct! {Symbol {
     // USE_COUNTER:UseCounter,
     TYPE:Type, 
     VALUE:Value,
+    ARRAY_LAYOUT:ArrayLayout,  // 新增  
+    ACCESS_COUNT:usize,   // 新增  
 } with_fields fields}
 
 impl Symbol {
