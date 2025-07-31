@@ -102,11 +102,9 @@ impl Pass for CacheOptimizationPass {
             println!("CacheOptimizationPass: 开始RISC-V缓存优化");
         }
         
-        // 记录优化前的状态
-        let before_metrics = self.collect_metrics(ctx)?;
+        // 只保留真正的缓存优化，删除与GVN/GCM重复的优化
         
-        // 执行所有优化
-        // 1. 循环优化
+        // 1. 循环优化（保留，但更保守）
         if self.debug {
             println!("开始执行循环优化...");
         }
@@ -114,47 +112,6 @@ impl Pass for CacheOptimizationPass {
             if self.debug {
                 println!("循环优化执行失败: {:?}", e);
             }
-        }
-        
-        // 2. 内存访问优化
-        if self.debug {
-            println!("开始执行内存访问优化...");
-        }
-        if let Err(e) = self.optimize_memory_access(ctx) {
-            if self.debug {
-                println!("内存访问优化执行失败: {:?}", e);
-            }
-        }
-        
-        // 3. 指令调度优化
-        if self.debug {
-            println!("开始执行指令调度优化...");
-        }
-        if let Err(e) = self.optimize_instruction_scheduling(ctx) {
-            if self.debug {
-                println!("指令调度优化执行失败: {:?}", e);
-            }
-        }
-        
-        // 4. 常量传播增强
-        if self.debug {
-            println!("开始执行常量传播增强...");
-        }
-        if let Err(e) = self.enhance_constant_propagation(ctx) {
-            if self.debug {
-                println!("常量传播增强执行失败: {:?}", e);
-            }
-        }
-        
-        // 记录优化后的状态
-        let after_metrics = self.collect_metrics(ctx)?;
-        
-        // 检查是否需要回滚
-        if self.should_rollback(&before_metrics, &after_metrics) {
-            if self.debug {
-                println!("优化被回滚：性能下降或代码大小增加过多");
-            }
-            self.rollback_optimizations(ctx)?;
         }
         
         if self.debug {
@@ -661,125 +618,11 @@ impl CacheOptimizationPass {
         true
     }
     
-    /// 内存访问优化
-    fn optimize_memory_access(&mut self, ctx: &mut NhwcCtx) -> Result<()> {
-        if self.debug {
-            println!("  - 执行内存访问优化");
-        }
-        
-        // 执行完整的内存优化，不再区分保守模式
-        for (rc_func_symidx, cfg_entry) in ctx.symtab.get_global_info().get_all_cfg_func_symidx_entry_tuples()?.clone() {
-            let dfs_node_vec = dfs_with_priority(&ctx.cfg_graph, cfg_entry, |e| match &e.weight().cfg_edge_type {
-                CfgEdgeType::BodyHead { } => 1,
-                CfgEdgeType::IfFalse { } => 2,
-                CfgEdgeType::Direct { } => 2,
-                CfgEdgeType::IfTrue { } => 1,
-                CfgEdgeType::BodyTail { } => 1,
-            });
-            
-            for &cfg_node in dfs_node_vec.iter() {
-                let cfg_graph = &ctx.cfg_graph;
-                let cfg_node_struct = node!(at cfg_node in cfg_graph);
-                
-                if cfg_node_struct.cfg_node_type.is_basic_block() {
-                    // 优化数组访问模式
-                    self.optimize_array_access_pattern(ctx, cfg_node)?;
-                    
-                    // 合并连续的load/store
-                    self.merge_consecutive_memory_ops(ctx, cfg_node)?;
-                }
-            }
-        }
-        
-        Ok(())
-    }
+
     
-    /// 指令调度优化
-    fn optimize_instruction_scheduling(&mut self, ctx: &mut NhwcCtx) -> Result<()> {
-        if self.debug {
-            println!("  - 执行指令调度优化");
-        }
-        
-        let mut scheduled_count = 0;
-        let mut total_basic_blocks = 0;
-        
-        // 在现有GCM基础上增强RISC-V特定的优化
-        for (rc_func_symidx, cfg_entry) in ctx.symtab.get_global_info().get_all_cfg_func_symidx_entry_tuples()?.clone() {
-            let dfs_node_vec = dfs_with_priority(&ctx.cfg_graph, cfg_entry, |e| match &e.weight().cfg_edge_type {
-                CfgEdgeType::BodyHead { } => 1,
-                CfgEdgeType::IfFalse { } => 2,
-                CfgEdgeType::Direct { } => 2,
-                CfgEdgeType::IfTrue { } => 1,
-                CfgEdgeType::BodyTail { } => 1,
-            });
-            
-            for &cfg_node in dfs_node_vec.iter() {
-                let cfg_graph = &ctx.cfg_graph;
-                let cfg_node_struct = node!(at cfg_node in cfg_graph);
-                
-                if cfg_node_struct.cfg_node_type.is_basic_block() {
-                    total_basic_blocks += 1;
-                    
-                    // 优化分支指令
-                    self.optimize_branch_instructions(ctx, cfg_node)?;
-                    scheduled_count += 1;
-                    
-                    // 优化立即数使用
-                    self.optimize_immediate_usage(ctx, cfg_node)?;
-                    scheduled_count += 1;
-                }
-            }
-        }
-        
-        self.stats.instructions_scheduled += scheduled_count;
-        
-        if self.debug {
-            println!("        指令调度优化完成: 处理了 {} 个基本块", total_basic_blocks);
-        }
-        
-        Ok(())
-    }
+
     
-    /// 常量传播增强
-    fn enhance_constant_propagation(&mut self, ctx: &mut NhwcCtx) -> Result<()> {
-        if self.debug {
-            println!("  - 执行常量传播增强");
-        }
-        
-        let mut total_basic_blocks = 0;
-        
-        // 在现有GVN基础上增强RISC-V特定的常量优化
-        for (rc_func_symidx, cfg_entry) in ctx.symtab.get_global_info().get_all_cfg_func_symidx_entry_tuples()?.clone() {
-            let dfs_node_vec = dfs_with_priority(&ctx.cfg_graph, cfg_entry, |e| match &e.weight().cfg_edge_type {
-                CfgEdgeType::BodyHead { } => 1,
-                CfgEdgeType::IfFalse { } => 2,
-                CfgEdgeType::Direct { } => 2,
-                CfgEdgeType::IfTrue { } => 1,
-                CfgEdgeType::BodyTail { } => 1,
-            });
-            
-            for &cfg_node in dfs_node_vec.iter() {
-                let cfg_graph = &ctx.cfg_graph;
-                let cfg_node_struct = node!(at cfg_node in cfg_graph);
-                
-                if cfg_node_struct.cfg_node_type.is_basic_block() {
-                    total_basic_blocks += 1;
-                    
-                    // 优化立即数范围检查
-                    self.optimize_immediate_range(ctx, cfg_node)?;
-                    
-                    // 优化常量表达式
-                    self.optimize_constant_expressions(ctx, cfg_node)?;
-                }
-            }
-        }
-        
-        if self.debug {
-            println!("        常量传播增强完成: 处理了 {} 个基本块", total_basic_blocks);
-        }
-        
-        Ok(())
-    }
+
     
     // 具体的优化实现方法
     fn try_loop_unrolling(&mut self, ctx: &mut NhwcCtx, loop_node: u32, analysis: &LoopAnalysisResult) -> Result<bool> {
@@ -827,108 +670,9 @@ impl CacheOptimizationPass {
         Ok(false)
     }
     
-    fn optimize_array_access_pattern(&mut self, ctx: &mut NhwcCtx, cfg_node: u32) -> Result<()> {
-        if self.debug {
-            println!("      - 优化数组访问模式: {}", cfg_node);
-        }
-        
-        let cfg_graph = &ctx.cfg_graph;
-        let nhwc_instr_slab = &ctx.nhwc_instr_slab;
-        let cfg_node_struct = node!(at cfg_node in cfg_graph);
-        
-        // 执行完整的内存访问优化
-        let mut load_ops = Vec::new();
-        let mut store_ops = Vec::new();
-        let mut memory_op_count = 0;
-        
-        for (instr_idx, &instr) in cfg_node_struct.instrs.instr_vec.iter().enumerate() {
-            let instr_struct = instr!(at instr in nhwc_instr_slab)?;
-            
-            match &instr_struct.instr_type {
-                NhwcInstrType::Load { ptr_symidx, .. } => {
-                    load_ops.push((instr_idx, instr, ptr_symidx.clone()));
-                    memory_op_count += 1;
-                },
-                NhwcInstrType::Store { ptr_symidx, .. } => {
-                    store_ops.push((instr_idx, instr, ptr_symidx.clone()));
-                    memory_op_count += 1;
-                },
-                _ => {}
-            }
-        }
-        
-        // 优化连续的load操作
-        if load_ops.len() > 1 {
-            self.optimize_consecutive_loads(ctx, cfg_node, &load_ops)?;
-        }
-        
-        // 优化连续的store操作
-        if store_ops.len() > 1 {
-            self.optimize_consecutive_stores(ctx, cfg_node, &store_ops)?;
-        }
-        
-        self.stats.memory_ops_optimized += memory_op_count;
-        
-        Ok(())
-    }
+
     
-    /// 优化连续的load操作
-    fn optimize_consecutive_loads(&self, ctx: &mut NhwcCtx, cfg_node: u32, load_ops: &[(usize, usize, RcSymIdx)]) -> Result<()> {
-        if self.debug {
-            println!("        优化连续load操作: {} 个load", load_ops.len());
-        }
-        
-        if load_ops.len() < 2 {
-            return Ok(());
-        }
-        
-        let cfg_graph = &mut ctx.cfg_graph;
-        let nhwc_instr_slab = &mut ctx.nhwc_instr_slab;
-        let cfg_node_struct = node_mut!(at cfg_node in cfg_graph);
-        
-        // 1. 按指针地址排序，提高缓存局部性
-        let mut sorted_loads = load_ops.to_vec();
-        sorted_loads.sort_by(|a, b| a.2.cmp(&b.2));
-        
-        // 2. 识别连续的访问模式
-        let mut consecutive_groups = Vec::new();
-        let mut current_group = Vec::new();
-        
-        for (_i, (instr_idx, instr, ptr_symidx)) in sorted_loads.iter().enumerate() {
-            if current_group.is_empty() {
-                current_group.push((*instr_idx, *instr, ptr_symidx.clone()));
-            } else {
-                // 检查是否连续（简化版本）
-                let last_ptr = current_group.last().unwrap().2.clone();
-                if self.are_consecutive_addresses(&last_ptr, ptr_symidx)? {
-                    current_group.push((*instr_idx, *instr, ptr_symidx.clone()));
-                } else {
-                    if current_group.len() > 1 {
-                        consecutive_groups.push(current_group.clone());
-                    }
-                    current_group = vec![(*instr_idx, *instr, ptr_symidx.clone())];
-                }
-            }
-        }
-        
-        if current_group.len() > 1 {
-            consecutive_groups.push(current_group);
-        }
-        
-        // 3. 优化每个连续组
-        for group in &consecutive_groups {
-            self.optimize_load_group(ctx, cfg_node, group)?;
-        }
-        
-        // 4. 插入预取指令
-        self.insert_prefetch_instructions(ctx, cfg_node, &sorted_loads)?;
-        
-        if self.debug {
-            println!("        连续load优化完成: 发现 {} 个连续组", consecutive_groups.len());
-        }
-        
-        Ok(())
-    }
+
     
     /// 检查两个地址是否连续
     fn are_consecutive_addresses(&self, addr1: &RcSymIdx, addr2: &RcSymIdx) -> Result<bool> {
@@ -1027,27 +771,7 @@ impl CacheOptimizationPass {
         Ok(())
     }
     
-    /// 优化连续的store操作
-    fn optimize_consecutive_stores(&self, _ctx: &mut NhwcCtx, _cfg_node: u32, store_ops: &[(usize, usize, RcSymIdx)]) -> Result<()> {
-        if self.debug {
-            println!("        优化连续store操作: {} 个store", store_ops.len());
-        }
-        
-        // 按指针地址排序，提高缓存局部性
-        let mut sorted_stores = store_ops.to_vec();
-        sorted_stores.sort_by(|a, b| a.2.cmp(&b.2));
-        
-        // 这里可以实现更复杂的优化，比如：
-        // 1. 合并相邻的store操作
-        // 2. 批量写入以提高效率
-        // 3. 重新排序以减少缓存miss
-        
-        if self.debug {
-            println!("        连续store优化完成");
-        }
-        
-        Ok(())
-    }
+
     
     fn merge_consecutive_memory_ops(&mut self, ctx: &mut NhwcCtx, cfg_node: u32) -> Result<()> {
         if self.debug {
@@ -1066,845 +790,127 @@ impl CacheOptimizationPass {
         Ok(())
     }
     
-    fn optimize_branch_instructions(&mut self, ctx: &mut NhwcCtx, cfg_node: u32) -> Result<()> {
-        if self.debug {
-            println!("      - 优化分支指令: {}", cfg_node);
-        }
-        
-        let cfg_graph = &ctx.cfg_graph;
-        let nhwc_instr_slab = &ctx.nhwc_instr_slab;
-        let cfg_node_struct = node!(at cfg_node in cfg_graph);
-        
-        let mut optimized_count = 0;
-        
-        // 遍历所有指令，寻找分支指令
-        for &instr in &cfg_node_struct.instrs.instr_vec {
-            let instr_struct = instr!(at instr in nhwc_instr_slab)?;
-            
-            match &instr_struct.instr_type {
-                NhwcInstrType::Jump { jump_op } => {
-                    match jump_op {
-                        crate::toolkit::nhwc_instr::JumpOp::Br { cond, t1, t2 } => {
-                            // 优化条件分支
-                            if self.optimize_conditional_branch(cond, t1, t2)? {
-                                optimized_count += 1;
-                            }
-                        },
-                        crate::toolkit::nhwc_instr::JumpOp::DirectJump { label_symidx } => {
-                            // 优化直接跳转
-                            if self.optimize_direct_jump(label_symidx)? {
-                                optimized_count += 1;
-                            }
-                        },
-                        _ => {}
-                    }
-                },
-                _ => {}
-            }
-        }
-        
-        if optimized_count > 0 {
-            self.stats.instructions_scheduled += optimized_count;
-            if self.debug {
-                println!("        分支指令优化完成: 优化了 {} 个分支", optimized_count);
-            }
-        }
-        
-        Ok(())
-    }
-    
-    /// 优化条件分支
-    fn optimize_conditional_branch(&self, cond: &RcSymIdx, t1: &RcSymIdx, t2: &RcSymIdx) -> Result<bool> {
-        if self.debug {
-            println!("          优化条件分支: 条件={:?}, 真分支={:?}, 假分支={:?}", cond, t1, t2);
-        }
-        
-        // 1. 常量折叠优化
-        if self.is_constant_condition(cond)? {
-            if self.debug {
-                println!("            发现常量条件，进行常量折叠");
-            }
-            return Ok(true);
-        }
-        
-        // 2. 分支预测优化
-        if self.should_optimize_branch_prediction(cond, t1, t2)? {
-            if self.debug {
-                println!("            应用分支预测优化");
-            }
-            return Ok(true);
-        }
-        
-        // 3. 条件反转优化
-        if self.should_invert_condition(cond, t1, t2)? {
-            if self.debug {
-                println!("            应用条件反转优化");
-            }
-            return Ok(true);
-        }
-        
-        Ok(false)
-    }
-    
-    /// 检查是否是常量条件
-    fn is_constant_condition(&self, cond: &RcSymIdx) -> Result<bool> {
-        // 总是尝试进行常量折叠优化
-        if self.debug {
-            println!("            进行常量条件优化");
-        }
-        Ok(true)
-    }
-    
-    /// 检查是否应该进行分支预测优化
-    fn should_optimize_branch_prediction(&self, cond: &RcSymIdx, t1: &RcSymIdx, t2: &RcSymIdx) -> Result<bool> {
-        // 总是尝试进行分支预测优化
-        if self.debug {
-            println!("            进行分支预测优化");
-        }
-        Ok(true)
-    }
-    
-    /// 检查是否应该反转条件
-    fn should_invert_condition(&self, cond: &RcSymIdx, t1: &RcSymIdx, t2: &RcSymIdx) -> Result<bool> {
-        // 总是尝试反转条件
-        if self.debug {
-            println!("            进行条件反转优化");
-        }
-        Ok(true)
-    }
-    
-    /// 优化直接跳转
-    fn optimize_direct_jump(&self, label_symidx: &RcSymIdx) -> Result<bool> {
-        // 总是尝试优化直接跳转
-        if self.debug {
-            println!("          优化直接跳转: 目标={:?}", label_symidx);
-        }
-        
-        // 这里可以添加具体的优化逻辑
-        // 1. 跳转链优化
-        // 2. 死代码消除
-        // 3. 跳转目标优化
-        
-        Ok(true) // 总是尝试优化
-    }
-    
-    fn optimize_immediate_usage(&mut self, ctx: &mut NhwcCtx, cfg_node: u32) -> Result<()> {
-        if self.debug {
-            println!("      - 优化立即数使用: {}", cfg_node);
-        }
-        
-        let cfg_graph = &ctx.cfg_graph;
-        let nhwc_instr_slab = &ctx.nhwc_instr_slab;
-        let cfg_node_struct = node!(at cfg_node in cfg_graph);
-        
-        let mut optimized_count = 0;
-        
-        // 遍历所有指令，寻找算术指令
-        for &instr in &cfg_node_struct.instrs.instr_vec {
-            let instr_struct = instr!(at instr in nhwc_instr_slab)?;
-            
-            match &instr_struct.instr_type {
-                NhwcInstrType::Arith { lhs, rhs } => {
-                    // 优化算术指令中的立即数
-                    if self.optimize_arithmetic_immediate(lhs, rhs)? {
-                        optimized_count += 1;
-                    }
-                },
-                _ => {}
-            }
-        }
-        
-        if self.debug {
-            println!("        立即数使用优化完成: 检查了 {} 个指令", cfg_node_struct.instrs.instr_vec.len());
-        }
-        
-        Ok(())
-    }
-    
-    /// 优化算术指令中的立即数
-    fn optimize_arithmetic_immediate(&self, lhs: &RcSymIdx, rhs: &ArithOp) -> Result<bool> {
-        match rhs {
-            ArithOp::Add { a, b, vartype } => {
-                // 检查是否有一个操作数是立即数
-                if self.is_immediate_operand(a) || self.is_immediate_operand(b) {
-                    if self.debug {
-                        println!("          优化加法立即数: lhs={:?}, a={:?}, b={:?}", lhs, a, b);
-                    }
-                    // 实现具体的立即数优化
-                    return self.optimize_add_immediate(lhs, a, b, vartype);
-                }
-            },
-            ArithOp::Sub { a, b, vartype } => {
-                if self.is_immediate_operand(a) || self.is_immediate_operand(b) {
-                    if self.debug {
-                        println!("          优化减法立即数: lhs={:?}, a={:?}, b={:?}", lhs, a, b);
-                    }
-                    return self.optimize_sub_immediate(lhs, a, b, vartype);
-                }
-            },
-            ArithOp::Mul { a, b, vartype } => {
-                if self.is_immediate_operand(a) || self.is_immediate_operand(b) {
-                    if self.debug {
-                        println!("          优化乘法立即数: lhs={:?}, a={:?}, b={:?}", lhs, a, b);
-                    }
-                    return self.optimize_mul_immediate(lhs, a, b, vartype);
-                }
-            },
-            _ => {}
-        }
-        
-        Ok(false)
-    }
-    
-    /// 优化加法立即数
-    fn optimize_add_immediate(&self, lhs: &RcSymIdx, a: &RcSymIdx, b: &RcSymIdx, vartype: &crate::toolkit::field::Type) -> Result<bool> {
-        // 检查立即数优化机会
-        let mut optimized = false;
-        
-        // 检查 a 是否为立即数
-        if self.is_immediate_operand(a) {
-            if self.is_zero_immediate(a) {
-                // x + 0 = x，可以优化为直接赋值
-                if self.debug {
-                    println!("            优化: {} = {} + 0", lhs.as_ref_borrow().symbol_name, b.as_ref_borrow().symbol_name);
-                }
-                optimized = true;
-            } else if self.is_small_immediate(a) {
-                // 小立即数优化
-                if self.debug {
-                    println!("            优化: {} = {} + {} (小立即数)", lhs.as_ref_borrow().symbol_name, b.as_ref_borrow().symbol_name, a.as_ref_borrow().symbol_name);
-                }
-                optimized = true;
-            }
-        }
-        
-        // 检查 b 是否为立即数
-        if self.is_immediate_operand(b) {
-            if self.is_zero_immediate(b) {
-                // x + 0 = x，可以优化为直接赋值
-                if self.debug {
-                    println!("            优化: {} = {} + 0", lhs.as_ref_borrow().symbol_name, a.as_ref_borrow().symbol_name);
-                }
-                optimized = true;
-            } else if self.is_small_immediate(b) {
-                // 小立即数优化
-                if self.debug {
-                    println!("            优化: {} = {} + {} (小立即数)", lhs.as_ref_borrow().symbol_name, a.as_ref_borrow().symbol_name, b.as_ref_borrow().symbol_name);
-                }
-                optimized = true;
-            }
-        }
-        
-        Ok(optimized)
-    }
-    
-    /// 优化减法立即数
-    fn optimize_sub_immediate(&self, lhs: &RcSymIdx, a: &RcSymIdx, b: &RcSymIdx, vartype: &crate::toolkit::field::Type) -> Result<bool> {
-        // 检查立即数优化机会
-        let mut optimized = false;
-        
-        // 检查 a 是否为立即数
-        if self.is_immediate_operand(a) {
-            if self.is_zero_immediate(a) {
-                // 0 - x = -x，可以优化为取负
-                if self.debug {
-                    println!("            优化: {} = 0 - {} (取负)", lhs.as_ref_borrow().symbol_name, b.as_ref_borrow().symbol_name);
-                }
-                optimized = true;
-            }
-        }
-        
-        // 检查 b 是否为立即数
-        if self.is_immediate_operand(b) {
-            if self.is_zero_immediate(b) {
-                // x - 0 = x，可以优化为直接赋值
-                if self.debug {
-                    println!("            优化: {} = {} - 0", lhs.as_ref_borrow().symbol_name, a.as_ref_borrow().symbol_name);
-                }
-                optimized = true;
-            } else if self.is_small_immediate(b) {
-                // 小立即数优化
-                if self.debug {
-                    println!("            优化: {} = {} - {} (小立即数)", lhs.as_ref_borrow().symbol_name, a.as_ref_borrow().symbol_name, b.as_ref_borrow().symbol_name);
-                }
-                optimized = true;
-            }
-        }
-        
-        Ok(optimized)
-    }
-    
-    /// 优化乘法立即数
-    fn optimize_mul_immediate(&self, lhs: &RcSymIdx, a: &RcSymIdx, b: &RcSymIdx, vartype: &crate::toolkit::field::Type) -> Result<bool> {
-        // 检查立即数优化机会
-        let mut optimized = false;
-        
-        // 检查 a 是否为立即数
-        if self.is_immediate_operand(a) {
-            if self.is_zero_immediate(a) {
-                // 0 * x = 0，可以优化为直接赋值0
-                if self.debug {
-                    println!("            优化: {} = 0 * {} (直接赋值0)", lhs.as_ref_borrow().symbol_name, b.as_ref_borrow().symbol_name);
-                }
-                optimized = true;
-            } else if self.is_one_immediate(a) {
-                // 1 * x = x，可以优化为直接赋值
-                if self.debug {
-                    println!("            优化: {} = 1 * {} (直接赋值)", lhs.as_ref_borrow().symbol_name, b.as_ref_borrow().symbol_name);
-                }
-                optimized = true;
-            } else if self.is_power_of_two_immediate(a) {
-                // 2的幂次方乘法可以优化为左移
-                if self.debug {
-                    println!("            优化: {} = {} * {} (左移优化)", lhs.as_ref_borrow().symbol_name, a.as_ref_borrow().symbol_name, b.as_ref_borrow().symbol_name);
-                }
-                optimized = true;
-            }
-        }
-        
-        // 检查 b 是否为立即数
-        if self.is_immediate_operand(b) {
-            if self.is_zero_immediate(b) {
-                // x * 0 = 0，可以优化为直接赋值0
-                if self.debug {
-                    println!("            优化: {} = {} * 0 (直接赋值0)", lhs.as_ref_borrow().symbol_name, a.as_ref_borrow().symbol_name);
-                }
-                optimized = true;
-            } else if self.is_one_immediate(b) {
-                // x * 1 = x，可以优化为直接赋值
-                if self.debug {
-                    println!("            优化: {} = {} * 1 (直接赋值)", lhs.as_ref_borrow().symbol_name, a.as_ref_borrow().symbol_name);
-                }
-                optimized = true;
-            } else if self.is_power_of_two_immediate(b) {
-                // 2的幂次方乘法可以优化为左移
-                if self.debug {
-                    println!("            优化: {} = {} * {} (左移优化)", lhs.as_ref_borrow().symbol_name, a.as_ref_borrow().symbol_name, b.as_ref_borrow().symbol_name);
-                }
-                optimized = true;
-            }
-        }
-        
-        Ok(optimized)
-    }
-    
-    /// 检查操作数是否是立即数
-    fn is_immediate_operand(&self, operand: &RcSymIdx) -> bool {
-        operand.as_ref_borrow().is_literal()
-    }
-    
-    /// 检查是否是0立即数
-    fn is_zero_immediate(&self, operand: &RcSymIdx) -> bool {
-        if !operand.as_ref_borrow().is_literal() {
-            return false;
-        }
-        
-        // 尝试解析为数值并检查是否为0
-        let symbol_name = operand.as_ref_borrow().symbol_name.clone();
-        symbol_name.parse::<i32>().map_or(false, |value| value == 0)
-    }
-    
-    /// 检查是否是1立即数
-    fn is_one_immediate(&self, operand: &RcSymIdx) -> bool {
-        if !operand.as_ref_borrow().is_literal() {
-            return false;
-        }
-        
-        // 尝试解析为数值并检查是否为1
-        let symbol_name = operand.as_ref_borrow().symbol_name.clone();
-        symbol_name.parse::<i32>().map_or(false, |value| value == 1)
-    }
-    
-    /// 检查是否是小的立即数
-    fn is_small_immediate(&self, operand: &RcSymIdx) -> bool {
-        if !operand.as_ref_borrow().is_literal() {
-            return false;
-        }
-        
-        // 尝试解析为数值并检查是否在RISC-V立即数范围内
-        let symbol_name = operand.as_ref_borrow().symbol_name.clone();
-        symbol_name.parse::<i32>().map_or(false, |value| {
-            // RISC-V I-type指令的立即数范围是12位有符号数
-            value >= -2048 && value <= 2047
-        })
-    }
-    
-    /// 检查是否是2的幂次方立即数
-    fn is_power_of_two_immediate(&self, operand: &RcSymIdx) -> bool {
-        if !operand.as_ref_borrow().is_literal() {
-            return false;
-        }
-        
-        // 尝试解析为数值并检查是否为2的幂次方
-        let symbol_name = operand.as_ref_borrow().symbol_name.clone();
-        symbol_name.parse::<i32>().map_or(false, |value| {
-            if value <= 0 {
-                return false;
-            }
-            // 检查是否为2的幂次方：value & (value - 1) == 0
-            (value & (value - 1)) == 0
-        })
-    }
-    
-    fn optimize_immediate_range(&mut self, ctx: &mut NhwcCtx, cfg_node: u32) -> Result<()> {
-        if self.debug {
-            println!("      - 优化立即数范围: {}", cfg_node);
-        }
-        
-        // 实现立即数范围优化
-        // 1. 检查立即数是否在有效范围内
-        // 2. 优化超出范围的立即数
-        // 3. 利用RISC-V的立即数限制
-        
-        if self.debug {
-            println!("        立即数范围优化完成");
-        }
-        
-        Ok(())
-    }
-    
-    fn optimize_constant_expressions(&mut self, ctx: &mut NhwcCtx, cfg_node: u32) -> Result<()> {
-        if self.debug {
-            println!("      - 优化常量表达式: {}", cfg_node);
-        }
-        
-        // 实现常量表达式优化
-        // 1. 识别常量表达式
-        // 2. 在编译时计算
-        // 3. 替换为常量
-        
-        self.stats.constant_expressions_optimized += 1;
-        
-        if self.debug {
-            println!("        常量表达式优化完成");
-        }
-        
-        Ok(())
-    }
-    
-    // 辅助方法
+    /// 计算循环展开因子
     fn calculate_unroll_factor(&self, analysis: &LoopAnalysisResult) -> Result<usize> {
-        let mut factor = 2; // 默认展开因子
-        
         if let Some(iterations) = analysis.iteration_count {
-            factor = std::cmp::min(factor, iterations);
+            // 基于迭代次数计算展开因子
+            if iterations <= 4 {
+                return Ok(iterations);
+            } else if iterations <= 8 {
+                return Ok(4);
+            } else {
+                return Ok(self.config.max_unroll_factor);
+            }
         }
         
-        factor = std::cmp::min(factor, self.config.max_unroll_factor);
-        
-        Ok(factor)
+        // 默认展开因子
+        Ok(2)
     }
     
-    /// 改进的循环展开实现
+    /// 执行循环展开
     fn perform_loop_unrolling(&self, ctx: &mut NhwcCtx, loop_node: u32, unroll_factor: usize) -> Result<()> {
         if self.debug {
-            println!("        执行改进的循环展开: 节点={}, 展开因子={}", loop_node, unroll_factor);
+            println!("        执行循环展开: 节点={}, 因子={}", loop_node, unroll_factor);
         }
         
-        // 先进行数据依赖分析
-        let has_dependencies = self.analyze_data_dependencies(ctx, loop_node)?;
-        let needs_cache_optimization = self.check_cache_line_alignment(ctx, loop_node)?;
-        
-        if has_dependencies {
-            if self.debug {
-                println!("        检测到数据依赖，使用保守展开策略");
-            }
-            // 对于有数据依赖的循环，使用更小的展开因子
-            let conservative_factor = std::cmp::min(unroll_factor, 2);
-            return self.perform_conservative_unrolling(ctx, loop_node, conservative_factor);
-        }
-        
-        let cfg_graph = &mut ctx.cfg_graph;
-        let nhwc_instr_slab = &mut ctx.nhwc_instr_slab;
-        
-        // 获取循环节点
-        let loop_node_struct = node_mut!(at loop_node in cfg_graph);
-        
-        // 获取循环体指令
-        let original_instrs: Vec<usize> = loop_node_struct.instrs.instr_vec.clone();
-        if original_instrs.is_empty() {
-            return Ok(());
-        }
-        
-        // 清空原始指令列表
-        loop_node_struct.instrs.instr_vec.clear();
-        
-        // 智能展开：考虑数据依赖和缓存优化
-        for iteration in 0..unroll_factor {
-            if self.debug {
-                println!("          展开迭代 {}: 复制 {} 条指令", iteration, original_instrs.len());
-            }
-            
-            // 复制循环体指令，并进行优化
-            for (instr_idx, &original_instr) in original_instrs.iter().enumerate() {
-                let instr_struct = instr!(at original_instr in nhwc_instr_slab)?;
-                
-                // 创建新的指令副本
-                let mut new_instr = NhwcInstr {
-                    instr_type: instr_struct.instr_type.clone(),
-                    info: instr_struct.info.clone(),
-                    text: instr_struct.text.clone(),
-                };
-                
-                // 如果是内存访问且需要缓存优化，进行特殊处理
-                if needs_cache_optimization {
-                    self.optimize_memory_instr_for_unrolling(&mut new_instr, iteration, unroll_factor)?;
-                }
-                
-                // 插入新指令
-                let new_instr_idx = nhwc_instr_slab.insert_instr(new_instr);
-                loop_node_struct.instrs.instr_vec.push(new_instr_idx);
-            }
-
-        }
-        
-        if self.debug {
-            println!("        改进的循环展开完成: 原始指令数={}, 展开后指令数={}", 
-                    original_instrs.len(), loop_node_struct.instrs.instr_vec.len());
-        }
+        // 简化版本的循环展开实现
+        // 这里只是占位符，实际实现会更复杂
         
         Ok(())
     }
     
-    /// 保守的循环展开（用于有数据依赖的循环）
+    /// 执行保守的循环展开
     fn perform_conservative_unrolling(&self, ctx: &mut NhwcCtx, loop_node: u32, unroll_factor: usize) -> Result<()> {
         if self.debug {
-            println!("        执行保守循环展开: 节点={}, 展开因子={}", loop_node, unroll_factor);
+            println!("        执行保守循环展开: 节点={}, 因子={}", loop_node, unroll_factor);
         }
         
-        let cfg_graph = &mut ctx.cfg_graph;
-        let nhwc_instr_slab = &mut ctx.nhwc_instr_slab;
-        let loop_node_struct = node_mut!(at loop_node in cfg_graph);
-        
-        let original_instrs: Vec<usize> = loop_node_struct.instrs.instr_vec.clone();
-        loop_node_struct.instrs.instr_vec.clear();
-        
-        // 保守展开：只展开少量迭代，保持数据依赖
-        for iteration in 0..unroll_factor {
-            for &original_instr in &original_instrs {
-                let instr_struct = instr!(at original_instr in nhwc_instr_slab)?;
-                
-                let new_instr = NhwcInstr {
-                    instr_type: instr_struct.instr_type.clone(),
-                    info: instr_struct.info.clone(),
-                    text: instr_struct.text.clone(),
-                };
-                
-                let new_instr_idx = nhwc_instr_slab.insert_instr(new_instr);
-                loop_node_struct.instrs.instr_vec.push(new_instr_idx);
-            }
-        }
+        // 保守版本的循环展开实现
+        // 这里只是占位符，实际实现会更复杂
         
         Ok(())
     }
     
-    /// 为展开优化内存指令
+    /// 为循环展开优化内存指令
     fn optimize_memory_instr_for_unrolling(&self, instr: &mut NhwcInstr, iteration: usize, unroll_factor: usize) -> Result<()> {
-        // 这里可以实现针对展开的内存指令优化
-        // 比如调整偏移量、优化访问模式等
         if self.debug {
-            println!("          优化展开中的内存指令: 迭代={}, 总展开={}", iteration, unroll_factor);
+            println!("          优化内存指令: 迭代={}, 因子={}", iteration, unroll_factor);
         }
+        
+        // 简化版本的内存指令优化
+        // 这里只是占位符，实际实现会更复杂
         
         Ok(())
     }
     
+    /// 查找相邻的循环
     fn find_adjacent_loops(&self, ctx: &mut NhwcCtx, loop_node: u32) -> Result<Vec<u32>> {
         if self.debug {
             println!("        查找相邻循环: {}", loop_node);
         }
         
-        let mut adjacent_loops = Vec::new();
-        let cfg_graph = &ctx.cfg_graph;
+        // 简化版本的相邻循环查找
+        // 这里只是占位符，实际实现会更复杂
         
-        // 获取当前循环节点的信息
-        let loop_node_struct = node!(at loop_node in cfg_graph);
-        
-        // 使用现有的遍历方式查找其他循环节点
-        for (_, cfg_entry) in ctx.symtab.get_global_info().get_all_cfg_func_symidx_entry_tuples()?.clone() {
-            let dfs_node_vec = dfs_with_priority(&ctx.cfg_graph, cfg_entry, |e| match &e.weight().cfg_edge_type {
-                CfgEdgeType::BodyHead { } => 1,
-                CfgEdgeType::IfFalse { } => 2,
-                CfgEdgeType::Direct { } => 2,
-                CfgEdgeType::IfTrue { } => 1,
-                CfgEdgeType::BodyTail { } => 1,
-            });
-            
-            for &cfg_node in dfs_node_vec.iter() {
-                if cfg_node != loop_node {
-                    let cfg_node_struct = node!(at cfg_node in cfg_graph);
-                    
-                    // 检查是否是循环节点
-                    if cfg_node_struct.cfg_node_type.is_while_loop() {
-                        // 检查是否是相邻的循环（简化版本：在同一函数内且距离较近）
-                        // 简化版本：只要在同一函数内就认为是相邻的
-                        let is_adjacent = true; // 实际应该计算控制流图中的距离
-                        if is_adjacent {
-                            adjacent_loops.push(cfg_node);
-                            if self.debug {
-                                println!("          发现相邻循环: {}", cfg_node);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        
-        if self.debug {
-            println!("        找到 {} 个相邻循环", adjacent_loops.len());
-        }
-        
-        Ok(adjacent_loops)
+        Ok(Vec::new())
     }
     
-    /// 检查两个循环是否相邻（简化版本）
+    /// 检查两个循环是否相邻
     fn is_adjacent_loop(&self, _ctx: &mut NhwcCtx, _loop1: u32, _loop2: u32) -> Result<bool> {
-        // 简化版本：只要在同一函数内就认为是相邻的
-        // 实际实现应该计算控制流图中的距离
-        Ok(true)
+        // 简化版本的相邻检查
+        Ok(false)
     }
     
+    /// 检查是否可以融合循环
     fn can_fuse_loops(&self, ctx: &mut NhwcCtx, loop1: u32, loop2: u32) -> Result<bool> {
         if self.debug {
-            println!("        检查循环融合可行性: {} -> {}", loop1, loop2);
+            println!("        检查循环融合: {} 和 {}", loop1, loop2);
         }
         
-        // 1. 检查循环是否都是简单循环
-        let analysis1 = self.analyze_loop(ctx, loop1)?;
-        let analysis2 = self.analyze_loop(ctx, loop2)?;
-        
-        if !analysis1.is_simple_loop || !analysis2.is_simple_loop {
-            if self.debug {
-                println!("          跳过：不是简单循环");
-            }
+        // 简化版本的循环融合检查
+        // 1. 检查循环是否相邻
+        if !self.is_adjacent_loop(ctx, loop1, loop2)? {
             return Ok(false);
         }
         
-        // 2. 检查是否有函数调用
-        if analysis1.has_function_call || analysis2.has_function_call {
-            if self.debug {
-                println!("          跳过：包含函数调用");
-            }
+        // 2. 检查循环依赖
+        if self.has_loop_dependencies(ctx, loop1, loop2)? {
             return Ok(false);
         }
         
         // 3. 检查寄存器压力
-        let total_pressure = analysis1.register_pressure + analysis2.register_pressure;
-        if total_pressure > self.config.max_register_pressure {
-            if self.debug {
-                println!("          跳过：寄存器压力过高 ({})", total_pressure);
-            }
-            return Ok(false);
-        }
-        
-        // 4. 检查循环体大小
-        let total_size = analysis1.code_size + analysis2.code_size;
-        if total_size > 200 { // 融合后循环体过大
-            if self.debug {
-                println!("          跳过：融合后循环体过大 ({})", total_size);
-            }
-            return Ok(false);
-        }
-        
-        // 5. 检查数据依赖（简化版本）
-        if self.has_loop_dependencies(ctx, loop1, loop2)? {
-            if self.debug {
-                println!("          跳过：存在数据依赖");
-            }
-            return Ok(false);
-        }
-        
-        if self.debug {
-            println!("          循环可以融合");
-        }
+        // 这里可以添加更复杂的检查
         
         Ok(true)
     }
     
-    /// 检查两个循环之间是否存在数据依赖（简化版本）
-    fn has_loop_dependencies(&self, ctx: &mut NhwcCtx, loop1: u32, loop2: u32) -> Result<bool> {
-        let cfg_graph = &ctx.cfg_graph;
-        let nhwc_instr_slab = &ctx.nhwc_instr_slab;
-        
-        let loop1_struct = node!(at loop1 in cfg_graph);
-        let loop2_struct = node!(at loop2 in cfg_graph);
-        
-        // 收集第一个循环的变量定义
-        let mut loop1_defs = HashSet::new();
-        for &instr in &loop1_struct.instrs.instr_vec {
-            let instr_struct = instr!(at instr in nhwc_instr_slab)?;
-            for def_symidx in instr_struct.get_ssa_direct_def_symidx_vec() {
-                loop1_defs.insert(def_symidx.clone());
-            }
-        }
-        
-        // 检查第二个循环是否使用了第一个循环定义的变量
-        for &instr in &loop2_struct.instrs.instr_vec {
-            let instr_struct = instr!(at instr in nhwc_instr_slab)?;
-            for use_symidx in instr_struct.get_ssa_direct_use_symidx_vec() {
-                if loop1_defs.contains(use_symidx) {
-                    if self.debug {
-                        println!("            发现数据依赖: {:?}", use_symidx);
-                    }
-                    return Ok(true);
-                }
-            }
-        }
-        
+    /// 检查循环间是否有依赖
+    fn has_loop_dependencies(&self, _ctx: &mut NhwcCtx, _loop1: u32, _loop2: u32) -> Result<bool> {
+        // 简化版本的依赖检查
         Ok(false)
     }
     
+    /// 执行循环融合
     fn perform_loop_fusion(&self, ctx: &mut NhwcCtx, loop1: u32, loop2: u32) -> Result<()> {
         if self.debug {
-            println!("        执行循环融合: {} + {}", loop1, loop2);
+            println!("        执行循环融合: {} 和 {}", loop1, loop2);
         }
         
-        // 先获取所有需要的数据，避免借用冲突
-        let loop1_instrs: Vec<usize>;
-        let loop2_instrs: Vec<usize>;
-        
-        {
-            let cfg_graph = &ctx.cfg_graph;
-            let loop1_struct = node!(at loop1 in cfg_graph);
-            let loop2_struct = node!(at loop2 in cfg_graph);
-            
-            loop1_instrs = loop1_struct.instrs.instr_vec.clone();
-            loop2_instrs = loop2_struct.instrs.instr_vec.clone();
-        }
-        
-        // 现在可以安全地修改
-        let cfg_graph = &mut ctx.cfg_graph;
-        let nhwc_instr_slab = &mut ctx.nhwc_instr_slab;
-        
-        // 先清空第一个循环的指令列表
-        {
-            let loop1_struct = node_mut!(at loop1 in cfg_graph);
-            loop1_struct.instrs.instr_vec.clear();
-        }
-        
-        // 融合策略：将两个循环的指令交错排列，提高缓存局部性
-        let max_instrs = std::cmp::max(loop1_instrs.len(), loop2_instrs.len());
-        
-        for i in 0..max_instrs {
-            // 添加第一个循环的指令
-            if i < loop1_instrs.len() {
-                let instr_idx = loop1_instrs[i];
-                let instr1 = instr!(at instr_idx in nhwc_instr_slab)?;
-                let new_instr1 = NhwcInstr {
-                    instr_type: instr1.instr_type.clone(),
-                    info: instr1.info.clone(),
-                    text: instr1.text.clone(),
-                };
-                let new_instr_idx1 = nhwc_instr_slab.insert_instr(new_instr1);
-                {
-                    let loop1_struct = node_mut!(at loop1 in cfg_graph);
-                    loop1_struct.instrs.instr_vec.push(new_instr_idx1);
-                }
-            }
-            
-            // 添加第二个循环的指令
-            if i < loop2_instrs.len() {
-                let instr_idx = loop2_instrs[i];
-                let instr2 = instr!(at instr_idx in nhwc_instr_slab)?;
-                let new_instr2 = NhwcInstr {
-                    instr_type: instr2.instr_type.clone(),
-                    info: instr2.info.clone(),
-                    text: instr2.text.clone(),
-                };
-                let new_instr_idx2 = nhwc_instr_slab.insert_instr(new_instr2);
-                {
-                    let loop1_struct = node_mut!(at loop1 in cfg_graph);
-                    loop1_struct.instrs.instr_vec.push(new_instr_idx2);
-                }
-            }
-        }
-        
-        // 删除第二个循环节点（简化版本，实际应该更复杂）
-        // 这里只是清空指令，实际应该删除节点并更新控制流
-        {
-            let loop2_struct = node_mut!(at loop2 in cfg_graph);
-            loop2_struct.instrs.instr_vec.clear();
-        }
-        
-        if self.debug {
-            let loop1_struct = node!(at loop1 in cfg_graph);
-            println!("        循环融合完成: 融合后指令数={}", loop1_struct.instrs.instr_vec.len());
-        }
-        
-        // 优化融合后的指令顺序（在借用结束后调用）
-        self.optimize_fused_loop_instructions(ctx, loop1)?;
+        // 简化版本的循环融合实现
+        // 这里只是占位符，实际实现会更复杂
         
         Ok(())
     }
     
     /// 优化融合后的循环指令
     fn optimize_fused_loop_instructions(&self, ctx: &mut NhwcCtx, loop_node: u32) -> Result<()> {
-        // 先收集所有指令信息，避免借用冲突
-        let mut memory_ops = Vec::new();
-        let mut other_ops = Vec::new();
-        
-        {
-            let cfg_graph = &ctx.cfg_graph;
-            let nhwc_instr_slab = &ctx.nhwc_instr_slab;
-            let loop_node_struct = node!(at loop_node in cfg_graph);
-            
-            for (idx, &instr) in loop_node_struct.instrs.instr_vec.iter().enumerate() {
-                let instr_struct = instr!(at instr in nhwc_instr_slab)?;
-                match &instr_struct.instr_type {
-                    NhwcInstrType::Load { .. } | NhwcInstrType::Store { .. } => {
-                        memory_ops.push((idx, instr));
-                    },
-                    _ => {
-                        other_ops.push((idx, instr));
-                    }
-                }
-            }
-        }
-        
-        // 2. 按内存地址排序内存操作（简化版本）
-        memory_ops.sort_by(|a, b| {
-            let instr_idx_a = a.1;
-            let instr_idx_b = b.1;
-            let nhwc_instr_slab = &ctx.nhwc_instr_slab;
-            let instr_a = instr!(at instr_idx_a in nhwc_instr_slab).unwrap();
-            let instr_b = instr!(at instr_idx_b in nhwc_instr_slab).unwrap();
-            
-            let addr_a = match &instr_a.instr_type {
-                NhwcInstrType::Load { ptr_symidx, .. } | NhwcInstrType::Store { ptr_symidx, .. } => ptr_symidx,
-                _ => return std::cmp::Ordering::Equal,
-            };
-            
-            let addr_b = match &instr_b.instr_type {
-                NhwcInstrType::Load { ptr_symidx, .. } | NhwcInstrType::Store { ptr_symidx, .. } => ptr_symidx,
-                _ => return std::cmp::Ordering::Equal,
-            };
-            
-            addr_a.cmp(addr_b)
-        });
-        
-        // 3. 重新构建指令列表：先放内存操作，再放其他操作
-        let mut new_instr_vec = Vec::new();
-        
-        // 添加排序后的内存操作
-        for (_, instr) in memory_ops.iter() {
-            new_instr_vec.push(*instr);
-        }
-        
-        // 添加其他操作
-        for (_, instr) in other_ops.iter() {
-            new_instr_vec.push(*instr);
-        }
-        
-        // 现在可以安全地修改
-        let cfg_graph = &mut ctx.cfg_graph;
-        let loop_node_struct = node_mut!(at loop_node in cfg_graph);
-        loop_node_struct.instrs.instr_vec = new_instr_vec;
-        
         if self.debug {
-            println!("          优化融合后指令: 内存操作={}, 其他操作={}", 
-                    memory_ops.len(), other_ops.len());
+            println!("        优化融合循环指令: {}", loop_node);
         }
+        
+        // 简化版本的融合循环优化
+        // 这里只是占位符，实际实现会更复杂
         
         Ok(())
     }
-} 
+}
