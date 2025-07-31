@@ -43,8 +43,8 @@
          36   (nop) 
               jump label: branch_short_circuit_p_false_107 
      39   label branch_short_circuit_c_true_107: 
-         86   untrack a_17_5 
-         85   untrack a_17_3 
+         86   untrack a_17_3 
+         85   untrack a_17_5 
          84   untrack a_17_5 
          83   untrack a_17_3 
          34   ret 5_0 

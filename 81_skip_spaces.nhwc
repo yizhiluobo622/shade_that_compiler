@@ -50,11 +50,11 @@
          68   i_17_1 = i32 temp_7_arithop_21_0 
               jump label: while.head_20 
      66   label UP_2_0: 
-         77   untrack temp_5_ptr_of_arr_17_21 
-         76   untrack temp_6_ret_of_getint_21_0 
+         77   untrack temp_9__490_0 
+         76   untrack temp_5_ptr_of_arr_17_21 
          75   untrack temp_8_ret_of_getint_19_0 
          74   untrack temp_7_arithop_21_0 
-         73   untrack temp_9__490_0 
+         73   untrack temp_6_ret_of_getint_21_0 
          69   i_17_3 = i32 i_17_1 
          70   sum_17_1 = i32 0_0 
               jump label: while.exit_20 
@@ -69,8 +69,8 @@
          34   mu arr_17_1:33 
          36   temp_4_arithop_26_0 = Add i32 sum_17_1, temp_3_ele_of_arr_17_26_0 
          37   (nop) 
-         71   i_17_3 = i32 temp_1_arithop_26_0 
-         72   sum_17_1 = i32 temp_4_arithop_26_0 
+         71   sum_17_1 = i32 temp_4_arithop_26_0 
+         72   i_17_3 = i32 temp_1_arithop_26_0 
               jump label: while.exit_20 
      58   label while.exit_25: 
          25   temp_0_arithop_17_0 = Mod i32 sum_17_1, 79_0 

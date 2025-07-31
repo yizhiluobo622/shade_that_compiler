@@ -22,17 +22,17 @@
  18    
  19   temp_0_array_init_ptr_0 = GEP c_0:Array:i32:[Some(4_0)] [] 
  20    Call void memset_0(temp_0_array_init_ptr_0, 0_0, 16_0) 
- 21   temp_1_array_init_ptr_0 = GEP c_0:Array:i32:[Some(4_0)] [Some(0_0)] 
- 22   store 6_0:i32 temp_1_array_init_ptr_0:ptr->i32 
+ 21   temp_1_array_init_ptr_0 = GEP c_0:Array:i32:[Some(4_0)] [Some(1_0)] 
+ 22   store 7_0:i32 temp_1_array_init_ptr_0:ptr->i32 
  23   c_0 = chi c_0:22 
- 24   temp_2_array_init_ptr_0 = GEP c_0:Array:i32:[Some(4_0)] [Some(2_0)] 
- 25   store 8_0:i32 temp_2_array_init_ptr_0:ptr->i32 
+ 24   temp_2_array_init_ptr_0 = GEP c_0:Array:i32:[Some(4_0)] [Some(3_0)] 
+ 25   store 9_0:i32 temp_2_array_init_ptr_0:ptr->i32 
  26   c_0 = chi c_0:25 
- 27   temp_3_array_init_ptr_0 = GEP c_0:Array:i32:[Some(4_0)] [Some(1_0)] 
- 28   store 7_0:i32 temp_3_array_init_ptr_0:ptr->i32 
+ 27   temp_3_array_init_ptr_0 = GEP c_0:Array:i32:[Some(4_0)] [Some(0_0)] 
+ 28   store 6_0:i32 temp_3_array_init_ptr_0:ptr->i32 
  29   c_0 = chi c_0:28 
- 30   temp_4_array_init_ptr_0 = GEP c_0:Array:i32:[Some(4_0)] [Some(3_0)] 
- 31   store 9_0:i32 temp_4_array_init_ptr_0:ptr->i32 
+ 30   temp_4_array_init_ptr_0 = GEP c_0:Array:i32:[Some(4_0)] [Some(2_0)] 
+ 31   store 8_0:i32 temp_4_array_init_ptr_0:ptr->i32 
  32   c_0 = chi c_0:31 
  35   Define main_0 "" -> main_ret_0 
          172  c_0_1 = chi c_0_0:35 
@@ -135,77 +135,77 @@
          109   
          111  temp_20_array_init_ptr_52 = GEP c_52_0:Array:i32:[Some(7_0), Some(1_0), Some(5_0)] [] 
          112   Call void memset_0(temp_20_array_init_ptr_52, 0_0, 140_0) 
-         189  untrack temp_20_array_init_ptr_52 
+         195  untrack temp_20_array_init_ptr_52 
          175  mu c_52_0:112 
          176  c_52_1 = chi c_52_0:112 
          114  temp_21_array_init_ptr_52 = GEP c_52_1:Array:i32:[Some(7_0), Some(1_0), Some(5_0)] [Some(2_0), Some(0_0), Some(2_0)] 
          115  store 8_0:i32 temp_21_array_init_ptr_52:ptr->Array:i32:[Some(1_0), Some(5_0)] 
          116  c_52_2 = chi c_52_1:115 
-         118  temp_22_array_init_ptr_52 = GEP c_52_2:Array:i32:[Some(7_0), Some(1_0), Some(5_0)] [Some(2_0), Some(0_0), Some(1_0)] 
-         119  store 1_0:i32 temp_22_array_init_ptr_52:ptr->Array:i32:[Some(1_0), Some(5_0)] 
+         118  temp_22_array_init_ptr_52 = GEP c_52_2:Array:i32:[Some(7_0), Some(1_0), Some(5_0)] [Some(2_0), Some(0_0), Some(0_0)] 
+         119  store 2_0:i32 temp_22_array_init_ptr_52:ptr->Array:i32:[Some(1_0), Some(5_0)] 
          120  c_52_3 = chi c_52_2:119 
-         122  temp_23_array_init_ptr_52 = GEP c_52_3:Array:i32:[Some(7_0), Some(1_0), Some(5_0)] [Some(2_0), Some(0_0), Some(0_0)] 
-         123  store 2_0:i32 temp_23_array_init_ptr_52:ptr->Array:i32:[Some(1_0), Some(5_0)] 
+         122  temp_23_array_init_ptr_52 = GEP c_52_3:Array:i32:[Some(7_0), Some(1_0), Some(5_0)] [Some(2_0), Some(0_0), Some(1_0)] 
+         123  store 1_0:i32 temp_23_array_init_ptr_52:ptr->Array:i32:[Some(1_0), Some(5_0)] 
          124  c_52_4 = chi c_52_3:123 
          127  (nop) 
-         129  temp_25_ele_of_c_52_52_0 = load temp_23_array_init_ptr_52:ptr->i32 
-         192  untrack temp_23_array_init_ptr_52 
+         129  temp_25_ele_of_c_52_52_0 = load temp_22_array_init_ptr_52:ptr->i32 
+         191  untrack temp_22_array_init_ptr_52 
          130  mu c_52_4:129 
          131   Call void putint_0(temp_25_ele_of_c_52_52_0) 
-         190  untrack temp_25_ele_of_c_52_52_0 
+         189  untrack temp_25_ele_of_c_52_52_0 
          133  (nop) 
-         135  temp_27_ele_of_c_52_52_0 = load temp_22_array_init_ptr_52:ptr->i32 
-         195  untrack temp_22_array_init_ptr_52 
+         135  temp_27_ele_of_c_52_52_0 = load temp_23_array_init_ptr_52:ptr->i32 
+         192  untrack temp_23_array_init_ptr_52 
          136  mu c_52_4:135 
          137   Call void putint_0(temp_27_ele_of_c_52_52_0) 
-         194  untrack temp_27_ele_of_c_52_52_0 
+         193  untrack temp_27_ele_of_c_52_52_0 
          139  (nop) 
          141  temp_29_ele_of_c_52_52_0 = load temp_21_array_init_ptr_52:ptr->i32 
-         191  untrack temp_21_array_init_ptr_52 
+         194  untrack temp_21_array_init_ptr_52 
          142  mu c_52_4:141 
          143   Call void putint_0(temp_29_ele_of_c_52_52_0) 
-         193  untrack temp_29_ele_of_c_52_52_0 
+         190  untrack temp_29_ele_of_c_52_52_0 
               jump label: branch_false_51 
      163  label branch_false_51: 
-         188  untrack temp_27_ele_of_c_52_52_0 
-         187  untrack temp_23_array_init_ptr_52 
-         186  untrack temp_20_array_init_ptr_52 
-         185  untrack temp_22_array_init_ptr_52 
-         184  untrack temp_21_array_init_ptr_52 
-         183  untrack temp_34__1322_0 
-         182  untrack temp_25_ele_of_c_52_52_0 
-         181  untrack temp_29_ele_of_c_52_52_0 
+         188  untrack temp_23_array_init_ptr_52 
+         187  untrack temp_34__1322_0 
+         186  untrack temp_27_ele_of_c_52_52_0 
+         185  untrack temp_21_array_init_ptr_52 
+         184  untrack temp_25_ele_of_c_52_52_0 
+         183  untrack temp_29_ele_of_c_52_52_0 
+         182  untrack temp_20_array_init_ptr_52 
+         181  untrack temp_22_array_init_ptr_52 
               jump label: L3_0 
           label L3_0: 
          76    Call void putch_0(10_0) 
          78   temp_11_value_from_ptr_19_0 = load *b_0:ptr->i32 
          79   mu b_0_0:78 
          80    Call void putint_0(temp_11_value_from_ptr_19_0) 
-         200  untrack temp_11_value_from_ptr_19_0 
+         203  untrack temp_11_value_from_ptr_19_0 
          81    Call void putch_0(10_0) 
          83   temp_12_ptr_of_*c_0_19 = GEP *c_0:Array:i32:[None] [Some(0_0)] 
          85   temp_13_ele_of_*c_0_19_0 = load temp_12_ptr_of_*c_0_19:ptr->i32 
-         199  untrack temp_12_ptr_of_*c_0_19 
+         202  untrack temp_12_ptr_of_*c_0_19 
          86   mu c_0_2:85 
          87    Call void putint_0(temp_13_ele_of_*c_0_19_0) 
-         203  untrack temp_13_ele_of_*c_0_19_0 
+         197  untrack temp_13_ele_of_*c_0_19_0 
          89   temp_14_ptr_of_*c_0_19 = GEP *c_0:Array:i32:[None] [Some(1_0)] 
          91   temp_15_ele_of_*c_0_19_0 = load temp_14_ptr_of_*c_0_19:ptr->i32 
-         201  untrack temp_14_ptr_of_*c_0_19 
+         198  untrack temp_14_ptr_of_*c_0_19 
          92   mu c_0_2:91 
          93    Call void putint_0(temp_15_ele_of_*c_0_19_0) 
-         198  untrack temp_15_ele_of_*c_0_19_0 
+         199  untrack temp_15_ele_of_*c_0_19_0 
          95   (nop) 
          97   (nop) 
          98   mu c_0_2:97 
          99    Call void putint_0(temp_33_ele_of_*c_0_50_0) 
-         197  untrack temp_33_ele_of_*c_0_50_0 
+         200  untrack temp_33_ele_of_*c_0_50_0 
          101  temp_18_ptr_of_*c_0_19 = GEP *c_0:Array:i32:[None] [Some(3_0)] 
          103  temp_19_ele_of_*c_0_19_0 = load temp_18_ptr_of_*c_0_19:ptr->i32 
-         202  untrack temp_18_ptr_of_*c_0_19 
+         196  untrack temp_18_ptr_of_*c_0_19 
          104  mu c_0_2:103 
          105   Call void putint_0(temp_19_ele_of_*c_0_19_0) 
-         196  untrack temp_19_ele_of_*c_0_19_0 
+         201  untrack temp_19_ele_of_*c_0_19_0 
          106   Call void putch_0(10_0) 
          177  mu c_0_2:108 
          108  ret 0_0 

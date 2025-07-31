@@ -106,7 +106,7 @@
          226  (nop) 
          229  temp_49_ret_of_foo_24_0 =  Call i32 foo_0() 
          231  temp_50_arithop_24_0 = Add i32 30_0, temp_49_ret_of_foo_24_0 
-         311  untrack temp_49_ret_of_foo_24_0 
+         315  untrack temp_49_ret_of_foo_24_0 
          232  (nop) 
          233  (nop) 
          235  (nop) 
@@ -118,7 +118,7 @@
          247  (nop) 
          250  temp_51_ret_of_foo_24_0 =  Call i32 foo_0() 
          252  temp_52_arithop_24_0 = Add i32 41_0, temp_51_ret_of_foo_24_0 
-         315  untrack temp_51_ret_of_foo_24_0 
+         311  untrack temp_51_ret_of_foo_24_0 
          253  (nop) 
          254  (nop) 
          255  (nop) 
@@ -137,8 +137,8 @@
          275  (nop) 
          276  (nop) 
          279  temp_60_arithop_24_0 = Add i32 temp_50_arithop_24_0, temp_52_arithop_24_0 
-         314  untrack temp_50_arithop_24_0 
-         313  untrack temp_52_arithop_24_0 
+         314  untrack temp_52_arithop_24_0 
+         313  untrack temp_50_arithop_24_0 
          281  temp_61_arithop_24_0 = Add i32 temp_60_arithop_24_0, 35_0 
          312  untrack temp_60_arithop_24_0 
          282  (nop) 
@@ -205,71 +205,71 @@
          18    
          20   temp_0_array_init_ptr_17 = GEP arr_17_0:Array:i32:[Some(16_0)] [] 
          21    Call void memset_0(temp_0_array_init_ptr_17, 0_0, 64_0) 
-         300  untrack temp_0_array_init_ptr_17 
+         297  untrack temp_0_array_init_ptr_17 
          290  mu arr_17_0:21 
          291  arr_17_1 = chi arr_17_0:21 
-         23   temp_1_array_init_ptr_17 = GEP arr_17_1:Array:i32:[Some(16_0)] [Some(8_0)] 
-         24   store 0_0:i32 temp_1_array_init_ptr_17:ptr->i32 
-         292  untrack temp_1_array_init_ptr_17 
+         23   temp_1_array_init_ptr_17 = GEP arr_17_1:Array:i32:[Some(16_0)] [Some(13_0)] 
+         24   store 1_0:i32 temp_1_array_init_ptr_17:ptr->i32 
+         303  untrack temp_1_array_init_ptr_17 
          25   arr_17_2 = chi arr_17_1:24 
-         27   temp_2_array_init_ptr_17 = GEP arr_17_2:Array:i32:[Some(16_0)] [Some(13_0)] 
-         28   store 1_0:i32 temp_2_array_init_ptr_17:ptr->i32 
-         298  untrack temp_2_array_init_ptr_17 
+         27   temp_2_array_init_ptr_17 = GEP arr_17_2:Array:i32:[Some(16_0)] [Some(15_0)] 
+         28   store 3_0:i32 temp_2_array_init_ptr_17:ptr->i32 
+         293  untrack temp_2_array_init_ptr_17 
          29   arr_17_3 = chi arr_17_2:28 
-         31   temp_3_array_init_ptr_17 = GEP arr_17_3:Array:i32:[Some(16_0)] [Some(3_0)] 
-         32   store 3_0:i32 temp_3_array_init_ptr_17:ptr->i32 
+         31   temp_3_array_init_ptr_17 = GEP arr_17_3:Array:i32:[Some(16_0)] [Some(12_0)] 
+         32   store 0_0:i32 temp_3_array_init_ptr_17:ptr->i32 
+         294  untrack temp_3_array_init_ptr_17 
          33   arr_17_4 = chi arr_17_3:32 
-         35   temp_4_array_init_ptr_17 = GEP arr_17_4:Array:i32:[Some(16_0)] [Some(9_0)] 
-         36   store 1_0:i32 temp_4_array_init_ptr_17:ptr->i32 
-         297  untrack temp_4_array_init_ptr_17 
+         35   temp_4_array_init_ptr_17 = GEP arr_17_4:Array:i32:[Some(16_0)] [Some(8_0)] 
+         36   store 0_0:i32 temp_4_array_init_ptr_17:ptr->i32 
+         292  untrack temp_4_array_init_ptr_17 
          37   arr_17_5 = chi arr_17_4:36 
-         39   temp_5_array_init_ptr_17 = GEP arr_17_5:Array:i32:[Some(16_0)] [Some(0_0)] 
-         40   store 0_0:i32 temp_5_array_init_ptr_17:ptr->i32 
-         293  untrack temp_5_array_init_ptr_17 
+         39   temp_5_array_init_ptr_17 = GEP arr_17_5:Array:i32:[Some(16_0)] [Some(10_0)] 
+         40   store 2_0:i32 temp_5_array_init_ptr_17:ptr->i32 
+         302  untrack temp_5_array_init_ptr_17 
          41   arr_17_6 = chi arr_17_5:40 
-         43   temp_6_array_init_ptr_17 = GEP arr_17_6:Array:i32:[Some(16_0)] [Some(11_0)] 
-         44   store 3_0:i32 temp_6_array_init_ptr_17:ptr->i32 
-         307  untrack temp_6_array_init_ptr_17 
+         43   temp_6_array_init_ptr_17 = GEP arr_17_6:Array:i32:[Some(16_0)] [Some(6_0)] 
+         44   store 2_0:i32 temp_6_array_init_ptr_17:ptr->i32 
+         295  untrack temp_6_array_init_ptr_17 
          45   arr_17_7 = chi arr_17_6:44 
-         47   temp_7_array_init_ptr_17 = GEP arr_17_7:Array:i32:[Some(16_0)] [Some(14_0)] 
-         48   store 2_0:i32 temp_7_array_init_ptr_17:ptr->i32 
-         295  untrack temp_7_array_init_ptr_17 
+         47   temp_7_array_init_ptr_17 = GEP arr_17_7:Array:i32:[Some(16_0)] [Some(3_0)] 
+         48   store 3_0:i32 temp_7_array_init_ptr_17:ptr->i32 
          49   arr_17_8 = chi arr_17_7:48 
-         51   temp_8_array_init_ptr_17 = GEP arr_17_8:Array:i32:[Some(16_0)] [Some(10_0)] 
-         52   store 2_0:i32 temp_8_array_init_ptr_17:ptr->i32 
+         51   temp_8_array_init_ptr_17 = GEP arr_17_8:Array:i32:[Some(16_0)] [Some(1_0)] 
+         52   store 1_0:i32 temp_8_array_init_ptr_17:ptr->i32 
          301  untrack temp_8_array_init_ptr_17 
          53   arr_17_9 = chi arr_17_8:52 
-         55   temp_9_array_init_ptr_17 = GEP arr_17_9:Array:i32:[Some(16_0)] [Some(15_0)] 
-         56   store 3_0:i32 temp_9_array_init_ptr_17:ptr->i32 
-         303  untrack temp_9_array_init_ptr_17 
+         55   temp_9_array_init_ptr_17 = GEP arr_17_9:Array:i32:[Some(16_0)] [Some(0_0)] 
+         56   store 0_0:i32 temp_9_array_init_ptr_17:ptr->i32 
+         296  untrack temp_9_array_init_ptr_17 
          57   arr_17_10 = chi arr_17_9:56 
-         59   temp_10_array_init_ptr_17 = GEP arr_17_10:Array:i32:[Some(16_0)] [Some(2_0)] 
-         60   store 2_0:i32 temp_10_array_init_ptr_17:ptr->i32 
-         309  untrack temp_10_array_init_ptr_17 
+         59   temp_10_array_init_ptr_17 = GEP arr_17_10:Array:i32:[Some(16_0)] [Some(4_0)] 
+         60   store 0_0:i32 temp_10_array_init_ptr_17:ptr->i32 
+         300  untrack temp_10_array_init_ptr_17 
          61   arr_17_11 = chi arr_17_10:60 
-         63   temp_11_array_init_ptr_17 = GEP arr_17_11:Array:i32:[Some(16_0)] [Some(4_0)] 
-         64   store 0_0:i32 temp_11_array_init_ptr_17:ptr->i32 
-         308  untrack temp_11_array_init_ptr_17 
+         63   temp_11_array_init_ptr_17 = GEP arr_17_11:Array:i32:[Some(16_0)] [Some(5_0)] 
+         64   store 1_0:i32 temp_11_array_init_ptr_17:ptr->i32 
+         307  untrack temp_11_array_init_ptr_17 
          65   arr_17_12 = chi arr_17_11:64 
-         67   temp_12_array_init_ptr_17 = GEP arr_17_12:Array:i32:[Some(16_0)] [Some(5_0)] 
+         67   temp_12_array_init_ptr_17 = GEP arr_17_12:Array:i32:[Some(16_0)] [Some(9_0)] 
          68   store 1_0:i32 temp_12_array_init_ptr_17:ptr->i32 
-         299  untrack temp_12_array_init_ptr_17 
+         306  untrack temp_12_array_init_ptr_17 
          69   arr_17_13 = chi arr_17_12:68 
-         71   temp_13_array_init_ptr_17 = GEP arr_17_13:Array:i32:[Some(16_0)] [Some(7_0)] 
+         71   temp_13_array_init_ptr_17 = GEP arr_17_13:Array:i32:[Some(16_0)] [Some(11_0)] 
          72   store 3_0:i32 temp_13_array_init_ptr_17:ptr->i32 
-         296  untrack temp_13_array_init_ptr_17 
+         304  untrack temp_13_array_init_ptr_17 
          73   arr_17_14 = chi arr_17_13:72 
-         75   temp_14_array_init_ptr_17 = GEP arr_17_14:Array:i32:[Some(16_0)] [Some(6_0)] 
+         75   temp_14_array_init_ptr_17 = GEP arr_17_14:Array:i32:[Some(16_0)] [Some(14_0)] 
          76   store 2_0:i32 temp_14_array_init_ptr_17:ptr->i32 
-         304  untrack temp_14_array_init_ptr_17 
+         299  untrack temp_14_array_init_ptr_17 
          77   arr_17_15 = chi arr_17_14:76 
-         79   temp_15_array_init_ptr_17 = GEP arr_17_15:Array:i32:[Some(16_0)] [Some(1_0)] 
-         80   store 1_0:i32 temp_15_array_init_ptr_17:ptr->i32 
-         306  untrack temp_15_array_init_ptr_17 
+         79   temp_15_array_init_ptr_17 = GEP arr_17_15:Array:i32:[Some(16_0)] [Some(2_0)] 
+         80   store 2_0:i32 temp_15_array_init_ptr_17:ptr->i32 
+         309  untrack temp_15_array_init_ptr_17 
          81   arr_17_16 = chi arr_17_15:80 
-         83   temp_16_array_init_ptr_17 = GEP arr_17_16:Array:i32:[Some(16_0)] [Some(12_0)] 
-         84   store 0_0:i32 temp_16_array_init_ptr_17:ptr->i32 
-         294  untrack temp_16_array_init_ptr_17 
+         83   temp_16_array_init_ptr_17 = GEP arr_17_16:Array:i32:[Some(16_0)] [Some(7_0)] 
+         84   store 3_0:i32 temp_16_array_init_ptr_17:ptr->i32 
+         298  untrack temp_16_array_init_ptr_17 
          85   arr_17_17 = chi arr_17_16:84 
          87   (nop) 
          89   (nop) 
@@ -305,9 +305,9 @@
          149  (nop) 
          153  (nop) 
          155  (nop) 
-         157  temp_33_ele_of_arr_17_17_0 = load temp_3_array_init_ptr_17:ptr->i32 
-         305  untrack temp_3_array_init_ptr_17 
+         157  temp_33_ele_of_arr_17_17_0 = load temp_7_array_init_ptr_17:ptr->i32 
+         305  untrack temp_7_array_init_ptr_17 
          158  mu arr_17_17:157 
          160  temp_34_arithop_17_0 = Add i32 71_0, temp_33_ele_of_arr_17_17_0 
-         302  untrack temp_33_ele_of_arr_17_17_0 
+         308  untrack temp_33_ele_of_arr_17_17_0 
          161  ret temp_34_arithop_17_0 

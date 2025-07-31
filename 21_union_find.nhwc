@@ -90,8 +90,8 @@
          212  untrack i_39_5 
          96   (nop) 
          98   (nop) 
-         185  clusters_39_1 = i32 0_0 
-         186  i_39_8 = i32 0_0 
+         185  i_39_8 = i32 0_0 
+         186  clusters_39_1 = i32 0_0 
               jump label: while.head_59 
      139  label while.head_59: 
          138  temp_24_cmp_58_0 = icmp i32 Slt i_39_8, temp_13_ret_of_getint_39_0 
@@ -103,10 +103,10 @@
          151  temp_27_cmp_61_0 = icmp i32 Eq temp_26_ele_of_*parent_0_61_0, i_39_8 
          154  br i1 temp_27_cmp_61_0, label branch_true_62, label UP_15_0 
      152  label branch_true_62: 
-         219  untrack temp_27_cmp_61_0 
-         218  untrack temp_24_cmp_58_0 
-         217  untrack temp_26_ele_of_*parent_0_61_0 
-         216  untrack temp_25_ptr_of_*parent_0_61 
+         219  untrack temp_25_ptr_of_*parent_0_61 
+         218  untrack temp_26_ele_of_*parent_0_61_0 
+         217  untrack temp_24_cmp_58_0 
+         216  untrack temp_27_cmp_61_0 
          106  temp_16_arithop_61_0 = Add i32 clusters_39_1, 1_0 
          107  (nop) 
          187  clusters_39_3 = i32 temp_16_arithop_61_0 
@@ -124,8 +124,8 @@
          190  clusters_39_3 = i32 clusters_39_1 
               jump label: branch_false_62 
      141  label while.exit_59: 
-         215  untrack temp_13_ret_of_getint_39_0 
-         214  untrack i_39_8 
+         215  untrack i_39_8 
+         214  untrack temp_13_ret_of_getint_39_0 
          99    Call void putint_0(clusters_39_1) 
          221  untrack clusters_39_1 
          169  mu parent_0_12:101 
@@ -142,12 +142,12 @@
          58    
          60    
          62   temp_9_ret_of_find_29_0 =  Call i32 find_0(p_27_0) 
-         202  untrack p_27_0 
+         201  untrack p_27_0 
          161  mu parent_0_4:62 
          162  parent_0_5 = chi parent_0_4:62 
          63   (nop) 
          65   temp_10_ret_of_find_29_0 =  Call i32 find_0(q_27_0) 
-         201  untrack q_27_0 
+         202  untrack q_27_0 
          163  mu parent_0_5:65 
          164  parent_0_6 = chi parent_0_5:65 
          66   (nop) 
@@ -158,16 +158,16 @@
      75   label branch_true_34: 
          203  untrack temp_12_cmp_33_0 
          70   temp_11_ptr_of_*parent_0_35 = GEP *parent_0:ptr->i32 [Some(temp_10_ret_of_find_29_0)] 
-         210  untrack temp_10_ret_of_find_29_0 
+         209  untrack temp_10_ret_of_find_29_0 
          71   store temp_9_ret_of_find_29_0:i32 temp_11_ptr_of_*parent_0_35:ptr->i32 
-         209  untrack temp_9_ret_of_find_29_0 
-         208  untrack temp_11_ptr_of_*parent_0_35 
+         210  untrack temp_11_ptr_of_*parent_0_35 
+         208  untrack temp_9_ret_of_find_29_0 
          72   parent_0_7 = chi parent_0_6:71 
               jump label: branch_false_34 
      76   label branch_false_34: 
          207  untrack temp_11_ptr_of_*parent_0_35 
-         206  untrack temp_10_ret_of_find_29_0 
-         205  untrack temp_12_cmp_33_0 
+         206  untrack temp_12_cmp_33_0 
+         205  untrack temp_10_ret_of_find_29_0 
          204  untrack temp_9_ret_of_find_29_0 
               jump label: L4_0 
           label L4_0: 
@@ -191,30 +191,30 @@
          50   temp_8_cmp_21_0 = icmp i32 Eq temp_7_ele_of_*parent_0_21_0, root_18_0 
          53   br i1 temp_8_cmp_21_0, label branch_true_22, label branch_false_22 
      51   label branch_true_22: 
-         195  untrack temp_7_ele_of_*parent_0_21_0 
-         194  untrack temp_3_ret_of_find_24_0 
-         193  untrack temp_5_ele_of_*parent_0_24_0 
-         192  untrack temp_8_cmp_21_0 
+         195  untrack temp_5_ele_of_*parent_0_24_0 
+         194  untrack temp_7_ele_of_*parent_0_21_0 
+         193  untrack temp_8_cmp_21_0 
+         192  untrack temp_3_ret_of_find_24_0 
          191  untrack temp_6_ptr_of_*parent_0_21 
          156  mu parent_0_1:43 
          43   ret root_18_0 
      52   label branch_false_22: 
-         197  untrack temp_8_cmp_21_0 
-         196  untrack root_18_0 
+         197  untrack root_18_0 
+         196  untrack temp_8_cmp_21_0 
          25   (nop) 
          27   (nop) 
          29   (nop) 
          30   mu parent_0_1:29 
          32   temp_3_ret_of_find_24_0 =  Call i32 find_0(temp_7_ele_of_*parent_0_21_0) 
-         198  untrack temp_7_ele_of_*parent_0_21_0 
+         199  untrack temp_7_ele_of_*parent_0_21_0 
          157  mu parent_0_1:32 
          158  parent_0_2 = chi parent_0_1:32 
          33   store temp_3_ret_of_find_24_0:i32 temp_6_ptr_of_*parent_0_21:ptr->i32 
-         199  untrack temp_3_ret_of_find_24_0 
+         200  untrack temp_3_ret_of_find_24_0 
          34   parent_0_3 = chi parent_0_2:33 
          37   (nop) 
          39   temp_5_ele_of_*parent_0_24_0 = load temp_6_ptr_of_*parent_0_21:ptr->i32 
-         200  untrack temp_6_ptr_of_*parent_0_21 
+         198  untrack temp_6_ptr_of_*parent_0_21 
          40   mu parent_0_3:39 
          159  mu parent_0_3:41 
          41   ret temp_5_ele_of_*parent_0_24_0 

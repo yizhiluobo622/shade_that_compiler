@@ -37,9 +37,9 @@
          40   temp_3_cmp_25_0 = icmp i32 Eq i_17_2, 50_0 
          43   br i1 temp_3_cmp_25_0, label branch_true_26, label branch_false_26 
      41   label branch_true_26: 
-         54   untrack temp_2_cmp_22_0 
+         54   untrack temp_0_arithop_24_0 
          53   untrack temp_3_cmp_25_0 
-         52   untrack temp_0_arithop_24_0 
+         52   untrack temp_2_cmp_22_0 
          51   untrack temp_1_arithop_24_0 
               jump label: while.exit_23 
      35   label while.exit_23: 

@@ -114,24 +114,24 @@
           label L0_0: 
          159  temp_22_ret_of_float_eq_73_0 =  Call i32 float_eq_0(0.078125_0, -33000._0) 
          160   Call void assert_not_0(temp_22_ret_of_float_eq_73_0) 
-         336  untrack temp_22_ret_of_float_eq_73_0 
+         337  untrack temp_22_ret_of_float_eq_73_0 
          162  temp_23_ret_of_float_eq_73_0 =  Call i32 float_eq_0(95.03319_0, 34.55752_0) 
          163   Call void assert_not_0(temp_23_ret_of_float_eq_73_0) 
-         337  untrack temp_23_ret_of_float_eq_73_0 
+         338  untrack temp_23_ret_of_float_eq_73_0 
          165  temp_24_ret_of_float_eq_73_0 =  Call i32 float_eq_0(34.55752_0, 34.55752_0) 
          166   Call void assert_0(temp_24_ret_of_float_eq_73_0) 
-         335  untrack temp_24_ret_of_float_eq_73_0 
+         336  untrack temp_24_ret_of_float_eq_73_0 
          168  (nop) 
          170  temp_26_ret_of_circle_area_73_0 =  Call f32 circle_area_0(5_0) 
          172  temp_27_ret_of_circle_area_73_0 =  Call f32 circle_area_0(5_0) 
          174  temp_28_ret_of_float_eq_73_0 =  Call i32 float_eq_0(temp_26_ret_of_circle_area_73_0, temp_27_ret_of_circle_area_73_0) 
-         339  untrack temp_26_ret_of_circle_area_73_0 
-         334  untrack temp_27_ret_of_circle_area_73_0 
+         335  untrack temp_27_ret_of_circle_area_73_0 
+         334  untrack temp_26_ret_of_circle_area_73_0 
          175   Call void assert_0(temp_28_ret_of_float_eq_73_0) 
-         333  untrack temp_28_ret_of_float_eq_73_0 
+         339  untrack temp_28_ret_of_float_eq_73_0 
          177  temp_29_ret_of_float_eq_73_0 =  Call i32 float_eq_0(233._0, 4095._0) 
          178   Call void assert_not_0(temp_29_ret_of_float_eq_73_0) 
-         338  untrack temp_29_ret_of_float_eq_73_0 
+         333  untrack temp_29_ret_of_float_eq_73_0 
               jump label: L1_0 
           label L1_0: 
          255  (nop) 
@@ -180,16 +180,16 @@
          183   
          185  temp_30_array_init_ptr_73 = GEP arr_73_0:Array:f32:[Some(10_0)] [] 
          186   Call void memset_0(temp_30_array_init_ptr_73, 0_0, 40_0) 
-         346  untrack temp_30_array_init_ptr_73 
+         345  untrack temp_30_array_init_ptr_73 
          298  mu arr_73_0:186 
          299  arr_73_1 = chi arr_73_0:186 
-         188  temp_31_array_init_ptr_73 = GEP arr_73_1:Array:f32:[Some(10_0)] [Some(0_0)] 
-         189  store 1._0:f32 temp_31_array_init_ptr_73:ptr->f32 
-         345  untrack temp_31_array_init_ptr_73 
+         188  temp_31_array_init_ptr_73 = GEP arr_73_1:Array:f32:[Some(10_0)] [Some(1_0)] 
+         189  store 2._0:f32 temp_31_array_init_ptr_73:ptr->f32 
+         344  untrack temp_31_array_init_ptr_73 
          190  arr_73_2 = chi arr_73_1:189 
-         192  temp_32_array_init_ptr_73 = GEP arr_73_2:Array:f32:[Some(10_0)] [Some(1_0)] 
-         193  store 2._0:f32 temp_32_array_init_ptr_73:ptr->f32 
-         344  untrack temp_32_array_init_ptr_73 
+         192  temp_32_array_init_ptr_73 = GEP arr_73_2:Array:f32:[Some(10_0)] [Some(0_0)] 
+         193  store 1._0:f32 temp_32_array_init_ptr_73:ptr->f32 
+         346  untrack temp_32_array_init_ptr_73 
          194  arr_73_3 = chi arr_73_2:193 
          197  temp_33_ele_ptr_of_arr_73_73 = GEP arr_73_3:Array:f32:[Some(10_0)] [] 
          199  temp_34_ret_of_getfarray_73_0 =  Call i32 getfarray_0(temp_33_ele_ptr_of_arr_73_73) 
@@ -197,8 +197,8 @@
          300  mu arr_73_3:199 
          301  arr_73_4 = chi arr_73_3:199 
          200  (nop) 
-         307  p_73_1 = i32 0_0 
-         308  i_73_1 = i32 1_0 
+         307  i_73_1 = i32 1_0 
+         308  p_73_1 = i32 0_0 
               jump label: while.head_95 
      292  label while.head_95: 
          291  temp_59_cmp_94_0 = icmp i32 Slt i_73_1, 1000000000_0 
@@ -234,12 +234,12 @@
          310  i_73_1 = i32 temp_48__96_0 
               jump label: while.head_95 
      294  label while.exit_95: 
-         348  untrack p_73_1 
-         347  untrack i_73_1 
+         348  untrack i_73_1 
+         347  untrack p_73_1 
          203  temp_35_ele_ptr_of_arr_73_73 = GEP arr_73_5:Array:f32:[Some(10_0)] [] 
          204   Call void putfarray_0(temp_34_ret_of_getfarray_73_0, temp_35_ele_ptr_of_arr_73_73) 
-         350  untrack temp_35_ele_ptr_of_arr_73_73 
-         349  untrack temp_34_ret_of_getfarray_73_0 
+         350  untrack temp_34_ret_of_getfarray_73_0 
+         349  untrack temp_35_ele_ptr_of_arr_73_73 
          302  mu arr_73_5:204 
          303  arr_73_7 = chi arr_73_5:204 
          206  ret 0_0 
@@ -311,12 +311,12 @@
          115  alloc i1 [temp_18_cmp_35] 
           label L10_0: 
          112  temp_16_arithop_35_0 = Sub f32 a_32_0, b_32_0 
-         323  untrack b_32_0 
-         322  untrack a_32_0 
+         322  untrack b_32_0 
+         320  untrack a_32_0 
          114  temp_17_ret_of_float_abs_35_0 =  Call f32 float_abs_0(temp_16_arithop_35_0) 
-         321  untrack temp_16_arithop_35_0 
+         323  untrack temp_16_arithop_35_0 
          116  temp_18_cmp_35_0 = fcmp f32 Olt temp_17_ret_of_float_abs_35_0, 0.000001_0 
-         320  untrack temp_17_ret_of_float_abs_35_0 
+         321  untrack temp_17_ret_of_float_abs_35_0 
          119  br i1 temp_18_cmp_35_0, label branch_true_36, label branch_false_36 
      117  label branch_true_36: 
          324  untrack temp_18_cmp_35_0 
@@ -335,14 +335,14 @@
          101  alloc f32 [temp_14_arithop_30] 
           label L11_0: 
          90   temp_8_arithop_30_0 = Mul i32 radius_28_0, radius_28_0 
-         315  untrack radius_28_0 
+         319  untrack radius_28_0 
          92   temp_9__30_0 = sitofp i32 temp_8_arithop_30_0 to f32 
-         319  untrack temp_8_arithop_30_0 
+         318  untrack temp_8_arithop_30_0 
          94   temp_10_arithop_30_0 = Mul f32 temp_9__30_0, 3.1415927_0 
-         316  untrack temp_9__30_0 
+         315  untrack temp_9__30_0 
          96   (nop) 
          98   temp_12_arithop_30_0 = Mul f32 temp_10_arithop_30_0, 2._0 
-         318  untrack temp_10_arithop_30_0 
+         316  untrack temp_10_arithop_30_0 
          100  (nop) 
          102  temp_14_arithop_30_0 = Div f32 temp_12_arithop_30_0, 2._0 
          317  untrack temp_12_arithop_30_0 

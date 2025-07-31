@@ -68,6 +68,11 @@
           label L4_0: 
               jump label: branch_true_36 
      57   label branch_true_36: 
+         91   untrack temp_4_cmp_21_0 
+         90   untrack temp_5_cmp_26_0 
+         89   untrack c_18_7 
+         88   untrack temp_1_arithop_28_0 
+         87   untrack temp_6_cmp_30_0 
          37   (nop) 
          38   (nop) 
          77   c_18_5 = i32 168_0 

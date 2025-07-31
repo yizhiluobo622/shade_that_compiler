@@ -182,36 +182,36 @@
          211  temp_59_cmp_46_0 = icmp i32 Slt i_19_10, 10_0 
          214  br i1 temp_59_cmp_46_0, label branch_true_47, label branch_false_47 
      212  label branch_true_47: 
-         319  untrack ans_19_7 
-         318  untrack ans_19_11 
-         317  untrack temp_6_ptr_of_a1_19_73 
-         316  untrack ans_19_6 
-         315  untrack temp_61_cmp_61_0 
-         314  untrack ans_19_4 
-         313  untrack temp_60_cmp_51_0 
-         312  untrack temp_4_arithop_77_0 
-         311  untrack temp_14_ptr_of_a2_19_70 
-         310  untrack temp_59_cmp_46_0 
-         309  untrack j_53_1 
-         308  untrack temp_3_arithop_77_0 
-         307  untrack temp_58_cmp_43_0 
+         319  untrack temp_3_arithop_77_0 
+         318  untrack temp_60_cmp_51_0 
+         317  untrack temp_2_arithop_77_0 
+         316  untrack temp_14_ptr_of_a2_19_70 
+         315  untrack temp_21_ptr_of_a3_19_57 
+         314  untrack j_53_1 
+         313  untrack temp_61_cmp_61_0 
+         312  untrack ans_19_11 
+         311  untrack ans_19_7 
+         310  untrack ans_19_4 
+         309  untrack ans_19_6 
+         308  untrack temp_1_ele_of_a3_19_77_0 
+         307  untrack temp_4_arithop_77_0 
          306  untrack j_63_1 
-         305  untrack temp_21_ptr_of_a3_19_57 
-         304  untrack temp_1_ele_of_a3_19_77_0 
-         303  untrack temp_0_ptr_of_a3_19_77 
-         302  untrack temp_2_arithop_77_0 
+         305  untrack temp_58_cmp_43_0 
+         304  untrack temp_0_ptr_of_a3_19_77 
+         303  untrack temp_6_ptr_of_a1_19_73 
+         302  untrack temp_59_cmp_46_0 
          114  temp_28_ptr_of_a3_19_48 = GEP a3_19_1:Array:i32:[Some(10000_0)] [Some(i_19_10)] 
          116  temp_29_ele_of_a3_19_48_0 = load temp_28_ptr_of_a3_19_48:ptr->i32 
-         323  untrack temp_28_ptr_of_a3_19_48 
+         321  untrack temp_28_ptr_of_a3_19_48 
          117  mu a3_19_1:116 
          119  temp_30_arithop_48_0 = Add i32 ans_19_1, temp_29_ele_of_a3_19_48_0 
-         320  untrack temp_29_ele_of_a3_19_48_0 
+         322  untrack temp_29_ele_of_a3_19_48_0 
          121  temp_31_arithop_48_0 = Mod i32 temp_30_arithop_48_0, 1333_0 
-         322  untrack temp_30_arithop_48_0 
+         323  untrack temp_30_arithop_48_0 
          122  (nop) 
          123   Call void putint_0(temp_31_arithop_48_0) 
          277  ans_19_3 = i32 temp_31_arithop_48_0 
-         321  untrack temp_31_arithop_48_0 
+         320  untrack temp_31_arithop_48_0 
               jump label: gather_31 
      227  label gather_31: 
               jump label: L2_0 
@@ -225,24 +225,24 @@
          216  temp_60_cmp_51_0 = icmp i32 Slt i_19_10, 20_0 
          219  br i1 temp_60_cmp_51_0, label branch_true_52, label branch_false_52 
      217  label branch_true_52: 
-         341  untrack temp_30_arithop_48_0 
-         340  untrack temp_29_ele_of_a3_19_48_0 
-         339  untrack temp_28_ptr_of_a3_19_48 
-         338  untrack temp_61_cmp_61_0 
-         337  untrack temp_31_arithop_48_0 
-         336  untrack temp_3_arithop_77_0 
-         335  untrack temp_0_ptr_of_a3_19_77 
-         334  untrack temp_59_cmp_46_0 
-         333  untrack temp_4_arithop_77_0 
-         332  untrack temp_2_arithop_77_0 
-         331  untrack temp_14_ptr_of_a2_19_70 
-         330  untrack temp_6_ptr_of_a1_19_73 
-         329  untrack temp_1_ele_of_a3_19_77_0 
-         328  untrack temp_60_cmp_51_0 
-         327  untrack ans_19_7 
-         326  untrack ans_19_11 
-         325  untrack j_63_1 
-         324  untrack temp_58_cmp_43_0 
+         341  untrack temp_59_cmp_46_0 
+         340  untrack j_63_1 
+         339  untrack temp_29_ele_of_a3_19_48_0 
+         338  untrack ans_19_7 
+         337  untrack temp_58_cmp_43_0 
+         336  untrack temp_61_cmp_61_0 
+         335  untrack temp_1_ele_of_a3_19_77_0 
+         334  untrack temp_0_ptr_of_a3_19_77 
+         333  untrack temp_2_arithop_77_0 
+         332  untrack temp_30_arithop_48_0 
+         331  untrack temp_4_arithop_77_0 
+         330  untrack temp_28_ptr_of_a3_19_48 
+         329  untrack temp_31_arithop_48_0 
+         328  untrack temp_3_arithop_77_0 
+         327  untrack temp_6_ptr_of_a1_19_73 
+         326  untrack temp_60_cmp_51_0 
+         325  untrack temp_14_ptr_of_a2_19_70 
+         324  untrack ans_19_11 
          92   (nop) 
          96   temp_21_ptr_of_a3_19_57 = GEP a3_19_1:Array:i32:[Some(10000_0)] [Some(i_19_10)] 
          280  ans_19_4 = i32 ans_19_1 
@@ -266,8 +266,8 @@
          283  ans_19_4 = i32 temp_26_arithop_57_0 
               jump label: while.head_56 
      244  label while.exit_56: 
-         343  untrack temp_21_ptr_of_a3_19_57 
-         342  untrack j_53_1 
+         343  untrack j_53_1 
+         342  untrack temp_21_ptr_of_a3_19_57 
          94    Call void putint_0(ans_19_4) 
          284  ans_19_6 = i32 ans_19_4 
          344  untrack ans_19_4 
@@ -279,22 +279,22 @@
          221  temp_61_cmp_61_0 = icmp i32 Slt i_19_10, 30_0 
          224  br i1 temp_61_cmp_61_0, label branch_true_62, label branch_false_62 
      222  label branch_true_62: 
-         360  untrack temp_4_arithop_77_0 
-         359  untrack temp_58_cmp_43_0 
-         358  untrack temp_61_cmp_61_0 
-         357  untrack temp_2_arithop_77_0 
-         356  untrack temp_59_cmp_46_0 
-         355  untrack temp_0_ptr_of_a3_19_77 
-         354  untrack temp_3_arithop_77_0 
-         353  untrack temp_29_ele_of_a3_19_48_0 
-         352  untrack temp_21_ptr_of_a3_19_57 
-         351  untrack j_53_1 
-         350  untrack temp_31_arithop_48_0 
+         360  untrack temp_29_ele_of_a3_19_48_0 
+         359  untrack temp_21_ptr_of_a3_19_57 
+         358  untrack temp_0_ptr_of_a3_19_77 
+         357  untrack temp_59_cmp_46_0 
+         356  untrack ans_19_4 
+         355  untrack j_53_1 
+         354  untrack temp_1_ele_of_a3_19_77_0 
+         353  untrack temp_61_cmp_61_0 
+         352  untrack temp_60_cmp_51_0 
+         351  untrack temp_28_ptr_of_a3_19_48 
+         350  untrack temp_2_arithop_77_0 
          349  untrack temp_30_arithop_48_0 
-         348  untrack temp_60_cmp_51_0 
-         347  untrack temp_1_ele_of_a3_19_77_0 
-         346  untrack ans_19_4 
-         345  untrack temp_28_ptr_of_a3_19_48 
+         348  untrack temp_58_cmp_43_0 
+         347  untrack temp_4_arithop_77_0 
+         346  untrack temp_3_arithop_77_0 
+         345  untrack temp_31_arithop_48_0 
          51   (nop) 
          75   temp_14_ptr_of_a2_19_70 = GEP a2_19_1:Array:i32:[Some(10000_0)] [Some(i_19_10)] 
          55   temp_6_ptr_of_a1_19_73 = GEP a1_19_1:Array:i32:[Some(10000_0)] [Some(i_19_10)] 
@@ -318,8 +318,8 @@
          88   (nop) 
          90   temp_20_arithop_70_0 = Add i32 j_63_1, 1_0 
          91   (nop) 
-         288  j_63_3 = i32 temp_20_arithop_70_0 
-         289  ans_19_9 = i32 temp_19_arithop_70_0 
+         288  ans_19_9 = i32 temp_19_arithop_70_0 
+         289  j_63_3 = i32 temp_20_arithop_70_0 
               jump label: gather_22 
      239  label gather_22: 
          290  ans_19_7 = i32 ans_19_9 

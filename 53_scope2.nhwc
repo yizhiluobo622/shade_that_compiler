@@ -87,10 +87,10 @@
          91   untrack k_22_1 
               jump label: branch_false_21 
      59   label branch_false_21: 
-         88   untrack temp_2_arithop_22_0 
-         87   untrack temp_8_cmp_20_0 
-         86   untrack temp_7_value_from_ptr_20_0 
-         85   untrack k_22_1 
+         88   untrack temp_7_value_from_ptr_20_0 
+         87   untrack temp_2_arithop_22_0 
+         86   untrack k_22_1 
+         85   untrack temp_8_cmp_20_0 
               jump label: L3_0 
           label L3_0: 
          22   temp_0_value_from_ptr_18_0 = load *k_0:ptr->i32 

@@ -49,8 +49,8 @@
          27   (nop) 
          29   temp_1_arithop_24_0 = Add i32 i_17_2, 1_0 
          30   (nop) 
-         52   i_17_2 = i32 temp_1_arithop_24_0 
-         53   sum_17_2 = i32 temp_0_arithop_24_0 
+         52   sum_17_2 = i32 temp_0_arithop_24_0 
+         53   i_17_2 = i32 temp_1_arithop_24_0 
               jump label: while.head_23 
      38   label while.exit_23: 
          54   untrack i_17_2 

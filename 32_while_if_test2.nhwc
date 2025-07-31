@@ -54,10 +54,10 @@
               jump label: branch_true_23 
      53   label while.exit_26: 
          33   temp_2_arithop_24_0 = Add i32 b_17_2, 25_0 
-         82   untrack b_17_2 
+         81   untrack b_17_2 
          34   (nop) 
          71   b_17_5 = i32 temp_2_arithop_24_0 
-         81   untrack temp_2_arithop_24_0 
+         82   untrack temp_2_arithop_24_0 
               jump label: while.exit_31 
      46   label while.exit_31: 
               jump label: L3_0 
@@ -77,8 +77,8 @@
          28   (nop) 
          30   temp_1_arithop_32_0 = Add i32 a_17_3, 1_0 
          31   (nop) 
-         74   b_17_6 = i32 temp_0_arithop_32_0 
-         75   a_17_3 = i32 temp_1_arithop_32_0 
+         74   a_17_3 = i32 temp_1_arithop_32_0 
+         75   b_17_6 = i32 temp_0_arithop_32_0 
               jump label: branch_false_23 
      67   label UP_2_0: 
          83   untrack a_17_3 

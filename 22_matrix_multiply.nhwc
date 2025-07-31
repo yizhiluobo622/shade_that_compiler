@@ -30,11 +30,11 @@
  22    
  30   Define main_0 "" -> main_ret_0 
          222  b_0_1 = chi b_0_0:30 
-         223  n2_0_1 = chi n2_0_0:30 
-         224  a_0_1 = chi a_0_0:30 
-         225  m2_0_1 = chi m2_0_0:30 
+         223  a_0_1 = chi a_0_0:30 
+         224  n1_0_1 = chi n1_0_0:30 
+         225  n2_0_1 = chi n2_0_0:30 
          226  res_0_6 = chi res_0_0:30 
-         227  n1_0_1 = chi n1_0_0:30 
+         227  m2_0_1 = chi m2_0_0:30 
          228  m1_0_1 = chi m1_0_0:30 
          97   alloc i32 [i_39] 
          99   alloc i32 [j_39] 
@@ -95,14 +95,14 @@
          215  temp_45_cmp_48_0 = icmp i32 Slt j_39_3, temp_44_value_from_ptr_48_0 
          219  br i1 temp_45_cmp_48_0, label while.body_49, label while.exit_49 
      217  label while.body_49: 
-         294  untrack temp_29_arithop_63_0 
-         293  untrack temp_27_ptr_of_*b_0_63 
-         292  untrack temp_43_cmp_61_0 
-         291  untrack temp_23_ptr_of_*res_0_75 
+         294  untrack temp_43_cmp_61_0 
+         293  untrack temp_41_cmp_73_0 
+         292  untrack temp_27_ptr_of_*b_0_63 
+         291  untrack temp_25_arithop_75_0 
          290  untrack temp_24_ele_of_*res_0_75_0 
-         289  untrack temp_28_ret_of_getint_63_0 
-         288  untrack temp_25_arithop_75_0 
-         287  untrack temp_41_cmp_73_0 
+         289  untrack temp_29_arithop_63_0 
+         288  untrack temp_28_ret_of_getint_63_0 
+         287  untrack temp_23_ptr_of_*res_0_75 
          156  temp_31_ptr_of_*a_0_50 = GEP *a_0:ptr->Array:i32:[Some(100_0)] [Some(i_39_2), Some(j_39_3)] 
          158  temp_32_ret_of_getint_50_0 =  Call i32 getint_0() 
          159  store temp_32_ret_of_getint_50_0:i32 temp_31_ptr_of_*a_0_50:ptr->i32 
@@ -144,10 +144,10 @@
          206  temp_43_cmp_61_0 = icmp i32 Slt j_39_7, temp_42_value_from_ptr_61_0 
          210  br i1 temp_43_cmp_61_0, label while.body_62, label while.exit_62 
      208  label while.body_62: 
-         301  untrack temp_23_ptr_of_*res_0_75 
-         300  untrack temp_41_cmp_73_0 
-         299  untrack temp_24_ele_of_*res_0_75_0 
-         298  untrack temp_25_arithop_75_0 
+         301  untrack temp_41_cmp_73_0 
+         300  untrack temp_24_ele_of_*res_0_75_0 
+         299  untrack temp_25_arithop_75_0 
+         298  untrack temp_23_ptr_of_*res_0_75 
          143  temp_27_ptr_of_*b_0_63 = GEP *b_0:ptr->Array:i32:[Some(100_0)] [Some(i_39_5), Some(j_39_7)] 
          145  temp_28_ret_of_getint_63_0 =  Call i32 getint_0() 
          146  store temp_28_ret_of_getint_63_0:i32 temp_27_ptr_of_*b_0_63:ptr->i32 
@@ -164,12 +164,12 @@
      180  label while.exit_58: 
          297  untrack i_39_5 
          119   Call void matrix_multiply_0() 
-         229  mu n1_0_2:119 
-         230  mu res_0_6:119 
-         231  mu m1_0_2:119 
-         232  mu a_0_2:119 
-         233  mu n2_0_2:119 
-         234  mu b_0_2:119 
+         229  mu res_0_6:119 
+         230  mu m1_0_2:119 
+         231  mu b_0_2:119 
+         232  mu n1_0_2:119 
+         233  mu a_0_2:119 
+         234  mu n2_0_2:119 
          235  res_0_7 = chi res_0_6:119 
          120  (nop) 
          183  (nop) 
@@ -208,11 +208,11 @@
          303  untrack i_39_8 
          302  untrack temp_40_value_from_ptr_73_0 
          236  mu b_0_2:122 
-         237  mu n2_0_2:122 
-         238  mu a_0_2:122 
-         239  mu m2_0_2:122 
+         237  mu a_0_2:122 
+         238  mu n1_0_2:122 
+         239  mu n2_0_2:122 
          240  mu res_0_7:122 
-         241  mu n1_0_2:122 
+         241  mu m2_0_2:122 
          242  mu m1_0_2:122 
          122  ret 0_0 
  29   Define matrix_multiply_0 "" -> matrix_multiply_ret_0 
@@ -295,9 +295,9 @@
          267  i_21_1 = i32 temp_0_arithop_25_0 
               jump label: while.head_24 
      76   label while.exit_24: 
-         283  untrack temp_16_value_from_ptr_31_0 
-         282  untrack temp_12_value_from_ptr_23_0 
+         283  untrack temp_12_value_from_ptr_23_0 
+         282  untrack i_21_1 
          281  untrack temp_14_value_from_ptr_27_0 
-         280  untrack i_21_1 
+         280  untrack temp_16_value_from_ptr_31_0 
          221  mu res_0_2:78 
          78   ret 

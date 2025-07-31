@@ -135,89 +135,89 @@
          146  temp_21_ret_of_func7_75_0 =  Call i32 func7_0(temp_17_ret_of_getint_75_0) 
          148  temp_22_ret_of_func5_75_0 =  Call i32 func5_0(temp_18_ret_of_getint_75_0) 
          150  temp_23_ret_of_func6_75_0 =  Call i32 func6_0(temp_21_ret_of_func7_75_0, temp_22_ret_of_func5_75_0) 
-         442  untrack temp_21_ret_of_func7_75_0 
-         394  untrack temp_22_ret_of_func5_75_0 
+         395  untrack temp_22_ret_of_func5_75_0 
+         387  untrack temp_21_ret_of_func7_75_0 
          152  temp_24_ret_of_func2_75_0 =  Call i32 func2_0(temp_23_ret_of_func6_75_0, temp_19_ret_of_getint_75_0) 
-         429  untrack temp_23_ret_of_func6_75_0 
+         436  untrack temp_23_ret_of_func6_75_0 
          154  temp_25_ret_of_func3_75_0 =  Call i32 func3_0(temp_24_ret_of_func2_75_0, temp_20_ret_of_getint_75_0) 
-         389  untrack temp_24_ret_of_func2_75_0 
+         417  untrack temp_24_ret_of_func2_75_0 
          156  temp_26_ret_of_func5_75_0 =  Call i32 func5_0(temp_25_ret_of_func3_75_0) 
-         422  untrack temp_25_ret_of_func3_75_0 
+         415  untrack temp_25_ret_of_func3_75_0 
          158  temp_27_ptr_of_arr_75_75 = GEP arr_75_1:Array:i32:[Some(10_0)] [Some(0_0)] 
          160  temp_28_ele_of_arr_75_75_0 = load temp_27_ptr_of_arr_75_75:ptr->i32 
-         436  untrack temp_27_ptr_of_arr_75_75 
+         431  untrack temp_27_ptr_of_arr_75_75 
          161  mu arr_75_1:160 
          163  temp_29_ptr_of_arr_75_75 = GEP arr_75_1:Array:i32:[Some(10_0)] [Some(1_0)] 
          165  temp_30_ele_of_arr_75_75_0 = load temp_29_ptr_of_arr_75_75:ptr->i32 
-         433  untrack temp_29_ptr_of_arr_75_75 
+         439  untrack temp_29_ptr_of_arr_75_75 
          166  mu arr_75_1:165 
          168  temp_31_ret_of_func5_75_0 =  Call i32 func5_0(temp_30_ele_of_arr_75_75_0) 
          170  temp_32_ptr_of_arr_75_75 = GEP arr_75_1:Array:i32:[Some(10_0)] [Some(2_0)] 
          172  temp_33_ele_of_arr_75_75_0 = load temp_32_ptr_of_arr_75_75:ptr->i32 
-         408  untrack temp_32_ptr_of_arr_75_75 
+         428  untrack temp_32_ptr_of_arr_75_75 
          173  mu arr_75_1:172 
          175  temp_34_ptr_of_arr_75_75 = GEP arr_75_1:Array:i32:[Some(10_0)] [Some(3_0)] 
          177  temp_35_ele_of_arr_75_75_0 = load temp_34_ptr_of_arr_75_75:ptr->i32 
-         417  untrack temp_34_ptr_of_arr_75_75 
+         414  untrack temp_34_ptr_of_arr_75_75 
          178  mu arr_75_1:177 
          180  temp_36_ret_of_func7_75_0 =  Call i32 func7_0(temp_35_ele_of_arr_75_75_0) 
          182  temp_37_ret_of_func6_75_0 =  Call i32 func6_0(temp_33_ele_of_arr_75_75_0, temp_36_ret_of_func7_75_0) 
-         393  untrack temp_36_ret_of_func7_75_0 
+         394  untrack temp_36_ret_of_func7_75_0 
          184  temp_38_ptr_of_arr_75_75 = GEP arr_75_1:Array:i32:[Some(10_0)] [Some(4_0)] 
          186  temp_39_ele_of_arr_75_75_0 = load temp_38_ptr_of_arr_75_75:ptr->i32 
-         426  untrack temp_38_ptr_of_arr_75_75 
+         438  untrack temp_38_ptr_of_arr_75_75 
          187  mu arr_75_1:186 
          189  temp_40_ptr_of_arr_75_75 = GEP arr_75_1:Array:i32:[Some(10_0)] [Some(5_0)] 
          191  temp_41_ele_of_arr_75_75_0 = load temp_40_ptr_of_arr_75_75:ptr->i32 
-         388  untrack temp_40_ptr_of_arr_75_75 
+         423  untrack temp_40_ptr_of_arr_75_75 
          192  mu arr_75_1:191 
          194  temp_42_ret_of_func7_75_0 =  Call i32 func7_0(temp_41_ele_of_arr_75_75_0) 
          196  temp_43_ret_of_func2_75_0 =  Call i32 func2_0(temp_39_ele_of_arr_75_75_0, temp_42_ret_of_func7_75_0) 
-         441  untrack temp_42_ret_of_func7_75_0 
+         442  untrack temp_42_ret_of_func7_75_0 
          198  temp_44_ret_of_func4_75_0 =  Call i32 func4_0(temp_31_ret_of_func5_75_0, temp_37_ret_of_func6_75_0, temp_43_ret_of_func2_75_0) 
-         425  untrack temp_37_ret_of_func6_75_0 
-         405  untrack temp_43_ret_of_func2_75_0 
-         391  untrack temp_31_ret_of_func5_75_0 
+         422  untrack temp_43_ret_of_func2_75_0 
+         413  untrack temp_31_ret_of_func5_75_0 
+         407  untrack temp_37_ret_of_func6_75_0 
          200  temp_45_ptr_of_arr_75_75 = GEP arr_75_1:Array:i32:[Some(10_0)] [Some(6_0)] 
          202  temp_46_ele_of_arr_75_75_0 = load temp_45_ptr_of_arr_75_75:ptr->i32 
-         409  untrack temp_45_ptr_of_arr_75_75 
+         393  untrack temp_45_ptr_of_arr_75_75 
          203  mu arr_75_1:202 
          205  temp_47_ret_of_func3_75_0 =  Call i32 func3_0(temp_44_ret_of_func4_75_0, temp_46_ele_of_arr_75_75_0) 
-         440  untrack temp_44_ret_of_func4_75_0 
+         421  untrack temp_44_ret_of_func4_75_0 
          207  temp_48_ptr_of_arr_75_75 = GEP arr_75_1:Array:i32:[Some(10_0)] [Some(7_0)] 
          209  temp_49_ele_of_arr_75_75_0 = load temp_48_ptr_of_arr_75_75:ptr->i32 
-         443  untrack temp_48_ptr_of_arr_75_75 
+         432  untrack temp_48_ptr_of_arr_75_75 
          210  mu arr_75_1:209 
          212  temp_50_ret_of_func2_75_0 =  Call i32 func2_0(temp_47_ret_of_func3_75_0, temp_49_ele_of_arr_75_75_0) 
-         404  untrack temp_47_ret_of_func3_75_0 
+         396  untrack temp_47_ret_of_func3_75_0 
          214  temp_51_ptr_of_arr_75_75 = GEP arr_75_1:Array:i32:[Some(10_0)] [Some(8_0)] 
          216  temp_52_ele_of_arr_75_75_0 = load temp_51_ptr_of_arr_75_75:ptr->i32 
-         398  untrack temp_51_ptr_of_arr_75_75 
+         406  untrack temp_51_ptr_of_arr_75_75 
          217  mu arr_75_1:216 
          219  temp_53_ptr_of_arr_75_75 = GEP arr_75_1:Array:i32:[Some(10_0)] [Some(9_0)] 
          221  temp_54_ele_of_arr_75_75_0 = load temp_53_ptr_of_arr_75_75:ptr->i32 
-         411  untrack temp_53_ptr_of_arr_75_75 
+         410  untrack temp_53_ptr_of_arr_75_75 
          222  mu arr_75_1:221 
          224  temp_55_ret_of_func7_75_0 =  Call i32 func7_0(temp_54_ele_of_arr_75_75_0) 
          226  temp_56_ret_of_func3_75_0 =  Call i32 func3_0(temp_52_ele_of_arr_75_75_0, temp_55_ret_of_func7_75_0) 
-         435  untrack temp_55_ret_of_func7_75_0 
+         416  untrack temp_55_ret_of_func7_75_0 
          228  temp_57_ret_of_func1_75_0 =  Call i32 func1_0(temp_50_ret_of_func2_75_0, temp_56_ret_of_func3_75_0, temp_17_ret_of_getint_75_0) 
-         414  untrack temp_56_ret_of_func3_75_0 
-         402  untrack temp_50_ret_of_func2_75_0 
+         429  untrack temp_56_ret_of_func3_75_0 
+         424  untrack temp_50_ret_of_func2_75_0 
          230  temp_58_ret_of_func4_75_0 =  Call i32 func4_0(temp_26_ret_of_func5_75_0, temp_28_ele_of_arr_75_75_0, temp_57_ret_of_func1_75_0) 
-         407  untrack temp_57_ret_of_func1_75_0 
-         396  untrack temp_26_ret_of_func5_75_0 
+         430  untrack temp_57_ret_of_func1_75_0 
+         392  untrack temp_26_ret_of_func5_75_0 
          232  temp_59_ret_of_func7_75_0 =  Call i32 func7_0(temp_19_ret_of_getint_75_0) 
-         439  untrack temp_19_ret_of_getint_75_0 
+         389  untrack temp_19_ret_of_getint_75_0 
          234  temp_60_ret_of_func3_75_0 =  Call i32 func3_0(temp_59_ret_of_func7_75_0, temp_20_ret_of_getint_75_0) 
-         432  untrack temp_20_ret_of_getint_75_0 
-         395  untrack temp_59_ret_of_func7_75_0 
+         443  untrack temp_59_ret_of_func7_75_0 
+         435  untrack temp_20_ret_of_getint_75_0 
          236  temp_61_ret_of_func2_75_0 =  Call i32 func2_0(temp_18_ret_of_getint_75_0, temp_60_ret_of_func3_75_0) 
-         438  untrack temp_60_ret_of_func3_75_0 
-         413  untrack temp_18_ret_of_getint_75_0 
+         426  untrack temp_60_ret_of_func3_75_0 
+         418  untrack temp_18_ret_of_getint_75_0 
          238  temp_62_ret_of_func3_75_0 =  Call i32 func3_0(temp_58_ret_of_func4_75_0, temp_61_ret_of_func2_75_0) 
-         427  untrack temp_58_ret_of_func4_75_0 
-         397  untrack temp_61_ret_of_func2_75_0 
+         437  untrack temp_58_ret_of_func4_75_0 
+         411  untrack temp_61_ret_of_func2_75_0 
          240  (nop) 
          242  (nop) 
          243  mu arr_75_1:242 
@@ -225,15 +225,15 @@
          247  (nop) 
          248  mu arr_75_1:247 
          250  temp_67_ret_of_func1_75_0 =  Call i32 func1_0(temp_62_ret_of_func3_75_0, temp_28_ele_of_arr_75_75_0, temp_30_ele_of_arr_75_75_0) 
-         418  untrack temp_62_ret_of_func3_75_0 
-         412  untrack temp_30_ele_of_arr_75_75_0 
-         406  untrack temp_28_ele_of_arr_75_75_0 
+         409  untrack temp_28_ele_of_arr_75_75_0 
+         402  untrack temp_30_ele_of_arr_75_75_0 
+         397  untrack temp_62_ret_of_func3_75_0 
          252  (nop) 
          254  (nop) 
          255  mu arr_75_1:254 
          257  temp_70_ret_of_func2_75_0 =  Call i32 func2_0(temp_67_ret_of_func1_75_0, temp_33_ele_of_arr_75_75_0) 
-         416  untrack temp_33_ele_of_arr_75_75_0 
-         415  untrack temp_67_ret_of_func1_75_0 
+         412  untrack temp_33_ele_of_arr_75_75_0 
+         390  untrack temp_67_ret_of_func1_75_0 
          259  (nop) 
          261  (nop) 
          262  mu arr_75_1:261 
@@ -244,18 +244,18 @@
          271  (nop) 
          272  mu arr_75_1:271 
          274  temp_77_ret_of_func5_75_0 =  Call i32 func5_0(temp_41_ele_of_arr_75_75_0) 
-         423  untrack temp_41_ele_of_arr_75_75_0 
+         391  untrack temp_41_ele_of_arr_75_75_0 
          276  temp_78_ret_of_func3_75_0 =  Call i32 func3_0(temp_39_ele_of_arr_75_75_0, temp_77_ret_of_func5_75_0) 
-         424  untrack temp_77_ret_of_func5_75_0 
-         387  untrack temp_39_ele_of_arr_75_75_0 
+         434  untrack temp_39_ele_of_arr_75_75_0 
+         408  untrack temp_77_ret_of_func5_75_0 
          278  (nop) 
          280  (nop) 
          281  mu arr_75_1:280 
          283  temp_81_ret_of_func5_75_0 =  Call i32 func5_0(temp_46_ele_of_arr_75_75_0) 
-         399  untrack temp_46_ele_of_arr_75_75_0 
+         388  untrack temp_46_ele_of_arr_75_75_0 
          285  temp_82_ret_of_func2_75_0 =  Call i32 func2_0(temp_78_ret_of_func3_75_0, temp_81_ret_of_func5_75_0) 
-         410  untrack temp_78_ret_of_func3_75_0 
-         390  untrack temp_81_ret_of_func5_75_0 
+         420  untrack temp_81_ret_of_func5_75_0 
+         401  untrack temp_78_ret_of_func3_75_0 
          287  (nop) 
          289  (nop) 
          290  mu arr_75_1:289 
@@ -263,26 +263,26 @@
          294  (nop) 
          295  mu arr_75_1:294 
          297  temp_87_ret_of_func7_75_0 =  Call i32 func7_0(temp_52_ele_of_arr_75_75_0) 
-         421  untrack temp_52_ele_of_arr_75_75_0 
+         399  untrack temp_52_ele_of_arr_75_75_0 
          299  temp_88_ret_of_func1_75_0 =  Call i32 func1_0(temp_82_ret_of_func2_75_0, temp_49_ele_of_arr_75_75_0, temp_87_ret_of_func7_75_0) 
-         437  untrack temp_49_ele_of_arr_75_75_0 
-         431  untrack temp_82_ret_of_func2_75_0 
-         420  untrack temp_87_ret_of_func7_75_0 
+         433  untrack temp_82_ret_of_func2_75_0 
+         425  untrack temp_87_ret_of_func7_75_0 
+         398  untrack temp_49_ele_of_arr_75_75_0 
          301  (nop) 
          303  (nop) 
          304  mu arr_75_1:303 
          306  temp_91_ret_of_func5_75_0 =  Call i32 func5_0(temp_54_ele_of_arr_75_75_0) 
-         430  untrack temp_54_ele_of_arr_75_75_0 
+         427  untrack temp_54_ele_of_arr_75_75_0 
          308  temp_92_ret_of_func2_75_0 =  Call i32 func2_0(temp_88_ret_of_func1_75_0, temp_91_ret_of_func5_75_0) 
-         428  untrack temp_88_ret_of_func1_75_0 
-         401  untrack temp_91_ret_of_func5_75_0 
+         441  untrack temp_91_ret_of_func5_75_0 
+         440  untrack temp_88_ret_of_func1_75_0 
          310  temp_93_ret_of_func3_75_0 =  Call i32 func3_0(temp_92_ret_of_func2_75_0, temp_17_ret_of_getint_75_0) 
-         403  untrack temp_17_ret_of_getint_75_0 
-         392  untrack temp_92_ret_of_func2_75_0 
+         405  untrack temp_17_ret_of_getint_75_0 
+         403  untrack temp_92_ret_of_func2_75_0 
          312  temp_94_ret_of_func1_75_0 =  Call i32 func1_0(temp_70_ret_of_func2_75_0, temp_35_ele_of_arr_75_75_0, temp_93_ret_of_func3_75_0) 
-         434  untrack temp_93_ret_of_func3_75_0 
-         419  untrack temp_35_ele_of_arr_75_75_0 
-         400  untrack temp_70_ret_of_func2_75_0 
+         419  untrack temp_70_ret_of_func2_75_0 
+         404  untrack temp_93_ret_of_func3_75_0 
+         400  untrack temp_35_ele_of_arr_75_75_0 
          313  (nop) 
          316  ret temp_94_ret_of_func1_75_0 
  22   Define func7_0 "x_65_0," -> func7_ret_0 
@@ -290,9 +290,9 @@
          117  alloc i1 [temp_16_logicnot_68] 
           label L1_0: 
          116  temp_15_booltrans_68_0 = icmp i32 Ne x_65_0, 0_0 
-         382  untrack x_65_0 
+         383  untrack x_65_0 
          118  temp_16_logicnot_68_0 = xor i1 temp_15_booltrans_68_0, true 
-         383  untrack temp_15_booltrans_68_0 
+         382  untrack temp_15_booltrans_68_0 
          121  br i1 temp_16_logicnot_68_0, label branch_true_69, label branch_false_69 
      119  label branch_true_69: 
          384  untrack temp_16_logicnot_68_0 
@@ -334,8 +334,8 @@
          368  untrack x_43_0 
          84   br i1 temp_11__992_0, label branch_true_47, label branch_false_47 
      82   label branch_true_47: 
-         370  untrack z_43_0 
-         369  untrack temp_11__992_0 
+         370  untrack temp_11__992_0 
+         369  untrack z_43_0 
          79   ret y_43_0 
      83   label branch_false_47: 
          372  untrack y_43_0 
@@ -361,10 +361,10 @@
          363  untrack temp_9_arithop_39_0 
          362  untrack temp_10_cmp_37_0 
          60   temp_7_arithop_41_0 = Add i32 x_34_0, y_34_0 
-         366  untrack x_34_0 
-         365  untrack y_34_0 
+         367  untrack x_34_0 
+         366  untrack y_34_0 
          62   temp_8_ret_of_func3_41_0 =  Call i32 func3_0(temp_7_arithop_41_0, 0_0) 
-         367  untrack temp_7_arithop_41_0 
+         365  untrack temp_7_arithop_41_0 
          63   ret temp_8_ret_of_func3_41_0 
  17   Define func2_0 "x_25_0,y_25_0," -> func2_ret_0 
          45   alloc i32 [temp_4_arithop_30] 
@@ -376,10 +376,10 @@
      52   label branch_true_29: 
          350  untrack temp_6__637_0 
          46   temp_4_arithop_30_0 = Mod i32 x_25_0, y_25_0 
-         357  untrack y_25_0 
+         356  untrack y_25_0 
          355  untrack x_25_0 
          48   temp_5_ret_of_func2_30_0 =  Call i32 func2_0(temp_4_arithop_30_0, 0_0) 
-         356  untrack temp_4_arithop_30_0 
+         357  untrack temp_4_arithop_30_0 
          49   ret temp_5_ret_of_func2_30_0 
      53   label branch_false_29: 
          354  untrack y_25_0 
@@ -396,21 +396,21 @@
          35   temp_3_cmp_19_0 = icmp i32 Eq z_16_0, 0_0 
          38   br i1 temp_3_cmp_19_0, label branch_true_20, label branch_false_20 
      36   label branch_true_20: 
-         341  untrack temp_3_cmp_19_0 
-         340  untrack z_16_0 
-         339  untrack temp_1_ret_of_func1_23_0 
-         338  untrack temp_0_arithop_23_0 
+         341  untrack temp_0_arithop_23_0 
+         340  untrack temp_1_ret_of_func1_23_0 
+         339  untrack z_16_0 
+         338  untrack temp_3_cmp_19_0 
          32   temp_2_arithop_21_0 = Mul i32 x_16_0, y_16_0 
          345  untrack y_16_0 
          344  untrack x_16_0 
          33   ret temp_2_arithop_21_0 
      37   label branch_false_20: 
-         343  untrack temp_3_cmp_19_0 
-         342  untrack temp_2_arithop_21_0 
+         343  untrack temp_2_arithop_21_0 
+         342  untrack temp_3_cmp_19_0 
          26   temp_0_arithop_23_0 = Sub i32 y_16_0, z_16_0 
-         349  untrack y_16_0 
          348  untrack z_16_0 
+         347  untrack y_16_0 
          28   temp_1_ret_of_func1_23_0 =  Call i32 func1_0(x_16_0, temp_0_arithop_23_0, 0_0) 
-         347  untrack temp_0_arithop_23_0 
-         346  untrack x_16_0 
+         349  untrack x_16_0 
+         346  untrack temp_0_arithop_23_0 
          29   ret temp_1_ret_of_func1_23_0 

@@ -44,43 +44,43 @@
          90    
          93   temp_17_ptr_of_a_38_38 = GEP a_38_0:Array:i32:[Some(10_0)] [Some(0_0)] 
          94   store 4_0:i32 temp_17_ptr_of_a_38_38:ptr->i32 
-         191  untrack temp_17_ptr_of_a_38_38 
+         195  untrack temp_17_ptr_of_a_38_38 
          95   a_38_1 = chi a_38_0:94 
          97   temp_18_ptr_of_a_38_38 = GEP a_38_1:Array:i32:[Some(10_0)] [Some(1_0)] 
          98   store 3_0:i32 temp_18_ptr_of_a_38_38:ptr->i32 
-         196  untrack temp_18_ptr_of_a_38_38 
+         194  untrack temp_18_ptr_of_a_38_38 
          99   a_38_2 = chi a_38_1:98 
          101  temp_19_ptr_of_a_38_38 = GEP a_38_2:Array:i32:[Some(10_0)] [Some(2_0)] 
          102  store 9_0:i32 temp_19_ptr_of_a_38_38:ptr->i32 
-         192  untrack temp_19_ptr_of_a_38_38 
+         187  untrack temp_19_ptr_of_a_38_38 
          103  a_38_3 = chi a_38_2:102 
          105  temp_20_ptr_of_a_38_38 = GEP a_38_3:Array:i32:[Some(10_0)] [Some(3_0)] 
          106  store 2_0:i32 temp_20_ptr_of_a_38_38:ptr->i32 
-         190  untrack temp_20_ptr_of_a_38_38 
+         188  untrack temp_20_ptr_of_a_38_38 
          107  a_38_4 = chi a_38_3:106 
          109  temp_21_ptr_of_a_38_38 = GEP a_38_4:Array:i32:[Some(10_0)] [Some(4_0)] 
          110  store 0_0:i32 temp_21_ptr_of_a_38_38:ptr->i32 
-         197  untrack temp_21_ptr_of_a_38_38 
+         193  untrack temp_21_ptr_of_a_38_38 
          111  a_38_5 = chi a_38_4:110 
          113  temp_22_ptr_of_a_38_38 = GEP a_38_5:Array:i32:[Some(10_0)] [Some(5_0)] 
          114  store 1_0:i32 temp_22_ptr_of_a_38_38:ptr->i32 
-         193  untrack temp_22_ptr_of_a_38_38 
+         192  untrack temp_22_ptr_of_a_38_38 
          115  a_38_6 = chi a_38_5:114 
          117  temp_23_ptr_of_a_38_38 = GEP a_38_6:Array:i32:[Some(10_0)] [Some(6_0)] 
          118  store 6_0:i32 temp_23_ptr_of_a_38_38:ptr->i32 
-         195  untrack temp_23_ptr_of_a_38_38 
+         197  untrack temp_23_ptr_of_a_38_38 
          119  a_38_7 = chi a_38_6:118 
          121  temp_24_ptr_of_a_38_38 = GEP a_38_7:Array:i32:[Some(10_0)] [Some(7_0)] 
          122  store 5_0:i32 temp_24_ptr_of_a_38_38:ptr->i32 
-         188  untrack temp_24_ptr_of_a_38_38 
+         196  untrack temp_24_ptr_of_a_38_38 
          123  a_38_8 = chi a_38_7:122 
          125  temp_25_ptr_of_a_38_38 = GEP a_38_8:Array:i32:[Some(10_0)] [Some(8_0)] 
          126  store 7_0:i32 temp_25_ptr_of_a_38_38:ptr->i32 
-         187  untrack temp_25_ptr_of_a_38_38 
+         189  untrack temp_25_ptr_of_a_38_38 
          127  a_38_9 = chi a_38_8:126 
          129  temp_26_ptr_of_a_38_38 = GEP a_38_9:Array:i32:[Some(10_0)] [Some(9_0)] 
          130  store 8_0:i32 temp_26_ptr_of_a_38_38:ptr->i32 
-         194  untrack temp_26_ptr_of_a_38_38 
+         190  untrack temp_26_ptr_of_a_38_38 
          131  a_38_10 = chi a_38_9:130 
          133   
          135  temp_27_ele_ptr_of_a_38_38 = GEP a_38_10:Array:i32:[Some(10_0)] [] 
@@ -91,7 +91,7 @@
          170  a_38_11 = chi a_38_10:137 
          138  (nop) 
          181  i_38_2 = i32 temp_28_ret_of_insertsort_38_0 
-         189  untrack temp_28_ret_of_insertsort_38_0 
+         191  untrack temp_28_ret_of_insertsort_38_0 
               jump label: while.head_54 
      160  label while.head_54: 
          156  temp_32_value_from_ptr_53_0 = load *n_0:ptr->i32 
@@ -189,8 +189,8 @@
          179  i_19_2 = i32 temp_5_arithop_24_0 
               jump label: while.head_23 
      68   label while.exit_23: 
-         184  untrack i_19_2 
-         183  untrack temp_11_value_from_ptr_22_0 
+         184  untrack temp_11_value_from_ptr_22_0 
+         183  untrack i_19_2 
          166  mu a_17:24 
          185  untrack a_17 
          24   ret 0_0 

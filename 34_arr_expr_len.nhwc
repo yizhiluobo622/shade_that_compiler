@@ -19,23 +19,23 @@
  15    
  16   temp_0_array_init_ptr_0 = GEP arr_0:Array:i32:[Some(6_0)] [] 
  17    Call void memset_0(temp_0_array_init_ptr_0, 0_0, 24_0) 
- 18   temp_1_array_init_ptr_0 = GEP arr_0:Array:i32:[Some(6_0)] [Some(4_0)] 
- 19   store 5_0:i32 temp_1_array_init_ptr_0:ptr->i32 
+ 18   temp_1_array_init_ptr_0 = GEP arr_0:Array:i32:[Some(6_0)] [Some(0_0)] 
+ 19   store 1_0:i32 temp_1_array_init_ptr_0:ptr->i32 
  20   arr_0 = chi arr_0:19 
- 21   temp_2_array_init_ptr_0 = GEP arr_0:Array:i32:[Some(6_0)] [Some(0_0)] 
- 22   store 1_0:i32 temp_2_array_init_ptr_0:ptr->i32 
+ 21   temp_2_array_init_ptr_0 = GEP arr_0:Array:i32:[Some(6_0)] [Some(3_0)] 
+ 22   store 4_0:i32 temp_2_array_init_ptr_0:ptr->i32 
  23   arr_0 = chi arr_0:22 
- 24   temp_3_array_init_ptr_0 = GEP arr_0:Array:i32:[Some(6_0)] [Some(3_0)] 
- 25   store 4_0:i32 temp_3_array_init_ptr_0:ptr->i32 
+ 24   temp_3_array_init_ptr_0 = GEP arr_0:Array:i32:[Some(6_0)] [Some(2_0)] 
+ 25   store 33_0:i32 temp_3_array_init_ptr_0:ptr->i32 
  26   arr_0 = chi arr_0:25 
- 27   temp_4_array_init_ptr_0 = GEP arr_0:Array:i32:[Some(6_0)] [Some(2_0)] 
- 28   store 33_0:i32 temp_4_array_init_ptr_0:ptr->i32 
+ 27   temp_4_array_init_ptr_0 = GEP arr_0:Array:i32:[Some(6_0)] [Some(4_0)] 
+ 28   store 5_0:i32 temp_4_array_init_ptr_0:ptr->i32 
  29   arr_0 = chi arr_0:28 
- 30   temp_5_array_init_ptr_0 = GEP arr_0:Array:i32:[Some(6_0)] [Some(1_0)] 
- 31   store 2_0:i32 temp_5_array_init_ptr_0:ptr->i32 
+ 30   temp_5_array_init_ptr_0 = GEP arr_0:Array:i32:[Some(6_0)] [Some(5_0)] 
+ 31   store 6_0:i32 temp_5_array_init_ptr_0:ptr->i32 
  32   arr_0 = chi arr_0:31 
- 33   temp_6_array_init_ptr_0 = GEP arr_0:Array:i32:[Some(6_0)] [Some(5_0)] 
- 34   store 6_0:i32 temp_6_array_init_ptr_0:ptr->i32 
+ 33   temp_6_array_init_ptr_0 = GEP arr_0:Array:i32:[Some(6_0)] [Some(1_0)] 
+ 34   store 2_0:i32 temp_6_array_init_ptr_0:ptr->i32 
  35   arr_0 = chi arr_0:34 
  38   Define main_0 "" -> main_ret_0 
          40   alloc i32 [i_18] 
@@ -48,8 +48,8 @@
           label L0_0: 
          39   (nop) 
          41   (nop) 
-         66   sum_18_1 = i32 0_0 
-         67   i_18_1 = i32 0_0 
+         66   i_18_1 = i32 0_0 
+         67   sum_18_1 = i32 0_0 
               jump label: while.head_21 
      58   label while.head_21: 
          57   temp_11_cmp_20_0 = icmp i32 Slt i_18_1, 6_0 

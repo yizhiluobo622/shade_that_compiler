@@ -83,26 +83,29 @@
          94   temp_15_cmp_35_0 = icmp i32 Sge temp_14_arithop_35_0, 3_0 
          97   br i1 temp_15_cmp_35_0, label branch_true_36, label branch_false_36 
      95   label branch_true_36: 
-         157  untrack temp_11_cmp_32_0 
-         156  untrack temp_15_cmp_35_0 
+         157  untrack temp_15_cmp_35_0 
+         156  untrack temp_11_cmp_32_0 
          105  temp_17__757_0 = icmp i32 Ne m_30_1, 0_0 
          108  br i1 temp_17__757_0, label branch_true_38, label branch_false_38 
      106  label branch_true_38: 
          114  (nop) 
          120  br i1 temp_17__757_0, label branch_short_circuit_c_true_218, label branch_short_circuit_p_false_218 
      115  label branch_short_circuit_c_true_218: 
-         173  untrack temp_19_logicnot_39_0 
-         163  untrack temp_17__757_0 
-         162  untrack temp_19_logicnot_39_0 
+         174  untrack temp_5_arithop_34_0 
+         173  untrack n_34_1 
+         172  untrack temp_14_arithop_35_0 
+         171  untrack temp_19_logicnot_39_0 
+         166  untrack temp_14_arithop_35_0 
+         165  untrack temp_17__757_0 
+         164  untrack n_34_1 
+         163  untrack temp_19_logicnot_39_0 
+         162  untrack temp_5_arithop_34_0 
          122  temp_21_arithop_41_0 = Sub i32 m_30_1, -1_0 
          124  temp_22_cmp_41_0 = icmp i32 Sge temp_21_arithop_41_0, 3_0 
-         164  untrack temp_21_arithop_41_0 
+         167  untrack temp_21_arithop_41_0 
          127  br i1 temp_22_cmp_41_0, label branch_true_42, label branch_false_42 
      125  label branch_true_42: 
          168  untrack temp_22_cmp_41_0 
-         167  untrack temp_5_arithop_34_0 
-         166  untrack temp_14_arithop_35_0 
-         165  untrack n_34_1 
               jump label: while.exit_33 
      79   label while.exit_33: 
          82   (nop) 
@@ -111,30 +114,28 @@
          87   (nop) 
               jump label: while.body_65 
      88   label while.body_65: 
-         171  untrack temp_16_cmp_52_0 
-         170  untrack temp_6_arithop_54_0 
               jump label: while.exit_65 
      89   label while.exit_65: 
               jump label: while.exit_62 
      84   label while.exit_62: 
          39   temp_3_arithop_30_0 = Add i32 k_26_1, 1_0 
          40   (nop) 
-         145  k_26_1 = i32 temp_3_arithop_30_0 
-         146  sum_17_3 = i32 sum_17_4 
+         145  sum_17_3 = i32 sum_17_4 
+         146  k_26_1 = i32 temp_3_arithop_30_0 
               jump label: while.head_29 
      126  label branch_false_42: 
          169  untrack temp_22_cmp_41_0 
               jump label: branch_short_circuit_c_false_218 
      116  label branch_short_circuit_c_false_218: 
+         177  untrack temp_22_cmp_41_0 
          176  untrack temp_19_logicnot_39_0 
-         175  untrack temp_22_cmp_41_0 
-         174  untrack temp_21_arithop_41_0 
+         175  untrack temp_21_arithop_41_0 
               jump label: branch_false_38 
      107  label branch_false_38: 
-         161  untrack temp_19_logicnot_39_0 
+         161  untrack temp_17__757_0 
          160  untrack temp_22_cmp_41_0 
-         159  untrack temp_17__757_0 
-         158  untrack temp_21_arithop_41_0 
+         159  untrack temp_21_arithop_41_0 
+         158  untrack temp_19_logicnot_39_0 
               jump label: branch_false_36 
      96   label branch_false_36: 
               jump label: L1_0 
@@ -161,7 +162,7 @@
      117  label branch_short_circuit_p_false_218: 
          110  (nop) 
          112  temp_19_logicnot_39_0 = xor i1 temp_17__757_0, true 
-         172  untrack temp_17__757_0 
+         170  untrack temp_17__757_0 
          119  br i1 temp_19_logicnot_39_0, label branch_short_circuit_c_true_218, label branch_short_circuit_c_false_218 
      73   label while.exit_29: 
          31   temp_1_arithop_26_0 = Add i32 j_22_1, 1_0 
@@ -172,8 +173,8 @@
      67   label while.exit_25: 
          26   temp_0_arithop_22_0 = Add i32 i_17_1, 1_0 
          27   (nop) 
-         153  i_17_1 = i32 temp_0_arithop_22_0 
-         154  sum_17_1 = i32 sum_17_2 
+         153  sum_17_1 = i32 sum_17_2 
+         154  i_17_1 = i32 temp_0_arithop_22_0 
               jump label: while.head_21 
      59   label while.exit_21: 
          155  untrack i_17_1 

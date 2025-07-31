@@ -33,8 +33,8 @@
          301  book_0_7 = chi book_0_0:31 
          302  e_0_1 = chi e_0_0:31 
          303  n_0_1 = chi n_0_0:31 
-         304  dis_0_9 = chi dis_0_0:31 
-         305  m_0_1 = chi m_0_0:31 
+         304  m_0_1 = chi m_0_0:31 
+         305  dis_0_9 = chi dis_0_0:31 
          193  alloc i32 [i_64] 
          195  alloc i32 [temp_44_ret_of_getint_64] 
          199  alloc i32 [temp_45_ret_of_getint_64] 
@@ -66,11 +66,11 @@
          194   
          196  temp_44_ret_of_getint_64_0 =  Call i32 getint_0() 
          197  store temp_44_ret_of_getint_64_0:i32 *n_0:ptr->i32 
-         417  untrack temp_44_ret_of_getint_64_0 
+         418  untrack temp_44_ret_of_getint_64_0 
          198  n_0_2 = chi n_0_1:197 
          200  temp_45_ret_of_getint_64_0 =  Call i32 getint_0() 
          201  store temp_45_ret_of_getint_64_0:i32 *m_0:ptr->i32 
-         418  untrack temp_45_ret_of_getint_64_0 
+         417  untrack temp_45_ret_of_getint_64_0 
          202  m_0_2 = chi m_0_1:201 
          203  (nop) 
          360  i_64_2 = i32 1_0 
@@ -142,13 +142,13 @@
          365  i_64_5 = i32 temp_53_arithop_85_0 
               jump label: while.head_84 
      269  label while.exit_84: 
-         425  untrack temp_60_value_from_ptr_83_0 
-         424  untrack i_64_5 
+         425  untrack i_64_5 
+         424  untrack temp_60_value_from_ptr_83_0 
          205   Call void Dijkstra_0() 
-         306  mu book_0_7:205 
-         307  mu e_0_7:205 
-         308  mu n_0_2:205 
-         309  mu dis_0_9:205 
+         306  mu dis_0_9:205 
+         307  mu n_0_2:205 
+         308  mu book_0_7:205 
+         309  mu e_0_7:205 
          310  book_0_8 = chi book_0_7:205 
          311  dis_0_10 = chi dis_0_9:205 
          206  (nop) 
@@ -175,8 +175,8 @@
          312  mu book_0_8:209 
          313  mu e_0_7:209 
          314  mu n_0_2:209 
-         315  mu dis_0_10:209 
-         316  mu m_0_2:209 
+         315  mu m_0_2:209 
+         316  mu dis_0_10:209 
          209  ret 0_0 
  30   Define Dijkstra_0 "" -> Dijkstra_ret_0 
          297  book_0_1 = chi book_0_0:30 
@@ -279,9 +279,9 @@
          42   (nop) 
          44   (nop) 
          46   (nop) 
-         345  k_36_1 = i32 1_0 
-         346  min_index_36_1 = i32 0_0 
-         347  min_num_36_1 = i32 65535_0 
+         345  min_num_36_1 = i32 65535_0 
+         346  k_36_1 = i32 1_0 
+         347  min_index_36_1 = i32 0_0 
               jump label: while.head_41 
      128  label while.head_41: 
          127  temp_24_cmp_40_0 = icmp i32 Sle k_36_1, temp_18_value_from_ptr_26_0 
@@ -294,24 +294,24 @@
          192  br i1 temp_40_cmp_43_0, label branch_short_circuit_p_true_288, label UP_24_0 
      189  label branch_short_circuit_p_true_288: 
          385  untrack temp_29_cmp_54_0 
-         384  untrack temp_24_cmp_40_0 
-         383  untrack temp_36_ele_of_*dis_0_57_0 
-         382  untrack temp_35_ptr_of_*dis_0_57 
-         381  untrack temp_26_cmp_51_0 
-         380  untrack temp_28_ele_of_*e_0_54_0 
-         379  untrack temp_27_ptr_of_*e_0_54 
-         378  untrack temp_34_arithop_57_0 
-         377  untrack temp_37_cmp_57_0 
-         376  untrack temp_31_ele_of_*dis_0_57_0 
-         375  untrack temp_3_arithop_53_0 
-         374  untrack temp_38_ptr_of_*dis_0_43 
-         373  untrack temp_40_cmp_43_0 
+         384  untrack temp_37_cmp_57_0 
+         383  untrack temp_28_ele_of_*e_0_54_0 
+         382  untrack temp_40_cmp_43_0 
+         381  untrack temp_24_cmp_40_0 
+         380  untrack temp_31_ele_of_*dis_0_57_0 
+         379  untrack temp_26_cmp_51_0 
+         378  untrack temp_35_ptr_of_*dis_0_57 
+         377  untrack temp_27_ptr_of_*e_0_54 
+         376  untrack temp_3_arithop_53_0 
+         375  untrack temp_38_ptr_of_*dis_0_43 
+         374  untrack temp_36_ele_of_*dis_0_57_0 
+         373  untrack temp_34_arithop_57_0 
          181  temp_41_ptr_of_*book_0_43 = GEP *book_0:Array:i32:[None] [Some(k_36_1)] 
          183  temp_42_ele_of_*book_0_43_0 = load temp_41_ptr_of_*book_0_43:ptr->i32 
-         387  untrack temp_41_ptr_of_*book_0_43 
+         386  untrack temp_41_ptr_of_*book_0_43 
          184  mu book_0_5:183 
          186  temp_43_cmp_43_0 = icmp i32 Eq temp_42_ele_of_*book_0_43_0, 0_0 
-         386  untrack temp_42_ele_of_*book_0_43_0 
+         387  untrack temp_42_ele_of_*book_0_43_0 
          191  br i1 temp_43_cmp_43_0, label branch_short_circuit_c_true_288, label UP_43_0 
      187  label branch_short_circuit_c_true_288: 
          388  untrack temp_43_cmp_43_0 
@@ -320,19 +320,19 @@
          83   mu dis_0_4:82 
          84   (nop) 
          85   min_index_36_3 = i32 k_36_1 
-         348  min_index_36_2 = i32 min_index_36_3 
-         393  untrack min_index_36_3 
-         349  min_num_36_2 = i32 temp_39_ele_of_*dis_0_43_0 
+         348  min_num_36_2 = i32 temp_39_ele_of_*dis_0_43_0 
          392  untrack temp_39_ele_of_*dis_0_43_0 
+         349  min_index_36_2 = i32 min_index_36_3 
+         393  untrack min_index_36_3 
               jump label: branch_short_circuit_c_false_288 
      188  label branch_short_circuit_c_false_288: 
               jump label: L3_0 
           label L3_0: 
          77   temp_10_arithop_42_0 = Add i32 k_36_1, 1_0 
          78   (nop) 
-         350  k_36_1 = i32 temp_10_arithop_42_0 
-         351  min_index_36_1 = i32 min_index_36_2 
-         352  min_num_36_1 = i32 min_num_36_2 
+         350  min_num_36_1 = i32 min_num_36_2 
+         351  k_36_1 = i32 temp_10_arithop_42_0 
+         352  min_index_36_1 = i32 min_index_36_2 
               jump label: while.head_41 
      341  label UP_43_0: 
          391  untrack temp_43_cmp_43_0 
@@ -342,8 +342,8 @@
          354  min_index_36_2 = i32 min_index_36_1 
               jump label: branch_short_circuit_c_false_288 
      340  label UP_24_0: 
-         355  min_num_36_2 = i32 min_num_36_1 
-         356  min_index_36_2 = i32 min_index_36_1 
+         355  min_index_36_2 = i32 min_index_36_1 
+         356  min_num_36_2 = i32 min_num_36_1 
               jump label: branch_short_circuit_c_false_288 
      130  label while.exit_41: 
          49   temp_1_ptr_of_*book_0_36 = GEP *book_0:ptr->i32 [Some(min_index_36_1)] 
@@ -358,39 +358,39 @@
          136  temp_26_cmp_51_0 = icmp i32 Sle j_36_1, temp_18_value_from_ptr_26_0 
          140  br i1 temp_26_cmp_51_0, label while.body_52, label while.exit_52 
      138  label while.body_52: 
-         404  untrack min_index_36_2 
-         403  untrack temp_38_ptr_of_*dis_0_43 
+         404  untrack temp_43_cmp_43_0 
+         403  untrack temp_10_arithop_42_0 
          402  untrack temp_41_ptr_of_*book_0_43 
-         401  untrack temp_43_cmp_43_0 
-         400  untrack temp_10_arithop_42_0 
-         399  untrack temp_39_ele_of_*dis_0_43_0 
+         401  untrack temp_39_ele_of_*dis_0_43_0 
+         400  untrack min_index_36_2 
+         399  untrack min_index_36_3 
          398  untrack min_num_36_2 
-         397  untrack temp_24_cmp_40_0 
-         396  untrack temp_42_ele_of_*book_0_43_0 
-         395  untrack temp_40_cmp_43_0 
-         394  untrack min_index_36_3 
+         397  untrack temp_42_ele_of_*book_0_43_0 
+         396  untrack temp_40_cmp_43_0 
+         395  untrack temp_38_ptr_of_*dis_0_43 
+         394  untrack temp_24_cmp_40_0 
          142  temp_27_ptr_of_*e_0_54 = GEP *e_0:Array:i32:[None, Some(16_0)] [Some(min_index_36_1), Some(j_36_1)] 
          144  temp_28_ele_of_*e_0_54_0 = load temp_27_ptr_of_*e_0_54:ptr->i32 
          145  mu e_0_0:144 
          147  temp_29_cmp_54_0 = icmp i32 Slt temp_28_ele_of_*e_0_54_0, 65535_0 
          150  br i1 temp_29_cmp_54_0, label branch_true_55, label branch_false_55 
      148  label branch_true_55: 
-         407  untrack temp_27_ptr_of_*e_0_54 
+         407  untrack temp_29_cmp_54_0 
          406  untrack temp_26_cmp_51_0 
-         405  untrack temp_29_cmp_54_0 
+         405  untrack temp_27_ptr_of_*e_0_54 
          154  temp_31_ele_of_*dis_0_57_0 = load temp_30_ptr_of_*dis_0_57:ptr->i32 
          155  mu dis_0_5:154 
          157  (nop) 
          159  (nop) 
          160  mu e_0_0:159 
          162  temp_34_arithop_57_0 = Add i32 temp_31_ele_of_*dis_0_57_0, temp_28_ele_of_*e_0_54_0 
-         409  untrack temp_28_ele_of_*e_0_54_0 
+         410  untrack temp_28_ele_of_*e_0_54_0 
          408  untrack temp_31_ele_of_*dis_0_57_0 
          164  temp_35_ptr_of_*dis_0_57 = GEP *dis_0:Array:i32:[None] [Some(j_36_1)] 
          166  temp_36_ele_of_*dis_0_57_0 = load temp_35_ptr_of_*dis_0_57:ptr->i32 
          167  mu dis_0_5:166 
          169  temp_37_cmp_57_0 = icmp i32 Sgt temp_36_ele_of_*dis_0_57_0, temp_34_arithop_57_0 
-         410  untrack temp_36_ele_of_*dis_0_57_0 
+         409  untrack temp_36_ele_of_*dis_0_57_0 
          172  br i1 temp_37_cmp_57_0, label branch_true_58, label branch_false_58 
      170  label branch_true_58: 
          411  untrack temp_37_cmp_57_0 
@@ -402,14 +402,14 @@
          71   mu e_0_0:70 
          73   (nop) 
          74   store temp_34_arithop_57_0:i32 temp_35_ptr_of_*dis_0_57:ptr->i32 
-         416  untrack temp_34_arithop_57_0 
-         415  untrack temp_35_ptr_of_*dis_0_57 
+         416  untrack temp_35_ptr_of_*dis_0_57 
+         415  untrack temp_34_arithop_57_0 
          75   dis_0_6 = chi dis_0_5:74 
               jump label: branch_false_58 
      171  label branch_false_58: 
          414  untrack temp_37_cmp_57_0 
-         413  untrack temp_34_arithop_57_0 
-         412  untrack temp_35_ptr_of_*dis_0_57 
+         413  untrack temp_35_ptr_of_*dis_0_57 
+         412  untrack temp_34_arithop_57_0 
               jump label: branch_false_55 
      149  label branch_false_55: 
               jump label: L4_0 
@@ -424,8 +424,8 @@
          359  i_23_5 = i32 temp_2_arithop_36_0 
               jump label: while.head_35 
      120  label while.exit_35: 
-         372  untrack temp_18_value_from_ptr_26_0 
-         371  untrack i_23_5 
+         372  untrack i_23_5 
+         371  untrack temp_18_value_from_ptr_26_0 
          370  untrack temp_21_arithop_34_0 
          299  mu book_0_5:122 
          300  mu dis_0_4:122 

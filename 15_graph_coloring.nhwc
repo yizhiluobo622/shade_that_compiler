@@ -58,72 +58,72 @@
          173   
          175  temp_27_array_init_ptr_82 = GEP graph_82_0:Array:i32:[Some(4_0), Some(4_0)] [] 
          176   Call void memset_0(temp_27_array_init_ptr_82, 0_0, 64_0) 
-         355  untrack temp_27_array_init_ptr_82 
+         358  untrack temp_27_array_init_ptr_82 
          283  mu graph_82_0:176 
          284  graph_82_1 = chi graph_82_0:176 
-         178  temp_28_array_init_ptr_82 = GEP graph_82_1:Array:i32:[Some(4_0), Some(4_0)] [Some(2_0), Some(3_0)] 
-         179  store 1_0:i32 temp_28_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
-         361  untrack temp_28_array_init_ptr_82 
+         178  temp_28_array_init_ptr_82 = GEP graph_82_1:Array:i32:[Some(4_0), Some(4_0)] [Some(3_0), Some(1_0)] 
+         179  store 0_0:i32 temp_28_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
+         356  untrack temp_28_array_init_ptr_82 
          180  graph_82_2 = chi graph_82_1:179 
-         182  temp_29_array_init_ptr_82 = GEP graph_82_2:Array:i32:[Some(4_0), Some(4_0)] [Some(2_0), Some(0_0)] 
-         183  store 1_0:i32 temp_29_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
+         182  temp_29_array_init_ptr_82 = GEP graph_82_2:Array:i32:[Some(4_0), Some(4_0)] [Some(2_0), Some(2_0)] 
+         183  store 0_0:i32 temp_29_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
          354  untrack temp_29_array_init_ptr_82 
          184  graph_82_3 = chi graph_82_2:183 
-         186  temp_30_array_init_ptr_82 = GEP graph_82_3:Array:i32:[Some(4_0), Some(4_0)] [Some(3_0), Some(1_0)] 
-         187  store 0_0:i32 temp_30_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
-         347  untrack temp_30_array_init_ptr_82 
+         186  temp_30_array_init_ptr_82 = GEP graph_82_3:Array:i32:[Some(4_0), Some(4_0)] [Some(2_0), Some(3_0)] 
+         187  store 1_0:i32 temp_30_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
+         361  untrack temp_30_array_init_ptr_82 
          188  graph_82_4 = chi graph_82_3:187 
          190  temp_31_array_init_ptr_82 = GEP graph_82_4:Array:i32:[Some(4_0), Some(4_0)] [Some(0_0), Some(2_0)] 
          191  store 1_0:i32 temp_31_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
-         349  untrack temp_31_array_init_ptr_82 
+         347  untrack temp_31_array_init_ptr_82 
          192  graph_82_5 = chi graph_82_4:191 
-         194  temp_32_array_init_ptr_82 = GEP graph_82_5:Array:i32:[Some(4_0), Some(4_0)] [Some(2_0), Some(1_0)] 
+         194  temp_32_array_init_ptr_82 = GEP graph_82_5:Array:i32:[Some(4_0), Some(4_0)] [Some(1_0), Some(2_0)] 
          195  store 1_0:i32 temp_32_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
-         360  untrack temp_32_array_init_ptr_82 
+         359  untrack temp_32_array_init_ptr_82 
          196  graph_82_6 = chi graph_82_5:195 
-         198  temp_33_array_init_ptr_82 = GEP graph_82_6:Array:i32:[Some(4_0), Some(4_0)] [Some(1_0), Some(1_0)] 
-         199  store 0_0:i32 temp_33_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
+         198  temp_33_array_init_ptr_82 = GEP graph_82_6:Array:i32:[Some(4_0), Some(4_0)] [Some(1_0), Some(0_0)] 
+         199  store 1_0:i32 temp_33_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
          346  untrack temp_33_array_init_ptr_82 
          200  graph_82_7 = chi graph_82_6:199 
          202  temp_34_array_init_ptr_82 = GEP graph_82_7:Array:i32:[Some(4_0), Some(4_0)] [Some(3_0), Some(3_0)] 
          203  store 0_0:i32 temp_34_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
-         359  untrack temp_34_array_init_ptr_82 
+         352  untrack temp_34_array_init_ptr_82 
          204  graph_82_8 = chi graph_82_7:203 
-         206  temp_35_array_init_ptr_82 = GEP graph_82_8:Array:i32:[Some(4_0), Some(4_0)] [Some(1_0), Some(2_0)] 
-         207  store 1_0:i32 temp_35_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
+         206  temp_35_array_init_ptr_82 = GEP graph_82_8:Array:i32:[Some(4_0), Some(4_0)] [Some(1_0), Some(1_0)] 
+         207  store 0_0:i32 temp_35_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
          357  untrack temp_35_array_init_ptr_82 
          208  graph_82_9 = chi graph_82_8:207 
-         210  temp_36_array_init_ptr_82 = GEP graph_82_9:Array:i32:[Some(4_0), Some(4_0)] [Some(2_0), Some(2_0)] 
-         211  store 0_0:i32 temp_36_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
-         353  untrack temp_36_array_init_ptr_82 
+         210  temp_36_array_init_ptr_82 = GEP graph_82_9:Array:i32:[Some(4_0), Some(4_0)] [Some(0_0), Some(1_0)] 
+         211  store 1_0:i32 temp_36_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
+         348  untrack temp_36_array_init_ptr_82 
          212  graph_82_10 = chi graph_82_9:211 
-         214  temp_37_array_init_ptr_82 = GEP graph_82_10:Array:i32:[Some(4_0), Some(4_0)] [Some(3_0), Some(2_0)] 
+         214  temp_37_array_init_ptr_82 = GEP graph_82_10:Array:i32:[Some(4_0), Some(4_0)] [Some(0_0), Some(3_0)] 
          215  store 1_0:i32 temp_37_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
          351  untrack temp_37_array_init_ptr_82 
          216  graph_82_11 = chi graph_82_10:215 
          218  temp_38_array_init_ptr_82 = GEP graph_82_11:Array:i32:[Some(4_0), Some(4_0)] [Some(1_0), Some(3_0)] 
          219  store 0_0:i32 temp_38_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
-         358  untrack temp_38_array_init_ptr_82 
+         349  untrack temp_38_array_init_ptr_82 
          220  graph_82_12 = chi graph_82_11:219 
-         222  temp_39_array_init_ptr_82 = GEP graph_82_12:Array:i32:[Some(4_0), Some(4_0)] [Some(0_0), Some(1_0)] 
+         222  temp_39_array_init_ptr_82 = GEP graph_82_12:Array:i32:[Some(4_0), Some(4_0)] [Some(2_0), Some(0_0)] 
          223  store 1_0:i32 temp_39_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
-         356  untrack temp_39_array_init_ptr_82 
+         353  untrack temp_39_array_init_ptr_82 
          224  graph_82_13 = chi graph_82_12:223 
-         226  temp_40_array_init_ptr_82 = GEP graph_82_13:Array:i32:[Some(4_0), Some(4_0)] [Some(0_0), Some(3_0)] 
+         226  temp_40_array_init_ptr_82 = GEP graph_82_13:Array:i32:[Some(4_0), Some(4_0)] [Some(3_0), Some(0_0)] 
          227  store 1_0:i32 temp_40_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
-         350  untrack temp_40_array_init_ptr_82 
+         360  untrack temp_40_array_init_ptr_82 
          228  graph_82_14 = chi graph_82_13:227 
-         230  temp_41_array_init_ptr_82 = GEP graph_82_14:Array:i32:[Some(4_0), Some(4_0)] [Some(0_0), Some(0_0)] 
-         231  store 0_0:i32 temp_41_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
-         362  untrack temp_41_array_init_ptr_82 
+         230  temp_41_array_init_ptr_82 = GEP graph_82_14:Array:i32:[Some(4_0), Some(4_0)] [Some(3_0), Some(2_0)] 
+         231  store 1_0:i32 temp_41_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
+         355  untrack temp_41_array_init_ptr_82 
          232  graph_82_15 = chi graph_82_14:231 
-         234  temp_42_array_init_ptr_82 = GEP graph_82_15:Array:i32:[Some(4_0), Some(4_0)] [Some(1_0), Some(0_0)] 
-         235  store 1_0:i32 temp_42_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
-         352  untrack temp_42_array_init_ptr_82 
+         234  temp_42_array_init_ptr_82 = GEP graph_82_15:Array:i32:[Some(4_0), Some(4_0)] [Some(0_0), Some(0_0)] 
+         235  store 0_0:i32 temp_42_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
+         350  untrack temp_42_array_init_ptr_82 
          236  graph_82_16 = chi graph_82_15:235 
-         238  temp_43_array_init_ptr_82 = GEP graph_82_16:Array:i32:[Some(4_0), Some(4_0)] [Some(3_0), Some(0_0)] 
+         238  temp_43_array_init_ptr_82 = GEP graph_82_16:Array:i32:[Some(4_0), Some(4_0)] [Some(2_0), Some(1_0)] 
          239  store 1_0:i32 temp_43_array_init_ptr_82:ptr->Array:i32:[Some(4_0)] 
-         348  untrack temp_43_array_init_ptr_82 
+         362  untrack temp_43_array_init_ptr_82 
          240  graph_82_17 = chi graph_82_16:239 
          242  (nop) 
          244   
@@ -146,16 +146,16 @@
          265  temp_47_ele_ptr_of_graph_82_90 = GEP graph_82_17:Array:i32:[Some(4_0), Some(4_0)] [] 
          267  temp_48_ele_ptr_of_color_82_90 = GEP color_82_1:Array:i32:[Some(4_0)] [] 
          269  temp_49_ret_of_graphColoring_90_0 =  Call i32 graphColoring_0(temp_47_ele_ptr_of_graph_82_90, 3_0, 0_0, temp_48_ele_ptr_of_color_82_90) 
-         366  untrack temp_47_ele_ptr_of_graph_82_90 
-         364  untrack temp_48_ele_ptr_of_color_82_90 
+         367  untrack temp_47_ele_ptr_of_graph_82_90 
+         366  untrack temp_48_ele_ptr_of_color_82_90 
          285  mu graph_82_17:269 
          286  mu color_82_1:269 
-         287  graph_82_18 = chi graph_82_17:269 
-         288  color_82_3 = chi color_82_1:269 
+         287  color_82_3 = chi color_82_1:269 
+         288  graph_82_18 = chi graph_82_17:269 
          271  temp_50_booltrans_90_0 = icmp i32 Ne temp_49_ret_of_graphColoring_90_0, 0_0 
-         365  untrack temp_49_ret_of_graphColoring_90_0 
+         364  untrack temp_49_ret_of_graphColoring_90_0 
          273  temp_51_logicnot_90_0 = xor i1 temp_50_booltrans_90_0, true 
-         367  untrack temp_50_booltrans_90_0 
+         365  untrack temp_50_booltrans_90_0 
          276  br i1 temp_51_logicnot_90_0, label branch_true_91, label branch_false_91 
      274  label branch_true_91: 
          368  untrack temp_51_logicnot_90_0 
@@ -184,15 +184,15 @@
          145  temp_20_cmp_61_0 = icmp i32 Eq i_58_0, 4_0 
          148  br i1 temp_20_cmp_61_0, label branch_true_62, label branch_false_62 
      146  label branch_true_62: 
-         324  untrack j_60_1 
-         323  untrack m_58_0 
-         322  untrack temp_22_arithop_75_0 
-         321  untrack i_58_0 
-         320  untrack temp_20_cmp_61_0 
+         324  untrack m_58_0 
+         323  untrack temp_22_arithop_75_0 
+         322  untrack i_58_0 
+         321  untrack temp_20_cmp_61_0 
+         320  untrack j_60_1 
          167  temp_25_ret_of_isSafe_64_0 =  Call i32 isSafe_0(graph_58, color_58) 
-         328  untrack graph_58 
+         329  untrack graph_58 
          169  temp_26__1762_0 = icmp i32 Ne temp_25_ret_of_isSafe_64_0, 0_0 
-         329  untrack temp_25_ret_of_isSafe_64_0 
+         328  untrack temp_25_ret_of_isSafe_64_0 
          172  br i1 temp_26__1762_0, label branch_true_65, label branch_false_65 
      170  label branch_true_65: 
          330  untrack temp_26__1762_0 
@@ -208,8 +208,8 @@
          333  untrack color_58 
          140  ret 0_0 
      147  label branch_false_62: 
-         327  untrack temp_25_ret_of_isSafe_64_0 
-         326  untrack temp_26__1762_0 
+         327  untrack temp_26__1762_0 
+         326  untrack temp_25_ret_of_isSafe_64_0 
          325  untrack temp_20_cmp_61_0 
               jump label: L4_0 
           label L4_0: 
@@ -231,11 +231,11 @@
          165  br i1 temp_24__2042_0, label branch_true_76, label branch_false_76 
      163  label branch_true_76: 
          344  untrack temp_23_ret_of_graphColoring_75_0 
-         343  untrack temp_17_ptr_of_color_58_73 
-         342  untrack temp_19_arithop_73_0 
-         341  untrack temp_21_cmp_71_0 
-         340  untrack temp_24__2042_0 
-         339  untrack temp_18_ptr_of_color_58_73 
+         343  untrack temp_24__2042_0 
+         342  untrack temp_21_cmp_71_0 
+         341  untrack temp_17_ptr_of_color_58_73 
+         340  untrack temp_18_ptr_of_color_58_73 
+         339  untrack temp_19_arithop_73_0 
          281  mu color_58:138 
          138  ret 1_0 
      164  label branch_false_76: 
@@ -249,10 +249,10 @@
          303  j_60_1 = i32 temp_19_arithop_73_0 
               jump label: while.head_72 
      153  label while.exit_72: 
-         338  untrack graph_58 
+         338  untrack j_60_1 
          337  untrack m_58_0 
-         336  untrack j_60_1 
-         335  untrack temp_22_arithop_75_0 
+         336  untrack temp_22_arithop_75_0 
+         335  untrack graph_58 
          334  untrack i_58_0 
          282  mu color_58:125 
          345  untrack color_58 
@@ -307,14 +307,14 @@
          120  br i1 temp_15_cmp_52_0, label branch_short_circuit_c_true_267, label branch_short_circuit_c_false_267 
      116  label branch_short_circuit_c_true_267: 
          319  untrack temp_14_ele_of_color_41_52_0 
-         318  untrack temp_12_ele_of_color_41_52_0 
-         317  untrack temp_15_cmp_52_0 
-         316  untrack temp_9_ptr_of_graph_41_52 
+         318  untrack temp_16_i32_to_bool_52_0 
+         317  untrack temp_9_ptr_of_graph_41_52 
+         316  untrack temp_15_cmp_52_0 
          315  untrack temp_10_ele_of_graph_41_52_0 
-         314  untrack temp_6_arithop_51_0 
-         313  untrack temp_8_cmp_49_0 
-         312  untrack temp_16_i32_to_bool_52_0 
-         311  untrack temp_13_ptr_of_color_41_52 
+         314  untrack temp_12_ele_of_color_41_52_0 
+         313  untrack temp_13_ptr_of_color_41_52 
+         312  untrack temp_8_cmp_49_0 
+         311  untrack temp_6_arithop_51_0 
          82   ret 0_0 
      117  label branch_short_circuit_c_false_267: 
               jump label: L8_0 
@@ -329,8 +329,8 @@
          301  i_43_1 = i32 temp_4_arithop_47_0 
               jump label: while.head_46 
      87   label while.exit_46: 
-         310  untrack color_41 
-         309  untrack i_43_1 
+         310  untrack i_43_1 
+         309  untrack color_41 
          308  untrack graph_41 
          70   ret 1_0 
  27   Define printMessage_0 "" -> printMessage_ret_0 

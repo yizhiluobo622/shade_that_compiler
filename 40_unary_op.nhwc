@@ -33,13 +33,13 @@
          27   (nop) 
          29   temp_2_booltrans_20_0 = icmp i1 Ne false_0, 0_0 
          31   temp_3_logicnot_20_0 = xor i1 temp_2_booltrans_20_0, true 
-         49   untrack temp_2_booltrans_20_0 
+         50   untrack temp_2_booltrans_20_0 
          33   temp_4_booltrans_20_0 = icmp i1 Ne temp_3_logicnot_20_0, 0_0 
-         48   untrack temp_3_logicnot_20_0 
+         47   untrack temp_3_logicnot_20_0 
          35   temp_5_logicnot_20_0 = xor i1 temp_4_booltrans_20_0, true 
-         50   untrack temp_4_booltrans_20_0 
+         48   untrack temp_4_booltrans_20_0 
          37   temp_6__20_0 = Sub i1 0_0, temp_5_logicnot_20_0 
-         47   untrack temp_5_logicnot_20_0 
+         49   untrack temp_5_logicnot_20_0 
          40   br i1 temp_6__20_0, label branch_true_21, label branch_false_21 
      38   label branch_true_21: 
          51   untrack temp_6__20_0 
