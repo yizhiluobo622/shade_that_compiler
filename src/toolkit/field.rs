@@ -802,11 +802,24 @@ impl Type {
             Self::Array { dims, ele_ty: _ty }=>{
                 let mut v1 = Value::new_i32(1);
                 let mut weighted_dims = vec![v1.to_symidx()?];
+                
+                // 安全检查：确保有足够的维度
+                if dims.len() < 2 {
+                    return Ok(weighted_dims);
+                }
+                
                 for dim_symidx in dims.get(1..dims.len()).unwrap().iter().rev(){
-                    let v2 = Value::from_string_with_specific_type(&dim_symidx.as_ref().unwrap().as_ref_borrow().symbol_name, &Type::I32)?;
-                    debug_info_blue!(" v2 is  {:?}",v2);
-                    v1 = (v1*v2)?;
-                    weighted_dims.push(v1.to_symidx()?)
+                    // 安全检查：确保维度不是None
+                    if let Some(dim) = dim_symidx.as_ref() {
+                        let v2 = Value::from_string_with_specific_type(&dim.as_ref_borrow().symbol_name, &Type::I32)?;
+                        debug_info_blue!(" v2 is  {:?}",v2);
+                        v1 = (v1*v2)?;
+                        weighted_dims.push(v1.to_symidx()?)
+                    } else {
+                        // 如果维度是None，跳过这个维度
+                        debug_info_blue!("跳过None维度");
+                        continue;
+                    }
                 }
                 weighted_dims.reverse();
                 debug_info_blue!("weight vec calcuated is {:?}",weighted_dims);
@@ -863,7 +876,12 @@ impl Type {
         match self{
             Type::Array { dims, ele_ty: _ } => {
                 let array_size:usize = dims.iter()
-                    .map(|d|{let ans:usize = d.as_ref().unwrap().as_ref_borrow().symbol_name.parse().unwrap();ans}).product() ;
+                    .filter_map(|d| {
+                        d.as_ref().and_then(|dim| {
+                            dim.as_ref_borrow().symbol_name.parse::<usize>().ok()
+                        })
+                    })
+                    .product();
                 Ok(array_size)
             },
             _ => {
