@@ -18,8 +18,8 @@
  13   global Fn[zz_ptr_14, zz_val_14, zz_len_14]->memset_ret_0 memset_0 
  14   global Fn[zz_dest_15, zz_ptr_15, zz_len_15]->memcpy_ret_0 memcpy_0 
  18   Define main_0 "" -> main_ret_0 
-         55   b_0_1 = chi b_0_0:18 
-         56   a_0_1 = chi a_0_0:18 
+         55   a_0_1 = chi a_0_0:18 
+         56   b_0_1 = chi b_0_0:18 
          19   alloc i32 [temp_0_ret_of_getint_19] 
          23   alloc i32 [temp_1_ret_of_getint_19] 
          27   alloc i32 [c_19] 
@@ -62,14 +62,14 @@
      52   label gather_7: 
               jump label: L2_0 
           label L2_0: 
-         57   mu b_0_2:31 
-         58   mu a_0_2:31 
+         57   mu a_0_2:31 
+         58   mu b_0_2:31 
          31   ret c_19_2 
      47   label branch_short_circuit_c_false_93: 
          71   untrack temp_6_cmp_23_0 
-         67   untrack temp_6_cmp_23_0 
+         67   untrack temp_3_value_from_ptr_23_0 
          66   untrack temp_4_cmp_23_0 
-         65   untrack temp_3_value_from_ptr_23_0 
+         65   untrack temp_6_cmp_23_0 
          29   (nop) 
          60   c_19_2 = i32 0_0 
               jump label: gather_7 

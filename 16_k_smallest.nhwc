@@ -88,17 +88,17 @@
          114  temp_20_cmp_44_0 = icmp i32 Eq low_41_0, high_41_0 
          117  br i1 temp_20_cmp_44_0, label branch_true_45, label branch_false_45 
      115  label branch_true_45: 
-         244  untrack temp_16_arithop_61_0 
+         244  untrack low_41_0 
          243  untrack temp_15_arithop_63_0 
-         242  untrack temp_22_cmp_59_0 
-         241  untrack temp_20_cmp_44_0 
-         240  untrack low_41_0 
+         242  untrack i_51_1 
+         241  untrack temp_22_cmp_59_0 
+         240  untrack temp_20_cmp_44_0 
          239  untrack k_41_0 
-         238  untrack i_51_1 
-         237  untrack temp_21_cmp_49_0 
+         238  untrack temp_21_cmp_49_0 
+         237  untrack high_41_0 
          236  untrack n_41_0 
-         235  untrack high_41_0 
-         234  untrack temp_14_ret_of_findPivot_47_0 
+         235  untrack temp_14_ret_of_findPivot_47_0 
+         234  untrack temp_16_arithop_61_0 
          183  mu array_0_9:112 
          112  ret 
      116  label branch_false_45: 
@@ -112,14 +112,14 @@
          119  temp_21_cmp_49_0 = icmp i32 Eq k_41_0, temp_14_ret_of_findPivot_47_0 
          122  br i1 temp_21_cmp_49_0, label branch_true_50, label branch_false_50 
      120  label branch_true_50: 
-         253  untrack n_41_0 
-         252  untrack low_41_0 
-         251  untrack high_41_0 
-         250  untrack k_41_0 
+         253  untrack high_41_0 
+         252  untrack temp_16_arithop_61_0 
+         251  untrack temp_21_cmp_49_0 
+         250  untrack low_41_0 
          249  untrack temp_15_arithop_63_0 
-         248  untrack temp_22_cmp_59_0 
-         247  untrack temp_21_cmp_49_0 
-         246  untrack temp_16_arithop_61_0 
+         248  untrack k_41_0 
+         247  untrack temp_22_cmp_59_0 
+         246  untrack n_41_0 
          99   (nop) 
          212  i_51_1 = i32 0_0 
               jump label: while.head_54 
@@ -151,16 +151,16 @@
          124  temp_22_cmp_59_0 = icmp i32 Slt k_41_0, temp_14_ret_of_findPivot_47_0 
          127  br i1 temp_22_cmp_59_0, label branch_true_60, label branch_false_60 
      125  label branch_true_60: 
-         260  untrack temp_22_cmp_59_0 
+         260  untrack high_41_0 
          259  untrack temp_15_arithop_63_0 
-         258  untrack high_41_0 
+         258  untrack temp_22_cmp_59_0 
          97   temp_16_arithop_61_0 = Sub i32 temp_14_ret_of_findPivot_47_0, 1_0 
          266  untrack temp_14_ret_of_findPivot_47_0 
          98    Call void findSmallest_0(low_41_0, temp_16_arithop_61_0, k_41_0, n_41_0) 
          268  untrack k_41_0 
-         267  untrack temp_16_arithop_61_0 
-         265  untrack n_41_0 
-         264  untrack low_41_0 
+         267  untrack low_41_0 
+         265  untrack temp_16_arithop_61_0 
+         264  untrack n_41_0 
          187  mu array_0_10:98 
          188  array_0_12 = chi array_0_10:98 
               jump label: gather_23 
@@ -171,12 +171,12 @@
          262  untrack temp_16_arithop_61_0 
          261  untrack low_41_0 
          94   temp_15_arithop_63_0 = Add i32 temp_14_ret_of_findPivot_47_0, 1_0 
-         273  untrack temp_14_ret_of_findPivot_47_0 
+         270  untrack temp_14_ret_of_findPivot_47_0 
          95    Call void findSmallest_0(temp_15_arithop_63_0, high_41_0, k_41_0, n_41_0) 
+         273  untrack temp_15_arithop_63_0 
          272  untrack high_41_0 
-         271  untrack k_41_0 
-         270  untrack temp_15_arithop_63_0 
-         269  untrack n_41_0 
+         271  untrack n_41_0 
+         269  untrack k_41_0 
          189  mu array_0_10:95 
          190  array_0_14 = chi array_0_10:95 
               jump label: gather_23 
@@ -201,9 +201,9 @@
          55   (nop) 
          57   pIndex_27_0 = i32 start_25_0 
          59   i_27_0 = i32 start_25_0 
-         224  untrack start_25_0 
+         223  untrack start_25_0 
          206  i_27_1 = i32 i_27_0 
-         223  untrack i_27_0 
+         224  untrack i_27_0 
          207  pIndex_27_1 = i32 pIndex_27_0 
          222  untrack pIndex_27_0 
               jump label: while.head_31 
@@ -217,10 +217,10 @@
          85   temp_13_cmp_33_0 = icmp i32 Sle temp_12_ele_of_*array_0_33_0, temp_7_ele_of_*array_0_27_0 
          88   br i1 temp_13_cmp_33_0, label branch_true_34, label UP_29_0 
      86   label branch_true_34: 
-         231  untrack temp_11_ptr_of_*array_0_33 
-         230  untrack temp_12_ele_of_*array_0_33_0 
+         231  untrack temp_10_cmp_30_0 
+         230  untrack temp_11_ptr_of_*array_0_33 
          229  untrack temp_13_cmp_33_0 
-         228  untrack temp_10_cmp_30_0 
+         228  untrack temp_12_ele_of_*array_0_33_0 
          67    Call void swap_0(i_27_1, pIndex_27_1) 
          177  mu array_0_5:67 
          178  array_0_6 = chi array_0_5:67 
@@ -241,8 +241,8 @@
          211  pIndex_27_3 = i32 pIndex_27_1 
               jump label: branch_false_34 
      75   label while.exit_31: 
-         227  untrack i_27_1 
-         226  untrack temp_7_ele_of_*array_0_27_0 
+         227  untrack temp_7_ele_of_*array_0_27_0 
+         226  untrack i_27_1 
          61    Call void swap_0(pIndex_27_1, end_25_0) 
          233  untrack end_25_0 
          179  mu array_0_5:61 
@@ -260,23 +260,23 @@
          44   alloc ptr->i32 [temp_5_ptr_of_*array_0_21] 
           label L5_0: 
          29   temp_0_ptr_of_*array_0_21 = GEP *array_0:Array:i32:[None] [Some(i_19_0)] 
-         221  untrack i_19_0 
+         220  untrack i_19_0 
          31   temp_1_ele_of_*array_0_21_0 = load temp_0_ptr_of_*array_0_21:ptr->i32 
          32   mu array_0_1:31 
          33   (nop) 
          36   (nop) 
          38   temp_3_ptr_of_*array_0_21 = GEP *array_0:Array:i32:[None] [Some(j_19_0)] 
-         218  untrack j_19_0 
+         217  untrack j_19_0 
          40   temp_4_ele_of_*array_0_21_0 = load temp_3_ptr_of_*array_0_21:ptr->i32 
          41   mu array_0_1:40 
          42   store temp_4_ele_of_*array_0_21_0:i32 temp_0_ptr_of_*array_0_21:ptr->i32 
-         220  untrack temp_0_ptr_of_*array_0_21 
-         217  untrack temp_4_ele_of_*array_0_21_0 
+         219  untrack temp_0_ptr_of_*array_0_21 
+         218  untrack temp_4_ele_of_*array_0_21_0 
          43   array_0_2 = chi array_0_1:42 
          45   (nop) 
          46   store temp_1_ele_of_*array_0_21_0:i32 temp_3_ptr_of_*array_0_21:ptr->i32 
-         219  untrack temp_1_ele_of_*array_0_21_0 
-         216  untrack temp_3_ptr_of_*array_0_21 
+         221  untrack temp_3_ptr_of_*array_0_21 
+         216  untrack temp_1_ele_of_*array_0_21_0 
          47   array_0_3 = chi array_0_2:46 
               jump label: exit_2 
      49   label exit_2: 

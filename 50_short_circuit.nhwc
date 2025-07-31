@@ -53,11 +53,11 @@
      73   label branch_short_circuit_p_true_175: 
          174  untrack temp_8_cmp_27_0 
          68   temp_9_ret_of_func_27_0 =  Call i32 func_0(temp_4_ret_of_getint_24_0) 
-         212  untrack temp_4_ret_of_getint_24_0 
+         211  untrack temp_4_ret_of_getint_24_0 
          150  mu g_0_3:68 
          151  g_0_19 = chi g_0_3:68 
          70   temp_10_i32_to_bool_27_0 = icmp i32 Ne temp_9_ret_of_func_27_0, 0_0 
-         211  untrack temp_9_ret_of_func_27_0 
+         212  untrack temp_9_ret_of_func_27_0 
          75   br i1 temp_10_i32_to_bool_27_0, label branch_short_circuit_c_true_175, label branch_short_circuit_c_false_175 
      71   label branch_short_circuit_c_true_175: 
          213  untrack temp_10_i32_to_bool_27_0 
@@ -75,11 +75,11 @@
      86   label branch_short_circuit_p_true_189: 
          179  untrack temp_11_cmp_32_0 
          81   temp_12_ret_of_func_32_0 =  Call i32 func_0(temp_5_ret_of_getint_24_0) 
-         207  untrack temp_5_ret_of_getint_24_0 
+         208  untrack temp_5_ret_of_getint_24_0 
          148  mu g_0_5:81 
          149  g_0_18 = chi g_0_5:81 
          83   temp_13_i32_to_bool_32_0 = icmp i32 Ne temp_12_ret_of_func_32_0, 0_0 
-         208  untrack temp_12_ret_of_func_32_0 
+         207  untrack temp_12_ret_of_func_32_0 
          88   br i1 temp_13_i32_to_bool_32_0, label branch_short_circuit_c_true_189, label branch_short_circuit_c_false_189 
      84   label branch_short_circuit_c_true_189: 
          209  untrack temp_13_i32_to_bool_32_0 
@@ -97,8 +97,8 @@
      97   label branch_short_circuit_c_true_203: 
          205  untrack temp_16_i32_to_bool_37_0 
          183  untrack temp_16_i32_to_bool_37_0 
-         182  untrack temp_15_ret_of_func_37_0 
-         181  untrack temp_14_cmp_37_0 
+         182  untrack temp_14_cmp_37_0 
+         181  untrack temp_15_ret_of_func_37_0 
          180  untrack temp_6_ret_of_getint_24_0 
          62   (nop) 
               jump label: gather_20 
@@ -113,10 +113,10 @@
          115  br i1 temp_17_cmp_42_0, label branch_short_circuit_c_true_217, label branch_short_circuit_p_false_217 
      110  label branch_short_circuit_c_true_217: 
          201  untrack temp_19_i32_to_bool_42_0 
-         188  untrack temp_7_ret_of_getint_24_0 
+         188  untrack temp_17_cmp_42_0 
          187  untrack temp_18_ret_of_func_42_0 
-         186  untrack temp_17_cmp_42_0 
-         185  untrack temp_19_i32_to_bool_42_0 
+         186  untrack temp_19_i32_to_bool_42_0 
+         185  untrack temp_7_ret_of_getint_24_0 
          61   (nop) 
               jump label: gather_25 
      116  label gather_25: 
@@ -126,9 +126,9 @@
          139  mu g_0_11:118 
          140  g_0_12 = chi g_0_11:118 
          120  temp_21_booltrans_46_0 = icmp i32 Ne temp_20_ret_of_func_46_0, 0_0 
-         190  untrack temp_20_ret_of_func_46_0 
+         191  untrack temp_20_ret_of_func_46_0 
          122  temp_22_logicnot_46_0 = xor i1 temp_21_booltrans_46_0, true 
-         191  untrack temp_21_booltrans_46_0 
+         190  untrack temp_21_booltrans_46_0 
          132  br i1 temp_22_logicnot_46_0, label branch_short_circuit_p_true_230, label branch_short_circuit_c_false_230 
      129  label branch_short_circuit_p_true_230: 
          195  untrack temp_22_logicnot_46_0 
@@ -157,11 +157,11 @@
      112  label branch_short_circuit_p_false_217: 
          189  untrack temp_17_cmp_42_0 
          107  temp_18_ret_of_func_42_0 =  Call i32 func_0(temp_7_ret_of_getint_24_0) 
-         199  untrack temp_7_ret_of_getint_24_0 
+         200  untrack temp_7_ret_of_getint_24_0 
          144  mu g_0_9:107 
          145  g_0_16 = chi g_0_9:107 
          109  temp_19_i32_to_bool_42_0 = icmp i32 Ne temp_18_ret_of_func_42_0, 0_0 
-         200  untrack temp_18_ret_of_func_42_0 
+         199  untrack temp_18_ret_of_func_42_0 
          114  br i1 temp_19_i32_to_bool_42_0, label branch_short_circuit_c_true_217, label branch_short_circuit_c_false_217 
      111  label branch_short_circuit_c_false_217: 
          202  untrack temp_19_i32_to_bool_42_0 
@@ -170,11 +170,11 @@
      99   label branch_short_circuit_p_false_203: 
          184  untrack temp_14_cmp_37_0 
          94   temp_15_ret_of_func_37_0 =  Call i32 func_0(temp_6_ret_of_getint_24_0) 
-         204  untrack temp_6_ret_of_getint_24_0 
+         203  untrack temp_6_ret_of_getint_24_0 
          146  mu g_0_7:94 
          147  g_0_17 = chi g_0_7:94 
          96   temp_16_i32_to_bool_37_0 = icmp i32 Ne temp_15_ret_of_func_37_0, 0_0 
-         203  untrack temp_15_ret_of_func_37_0 
+         204  untrack temp_15_ret_of_func_37_0 
          101  br i1 temp_16_i32_to_bool_37_0, label branch_short_circuit_c_true_203, label branch_short_circuit_c_false_203 
      98   label branch_short_circuit_c_false_203: 
          206  untrack temp_16_i32_to_bool_37_0 
@@ -182,18 +182,18 @@
               jump label: gather_20 
      85   label branch_short_circuit_c_false_189: 
          210  untrack temp_13_i32_to_bool_32_0 
-         178  untrack temp_5_ret_of_getint_24_0 
-         177  untrack temp_12_ret_of_func_32_0 
-         176  untrack temp_11_cmp_32_0 
-         175  untrack temp_13_i32_to_bool_32_0 
+         178  untrack temp_12_ret_of_func_32_0 
+         177  untrack temp_13_i32_to_bool_32_0 
+         176  untrack temp_5_ret_of_getint_24_0 
+         175  untrack temp_11_cmp_32_0 
          48   (nop) 
               jump label: gather_15 
      72   label branch_short_circuit_c_false_175: 
          214  untrack temp_10_i32_to_bool_27_0 
-         173  untrack temp_10_i32_to_bool_27_0 
-         172  untrack temp_4_ret_of_getint_24_0 
+         173  untrack temp_8_cmp_27_0 
+         172  untrack temp_10_i32_to_bool_27_0 
          171  untrack temp_9_ret_of_func_27_0 
-         170  untrack temp_8_cmp_27_0 
+         170  untrack temp_4_ret_of_getint_24_0 
          44   (nop) 
               jump label: gather_10 
  19   Define func_0 "n_17_0," -> func_ret_0 
@@ -206,8 +206,8 @@
          22   temp_0_value_from_ptr_19_0 = load *g_0:ptr->i32 
          23   mu g_0_1:22 
          25   temp_1_arithop_19_0 = Add i32 temp_0_value_from_ptr_19_0, n_17_0 
-         168  untrack temp_0_value_from_ptr_19_0 
-         167  untrack n_17_0 
+         168  untrack n_17_0 
+         167  untrack temp_0_value_from_ptr_19_0 
          26   store temp_1_arithop_19_0:i32 *g_0:ptr->i32 
          169  untrack temp_1_arithop_19_0 
          27   g_0_2 = chi g_0_1:26 

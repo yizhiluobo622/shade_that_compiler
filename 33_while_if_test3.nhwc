@@ -37,11 +37,11 @@
           label L1_0: 
          19    
          21   temp_0_arithop_18_0 = Add i32 a_16_0, b_16_0 
-         86   untrack b_16_0 
-         85   untrack a_16_0 
+         85   untrack b_16_0 
+         84   untrack a_16_0 
          22   (nop) 
          76   c_18_2 = i32 temp_0_arithop_18_0 
-         84   untrack temp_0_arithop_18_0 
+         86   untrack temp_0_arithop_18_0 
               jump label: while.head_22 
      41   label while.head_22: 
          40   temp_4_cmp_21_0 = icmp i32 Slt c_18_2, 75_0 
@@ -61,6 +61,9 @@
          53   temp_6_cmp_30_0 = icmp i32 Sgt temp_1_arithop_28_0, 99_0 
          56   br i1 temp_6_cmp_30_0, label branch_true_31, label UP_2_0 
      54   label branch_true_31: 
+         89   untrack temp_5_cmp_26_0 
+         88   untrack temp_6_cmp_30_0 
+         87   untrack temp_4_cmp_21_0 
          32    
          34   (nop) 
          35   (nop) 
@@ -68,17 +71,14 @@
           label L4_0: 
               jump label: branch_true_36 
      57   label branch_true_36: 
-         91   untrack temp_4_cmp_21_0 
-         90   untrack temp_5_cmp_26_0 
-         89   untrack c_18_7 
-         88   untrack temp_1_arithop_28_0 
-         87   untrack temp_6_cmp_30_0 
+         90   untrack temp_1_arithop_28_0 
          37   (nop) 
          38   (nop) 
          77   c_18_5 = i32 168_0 
               jump label: branch_false_36 
      58   label branch_false_36: 
          78   c_18_6 = i32 c_18_5 
+         91   untrack c_18_5 
               jump label: branch_false_31 
      55   label branch_false_31: 
          79   c_18_7 = i32 c_18_6 
@@ -88,6 +88,7 @@
               jump label: while.head_22 
      73   label UP_17_0: 
          81   c_18_5 = i32 temp_1_arithop_28_0 
+         92   untrack temp_1_arithop_28_0 
               jump label: branch_false_36 
      74   label UP_2_0: 
          82   c_18_6 = i32 temp_1_arithop_28_0 

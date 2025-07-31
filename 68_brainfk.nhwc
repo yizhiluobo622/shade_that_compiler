@@ -29,27 +29,27 @@
  25   store 0_0:i32 *ptr11_0:ptr->i32 
  26   ptr11_0 = chi ptr11_0:25 
  32   Define main_0 "" -> main_ret_0 
-         251  ptr11_0_7 = chi ptr11_0_0:32 
-         252  program_0_5 = chi program_0_0:32 
+         251  program_0_5 = chi program_0_0:32 
+         252  ptr11_0_7 = chi ptr11_0_0:32 
          253  tape_0_12 = chi tape_0_0:32 
           label L0_0: 
          239   Call void read_program_0() 
          254  mu program_0_5:239 
          255  program_0_6 = chi program_0_5:239 
          240   Call void interpret_0(*program_0) 
-         256  mu tape_0_12:240 
+         256  mu ptr11_0_7:240 
          257  mu program_0_6:240 
-         258  mu ptr11_0_7:240 
-         259  tape_0_13 = chi tape_0_12:240 
-         260  ptr11_0_8 = chi ptr11_0_7:240 
-         261  program_0_7 = chi program_0_6:240 
-         262  mu ptr11_0_8:242 
-         263  mu program_0_7:242 
+         258  mu tape_0_12:240 
+         259  ptr11_0_8 = chi ptr11_0_7:240 
+         260  program_0_7 = chi program_0_6:240 
+         261  tape_0_13 = chi tape_0_12:240 
+         262  mu program_0_7:242 
+         263  mu ptr11_0_8:242 
          264  mu tape_0_13:242 
          242  ret 0_0 
  31   Define interpret_0 "input_27," -> interpret_ret_0 
-         247  tape_0_1 = chi tape_0_0:31 
-         248  ptr11_0_1 = chi ptr11_0_0:31 
+         247  ptr11_0_1 = chi ptr11_0_0:31 
+         248  tape_0_1 = chi tape_0_0:31 
          60   alloc i32 [cur_char_29] 
          62   alloc i32 [loop_29] 
          65   alloc i32 [i_29] 
@@ -123,44 +123,44 @@
          170  temp_39_cmp_35_0 = icmp i32 Eq temp_37_ele_of_input_27_31_0, 62_0 
          173  br i1 temp_39_cmp_35_0, label branch_true_36, label branch_false_36 
      171  label branch_true_36: 
-         379  untrack temp_24_ele_of_*tape_0_49_0 
+         379  untrack temp_14_value_from_ptr_57_0 
          378  untrack temp_19_ele_of_*tape_0_53_0 
-         377  untrack i_29_10 
-         376  untrack i_29_6 
-         375  untrack temp_36_ptr_of_input_27_31 
-         374  untrack temp_33_arithop_41_0 
-         373  untrack temp_48_ele_of_*tape_0_59_0 
-         372  untrack temp_16_ret_of_getch_57_0 
-         371  untrack temp_30_ele_of_*tape_0_45_0 
-         370  untrack temp_37_ele_of_input_27_31_0 
-         369  untrack temp_26_value_from_ptr_45_0 
-         368  untrack temp_42_cmp_47_0 
-         367  untrack loop_29_10 
-         366  untrack temp_32_value_from_ptr_41_0 
-         365  untrack temp_15_ptr_of_*tape_0_57 
-         364  untrack temp_45_cmp_59_0 
-         363  untrack temp_18_ptr_of_*tape_0_53 
-         362  untrack temp_47_ptr_of_*tape_0_59 
-         361  untrack temp_49_i32_to_bool_59_0 
-         360  untrack temp_25_arithop_49_0 
-         359  untrack temp_38__857_0 
-         358  untrack i_29_5 
-         357  untrack temp_43_cmp_51_0 
-         356  untrack temp_46_value_from_ptr_59_0 
-         355  untrack temp_14_value_from_ptr_57_0 
-         354  untrack temp_20_value_from_ptr_49_0 
-         353  untrack i_29_4 
-         352  untrack i_29_8 
-         351  untrack temp_21_ptr_of_*tape_0_49 
-         350  untrack temp_41_cmp_43_0 
-         349  untrack i_29_7 
-         348  untrack i_29_9 
-         347  untrack temp_44_cmp_55_0 
-         346  untrack temp_31_arithop_45_0 
-         345  untrack temp_17_value_from_ptr_53_0 
-         344  untrack temp_39_cmp_35_0 
-         343  untrack temp_40_cmp_39_0 
-         342  untrack temp_27_ptr_of_*tape_0_45 
+         377  untrack temp_27_ptr_of_*tape_0_45 
+         376  untrack temp_20_value_from_ptr_49_0 
+         375  untrack temp_46_value_from_ptr_59_0 
+         374  untrack temp_39_cmp_35_0 
+         373  untrack temp_32_value_from_ptr_41_0 
+         372  untrack temp_49_i32_to_bool_59_0 
+         371  untrack temp_36_ptr_of_input_27_31 
+         370  untrack temp_38__857_0 
+         369  untrack temp_24_ele_of_*tape_0_49_0 
+         368  untrack loop_29_10 
+         367  untrack temp_26_value_from_ptr_45_0 
+         366  untrack temp_15_ptr_of_*tape_0_57 
+         365  untrack temp_47_ptr_of_*tape_0_59 
+         364  untrack temp_43_cmp_51_0 
+         363  untrack temp_42_cmp_47_0 
+         362  untrack temp_30_ele_of_*tape_0_45_0 
+         361  untrack temp_40_cmp_39_0 
+         360  untrack temp_31_arithop_45_0 
+         359  untrack temp_37_ele_of_input_27_31_0 
+         358  untrack temp_17_value_from_ptr_53_0 
+         357  untrack temp_45_cmp_59_0 
+         356  untrack temp_48_ele_of_*tape_0_59_0 
+         355  untrack temp_41_cmp_43_0 
+         354  untrack temp_16_ret_of_getch_57_0 
+         353  untrack temp_18_ptr_of_*tape_0_53 
+         352  untrack temp_44_cmp_55_0 
+         351  untrack temp_25_arithop_49_0 
+         350  untrack i_29_9 
+         349  untrack i_29_6 
+         348  untrack i_29_4 
+         347  untrack i_29_10 
+         346  untrack i_29_5 
+         345  untrack i_29_8 
+         344  untrack i_29_7 
+         343  untrack temp_33_arithop_41_0 
+         342  untrack temp_21_ptr_of_*tape_0_49 
          151  temp_34_value_from_ptr_37_0 = load *ptr11_0:ptr->i32 
          152  mu ptr11_0_2:151 
          154  temp_35_arithop_37_0 = Add i32 temp_34_value_from_ptr_37_0, 1_0 
@@ -181,49 +181,49 @@
          175  temp_40_cmp_39_0 = icmp i32 Eq temp_37_ele_of_input_27_31_0, 60_0 
          178  br i1 temp_40_cmp_39_0, label branch_true_40, label branch_false_40 
      176  label branch_true_40: 
-         418  untrack temp_49_i32_to_bool_59_0 
-         417  untrack loop_29_10 
-         416  untrack temp_21_ptr_of_*tape_0_49 
-         415  untrack i_29_5 
-         414  untrack temp_15_ptr_of_*tape_0_57 
-         413  untrack temp_30_ele_of_*tape_0_45_0 
-         412  untrack i_29_8 
-         411  untrack temp_35_arithop_37_0 
-         410  untrack temp_38__857_0 
-         409  untrack i_29_7 
-         408  untrack i_29_9 
-         407  untrack temp_27_ptr_of_*tape_0_45 
-         406  untrack temp_17_value_from_ptr_53_0 
-         405  untrack temp_40_cmp_39_0 
-         404  untrack temp_44_cmp_55_0 
-         403  untrack temp_25_arithop_49_0 
-         402  untrack temp_26_value_from_ptr_45_0 
-         401  untrack temp_36_ptr_of_input_27_31 
-         400  untrack temp_41_cmp_43_0 
-         399  untrack temp_20_value_from_ptr_49_0 
-         398  untrack temp_48_ele_of_*tape_0_59_0 
-         397  untrack temp_45_cmp_59_0 
-         396  untrack temp_37_ele_of_input_27_31_0 
-         395  untrack temp_14_value_from_ptr_57_0 
-         394  untrack temp_43_cmp_51_0 
-         393  untrack temp_19_ele_of_*tape_0_53_0 
-         392  untrack temp_42_cmp_47_0 
-         391  untrack temp_31_arithop_45_0 
-         390  untrack temp_16_ret_of_getch_57_0 
-         389  untrack temp_18_ptr_of_*tape_0_53 
-         388  untrack temp_47_ptr_of_*tape_0_59 
-         387  untrack i_29_10 
-         386  untrack temp_39_cmp_35_0 
-         385  untrack i_29_6 
-         384  untrack temp_24_ele_of_*tape_0_49_0 
+         418  untrack temp_35_arithop_37_0 
+         417  untrack temp_41_cmp_43_0 
+         416  untrack temp_46_value_from_ptr_59_0 
+         415  untrack temp_15_ptr_of_*tape_0_57 
+         414  untrack temp_24_ele_of_*tape_0_49_0 
+         413  untrack temp_44_cmp_55_0 
+         412  untrack temp_25_arithop_49_0 
+         411  untrack temp_30_ele_of_*tape_0_45_0 
+         410  untrack temp_42_cmp_47_0 
+         409  untrack temp_27_ptr_of_*tape_0_45 
+         408  untrack temp_38__857_0 
+         407  untrack temp_16_ret_of_getch_57_0 
+         406  untrack temp_43_cmp_51_0 
+         405  untrack temp_47_ptr_of_*tape_0_59 
+         404  untrack loop_29_10 
+         403  untrack temp_36_ptr_of_input_27_31 
+         402  untrack temp_14_value_from_ptr_57_0 
+         401  untrack temp_20_value_from_ptr_49_0 
+         400  untrack temp_18_ptr_of_*tape_0_53 
+         399  untrack temp_39_cmp_35_0 
+         398  untrack temp_19_ele_of_*tape_0_53_0 
+         397  untrack temp_49_i32_to_bool_59_0 
+         396  untrack temp_17_value_from_ptr_53_0 
+         395  untrack i_29_9 
+         394  untrack i_29_10 
+         393  untrack i_29_5 
+         392  untrack i_29_8 
+         391  untrack i_29_7 
+         390  untrack i_29_6 
+         389  untrack temp_21_ptr_of_*tape_0_49 
+         388  untrack temp_48_ele_of_*tape_0_59_0 
+         387  untrack temp_45_cmp_59_0 
+         386  untrack temp_31_arithop_45_0 
+         385  untrack temp_26_value_from_ptr_45_0 
+         384  untrack temp_40_cmp_39_0 
          383  untrack temp_34_value_from_ptr_37_0 
-         382  untrack temp_46_value_from_ptr_59_0 
+         382  untrack temp_37_ele_of_input_27_31_0 
          144  temp_32_value_from_ptr_41_0 = load *ptr11_0:ptr->i32 
          145  mu ptr11_0_2:144 
          147  temp_33_arithop_41_0 = Sub i32 temp_32_value_from_ptr_41_0, 1_0 
-         419  untrack temp_32_value_from_ptr_41_0 
+         420  untrack temp_32_value_from_ptr_41_0 
          148  store temp_33_arithop_41_0:i32 *ptr11_0:ptr->i32 
-         420  untrack temp_33_arithop_41_0 
+         419  untrack temp_33_arithop_41_0 
          149  ptr11_0_5 = chi ptr11_0_2:148 
          315  i_29_4 = i32 i_29_1 
               jump label: gather_37 
@@ -234,44 +234,46 @@
          180  temp_41_cmp_43_0 = icmp i32 Eq temp_37_ele_of_input_27_31_0, 43_0 
          183  br i1 temp_41_cmp_43_0, label branch_true_44, label branch_false_44 
      181  label branch_true_44: 
-         454  untrack temp_34_value_from_ptr_37_0 
-         453  untrack temp_46_value_from_ptr_59_0 
-         452  untrack temp_44_cmp_55_0 
-         451  untrack loop_29_10 
-         450  untrack temp_15_ptr_of_*tape_0_57 
-         449  untrack temp_38__857_0 
-         448  untrack temp_21_ptr_of_*tape_0_49 
-         447  untrack temp_24_ele_of_*tape_0_49_0 
-         446  untrack temp_48_ele_of_*tape_0_59_0 
-         445  untrack temp_40_cmp_39_0 
-         444  untrack temp_41_cmp_43_0 
-         443  untrack temp_32_value_from_ptr_41_0 
-         442  untrack temp_37_ele_of_input_27_31_0 
-         441  untrack temp_49_i32_to_bool_59_0 
-         440  untrack temp_45_cmp_59_0 
-         439  untrack temp_33_arithop_41_0 
-         438  untrack temp_18_ptr_of_*tape_0_53 
-         437  untrack i_29_8 
-         436  untrack i_29_7 
-         435  untrack i_29_9 
-         434  untrack i_29_10 
-         433  untrack i_29_6 
-         432  untrack temp_36_ptr_of_input_27_31 
-         431  untrack temp_19_ele_of_*tape_0_53_0 
-         430  untrack temp_39_cmp_35_0 
-         429  untrack temp_35_arithop_37_0 
-         428  untrack temp_47_ptr_of_*tape_0_59 
+         456  untrack temp_16_ret_of_getch_57_0 
+         455  untrack temp_37_ele_of_input_27_31_0 
+         454  untrack temp_46_value_from_ptr_59_0 
+         453  untrack temp_20_value_from_ptr_49_0 
+         452  untrack temp_38__857_0 
+         451  untrack temp_19_ele_of_*tape_0_53_0 
+         450  untrack temp_47_ptr_of_*tape_0_59 
+         449  untrack temp_40_cmp_39_0 
+         448  untrack temp_41_cmp_43_0 
+         447  untrack temp_44_cmp_55_0 
+         446  untrack temp_25_arithop_49_0 
+         445  untrack temp_33_arithop_41_0 
+         444  untrack temp_48_ele_of_*tape_0_59_0 
+         443  untrack loop_29_10 
+         442  untrack temp_17_value_from_ptr_53_0 
+         441  untrack temp_43_cmp_51_0 
+         440  untrack temp_21_ptr_of_*tape_0_49 
+         439  untrack temp_39_cmp_35_0 
+         438  untrack temp_45_cmp_59_0 
+         437  untrack temp_35_arithop_37_0 
+         436  untrack temp_24_ele_of_*tape_0_49_0 
+         435  untrack temp_49_i32_to_bool_59_0 
+         434  untrack i_29_2 
+         433  untrack i_29_9 
+         432  untrack i_29_10 
+         431  untrack i_29_8 
+         430  untrack i_29_7 
+         429  untrack i_29_6 
+         428  untrack temp_18_ptr_of_*tape_0_53 
          427  untrack temp_14_value_from_ptr_57_0 
-         426  untrack temp_16_ret_of_getch_57_0 
-         425  untrack temp_43_cmp_51_0 
-         424  untrack temp_20_value_from_ptr_49_0 
-         423  untrack temp_17_value_from_ptr_53_0 
-         422  untrack temp_25_arithop_49_0 
-         421  untrack temp_42_cmp_47_0 
+         426  untrack temp_15_ptr_of_*tape_0_57 
+         425  untrack temp_42_cmp_47_0 
+         424  untrack temp_36_ptr_of_input_27_31 
+         423  untrack temp_34_value_from_ptr_37_0 
+         422  untrack temp_8_arithop_33_0 
+         421  untrack temp_32_value_from_ptr_41_0 
          127  temp_26_value_from_ptr_45_0 = load *ptr11_0:ptr->i32 
          128  mu ptr11_0_2:127 
          130  temp_27_ptr_of_*tape_0_45 = GEP *tape_0:ptr->i32 [Some(temp_26_value_from_ptr_45_0)] 
-         455  untrack temp_26_value_from_ptr_45_0 
+         460  untrack temp_26_value_from_ptr_45_0 
          132  (nop) 
          133  mu ptr11_0_2:132 
          135  (nop) 
@@ -280,8 +282,8 @@
          140  temp_31_arithop_45_0 = Add i32 temp_30_ele_of_*tape_0_45_0, 1_0 
          458  untrack temp_30_ele_of_*tape_0_45_0 
          141  store temp_31_arithop_45_0:i32 temp_27_ptr_of_*tape_0_45:ptr->i32 
+         459  untrack temp_27_ptr_of_*tape_0_45 
          457  untrack temp_31_arithop_45_0 
-         456  untrack temp_27_ptr_of_*tape_0_45 
          142  tape_0_5 = chi tape_0_2:141 
          317  i_29_5 = i32 i_29_1 
               jump label: gather_35 
@@ -292,53 +294,56 @@
          185  temp_42_cmp_47_0 = icmp i32 Eq temp_37_ele_of_input_27_31_0, 45_0 
          188  br i1 temp_42_cmp_47_0, label branch_true_48, label branch_false_48 
      186  label branch_true_48: 
-         491  untrack i_29_8 
-         490  untrack i_29_7 
-         489  untrack temp_38__857_0 
-         488  untrack i_29_9 
-         487  untrack i_29_10 
-         486  untrack temp_40_cmp_39_0 
-         485  untrack temp_26_value_from_ptr_45_0 
-         484  untrack temp_47_ptr_of_*tape_0_59 
-         483  untrack temp_30_ele_of_*tape_0_45_0 
+         496  untrack i_29_4 
+         495  untrack temp_17_value_from_ptr_53_0 
+         494  untrack temp_48_ele_of_*tape_0_59_0 
+         493  untrack i_29_9 
+         492  untrack temp_37_ele_of_input_27_31_0 
+         491  untrack temp_40_cmp_39_0 
+         490  untrack temp_16_ret_of_getch_57_0 
+         489  untrack temp_35_arithop_37_0 
+         488  untrack i_29_10 
+         487  untrack i_29_8 
+         486  untrack i_29_7 
+         485  untrack temp_14_value_from_ptr_57_0 
+         484  untrack temp_38__857_0 
+         483  untrack temp_32_value_from_ptr_41_0 
          482  untrack temp_31_arithop_45_0 
-         481  untrack temp_42_cmp_47_0 
-         480  untrack temp_44_cmp_55_0 
-         479  untrack temp_48_ele_of_*tape_0_59_0 
-         478  untrack temp_14_value_from_ptr_57_0 
-         477  untrack temp_36_ptr_of_input_27_31 
-         476  untrack temp_17_value_from_ptr_53_0 
-         475  untrack temp_27_ptr_of_*tape_0_45 
-         474  untrack temp_35_arithop_37_0 
+         481  untrack temp_43_cmp_51_0 
+         480  untrack temp_49_i32_to_bool_59_0 
+         479  untrack temp_39_cmp_35_0 
+         478  untrack temp_42_cmp_47_0 
+         477  untrack temp_47_ptr_of_*tape_0_59 
+         476  untrack temp_33_arithop_41_0 
+         475  untrack temp_44_cmp_55_0 
+         474  untrack temp_15_ptr_of_*tape_0_57 
          473  untrack temp_41_cmp_43_0 
-         472  untrack temp_19_ele_of_*tape_0_53_0 
-         471  untrack temp_18_ptr_of_*tape_0_53 
-         470  untrack temp_46_value_from_ptr_59_0 
-         469  untrack temp_49_i32_to_bool_59_0 
-         468  untrack temp_43_cmp_51_0 
-         467  untrack temp_32_value_from_ptr_41_0 
-         466  untrack loop_29_10 
-         465  untrack temp_15_ptr_of_*tape_0_57 
-         464  untrack temp_33_arithop_41_0 
-         463  untrack temp_37_ele_of_input_27_31_0 
-         462  untrack temp_45_cmp_59_0 
-         461  untrack temp_16_ret_of_getch_57_0 
-         460  untrack temp_39_cmp_35_0 
-         459  untrack temp_34_value_from_ptr_37_0 
+         472  untrack temp_8_arithop_33_0 
+         471  untrack temp_26_value_from_ptr_45_0 
+         470  untrack temp_45_cmp_59_0 
+         469  untrack temp_34_value_from_ptr_37_0 
+         468  untrack temp_19_ele_of_*tape_0_53_0 
+         467  untrack temp_46_value_from_ptr_59_0 
+         466  untrack temp_36_ptr_of_input_27_31 
+         465  untrack temp_27_ptr_of_*tape_0_45 
+         464  untrack loop_29_10 
+         463  untrack temp_18_ptr_of_*tape_0_53 
+         462  untrack i_29_2 
+         461  untrack temp_30_ele_of_*tape_0_45_0 
          110  temp_20_value_from_ptr_49_0 = load *ptr11_0:ptr->i32 
          111  mu ptr11_0_2:110 
          113  temp_21_ptr_of_*tape_0_49 = GEP *tape_0:ptr->i32 [Some(temp_20_value_from_ptr_49_0)] 
-         493  untrack temp_20_value_from_ptr_49_0 
+         497  untrack temp_20_value_from_ptr_49_0 
          115  (nop) 
          116  mu ptr11_0_2:115 
          118  (nop) 
          120  temp_24_ele_of_*tape_0_49_0 = load temp_21_ptr_of_*tape_0_49:ptr->i32 
          121  mu tape_0_2:120 
          123  temp_25_arithop_49_0 = Sub i32 temp_24_ele_of_*tape_0_49_0, 1_0 
-         492  untrack temp_24_ele_of_*tape_0_49_0 
+         500  untrack temp_24_ele_of_*tape_0_49_0 
          124  store temp_25_arithop_49_0:i32 temp_21_ptr_of_*tape_0_49:ptr->i32 
-         495  untrack temp_25_arithop_49_0 
-         494  untrack temp_21_ptr_of_*tape_0_49 
+         499  untrack temp_25_arithop_49_0 
+         498  untrack temp_21_ptr_of_*tape_0_49 
          125  tape_0_7 = chi tape_0_2:124 
          319  i_29_6 = i32 i_29_1 
               jump label: gather_33 
@@ -349,52 +354,51 @@
          190  temp_43_cmp_51_0 = icmp i32 Eq temp_37_ele_of_input_27_31_0, 46_0 
          193  br i1 temp_43_cmp_51_0, label branch_true_52, label branch_false_52 
      191  label branch_true_52: 
-         532  untrack temp_42_cmp_47_0 
-         531  untrack temp_31_arithop_45_0 
-         530  untrack temp_40_cmp_39_0 
-         529  untrack temp_46_value_from_ptr_59_0 
-         528  untrack temp_45_cmp_59_0 
-         527  untrack temp_37_ele_of_input_27_31_0 
-         526  untrack temp_38__857_0 
-         525  untrack temp_49_i32_to_bool_59_0 
-         524  untrack i_29_9 
-         523  untrack temp_14_value_from_ptr_57_0 
-         522  untrack temp_21_ptr_of_*tape_0_49 
-         521  untrack temp_34_value_from_ptr_37_0 
-         520  untrack temp_8_arithop_33_0 
-         519  untrack temp_30_ele_of_*tape_0_45_0 
-         518  untrack temp_24_ele_of_*tape_0_49_0 
-         517  untrack i_29_10 
-         516  untrack temp_39_cmp_35_0 
-         515  untrack temp_36_ptr_of_input_27_31 
-         514  untrack temp_26_value_from_ptr_45_0 
-         513  untrack temp_25_arithop_49_0 
-         512  untrack temp_44_cmp_55_0 
-         511  untrack temp_43_cmp_51_0 
-         510  untrack temp_16_ret_of_getch_57_0 
-         509  untrack loop_29_10 
-         508  untrack temp_32_value_from_ptr_41_0 
-         507  untrack temp_20_value_from_ptr_49_0 
-         506  untrack i_29_5 
-         505  untrack i_29_2 
-         504  untrack i_29_4 
-         503  untrack i_29_8 
-         502  untrack temp_35_arithop_37_0 
-         501  untrack temp_27_ptr_of_*tape_0_45 
-         500  untrack temp_47_ptr_of_*tape_0_59 
-         499  untrack temp_48_ele_of_*tape_0_59_0 
-         498  untrack temp_41_cmp_43_0 
-         497  untrack temp_33_arithop_41_0 
-         496  untrack temp_15_ptr_of_*tape_0_57 
+         536  untrack temp_40_cmp_39_0 
+         535  untrack temp_36_ptr_of_input_27_31 
+         534  untrack temp_33_arithop_41_0 
+         533  untrack temp_41_cmp_43_0 
+         532  untrack temp_27_ptr_of_*tape_0_45 
+         531  untrack temp_24_ele_of_*tape_0_49_0 
+         530  untrack temp_15_ptr_of_*tape_0_57 
+         529  untrack i_29_2 
+         528  untrack i_29_4 
+         527  untrack i_29_9 
+         526  untrack i_29_10 
+         525  untrack temp_44_cmp_55_0 
+         524  untrack i_29_8 
+         523  untrack temp_38__857_0 
+         522  untrack temp_31_arithop_45_0 
+         521  untrack temp_32_value_from_ptr_41_0 
+         520  untrack temp_46_value_from_ptr_59_0 
+         519  untrack loop_29_10 
+         518  untrack temp_47_ptr_of_*tape_0_59 
+         517  untrack temp_43_cmp_51_0 
+         516  untrack temp_48_ele_of_*tape_0_59_0 
+         515  untrack temp_14_value_from_ptr_57_0 
+         514  untrack temp_16_ret_of_getch_57_0 
+         513  untrack temp_37_ele_of_input_27_31_0 
+         512  untrack temp_35_arithop_37_0 
+         511  untrack temp_39_cmp_35_0 
+         510  untrack temp_8_arithop_33_0 
+         509  untrack temp_49_i32_to_bool_59_0 
+         508  untrack temp_25_arithop_49_0 
+         507  untrack temp_26_value_from_ptr_45_0 
+         506  untrack temp_42_cmp_47_0 
+         505  untrack temp_34_value_from_ptr_37_0 
+         504  untrack temp_45_cmp_59_0 
+         503  untrack temp_20_value_from_ptr_49_0 
+         502  untrack temp_30_ele_of_*tape_0_45_0 
+         501  untrack temp_21_ptr_of_*tape_0_49 
          101  temp_17_value_from_ptr_53_0 = load *ptr11_0:ptr->i32 
          102  mu ptr11_0_2:101 
          104  temp_18_ptr_of_*tape_0_53 = GEP *tape_0:Array:i32:[None] [Some(temp_17_value_from_ptr_53_0)] 
-         534  untrack temp_17_value_from_ptr_53_0 
+         538  untrack temp_17_value_from_ptr_53_0 
          106  temp_19_ele_of_*tape_0_53_0 = load temp_18_ptr_of_*tape_0_53:ptr->i32 
-         535  untrack temp_18_ptr_of_*tape_0_53 
+         539  untrack temp_18_ptr_of_*tape_0_53 
          107  mu tape_0_2:106 
          108   Call void putch_0(temp_19_ele_of_*tape_0_53_0) 
-         533  untrack temp_19_ele_of_*tape_0_53_0 
+         537  untrack temp_19_ele_of_*tape_0_53_0 
          321  i_29_7 = i32 i_29_1 
               jump label: gather_31 
      218  label gather_31: 
@@ -404,50 +408,51 @@
          195  temp_44_cmp_55_0 = icmp i32 Eq temp_37_ele_of_input_27_31_0, 44_0 
          198  br i1 temp_44_cmp_55_0, label branch_true_56, label branch_false_56 
      196  label branch_true_56: 
-         571  untrack temp_19_ele_of_*tape_0_53_0 
-         570  untrack temp_46_value_from_ptr_59_0 
-         569  untrack temp_33_arithop_41_0 
-         568  untrack temp_24_ele_of_*tape_0_49_0 
-         567  untrack temp_35_arithop_37_0 
-         566  untrack temp_32_value_from_ptr_41_0 
-         565  untrack temp_41_cmp_43_0 
-         564  untrack i_29_5 
-         563  untrack temp_45_cmp_59_0 
-         562  untrack temp_42_cmp_47_0 
-         561  untrack i_29_2 
-         560  untrack i_29_4 
-         559  untrack i_29_9 
-         558  untrack i_29_10 
-         557  untrack temp_30_ele_of_*tape_0_45_0 
-         556  untrack temp_20_value_from_ptr_49_0 
-         555  untrack temp_36_ptr_of_input_27_31 
-         554  untrack temp_44_cmp_55_0 
-         553  untrack temp_21_ptr_of_*tape_0_49 
-         552  untrack temp_49_i32_to_bool_59_0 
-         551  untrack temp_34_value_from_ptr_37_0 
-         550  untrack temp_48_ele_of_*tape_0_59_0 
-         549  untrack temp_17_value_from_ptr_53_0 
-         548  untrack temp_39_cmp_35_0 
-         547  untrack temp_26_value_from_ptr_45_0 
-         546  untrack temp_31_arithop_45_0 
-         545  untrack temp_18_ptr_of_*tape_0_53 
-         544  untrack temp_37_ele_of_input_27_31_0 
+         576  untrack temp_17_value_from_ptr_53_0 
+         575  untrack temp_31_arithop_45_0 
+         574  untrack temp_47_ptr_of_*tape_0_59 
+         573  untrack temp_30_ele_of_*tape_0_45_0 
+         572  untrack temp_32_value_from_ptr_41_0 
+         571  untrack i_29_6 
+         570  untrack i_29_2 
+         569  untrack i_29_9 
+         568  untrack i_29_10 
+         567  untrack temp_19_ele_of_*tape_0_53_0 
+         566  untrack i_29_4 
+         565  untrack temp_8_arithop_33_0 
+         564  untrack temp_43_cmp_51_0 
+         563  untrack temp_41_cmp_43_0 
+         562  untrack temp_37_ele_of_input_27_31_0 
+         561  untrack temp_39_cmp_35_0 
+         560  untrack temp_25_arithop_49_0 
+         559  untrack temp_33_arithop_41_0 
+         558  untrack temp_18_ptr_of_*tape_0_53 
+         557  untrack temp_49_i32_to_bool_59_0 
+         556  untrack temp_24_ele_of_*tape_0_49_0 
+         555  untrack temp_38__857_0 
+         554  untrack temp_26_value_from_ptr_45_0 
+         553  untrack temp_34_value_from_ptr_37_0 
+         552  untrack temp_44_cmp_55_0 
+         551  untrack temp_27_ptr_of_*tape_0_45 
+         550  untrack temp_35_arithop_37_0 
+         549  untrack temp_45_cmp_59_0 
+         548  untrack temp_21_ptr_of_*tape_0_49 
+         547  untrack temp_36_ptr_of_input_27_31 
+         546  untrack i_29_5 
+         545  untrack temp_48_ele_of_*tape_0_59_0 
+         544  untrack temp_20_value_from_ptr_49_0 
          543  untrack loop_29_10 
-         542  untrack temp_43_cmp_51_0 
-         541  untrack temp_8_arithop_33_0 
-         540  untrack temp_47_ptr_of_*tape_0_59 
-         539  untrack temp_25_arithop_49_0 
-         538  untrack temp_40_cmp_39_0 
-         537  untrack temp_27_ptr_of_*tape_0_45 
-         536  untrack temp_38__857_0 
+         542  untrack temp_42_cmp_47_0 
+         541  untrack temp_40_cmp_39_0 
+         540  untrack temp_46_value_from_ptr_59_0 
          92   temp_14_value_from_ptr_57_0 = load *ptr11_0:ptr->i32 
          93   mu ptr11_0_2:92 
          95   temp_15_ptr_of_*tape_0_57 = GEP *tape_0:ptr->i32 [Some(temp_14_value_from_ptr_57_0)] 
-         572  untrack temp_14_value_from_ptr_57_0 
+         577  untrack temp_14_value_from_ptr_57_0 
          97   temp_16_ret_of_getch_57_0 =  Call i32 getch_0() 
          98   store temp_16_ret_of_getch_57_0:i32 temp_15_ptr_of_*tape_0_57:ptr->i32 
-         574  untrack temp_15_ptr_of_*tape_0_57 
-         573  untrack temp_16_ret_of_getch_57_0 
+         579  untrack temp_15_ptr_of_*tape_0_57 
+         578  untrack temp_16_ret_of_getch_57_0 
          99   tape_0_10 = chi tape_0_2:98 
          323  i_29_8 = i32 i_29_1 
               jump label: gather_29 
@@ -458,52 +463,51 @@
          200  temp_45_cmp_59_0 = icmp i32 Eq temp_37_ele_of_input_27_31_0, 93_0 
          216  br i1 temp_45_cmp_59_0, label branch_short_circuit_p_true_309, label UP_43_0 
      213  label branch_short_circuit_p_true_309: 
-         608  untrack temp_26_value_from_ptr_45_0 
-         607  untrack temp_15_ptr_of_*tape_0_57 
-         606  untrack temp_41_cmp_43_0 
-         605  untrack i_29_6 
-         604  untrack temp_35_arithop_37_0 
-         603  untrack i_29_2 
-         602  untrack i_29_4 
-         601  untrack temp_44_cmp_55_0 
-         600  untrack i_29_7 
-         599  untrack temp_31_arithop_45_0 
-         598  untrack i_29_5 
-         597  untrack temp_40_cmp_39_0 
-         596  untrack temp_39_cmp_35_0 
-         595  untrack temp_32_value_from_ptr_41_0 
-         594  untrack temp_18_ptr_of_*tape_0_53 
-         593  untrack temp_25_arithop_49_0 
-         592  untrack temp_19_ele_of_*tape_0_53_0 
-         591  untrack temp_14_value_from_ptr_57_0 
-         590  untrack temp_36_ptr_of_input_27_31 
-         589  untrack temp_17_value_from_ptr_53_0 
-         588  untrack temp_8_arithop_33_0 
-         587  untrack temp_42_cmp_47_0 
-         586  untrack temp_20_value_from_ptr_49_0 
-         585  untrack temp_24_ele_of_*tape_0_49_0 
-         584  untrack temp_43_cmp_51_0 
-         583  untrack temp_16_ret_of_getch_57_0 
-         582  untrack temp_45_cmp_59_0 
-         581  untrack temp_30_ele_of_*tape_0_45_0 
-         580  untrack temp_37_ele_of_input_27_31_0 
-         579  untrack temp_21_ptr_of_*tape_0_49 
-         578  untrack temp_38__857_0 
-         577  untrack temp_33_arithop_41_0 
-         576  untrack temp_27_ptr_of_*tape_0_45 
-         575  untrack temp_34_value_from_ptr_37_0 
+         612  untrack temp_31_arithop_45_0 
+         611  untrack temp_8_arithop_33_0 
+         610  untrack temp_14_value_from_ptr_57_0 
+         609  untrack temp_36_ptr_of_input_27_31 
+         608  untrack temp_30_ele_of_*tape_0_45_0 
+         607  untrack temp_26_value_from_ptr_45_0 
+         606  untrack temp_40_cmp_39_0 
+         605  untrack temp_45_cmp_59_0 
+         604  untrack temp_42_cmp_47_0 
+         603  untrack temp_37_ele_of_input_27_31_0 
+         602  untrack temp_15_ptr_of_*tape_0_57 
+         601  untrack temp_20_value_from_ptr_49_0 
+         600  untrack i_29_6 
+         599  untrack temp_18_ptr_of_*tape_0_53 
+         598  untrack i_29_2 
+         597  untrack i_29_4 
+         596  untrack temp_27_ptr_of_*tape_0_45 
+         595  untrack temp_33_arithop_41_0 
+         594  untrack temp_32_value_from_ptr_41_0 
+         593  untrack temp_38__857_0 
+         592  untrack temp_16_ret_of_getch_57_0 
+         591  untrack temp_39_cmp_35_0 
+         590  untrack temp_21_ptr_of_*tape_0_49 
+         589  untrack i_29_5 
+         588  untrack temp_24_ele_of_*tape_0_49_0 
+         587  untrack temp_43_cmp_51_0 
+         586  untrack temp_17_value_from_ptr_53_0 
+         585  untrack temp_34_value_from_ptr_37_0 
+         584  untrack temp_19_ele_of_*tape_0_53_0 
+         583  untrack temp_41_cmp_43_0 
+         582  untrack temp_44_cmp_55_0 
+         581  untrack temp_35_arithop_37_0 
+         580  untrack temp_25_arithop_49_0 
          202  temp_46_value_from_ptr_59_0 = load *ptr11_0:ptr->i32 
          203  mu ptr11_0_2:202 
          205  temp_47_ptr_of_*tape_0_59 = GEP *tape_0:Array:i32:[None] [Some(temp_46_value_from_ptr_59_0)] 
-         610  untrack temp_46_value_from_ptr_59_0 
+         615  untrack temp_46_value_from_ptr_59_0 
          207  temp_48_ele_of_*tape_0_59_0 = load temp_47_ptr_of_*tape_0_59:ptr->i32 
-         611  untrack temp_47_ptr_of_*tape_0_59 
+         614  untrack temp_47_ptr_of_*tape_0_59 
          208  mu tape_0_2:207 
          210  temp_49_i32_to_bool_59_0 = icmp i32 Ne temp_48_ele_of_*tape_0_59_0, 0_0 
-         609  untrack temp_48_ele_of_*tape_0_59_0 
+         613  untrack temp_48_ele_of_*tape_0_59_0 
          215  br i1 temp_49_i32_to_bool_59_0, label branch_short_circuit_c_true_309, label UP_46_0 
      211  label branch_short_circuit_c_true_309: 
-         612  untrack temp_49_i32_to_bool_59_0 
+         616  untrack temp_49_i32_to_bool_59_0 
          75   (nop) 
          325  i_29_10 = i32 i_29_1 
          326  loop_29_10 = i32 1_0 
@@ -535,9 +539,16 @@
          234  temp_52_cmp_72_0 = icmp i32 Eq temp_11_ele_of_input_27_65_0, 93_0 
          237  br i1 temp_52_cmp_72_0, label branch_true_73, label UP_48_0 
      235  label branch_true_73: 
+         626  untrack temp_51_cmp_68_0 
+         625  untrack temp_52_cmp_72_0 
+         624  untrack temp_11_ele_of_input_27_65_0 
+         623  untrack temp_10_ptr_of_input_27_65 
+         622  untrack temp_13_arithop_70_0 
+         621  untrack temp_50_cmp_63_0 
          86   temp_12_arithop_74_0 = Add i32 loop_29_10, 1_0 
          87   (nop) 
          330  loop_29_14 = i32 temp_12_arithop_74_0 
+         627  untrack temp_12_arithop_74_0 
               jump label: branch_false_73 
      236  label branch_false_73: 
          331  loop_29_12 = i32 loop_29_14 
@@ -546,27 +557,27 @@
          332  loop_29_14 = i32 loop_29_10 
               jump label: branch_false_73 
      310  label UP_47_0: 
-         616  untrack loop_29_10 
+         620  untrack loop_29_10 
          333  i_29_9 = i32 i_29_10 
-         617  untrack i_29_10 
+         628  untrack i_29_10 
               jump label: branch_short_circuit_c_false_309 
      212  label branch_short_circuit_c_false_309: 
          334  i_29_8 = i32 i_29_9 
               jump label: gather_29 
      309  label UP_46_0: 
-         615  untrack loop_29_10 
-         614  untrack temp_49_i32_to_bool_59_0 
-         613  untrack i_29_10 
+         619  untrack loop_29_10 
+         618  untrack i_29_10 
+         617  untrack temp_49_i32_to_bool_59_0 
          335  i_29_9 = i32 i_29_1 
               jump label: branch_short_circuit_c_false_309 
      308  label UP_43_0: 
          336  i_29_9 = i32 i_29_1 
               jump label: branch_short_circuit_c_false_309 
      166  label while.exit_32: 
-         341  untrack input_27 
-         340  untrack i_29_1 
-         249  mu tape_0_2:168 
-         250  mu ptr11_0_2:168 
+         341  untrack i_29_1 
+         340  untrack input_27 
+         249  mu ptr11_0_2:168 
+         250  mu tape_0_2:168 
          168  ret 
  29   Define read_program_0 "" -> read_program_ret_0 
          245  program_0_1 = chi program_0_0:29 

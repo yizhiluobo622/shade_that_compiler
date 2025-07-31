@@ -22,8 +22,8 @@
  18   store 1_0:i32 *b_0:ptr->i32 
  19   b_0 = chi b_0:18 
  23   Define main_0 "" -> main_ret_0 
-         144  b_0_1 = chi b_0_0:23 
-         145  a_0_3 = chi a_0_0:23 
+         144  a_0_3 = chi a_0_0:23 
+         145  b_0_1 = chi b_0_0:23 
          42   alloc i32 [k_24] 
          43   alloc i32 [temp_3_value_from_ptr_24] 
          48   alloc i32 [temp_4_value_from_ptr_24] 
@@ -95,42 +95,42 @@
          117  temp_21_cmp_36_0 = icmp i32 Slt temp_20_ret_of_inc_a_36_0, 14_0 
          140  br i1 temp_21_cmp_36_0, label branch_short_circuit_c_true_194, label branch_short_circuit_p_false_188 
      132  label branch_short_circuit_c_true_194: 
-         215  untrack temp_17_i32_to_bool_29_0 
-         214  untrack temp_21_cmp_36_0 
-         213  untrack temp_20_ret_of_inc_a_36_0 
-         212  untrack temp_24_ret_of_inc_a_36_0 
-         211  untrack temp_19_i32_to_bool_29_0 
-         210  untrack temp_22_ret_of_inc_a_36_0 
-         209  untrack temp_14_ret_of_inc_a_29_0 
-         208  untrack temp_23_ret_of_inc_a_36_0 
-         207  untrack temp_12_value_from_ptr_31_0 
-         206  untrack temp_28_i32_to_bool_36_0 
-         205  untrack temp_15_ret_of_inc_a_29_0 
-         204  untrack temp_18_i32_to_bool_29_0 
-         203  untrack temp_25_arithop_36_0 
-         202  untrack temp_13_cmp_26_0 
-         201  untrack temp_26_arithop_36_0 
-         200  untrack temp_16_ret_of_inc_a_29_0 
-         199  untrack temp_27_i32_to_bool_36_0 
-         198  untrack temp_11_value_from_ptr_31_0 
+         215  untrack temp_24_ret_of_inc_a_36_0 
+         214  untrack temp_17_i32_to_bool_29_0 
+         213  untrack temp_22_ret_of_inc_a_36_0 
+         212  untrack temp_14_ret_of_inc_a_29_0 
+         211  untrack temp_11_value_from_ptr_31_0 
+         210  untrack temp_15_ret_of_inc_a_29_0 
+         209  untrack temp_21_cmp_36_0 
+         208  untrack temp_16_ret_of_inc_a_29_0 
+         207  untrack temp_27_i32_to_bool_36_0 
+         206  untrack temp_13_cmp_26_0 
+         205  untrack temp_23_ret_of_inc_a_36_0 
+         204  untrack temp_12_value_from_ptr_31_0 
+         203  untrack temp_28_i32_to_bool_36_0 
+         202  untrack temp_19_i32_to_bool_29_0 
+         201  untrack temp_18_i32_to_bool_29_0 
+         200  untrack temp_20_ret_of_inc_a_36_0 
+         199  untrack temp_25_arithop_36_0 
+         198  untrack temp_26_arithop_36_0 
          194  untrack temp_20_ret_of_inc_a_36_0 
-         193  untrack temp_22_ret_of_inc_a_36_0 
-         192  untrack temp_18_i32_to_bool_29_0 
-         191  untrack temp_28_i32_to_bool_36_0 
-         190  untrack temp_11_value_from_ptr_31_0 
-         189  untrack temp_25_arithop_36_0 
-         188  untrack temp_15_ret_of_inc_a_29_0 
-         187  untrack temp_17_i32_to_bool_29_0 
-         186  untrack temp_24_ret_of_inc_a_36_0 
-         185  untrack temp_19_i32_to_bool_29_0 
-         184  untrack temp_14_ret_of_inc_a_29_0 
-         183  untrack temp_12_value_from_ptr_31_0 
-         182  untrack temp_16_ret_of_inc_a_29_0 
-         181  untrack temp_23_ret_of_inc_a_36_0 
-         180  untrack temp_27_i32_to_bool_36_0 
-         179  untrack temp_21_cmp_36_0 
-         178  untrack temp_26_arithop_36_0 
-         177  untrack temp_13_cmp_26_0 
+         193  untrack temp_27_i32_to_bool_36_0 
+         192  untrack temp_11_value_from_ptr_31_0 
+         191  untrack temp_15_ret_of_inc_a_29_0 
+         190  untrack temp_13_cmp_26_0 
+         189  untrack temp_14_ret_of_inc_a_29_0 
+         188  untrack temp_23_ret_of_inc_a_36_0 
+         187  untrack temp_21_cmp_36_0 
+         186  untrack temp_17_i32_to_bool_29_0 
+         185  untrack temp_26_arithop_36_0 
+         184  untrack temp_18_i32_to_bool_29_0 
+         183  untrack temp_16_ret_of_inc_a_29_0 
+         182  untrack temp_28_i32_to_bool_36_0 
+         181  untrack temp_19_i32_to_bool_29_0 
+         180  untrack temp_25_arithop_36_0 
+         179  untrack temp_22_ret_of_inc_a_36_0 
+         178  untrack temp_12_value_from_ptr_31_0 
+         177  untrack temp_24_ret_of_inc_a_36_0 
          64   temp_8_value_from_ptr_38_0 = load *a_0:ptr->i32 
          65   mu a_0_8:64 
          66    Call void putint_0(temp_8_value_from_ptr_38_0) 
@@ -139,9 +139,9 @@
          69   temp_9_value_from_ptr_38_0 = load *b_0:ptr->i32 
          70   mu b_0_2:69 
          72   temp_10_arithop_38_0 = Mul i32 temp_9_value_from_ptr_38_0, 2_0 
-         196  untrack temp_9_value_from_ptr_38_0 
+         195  untrack temp_9_value_from_ptr_38_0 
          73   store temp_10_arithop_38_0:i32 *b_0:ptr->i32 
-         195  untrack temp_10_arithop_38_0 
+         196  untrack temp_10_arithop_38_0 
          74   b_0_3 = chi b_0_2:73 
               jump label: gather_13 
      141  label gather_13: 
@@ -186,8 +186,8 @@
          52    Call void putch_0(10_0) 
          55   (nop) 
          56   mu a_0_4:55 
-         162  mu b_0_2:57 
-         163  mu a_0_4:57 
+         162  mu a_0_4:57 
+         163  mu b_0_2:57 
          57   ret temp_3_value_from_ptr_24_0 
  22   Define inc_a_0 "" -> inc_a_ret_0 
          142  a_0_1 = chi a_0_0:22 
@@ -200,10 +200,10 @@
          26   mu a_0_1:25 
          27   (nop) 
          30   temp_1_arithop_18_0 = Add i32 temp_0_value_from_ptr_18_0, 1_0 
-         174  untrack temp_0_value_from_ptr_18_0 
+         175  untrack temp_0_value_from_ptr_18_0 
          31   (nop) 
          32   store temp_1_arithop_18_0:i32 *a_0:ptr->i32 
-         175  untrack temp_1_arithop_18_0 
+         174  untrack temp_1_arithop_18_0 
          33   a_0_2 = chi a_0_1:32 
          36   temp_2_value_from_ptr_18_0 = load *a_0:ptr->i32 
          37   mu a_0_2:36 

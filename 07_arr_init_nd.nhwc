@@ -94,13 +94,13 @@
          19    
          21   temp_0_array_init_ptr_17 = GEP b_17_0:Array:i32:[Some(5_0), Some(3_0)] [] 
          22    Call void memset_0(temp_0_array_init_ptr_17, 0_0, 60_0) 
-         306  untrack temp_0_array_init_ptr_17 
+         302  untrack temp_0_array_init_ptr_17 
          289  mu b_17_0:22 
          290  b_17_1 = chi b_17_0:22 
          24    
          26   temp_1_array_init_ptr_17 = GEP c_17_0:Array:i32:[Some(5_0), Some(3_0)] [] 
          27    Call void memset_0(temp_1_array_init_ptr_17, 0_0, 60_0) 
-         303  untrack temp_1_array_init_ptr_17 
+         305  untrack temp_1_array_init_ptr_17 
          291  mu c_17_0:27 
          292  c_17_1 = chi c_17_0:27 
          29   (nop) 
@@ -151,7 +151,7 @@
          89    
          91   temp_17_array_init_ptr_17 = GEP d_17_0:Array:i32:[Some(5_0), Some(3_0)] [] 
          92    Call void memset_0(temp_17_array_init_ptr_17, 0_0, 60_0) 
-         305  untrack temp_17_array_init_ptr_17 
+         306  untrack temp_17_array_init_ptr_17 
          293  mu d_17_0:92 
          294  d_17_1 = chi d_17_0:92 
          94   (nop) 
@@ -202,7 +202,7 @@
          154   
          156  temp_33_array_init_ptr_17 = GEP e_17_0:Array:i32:[Some(5_0), Some(3_0)] [] 
          157   Call void memset_0(temp_33_array_init_ptr_17, 0_0, 60_0) 
-         304  untrack temp_33_array_init_ptr_17 
+         301  untrack temp_33_array_init_ptr_17 
          295  mu e_17_0:157 
          296  e_17_1 = chi e_17_0:157 
          159  (nop) 
@@ -254,7 +254,7 @@
          221   
          223  temp_49_array_init_ptr_17 = GEP g_17_0:Array:i32:[Some(5_0), Some(3_0)] [] 
          224   Call void memset_0(temp_49_array_init_ptr_17, 0_0, 60_0) 
-         301  untrack temp_49_array_init_ptr_17 
+         304  untrack temp_49_array_init_ptr_17 
          297  mu g_17_0:224 
          298  g_17_1 = chi g_17_0:224 
          226  (nop) 
@@ -285,7 +285,7 @@
          260   
          262  temp_58_array_init_ptr_17 = GEP i_17_0:Array:i32:[Some(2_0), Some(3_0), Some(4_0)] [] 
          263   Call void memset_0(temp_58_array_init_ptr_17, 0_0, 96_0) 
-         302  untrack temp_58_array_init_ptr_17 
+         303  untrack temp_58_array_init_ptr_17 
          299  mu i_17_0:263 
          300  i_17_1 = chi i_17_0:263 
          265  (nop) 

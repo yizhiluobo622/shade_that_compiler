@@ -28,12 +28,12 @@
  23    
  25    
  30   Define main_0 "" -> main_ret_0 
-         236  n_0_1 = chi n_0_0:30 
-         237  line1_0_7 = chi line1_0_0:30 
+         236  sum_0_9 = chi sum_0_0:30 
+         237  row_0_7 = chi row_0_0:30 
          238  ans_0_6 = chi ans_0_0:30 
-         239  sum_0_9 = chi sum_0_0:30 
-         240  row_0_7 = chi row_0_0:30 
-         241  line2_0_7 = chi line2_0_0:30 
+         239  line1_0_7 = chi line1_0_0:30 
+         240  line2_0_7 = chi line2_0_0:30 
+         241  n_0_1 = chi n_0_0:30 
          186  alloc i32 [temp_44_ret_of_getint_56] 
          189  alloc i32 [N_56] 
          191  alloc i32 [temp_45_value_from_ptr_56] 
@@ -54,16 +54,16 @@
          197  store temp_46_ret_of_getint_60_0:i32 *n_0:ptr->i32 
          198  n_0_3 = chi n_0_2:197 
          199   Call void f_0(1_0) 
-         242  mu ans_0_7:199 
-         243  mu sum_0_10:199 
-         244  mu row_0_8:199 
+         242  mu line1_0_8:199 
+         243  mu ans_0_7:199 
+         244  mu sum_0_10:199 
          245  mu line2_0_8:199 
-         246  mu line1_0_8:199 
-         247  sum_0_11 = chi sum_0_10:199 
-         248  line2_0_9 = chi line2_0_8:199 
-         249  row_0_9 = chi row_0_8:199 
-         250  ans_0_8 = chi ans_0_7:199 
-         251  line1_0_9 = chi line1_0_8:199 
+         246  mu row_0_8:199 
+         247  line1_0_9 = chi line1_0_8:199 
+         248  sum_0_11 = chi sum_0_10:199 
+         249  ans_0_8 = chi ans_0_7:199 
+         250  line2_0_9 = chi line2_0_8:199 
+         251  row_0_9 = chi row_0_8:199 
          201  temp_47_arithop_60_0 = Sub i32 N_56_1, 1_0 
          202  (nop) 
          283  N_56_1 = i32 temp_47_arithop_60_0 
@@ -72,19 +72,19 @@
          312  untrack N_56_1 
          192  temp_45_value_from_ptr_56_0 = load *sum_0:ptr->i32 
          193  mu sum_0_10:192 
-         252  mu n_0_2:194 
-         253  mu line1_0_8:194 
+         252  mu sum_0_10:194 
+         253  mu row_0_8:194 
          254  mu ans_0_7:194 
-         255  mu sum_0_10:194 
-         256  mu row_0_8:194 
-         257  mu line2_0_8:194 
+         255  mu line1_0_8:194 
+         256  mu line2_0_8:194 
+         257  mu n_0_2:194 
          194  ret temp_45_value_from_ptr_56_0 
  29   Define f_0 "step_33_0," -> f_ret_0 
-         214  sum_0_3 = chi sum_0_0:29 
-         215  line2_0_1 = chi line2_0_0:29 
-         216  row_0_1 = chi row_0_0:29 
-         217  ans_0_1 = chi ans_0_0:29 
-         218  line1_0_1 = chi line1_0_0:29 
+         214  line1_0_1 = chi line1_0_0:29 
+         215  sum_0_3 = chi sum_0_0:29 
+         216  ans_0_1 = chi ans_0_0:29 
+         217  line2_0_1 = chi line2_0_0:29 
+         218  row_0_1 = chi row_0_0:29 
          73   alloc i32 [i_35] 
          74   alloc i32 [temp_9_arithop_39] 
          77   alloc ptr->i32 [temp_10_ptr_of_*ans_0_42] 
@@ -170,19 +170,19 @@
          182  temp_43_cmp_44_0 = icmp i32 Eq step_33_0, temp_26_value_from_ptr_37_0 
          185  br i1 temp_43_cmp_44_0, label branch_true_45, label branch_false_45 
      183  label branch_true_45: 
-         310  untrack temp_33_ele_of_*line1_0_40_0 
-         309  untrack temp_37_arithop_40_0 
-         308  untrack temp_31_arithop_40_0 
-         307  untrack temp_29_ele_of_*row_0_40_0 
-         306  untrack temp_36_arithop_40_0 
-         305  untrack temp_43_cmp_44_0 
-         304  untrack temp_9_arithop_39_0 
-         303  untrack temp_41_logicnot_40_0 
-         302  untrack temp_30_cmp_40_0 
-         301  untrack temp_27_cmp_37_0 
-         300  untrack temp_34_cmp_40_0 
-         299  untrack temp_40_booltrans_40_0 
-         298  untrack temp_39_ele_of_*line2_0_40_0 
+         310  untrack temp_39_ele_of_*line2_0_40_0 
+         309  untrack temp_33_ele_of_*line1_0_40_0 
+         308  untrack temp_37_arithop_40_0 
+         307  untrack temp_36_arithop_40_0 
+         306  untrack temp_41_logicnot_40_0 
+         305  untrack temp_9_arithop_39_0 
+         304  untrack temp_30_cmp_40_0 
+         303  untrack temp_31_arithop_40_0 
+         302  untrack temp_29_ele_of_*row_0_40_0 
+         301  untrack temp_34_cmp_40_0 
+         300  untrack temp_40_booltrans_40_0 
+         299  untrack temp_27_cmp_37_0 
+         298  untrack temp_43_cmp_44_0 
          126   Call void printans_0() 
          219  mu sum_0_4:126 
          220  sum_0_6 = chi sum_0_4:126 
@@ -203,16 +203,16 @@
          100  store 1_0:i32 temp_38_ptr_of_*line2_0_40:ptr->i32 
          101  line2_0_4 = chi line2_0_2:100 
          104   Call void f_0(temp_18_arithop_42_0) 
-         221  mu ans_0_4:104 
-         222  mu sum_0_7:104 
-         223  mu row_0_4:104 
+         221  mu line1_0_4:104 
+         222  mu ans_0_4:104 
+         223  mu sum_0_7:104 
          224  mu line2_0_4:104 
-         225  mu line1_0_4:104 
-         226  sum_0_8 = chi sum_0_7:104 
-         227  line2_0_5 = chi line2_0_4:104 
-         228  row_0_5 = chi row_0_4:104 
-         229  ans_0_5 = chi ans_0_4:104 
-         230  line1_0_5 = chi line1_0_4:104 
+         225  mu row_0_4:104 
+         226  line1_0_5 = chi line1_0_4:104 
+         227  sum_0_8 = chi sum_0_7:104 
+         228  ans_0_5 = chi ans_0_4:104 
+         229  line2_0_5 = chi line2_0_4:104 
+         230  row_0_5 = chi row_0_4:104 
          106  (nop) 
          107  store 0_0:i32 temp_28_ptr_of_*row_0_40:ptr->i32 
          108  row_0_6 = chi row_0_5:107 
@@ -234,16 +234,16 @@
          281  i_35_1 = i32 temp_9_arithop_39_0 
               jump label: while.head_38 
      134  label while.exit_38: 
-         297  untrack i_35_1 
-         296  untrack step_33_0 
-         295  untrack temp_18_arithop_42_0 
-         294  untrack temp_26_value_from_ptr_37_0 
-         293  untrack temp_10_ptr_of_*ans_0_42 
-         231  mu sum_0_4:136 
-         232  mu line2_0_2:136 
-         233  mu row_0_2:136 
-         234  mu ans_0_2:136 
-         235  mu line1_0_2:136 
+         297  untrack step_33_0 
+         296  untrack temp_10_ptr_of_*ans_0_42 
+         295  untrack i_35_1 
+         294  untrack temp_18_arithop_42_0 
+         293  untrack temp_26_value_from_ptr_37_0 
+         231  mu line1_0_2:136 
+         232  mu sum_0_4:136 
+         233  mu ans_0_2:136 
+         234  mu line2_0_2:136 
+         235  mu row_0_2:136 
          136  ret 
  28   Define printans_0 "" -> printans_ret_0 
          211  sum_0_1 = chi sum_0_0:28 
@@ -261,9 +261,9 @@
          32   temp_0_value_from_ptr_19_0 = load *sum_0:ptr->i32 
          33   mu sum_0_1:32 
          35   temp_1_arithop_19_0 = Add i32 temp_0_value_from_ptr_19_0, 1_0 
-         285  untrack temp_0_value_from_ptr_19_0 
+         284  untrack temp_0_value_from_ptr_19_0 
          36   store temp_1_arithop_19_0:i32 *sum_0:ptr->i32 
-         284  untrack temp_1_arithop_19_0 
+         285  untrack temp_1_arithop_19_0 
          37   sum_0_2 = chi sum_0_1:36 
          38   (nop) 
          54   temp_5_value_from_ptr_22_0 = load *n_0:ptr->i32 
@@ -285,11 +285,11 @@
          67   temp_8_cmp_26_0 = icmp i32 Eq i_19_1, temp_5_value_from_ptr_22_0 
          70   br i1 temp_8_cmp_26_0, label branch_true_27, label branch_false_27 
      68   label branch_true_27: 
-         292  untrack temp_6_cmp_22_0 
-         291  untrack temp_8_cmp_26_0 
-         290  untrack temp_4_arithop_24_0 
-         289  untrack temp_3_ele_of_*ans_0_24_0 
-         288  untrack temp_2_ptr_of_*ans_0_24 
+         292  untrack temp_2_ptr_of_*ans_0_24 
+         291  untrack temp_3_ele_of_*ans_0_24_0 
+         290  untrack temp_8_cmp_26_0 
+         289  untrack temp_6_cmp_22_0 
+         288  untrack temp_4_arithop_24_0 
          50    Call void putch_0(10_0) 
          212  mu sum_0_2:52 
          52   ret 

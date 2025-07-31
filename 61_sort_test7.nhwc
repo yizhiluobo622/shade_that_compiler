@@ -89,16 +89,16 @@
          225  untrack temp_25_arithop_20_0 
          111  br i1 temp_26_cmp_20_0, label branch_true_21, label branch_false_21 
      109  label branch_true_21: 
-         235  untrack temp_26_cmp_20_0 
-         234  untrack j_19_1 
-         233  untrack r_17_0 
-         232  untrack i_19_1 
-         231  untrack i_19_0 
-         230  untrack k_19_0 
-         229  untrack temp_0_arithop_19_0 
-         228  untrack k_19_1 
-         227  untrack l_17_0 
-         226  untrack temp_1_arithop_19_0 
+         235  untrack j_19_1 
+         234  untrack temp_1_arithop_19_0 
+         233  untrack l_17_0 
+         232  untrack k_19_0 
+         231  untrack k_19_1 
+         230  untrack temp_0_arithop_19_0 
+         229  untrack r_17_0 
+         228  untrack i_19_1 
+         227  untrack i_19_0 
+         226  untrack temp_26_cmp_20_0 
          170  mu buf_0_1:104 
          104  ret 
      110  label branch_false_21: 
@@ -118,11 +118,11 @@
          28   i_19_0 = i32 l_17_0 
          30   (nop) 
          32   k_19_0 = i32 l_17_0 
-         203  i_19_1 = i32 i_19_0 
-         238  untrack i_19_0 
-         204  k_19_1 = i32 k_19_0 
-         237  untrack k_19_0 
-         205  j_19_1 = i32 temp_1_arithop_19_0 
+         203  k_19_1 = i32 k_19_0 
+         238  untrack k_19_0 
+         204  j_19_1 = i32 temp_1_arithop_19_0 
+         205  i_19_1 = i32 i_19_0 
+         237  untrack i_19_0 
               jump label: while.head_28 
      121  label while.head_28: 
          113  temp_27_cmp_27_0 = icmp i32 Slt i_19_1, temp_1_arithop_19_0 
@@ -140,43 +140,43 @@
          150  temp_36_cmp_30_0 = icmp i32 Slt temp_35_ele_of_*buf_0_30_0, temp_33_ele_of_*buf_0_30_0 
          153  br i1 temp_36_cmp_30_0, label branch_true_31, label branch_false_31 
      151  label branch_true_31: 
-         297  untrack temp_36_cmp_30_0 
-         296  untrack temp_33_ele_of_*buf_0_30_0 
-         295  untrack temp_34_ptr_of_*buf_0_30 
-         294  untrack i_19_2 
-         293  untrack temp_12_ptr_of_*buf_0_41 
-         292  untrack temp_19_arithop_35_0 
-         291  untrack temp_11_ptr_of_*buf_0_41 
-         290  untrack temp_7_ptr_of_*buf_0_47 
-         289  untrack temp_14_arithop_41_0 
-         288  untrack temp_3_ptr_of_*buf_0_53 
-         287  untrack temp_28_cmp_27_0 
+         297  untrack temp_32_ptr_of_*buf_0_30 
+         296  untrack temp_27_cmp_27_0 
+         295  untrack temp_3_ptr_of_*buf_0_53 
+         294  untrack temp_14_arithop_41_0 
+         293  untrack temp_10_arithop_47_0 
+         292  untrack temp_33_ele_of_*buf_0_30_0 
+         291  untrack k_19_4 
+         290  untrack k_19_2 
+         289  untrack l_17_1 
+         288  untrack temp_31_cmp_51_0 
+         287  untrack temp_19_arithop_35_0 
          286  untrack temp_6_ptr_of_*buf_0_47 
-         285  untrack temp_2_ptr_of_*buf_0_53 
-         284  untrack k_19_2 
-         283  untrack temp_5_arithop_53_0 
-         282  untrack temp_9_arithop_47_0 
-         281  untrack temp_32_ptr_of_*buf_0_30 
-         280  untrack temp_30_cmp_45_0 
-         279  untrack temp_15_arithop_41_0 
-         278  untrack temp_29_cmp_39_0 
-         277  untrack k_19_4 
-         276  untrack l_17_1 
-         275  untrack temp_16_ptr_of_*buf_0_35 
-         274  untrack temp_27_cmp_27_0 
-         273  untrack temp_31_cmp_51_0 
-         272  untrack temp_13_ele_of_*buf_0_41_0 
-         271  untrack temp_10_arithop_47_0 
-         270  untrack temp_8_ele_of_*buf_0_47_0 
-         269  untrack temp_4_ele_of_*buf_0_53_0 
-         268  untrack j_19_2 
+         285  untrack temp_34_ptr_of_*buf_0_30 
+         284  untrack temp_15_arithop_41_0 
+         283  untrack temp_11_ptr_of_*buf_0_41 
+         282  untrack temp_30_cmp_45_0 
+         281  untrack temp_9_arithop_47_0 
+         280  untrack temp_16_ptr_of_*buf_0_35 
+         279  untrack temp_4_ele_of_*buf_0_53_0 
+         278  untrack temp_5_arithop_53_0 
+         277  untrack temp_7_ptr_of_*buf_0_47 
+         276  untrack i_19_2 
+         275  untrack temp_12_ptr_of_*buf_0_41 
+         274  untrack j_19_2 
+         273  untrack temp_2_ptr_of_*buf_0_53 
+         272  untrack temp_8_ele_of_*buf_0_47_0 
+         271  untrack temp_28_cmp_27_0 
+         270  untrack temp_29_cmp_39_0 
+         269  untrack temp_13_ele_of_*buf_0_41_0 
+         268  untrack temp_36_cmp_30_0 
          92   temp_21_ptr_of_*buf_0_32 = GEP *buf_0:ptr->Array:i32:[Some(100_0)] [Some(1_0), Some(k_19_1)] 
          94   (nop) 
          96   (nop) 
          97   mu buf_0_4:96 
          98   store temp_35_ele_of_*buf_0_30_0:i32 temp_21_ptr_of_*buf_0_32:ptr->i32 
-         299  untrack temp_35_ele_of_*buf_0_30_0 
-         298  untrack temp_21_ptr_of_*buf_0_32 
+         299  untrack temp_21_ptr_of_*buf_0_32 
+         298  untrack temp_35_ele_of_*buf_0_30_0 
          99   buf_0_11 = chi buf_0_4:98 
          101  temp_24_arithop_32_0 = Add i32 i_19_1, 1_0 
          102  (nop) 
@@ -202,24 +202,24 @@
          84   buf_0_13 = chi buf_0_4:83 
          86   temp_19_arithop_35_0 = Add i32 j_19_1, 1_0 
          87   (nop) 
-         211  j_19_4 = i32 temp_19_arithop_35_0 
-         212  i_19_5 = i32 i_19_1 
+         211  i_19_5 = i32 i_19_1 
+         212  j_19_4 = i32 temp_19_arithop_35_0 
               jump label: gather_10 
      200  label UP_23_0: 
-         267  untrack i_19_5 
+         267  untrack j_19_4 
          266  untrack temp_34_ptr_of_*buf_0_30 
-         265  untrack temp_33_ele_of_*buf_0_30_0 
-         264  untrack temp_28_cmp_27_0 
-         263  untrack temp_24_arithop_32_0 
-         262  untrack j_19_4 
-         261  untrack temp_21_ptr_of_*buf_0_32 
-         260  untrack temp_35_ele_of_*buf_0_30_0 
-         259  untrack temp_20_arithop_29_0 
-         258  untrack temp_27_cmp_27_0 
-         257  untrack temp_19_arithop_35_0 
-         256  untrack temp_32_ptr_of_*buf_0_30 
-         255  untrack temp_36_cmp_30_0 
-         254  untrack temp_16_ptr_of_*buf_0_35 
+         265  untrack temp_35_ele_of_*buf_0_30_0 
+         264  untrack i_19_5 
+         263  untrack temp_33_ele_of_*buf_0_30_0 
+         262  untrack temp_21_ptr_of_*buf_0_32 
+         261  untrack temp_36_cmp_30_0 
+         260  untrack temp_27_cmp_27_0 
+         259  untrack temp_16_ptr_of_*buf_0_35 
+         258  untrack temp_19_arithop_35_0 
+         257  untrack temp_32_ptr_of_*buf_0_30 
+         256  untrack temp_28_cmp_27_0 
+         255  untrack temp_24_arithop_32_0 
+         254  untrack temp_20_arithop_29_0 
          213  k_19_2 = i32 k_19_1 
          214  i_19_2 = i32 i_19_1 
               jump label: branch_short_circuit_c_false_236 
@@ -241,13 +241,13 @@
          216  i_19_2 = i32 temp_14_arithop_41_0 
               jump label: branch_short_circuit_c_false_236 
      201  label UP_24_0: 
-         307  untrack temp_29_cmp_39_0 
-         306  untrack i_19_2 
-         305  untrack temp_13_ele_of_*buf_0_41_0 
+         307  untrack temp_13_ele_of_*buf_0_41_0 
+         306  untrack temp_15_arithop_41_0 
+         305  untrack temp_12_ptr_of_*buf_0_41 
          304  untrack temp_11_ptr_of_*buf_0_41 
-         303  untrack temp_14_arithop_41_0 
-         302  untrack temp_12_ptr_of_*buf_0_41 
-         301  untrack temp_15_arithop_41_0 
+         303  untrack i_19_2 
+         302  untrack temp_29_cmp_39_0 
+         301  untrack temp_14_arithop_41_0 
          217  k_19_4 = i32 k_19_2 
          308  untrack k_19_2 
          218  j_19_2 = i32 j_19_1 
@@ -270,14 +270,14 @@
          220  j_19_2 = i32 temp_9_arithop_47_0 
               jump label: while.exit_40 
      202  label UP_25_0: 
-         316  untrack temp_30_cmp_45_0 
-         315  untrack temp_9_arithop_47_0 
+         316  untrack temp_10_arithop_47_0 
+         315  untrack temp_6_ptr_of_*buf_0_47 
          314  untrack k_19_4 
-         313  untrack temp_10_arithop_47_0 
-         312  untrack temp_6_ptr_of_*buf_0_47 
+         313  untrack j_19_2 
+         312  untrack temp_9_arithop_47_0 
          311  untrack temp_8_ele_of_*buf_0_47_0 
          310  untrack temp_7_ptr_of_*buf_0_47 
-         309  untrack j_19_2 
+         309  untrack temp_30_cmp_45_0 
          221  l_17_1 = i32 l_17_0 
               jump label: while.exit_46 
      131  label while.exit_46: 
@@ -299,20 +299,20 @@
          175  mu buf_0_9:138 
          138  ret 
      199  label UP_20_0: 
-         253  untrack temp_36_cmp_30_0 
-         252  untrack temp_20_arithop_29_0 
-         251  untrack temp_28_cmp_27_0 
-         250  untrack i_19_5 
-         249  untrack temp_24_arithop_32_0 
-         248  untrack temp_27_cmp_27_0 
-         247  untrack temp_21_ptr_of_*buf_0_32 
-         246  untrack temp_34_ptr_of_*buf_0_30 
-         245  untrack temp_16_ptr_of_*buf_0_35 
-         244  untrack temp_33_ele_of_*buf_0_30_0 
-         243  untrack temp_35_ele_of_*buf_0_30_0 
-         242  untrack temp_32_ptr_of_*buf_0_30 
-         241  untrack temp_19_arithop_35_0 
-         240  untrack j_19_4 
-         223  k_19_2 = i32 k_19_1 
-         224  i_19_2 = i32 i_19_1 
+         253  untrack temp_19_arithop_35_0 
+         252  untrack i_19_5 
+         251  untrack temp_34_ptr_of_*buf_0_30 
+         250  untrack temp_32_ptr_of_*buf_0_30 
+         249  untrack temp_35_ele_of_*buf_0_30_0 
+         248  untrack temp_20_arithop_29_0 
+         247  untrack temp_36_cmp_30_0 
+         246  untrack temp_33_ele_of_*buf_0_30_0 
+         245  untrack j_19_4 
+         244  untrack temp_28_cmp_27_0 
+         243  untrack temp_27_cmp_27_0 
+         242  untrack temp_24_arithop_32_0 
+         241  untrack temp_21_ptr_of_*buf_0_32 
+         240  untrack temp_16_ptr_of_*buf_0_35 
+         223  i_19_2 = i32 i_19_1 
+         224  k_19_2 = i32 k_19_1 
               jump label: branch_short_circuit_c_false_236 

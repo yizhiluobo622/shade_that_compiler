@@ -34,10 +34,10 @@
          32   temp_3_cmp_20_0 = icmp i32 Sle n_16_0, 1_0 
          35   br i1 temp_3_cmp_20_0, label branch_true_21, label branch_false_21 
      33   label branch_true_21: 
-         50   untrack temp_1_arithop_25_0 
-         49   untrack n_16_0 
-         48   untrack temp_0_ret_of_getint_25_0 
-         47   untrack temp_3_cmp_20_0 
+         50   untrack temp_3_cmp_20_0 
+         49   untrack temp_1_arithop_25_0 
+         48   untrack n_16_0 
+         47   untrack temp_0_ret_of_getint_25_0 
          28   temp_2_ret_of_getint_22_0 =  Call i32 getint_0() 
          29   (nop) 
          30    Call void putint_0(temp_2_ret_of_getint_22_0) 
@@ -48,14 +48,14 @@
      38   label exit_2: 
          37   ret 
      34   label branch_false_21: 
-         52   untrack temp_2_ret_of_getint_22_0 
-         51   untrack temp_3_cmp_20_0 
+         52   untrack temp_3_cmp_20_0 
+         51   untrack temp_2_ret_of_getint_22_0 
          21   temp_0_ret_of_getint_25_0 =  Call i32 getint_0() 
          22   (nop) 
          24   temp_1_arithop_25_0 = Sub i32 n_16_0, 1_0 
          55   untrack n_16_0 
          25    Call void reverse_0(temp_1_arithop_25_0) 
-         54   untrack temp_1_arithop_25_0 
+         56   untrack temp_1_arithop_25_0 
          26    Call void putint_0(temp_0_ret_of_getint_25_0) 
-         56   untrack temp_0_ret_of_getint_25_0 
+         54   untrack temp_0_ret_of_getint_25_0 
               jump label: gather_7 

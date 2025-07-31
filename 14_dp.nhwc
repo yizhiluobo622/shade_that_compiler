@@ -30,8 +30,8 @@
  26   store 0_0:i32 temp_3_array_init_ptr_0:ptr->Array:i32:[Some(35_0)] 
  27   dp_0 = chi dp_0:26 
  30   Define main_0 "" -> main_ret_0 
-         226  dp_0_1 = chi dp_0_0:30 
-         227  t_0_1 = chi t_0_0:30 
+         226  t_0_1 = chi t_0_0:30 
+         227  dp_0_1 = chi dp_0_0:30 
          31   alloc i32 [T_18] 
          33   alloc i32 [W_18] 
          35   alloc i32 [x_18] 
@@ -180,18 +180,18 @@
          221  temp_65_cmp_38_0 = icmp i32 Sgt temp_64_arithop_38_0, temp_56_arithop_38_0 
          224  br i1 temp_65_cmp_38_0, label branch_true_39, label branch_false_39 
      222  label branch_true_39: 
-         269  untrack temp_56_arithop_38_0 
-         268  untrack temp_54_ptr_of_*t_0_38 
-         267  untrack temp_10_ptr_of_*dp_0_42 
-         266  untrack temp_59_ele_of_*dp_0_38_0 
-         265  untrack temp_48_arithop_38_0 
-         264  untrack temp_53_arithop_38_0 
+         269  untrack temp_54_ptr_of_*t_0_38 
+         268  untrack temp_50_ptr_of_*dp_0_38 
+         267  untrack temp_59_ele_of_*dp_0_38_0 
+         266  untrack temp_47_cmp_35_0 
+         265  untrack temp_56_arithop_38_0 
+         264  untrack temp_58_ptr_of_*dp_0_38 
          263  untrack temp_65_cmp_38_0 
-         262  untrack temp_55_ele_of_*t_0_38_0 
-         261  untrack temp_47_cmp_35_0 
-         260  untrack temp_58_ptr_of_*dp_0_38 
-         259  untrack temp_50_ptr_of_*dp_0_38 
-         258  untrack temp_51_ele_of_*dp_0_38_0 
+         262  untrack temp_53_arithop_38_0 
+         261  untrack temp_48_arithop_38_0 
+         260  untrack temp_51_ele_of_*dp_0_38_0 
+         259  untrack temp_10_ptr_of_*dp_0_42 
+         258  untrack temp_55_ele_of_*t_0_38_0 
          95   temp_21_ptr_of_*dp_0_40 = GEP *dp_0:ptr->Array:i32:[Some(35_0)] [Some(i_18_5), Some(j_18_3)] 
          99   (nop) 
          101  (nop) 
@@ -203,8 +203,8 @@
          111  mu t_0_2:110 
          113  (nop) 
          114  store temp_64_arithop_38_0:i32 temp_21_ptr_of_*dp_0_40:ptr->i32 
-         271  untrack temp_21_ptr_of_*dp_0_40 
-         270  untrack temp_64_arithop_38_0 
+         271  untrack temp_64_arithop_38_0 
+         270  untrack temp_21_ptr_of_*dp_0_40 
          115  dp_0_6 = chi dp_0_5:114 
               jump label: gather_11 
      225  label gather_11: 
@@ -238,8 +238,8 @@
          257  untrack i_18_5 
          49   (nop) 
          51   (nop) 
-         250  j_18_6 = i32 0_0 
-         251  res_18_1 = i32 0_0 
+         250  res_18_1 = i32 0_0 
+         251  j_18_6 = i32 0_0 
               jump label: while.head_49 
      160  label while.head_49: 
          159  temp_43_cmp_48_0 = icmp i32 Sle j_18_6, temp_5_ret_of_getint_18_0 
@@ -251,8 +251,8 @@
          172  temp_46_cmp_51_0 = icmp i32 Slt res_18_1, temp_45_ele_of_*dp_0_51_0 
          175  br i1 temp_46_cmp_51_0, label branch_true_52, label UP_2_0 
      173  label branch_true_52: 
-         277  untrack temp_46_cmp_51_0 
-         276  untrack temp_43_cmp_48_0 
+         277  untrack temp_43_cmp_48_0 
+         276  untrack temp_46_cmp_51_0 
          275  untrack temp_44_ptr_of_*dp_0_51 
          58   (nop) 
          60   (nop) 
@@ -273,9 +273,9 @@
          255  res_18_3 = i32 res_18_1 
               jump label: branch_false_52 
      162  label while.exit_49: 
-         274  untrack temp_4_ret_of_getint_18_0 
-         273  untrack j_18_6 
+         274  untrack j_18_6 
+         273  untrack temp_4_ret_of_getint_18_0 
          272  untrack temp_5_ret_of_getint_18_0 
-         228  mu dp_0_4:53 
-         229  mu t_0_2:53 
+         228  mu t_0_2:53 
+         229  mu dp_0_4:53 
          53   ret res_18_1 

@@ -51,8 +51,8 @@
      36   label branch_true_28: 
          71   untrack temp_0_arithop_30_0 
          70   untrack two_24_0 
-         69   untrack n_24_0 
-         68   untrack temp_2_cmp_27_0 
+         69   untrack temp_2_cmp_27_0 
+         68   untrack n_24_0 
          33    Call void move_0(one_24_0, three_24_0) 
          74   untrack one_24_0 
          73   untrack three_24_0 
@@ -64,15 +64,15 @@
      37   label branch_false_28: 
          72   untrack temp_2_cmp_27_0 
          27   temp_0_arithop_30_0 = Sub i32 n_24_0, 1_0 
-         78   untrack n_24_0 
+         75   untrack n_24_0 
          28    Call void hanoi_0(temp_0_arithop_30_0, one_24_0, three_24_0, two_24_0) 
          29    Call void move_0(one_24_0, three_24_0) 
          31   (nop) 
          32    Call void hanoi_0(temp_0_arithop_30_0, two_24_0, one_24_0, three_24_0) 
          79   untrack two_24_0 
+         78   untrack temp_0_arithop_30_0 
          77   untrack one_24_0 
          76   untrack three_24_0 
-         75   untrack temp_0_arithop_30_0 
               jump label: gather_9 
  16   Define move_0 "x_16_0,y_16_0," -> move_ret_0 
           label L2_0: 

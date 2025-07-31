@@ -85,8 +85,8 @@
      514  label while.exit_145: 
          699  untrack i_141_1 
          490   Call void dct_0(*test_dct_0, *test_block_0, temp_134_ret_of_getint_141_0, temp_135_ret_of_getint_141_0) 
-         527  mu test_dct_0_0:490 
-         528  mu test_block_0_2:490 
+         527  mu test_block_0_2:490 
+         528  mu test_dct_0_0:490 
          529  test_block_0_5 = chi test_block_0_2:490 
          530  test_dct_0_1 = chi test_dct_0_0:490 
          491   Call void write_mat_0(*test_dct_0, temp_134_ret_of_getint_141_0, temp_135_ret_of_getint_141_0) 
@@ -98,8 +98,8 @@
          535  test_idct_0_1 = chi test_idct_0_0:492 
          536  test_dct_0_3 = chi test_dct_0_2:492 
          493   Call void write_mat_0(*test_idct_0, temp_134_ret_of_getint_141_0, temp_135_ret_of_getint_141_0) 
-         701  untrack temp_134_ret_of_getint_141_0 
-         700  untrack temp_135_ret_of_getint_141_0 
+         701  untrack temp_135_ret_of_getint_141_0 
+         700  untrack temp_134_ret_of_getint_141_0 
          537  mu test_idct_0_1:493 
          538  test_idct_0_2 = chi test_idct_0_1:493 
          539  mu test_block_0_5:495 
@@ -235,14 +235,14 @@
          463  temp_131_cmp_121_0 = icmp i32 Slt j_111_2, m_101_0 
          467  br i1 temp_131_cmp_121_0, label while.body_122, label while.exit_122 
      465  label while.body_122: 
-         681  untrack temp_124_ele_of_dct_mat_101_117_0 
-         680  untrack temp_127_arithop_117_0 
-         679  untrack temp_125_arithop_117_0 
-         678  untrack temp_122_ele_of_mat_101_117_0 
+         681  untrack temp_130_cmp_115_0 
+         680  untrack temp_125_arithop_117_0 
+         679  untrack temp_123_ptr_of_dct_mat_101_117 
+         678  untrack temp_127_arithop_117_0 
          677  untrack temp_120_ptr_of_mat_101_117 
-         676  untrack temp_130_cmp_115_0 
-         675  untrack temp_123_ptr_of_dct_mat_101_117 
-         674  untrack temp_126_arithop_117_0 
+         676  untrack temp_126_arithop_117_0 
+         675  untrack temp_122_ele_of_mat_101_117_0 
+         674  untrack temp_124_ele_of_dct_mat_101_117_0 
          402  temp_112_ptr_of_mat_101_123 = GEP mat_101:ptr->Array:f32:[Some(8_0)] [Some(u_103_1), Some(v_107_1)] 
          404  (nop) 
          406  temp_114_ele_of_mat_101_123_0 = load temp_112_ptr_of_mat_101_123:ptr->f32 
@@ -269,21 +269,21 @@
          473  br i1 temp_132_cmp_127_0, label while.body_128, label while.exit_128 
      471  label while.body_128: 
          697  untrack temp_117_arithop_123_0 
-         696  untrack temp_120_ptr_of_mat_101_117 
-         695  untrack temp_118_arithop_123_0 
-         694  untrack temp_119_arithop_123_0 
-         693  untrack temp_116_ele_of_dct_mat_101_123_0 
-         692  untrack temp_131_cmp_121_0 
-         691  untrack temp_123_ptr_of_dct_mat_101_117 
+         696  untrack temp_112_ptr_of_mat_101_123 
+         695  untrack temp_127_arithop_117_0 
+         694  untrack temp_130_cmp_115_0 
+         693  untrack temp_124_ele_of_dct_mat_101_117_0 
+         692  untrack temp_118_arithop_123_0 
+         691  untrack temp_114_ele_of_mat_101_123_0 
          690  untrack temp_122_ele_of_mat_101_117_0 
-         689  untrack temp_124_ele_of_dct_mat_101_117_0 
-         688  untrack temp_130_cmp_115_0 
-         687  untrack temp_112_ptr_of_mat_101_123 
-         686  untrack temp_126_arithop_117_0 
-         685  untrack temp_114_ele_of_mat_101_123_0 
-         684  untrack temp_115_ptr_of_dct_mat_101_123 
-         683  untrack temp_125_arithop_117_0 
-         682  untrack temp_127_arithop_117_0 
+         689  untrack temp_125_arithop_117_0 
+         688  untrack temp_120_ptr_of_mat_101_117 
+         687  untrack temp_123_ptr_of_dct_mat_101_117 
+         686  untrack temp_116_ele_of_dct_mat_101_123_0 
+         685  untrack temp_115_ptr_of_dct_mat_101_123 
+         684  untrack temp_131_cmp_121_0 
+         683  untrack temp_119_arithop_123_0 
+         682  untrack temp_126_arithop_117_0 
          342  (nop) 
          367  temp_96_arithop_133_0 = Mul f32 temp_93_arithop_133_0, temp_95_arithop_133_0 
          369  temp_97__133_0 = sitofp i32 i_111_5 to f32 
@@ -342,11 +342,11 @@
          602  u_103_1 = i32 temp_71_arithop_107_0 
               jump label: while.head_106 
      447  label while.exit_106: 
-         673  untrack temp_101__133_0 
-         672  untrack n_101_0 
-         671  untrack temp_92__133_0 
-         670  untrack dct_mat_101 
-         669  untrack m_101_0 
+         673  untrack n_101_0 
+         672  untrack temp_101__133_0 
+         671  untrack m_101_0 
+         670  untrack temp_92__133_0 
+         669  untrack dct_mat_101 
          668  untrack u_103_1 
          525  mu mat_101:449 
          698  untrack mat_101 
@@ -473,12 +473,12 @@
          590  u_78_1 = i32 temp_37_arithop_82_0 
               jump label: while.head_81 
      272  label while.exit_81: 
-         666  untrack m_76_0 
-         665  untrack mat_76 
-         664  untrack temp_47__95_0 
-         663  untrack temp_56__95_0 
-         662  untrack u_78_1 
-         661  untrack n_76_0 
+         666  untrack n_76_0 
+         665  untrack temp_47__95_0 
+         664  untrack u_78_1 
+         663  untrack m_76_0 
+         662  untrack mat_76 
+         661  untrack temp_56__95_0 
          524  mu dct_mat_76:274 
          667  untrack dct_mat_76 
          274  ret 
@@ -531,8 +531,8 @@
      180  label while.exit_63: 
          660  untrack mat_58 
          659  untrack n_58_0 
-         658  untrack m_58_0 
-         657  untrack i_60_1 
+         658  untrack i_60_1 
+         657  untrack m_58_0 
          153   Call void putch_0(10_0) 
               jump label: exit_32 
      183  label exit_32: 
@@ -569,18 +569,18 @@
          625  untrack temp_23_cmp_42_0 
          111  temp_18_arithop_44_0 = Div f32 x_39_0, 6.2831855_0 
          113  temp_19__44_0 = fptosi f32 temp_18_arithop_44_0 to i32 
-         630  untrack temp_18_arithop_44_0 
+         632  untrack temp_18_arithop_44_0 
          114  (nop) 
          117  temp_20__44_0 = sitofp i32 temp_19__44_0 to f32 
-         631  untrack temp_19__44_0 
+         633  untrack temp_19__44_0 
          119  temp_21_arithop_44_0 = Mul f32 temp_20__44_0, 6.2831855_0 
-         629  untrack temp_20__44_0 
+         631  untrack temp_20__44_0 
          121  temp_22_arithop_44_0 = Sub f32 x_39_0, temp_21_arithop_44_0 
-         633  untrack temp_21_arithop_44_0 
-         632  untrack x_39_0 
+         629  untrack temp_21_arithop_44_0 
+         628  untrack x_39_0 
          122  (nop) 
          573  x_39_2 = f32 temp_22_arithop_44_0 
-         628  untrack temp_22_arithop_44_0 
+         630  untrack temp_22_arithop_44_0 
               jump label: branch_short_circuit_c_false_309 
      128  label branch_short_circuit_c_false_309: 
               jump label: L6_0 
@@ -590,10 +590,10 @@
      135  label branch_true_48: 
          634  untrack temp_25_cmp_47_0 
          108  temp_17_arithop_47_0 = Sub f32 x_39_2, 6.2831855_0 
-         637  untrack x_39_2 
+         638  untrack x_39_2 
          109  (nop) 
          574  x_39_4 = f32 temp_17_arithop_47_0 
-         638  untrack temp_17_arithop_47_0 
+         637  untrack temp_17_arithop_47_0 
               jump label: branch_false_48 
      136  label branch_false_48: 
               jump label: L7_0 
@@ -631,12 +631,12 @@
          126  temp_24_cmp_42_0 = fcmp f32 Olt x_39_0, -6.2831855_0 
          131  br i1 temp_24_cmp_42_0, label branch_short_circuit_c_true_309, label UP_75_0 
      570  label UP_75_0: 
-         653  untrack temp_24_cmp_42_0 
-         652  untrack temp_21_arithop_44_0 
-         651  untrack temp_20__44_0 
-         650  untrack temp_22_arithop_44_0 
-         649  untrack temp_19__44_0 
-         648  untrack temp_18_arithop_44_0 
+         653  untrack temp_20__44_0 
+         652  untrack temp_18_arithop_44_0 
+         651  untrack temp_19__44_0 
+         650  untrack temp_21_arithop_44_0 
+         649  untrack temp_22_arithop_44_0 
+         648  untrack temp_24_cmp_42_0 
          578  x_39_2 = f32 x_39_0 
          654  untrack x_39_0 
               jump label: branch_short_circuit_c_false_309 
@@ -652,21 +652,21 @@
          616  untrack temp_13_ret_of_my_fabs_35_0 
          98   br i1 temp_14_cmp_35_0, label branch_true_36, label branch_false_36 
      96   label branch_true_36: 
-         620  untrack temp_12_ret_of_p_34_0 
+         620  untrack temp_14_cmp_35_0 
          619  untrack temp_11_ret_of_my_sin_impl_34_0 
-         618  untrack temp_10_arithop_34_0 
-         617  untrack temp_14_cmp_35_0 
+         618  untrack temp_12_ret_of_p_34_0 
+         617  untrack temp_10_arithop_34_0 
          91   ret x_32_0 
      97   label branch_false_36: 
          621  untrack temp_14_cmp_35_0 
               jump label: L10_0 
           label L10_0: 
          84   temp_10_arithop_34_0 = Div f32 x_32_0, 3.0_0 
-         622  untrack x_32_0 
+         624  untrack x_32_0 
          86   temp_11_ret_of_my_sin_impl_34_0 =  Call f32 my_sin_impl_0(temp_10_arithop_34_0) 
-         624  untrack temp_10_arithop_34_0 
+         623  untrack temp_10_arithop_34_0 
          88   temp_12_ret_of_p_34_0 =  Call f32 p_0(temp_11_ret_of_my_sin_impl_34_0) 
-         623  untrack temp_11_ret_of_my_sin_impl_34_0 
+         622  untrack temp_11_ret_of_my_sin_impl_34_0 
          89   ret temp_12_ret_of_p_34_0 
  38   Define p_0 "x_28_0," -> p_ret_0 
          66   alloc f32 [temp_3__30] 
@@ -682,13 +682,13 @@
          71   (nop) 
          73   temp_6_arithop_30_0 = Mul f32 4._0, x_28_0 
          75   temp_7_arithop_30_0 = Mul f32 temp_6_arithop_30_0, x_28_0 
-         613  untrack temp_6_arithop_30_0 
+         612  untrack temp_6_arithop_30_0 
          77   temp_8_arithop_30_0 = Mul f32 temp_7_arithop_30_0, x_28_0 
          614  untrack x_28_0 
          611  untrack temp_7_arithop_30_0 
          79   temp_9_arithop_30_0 = Sub f32 temp_4_arithop_30_0, temp_8_arithop_30_0 
          615  untrack temp_8_arithop_30_0 
-         612  untrack temp_4_arithop_30_0 
+         613  untrack temp_4_arithop_30_0 
          80   ret temp_9_arithop_30_0 
  37   Define my_fabs_0 "x_21_0," -> my_fabs_ret_0 
          52   alloc f32 [temp_0__23] 

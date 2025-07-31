@@ -20,8 +20,8 @@
  14   global Fn[zz_dest_15, zz_ptr_15, zz_len_15]->memcpy_ret_0 memcpy_0 
  29   Define main_0 "" -> main_ret_0 
          258  M_0_1 = chi M_0_0:29 
-         259  N_0_1 = chi N_0_0:29 
-         260  L_0_1 = chi L_0_0:29 
+         259  L_0_1 = chi L_0_0:29 
+         260  N_0_1 = chi N_0_0:29 
          101  alloc Array:f32:[Some(3_0)] [a0_33] 
          103  alloc Array:f32:[Some(3_0)] [a1_33] 
          105  alloc Array:f32:[Some(3_0)] [a2_33] 
@@ -136,37 +136,37 @@
          136  temp_27_ele_ptr_of_c1_33_33 = GEP c1_33_0:Array:f32:[Some(3_0)] [] 
          138  temp_28_ele_ptr_of_c2_33_33 = GEP c2_33_0:Array:f32:[Some(3_0)] [] 
          140  temp_29_ret_of_sub_33_0 =  Call i32 sub_0(temp_20_ele_ptr_of_a0_33_33, temp_21_ele_ptr_of_a1_33_33, temp_22_ele_ptr_of_a2_33_33, temp_23_ele_ptr_of_b0_33_33, temp_24_ele_ptr_of_b1_33_33, temp_25_ele_ptr_of_b2_33_33, temp_26_ele_ptr_of_c0_33_33, temp_27_ele_ptr_of_c1_33_33, temp_28_ele_ptr_of_c2_33_33) 
-         329  untrack temp_22_ele_ptr_of_a2_33_33 
+         329  untrack temp_20_ele_ptr_of_a0_33_33 
          328  untrack temp_28_ele_ptr_of_c2_33_33 
-         327  untrack temp_27_ele_ptr_of_c1_33_33 
-         326  untrack temp_26_ele_ptr_of_c0_33_33 
+         327  untrack temp_26_ele_ptr_of_c0_33_33 
+         326  untrack temp_25_ele_ptr_of_b2_33_33 
+         325  untrack temp_23_ele_ptr_of_b0_33_33 
          324  untrack temp_24_ele_ptr_of_b1_33_33 
-         323  untrack temp_23_ele_ptr_of_b0_33_33 
-         322  untrack temp_21_ele_ptr_of_a1_33_33 
-         321  untrack temp_25_ele_ptr_of_b2_33_33 
-         320  untrack temp_20_ele_ptr_of_a0_33_33 
-         261  mu a1_33_1:140 
+         323  untrack temp_27_ele_ptr_of_c1_33_33 
+         322  untrack temp_22_ele_ptr_of_a2_33_33 
+         321  untrack temp_21_ele_ptr_of_a1_33_33 
+         261  mu b1_33_1:140 
          262  mu b0_33_1:140 
-         263  mu c2_33_0:140 
-         264  mu a2_33_1:140 
-         265  mu c1_33_0:140 
-         266  mu b1_33_1:140 
-         267  mu c0_33_0:140 
-         268  mu a0_33_1:140 
-         269  mu b2_33_1:140 
-         270  a2_33_3 = chi a2_33_1:140 
-         271  b1_33_3 = chi b1_33_1:140 
-         272  a1_33_3 = chi a1_33_1:140 
-         273  b2_33_3 = chi b2_33_1:140 
-         274  a0_33_3 = chi a0_33_1:140 
-         275  c2_33_1 = chi c2_33_0:140 
-         276  b0_33_3 = chi b0_33_1:140 
-         277  c0_33_1 = chi c0_33_0:140 
-         278  c1_33_1 = chi c1_33_0:140 
+         263  mu a2_33_1:140 
+         264  mu c1_33_0:140 
+         265  mu c2_33_0:140 
+         266  mu a0_33_1:140 
+         267  mu a1_33_1:140 
+         268  mu b2_33_1:140 
+         269  mu c0_33_0:140 
+         270  a0_33_3 = chi a0_33_1:140 
+         271  a2_33_3 = chi a2_33_1:140 
+         272  c0_33_1 = chi c0_33_0:140 
+         273  b1_33_3 = chi b1_33_1:140 
+         274  a1_33_3 = chi a1_33_1:140 
+         275  c1_33_1 = chi c1_33_0:140 
+         276  c2_33_1 = chi c2_33_0:140 
+         277  b0_33_3 = chi b0_33_1:140 
+         278  b2_33_3 = chi b2_33_1:140 
          141  (nop) 
          143   
          303  i_33_5 = i32 temp_29_ret_of_sub_33_0 
-         325  untrack temp_29_ret_of_sub_33_0 
+         320  untrack temp_29_ret_of_sub_33_0 
               jump label: while.head_53 
      237  label while.head_53: 
          236  temp_56_cmp_52_0 = icmp i32 Slt i_33_5, 3_0 
@@ -229,8 +229,8 @@
          150  (nop) 
          151   Call void putch_0(10_0) 
          279  mu M_0_2:153 
-         280  mu N_0_2:153 
-         281  mu L_0_2:153 
+         280  mu L_0_2:153 
+         281  mu N_0_2:153 
          153  ret 0_0 
  28   Define sub_0 "a0_19,a1_19,a2_19,b0_19,b1_19,b2_19,c0_19,c1_19,c2_19," -> sub_ret_0 
          30   alloc i32 [i_21] 
@@ -307,17 +307,17 @@
          300  i_21_2 = i32 temp_18_arithop_26_0 
               jump label: while.head_25 
      90   label while.exit_25: 
-         315  untrack a1_19 
+         315  untrack b1_19 
          314  untrack a2_19 
          313  untrack b0_19 
-         312  untrack i_21_2 
-         311  untrack b1_19 
-         310  untrack b2_19 
-         309  untrack a0_19 
+         312  untrack b2_19 
+         311  untrack a0_19 
+         310  untrack i_21_2 
+         309  untrack a1_19 
          255  mu c1_19:34 
-         317  untrack c1_19 
-         256  mu c2_19:34 
-         316  untrack c2_19 
-         257  mu c0_19:34 
-         318  untrack c0_19 
+         316  untrack c1_19 
+         256  mu c0_19:34 
+         317  untrack c0_19 
+         257  mu c2_19:34 
+         318  untrack c2_19 
          34   ret 0_0 

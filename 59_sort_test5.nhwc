@@ -45,39 +45,39 @@
          177   
          180  temp_38_ptr_of_a_70_70 = GEP a_70_0:Array:i32:[Some(10_0)] [Some(0_0)] 
          181  store 4_0:i32 temp_38_ptr_of_a_70_70:ptr->i32 
-         342  untrack temp_38_ptr_of_a_70_70 
+         338  untrack temp_38_ptr_of_a_70_70 
          182  a_70_1 = chi a_70_0:181 
          184  temp_39_ptr_of_a_70_70 = GEP a_70_1:Array:i32:[Some(10_0)] [Some(1_0)] 
          185  store 3_0:i32 temp_39_ptr_of_a_70_70:ptr->i32 
-         341  untrack temp_39_ptr_of_a_70_70 
+         343  untrack temp_39_ptr_of_a_70_70 
          186  a_70_2 = chi a_70_1:185 
          188  temp_40_ptr_of_a_70_70 = GEP a_70_2:Array:i32:[Some(10_0)] [Some(2_0)] 
          189  store 9_0:i32 temp_40_ptr_of_a_70_70:ptr->i32 
-         340  untrack temp_40_ptr_of_a_70_70 
+         346  untrack temp_40_ptr_of_a_70_70 
          190  a_70_3 = chi a_70_2:189 
          192  temp_41_ptr_of_a_70_70 = GEP a_70_3:Array:i32:[Some(10_0)] [Some(3_0)] 
          193  store 2_0:i32 temp_41_ptr_of_a_70_70:ptr->i32 
-         337  untrack temp_41_ptr_of_a_70_70 
+         339  untrack temp_41_ptr_of_a_70_70 
          194  a_70_4 = chi a_70_3:193 
          196  temp_42_ptr_of_a_70_70 = GEP a_70_4:Array:i32:[Some(10_0)] [Some(4_0)] 
          197  store 0_0:i32 temp_42_ptr_of_a_70_70:ptr->i32 
-         338  untrack temp_42_ptr_of_a_70_70 
+         342  untrack temp_42_ptr_of_a_70_70 
          198  a_70_5 = chi a_70_4:197 
          200  temp_43_ptr_of_a_70_70 = GEP a_70_5:Array:i32:[Some(10_0)] [Some(5_0)] 
          201  store 1_0:i32 temp_43_ptr_of_a_70_70:ptr->i32 
-         344  untrack temp_43_ptr_of_a_70_70 
+         337  untrack temp_43_ptr_of_a_70_70 
          202  a_70_6 = chi a_70_5:201 
          204  temp_44_ptr_of_a_70_70 = GEP a_70_6:Array:i32:[Some(10_0)] [Some(6_0)] 
          205  store 6_0:i32 temp_44_ptr_of_a_70_70:ptr->i32 
-         347  untrack temp_44_ptr_of_a_70_70 
+         344  untrack temp_44_ptr_of_a_70_70 
          206  a_70_7 = chi a_70_6:205 
          208  temp_45_ptr_of_a_70_70 = GEP a_70_7:Array:i32:[Some(10_0)] [Some(7_0)] 
          209  store 5_0:i32 temp_45_ptr_of_a_70_70:ptr->i32 
-         336  untrack temp_45_ptr_of_a_70_70 
+         347  untrack temp_45_ptr_of_a_70_70 
          210  a_70_8 = chi a_70_7:209 
          212  temp_46_ptr_of_a_70_70 = GEP a_70_8:Array:i32:[Some(10_0)] [Some(8_0)] 
          213  store 7_0:i32 temp_46_ptr_of_a_70_70:ptr->i32 
-         339  untrack temp_46_ptr_of_a_70_70 
+         341  untrack temp_46_ptr_of_a_70_70 
          214  a_70_9 = chi a_70_8:213 
          216  temp_47_ptr_of_a_70_70 = GEP a_70_9:Array:i32:[Some(10_0)] [Some(9_0)] 
          217  store 8_0:i32 temp_47_ptr_of_a_70_70:ptr->i32 
@@ -89,12 +89,12 @@
          225  temp_49_value_from_ptr_70_0 = load *n_0:ptr->i32 
          226  mu n_0_2:225 
          228  temp_50_ret_of_heap_sort_70_0 =  Call i32 heap_sort_0(temp_48_ele_ptr_of_a_70_70, temp_49_value_from_ptr_70_0) 
-         346  untrack temp_48_ele_ptr_of_a_70_70 
+         340  untrack temp_48_ele_ptr_of_a_70_70 
          259  mu a_70_10:228 
          260  a_70_11 = chi a_70_10:228 
          229  (nop) 
          283  i_70_3 = i32 temp_50_ret_of_heap_sort_70_0 
-         343  untrack temp_50_ret_of_heap_sort_70_0 
+         336  untrack temp_50_ret_of_heap_sort_70_0 
               jump label: while.head_87 
      251  label while.head_87: 
          247  (nop) 
@@ -115,8 +115,8 @@
          284  i_70_3 = i32 temp_53_arithop_88_0 
               jump label: while.head_87 
      253  label while.exit_87: 
-         349  untrack temp_49_value_from_ptr_70_0 
-         348  untrack i_70_3 
+         349  untrack i_70_3 
+         348  untrack temp_49_value_from_ptr_70_0 
          261  mu n_0_2:231 
          231  ret 0_0 
  22   Define heap_sort_0 "arr_46,len_46_0," -> heap_sort_ret_0 
@@ -141,12 +141,12 @@
          126   
          128  temp_26_arithop_48_0 = Div i32 len_46_0, 2_0 
          130  temp_27_arithop_48_0 = Sub i32 temp_26_arithop_48_0, 1_0 
-         331  untrack temp_26_arithop_48_0 
+         329  untrack temp_26_arithop_48_0 
          131  (nop) 
          153  temp_33_arithop_54_0 = Sub i32 len_46_0, 1_0 
-         329  untrack len_46_0 
+         330  untrack len_46_0 
          279  i_48_2 = i32 temp_27_arithop_48_0 
-         330  untrack temp_27_arithop_48_0 
+         331  untrack temp_27_arithop_48_0 
               jump label: while.head_53 
      163  label while.head_53: 
          162  temp_36_cmp_52_0 = icmp i32 Sgt i_48_2, -1_0 
@@ -183,8 +183,8 @@
          282  i_48_5 = i32 temp_30_arithop_61_0 
               jump label: while.head_60 
      171  label while.exit_60: 
-         335  untrack i_48_5 
-         334  untrack arr_46 
+         335  untrack arr_46 
+         334  untrack i_48_5 
          136  ret 0_0 
  20   Define heap_ajust_0 "arr_25,start_25_0,end_25_0," -> heap_ajust_ret_0 
          49   alloc i32 [dad_27] 
@@ -213,17 +213,17 @@
          19    
          50    
          51   dad_27_1 = i32 start_25_0 
-         295  untrack start_25_0 
+         293  untrack start_25_0 
          53    
          55   temp_6_arithop_27_0 = Mul i32 dad_27_1, 2_0 
          57   temp_7_arithop_27_0 = Add i32 temp_6_arithop_27_0, 1_0 
-         294  untrack temp_6_arithop_27_0 
+         296  untrack temp_6_arithop_27_0 
          58   (nop) 
          76   temp_12_arithop_32_0 = Add i32 end_25_0, 1_0 
          272  son_27_2 = i32 temp_7_arithop_27_0 
-         296  untrack temp_7_arithop_27_0 
+         295  untrack temp_7_arithop_27_0 
          273  dad_27_2 = i32 dad_27_1 
-         293  untrack dad_27_1 
+         294  untrack dad_27_1 
               jump label: while.head_33 
      79   label while.head_33: 
          78   temp_13_cmp_32_0 = icmp i32 Slt son_27_2, temp_12_arithop_32_0 
@@ -232,8 +232,8 @@
          86   temp_14_cmp_35_0 = icmp i32 Slt son_27_2, end_25_0 
          106  br i1 temp_14_cmp_35_0, label branch_short_circuit_p_true_198, label UP_26_0 
      103  label branch_short_circuit_p_true_198: 
-         303  untrack temp_13_cmp_32_0 
-         302  untrack temp_14_cmp_35_0 
+         303  untrack temp_14_cmp_35_0 
+         302  untrack temp_13_cmp_32_0 
          88   temp_15_arithop_35_0 = Add i32 son_27_2, 1_0 
          90   temp_16_ptr_of_arr_25_35 = GEP arr_25:Array:i32:[None] [Some(temp_15_arithop_35_0)] 
          92   temp_17_ele_of_arr_25_35_0 = load temp_16_ptr_of_arr_25_35:ptr->i32 
@@ -266,23 +266,23 @@
          118  temp_25_cmp_38_0 = icmp i32 Sgt temp_24_ele_of_arr_25_38_0, temp_22_ele_of_arr_25_38_0 
          121  br i1 temp_25_cmp_38_0, label branch_true_39, label branch_false_39 
      119  label branch_true_39: 
-         328  untrack temp_9_arithop_41_0 
-         327  untrack temp_22_ele_of_arr_25_38_0 
-         326  untrack temp_10_arithop_41_0 
-         325  untrack temp_16_ptr_of_arr_25_35 
-         324  untrack temp_23_ptr_of_arr_25_38 
-         323  untrack temp_15_arithop_35_0 
-         322  untrack temp_18_ptr_of_arr_25_35 
-         321  untrack temp_21_ptr_of_arr_25_38 
-         320  untrack temp_25_cmp_38_0 
-         319  untrack temp_13_cmp_32_0 
-         318  untrack temp_20_cmp_35_0 
-         317  untrack dad_27_4 
-         316  untrack temp_14_cmp_35_0 
-         315  untrack son_27_3 
-         314  untrack temp_17_ele_of_arr_25_35_0 
-         313  untrack temp_19_ele_of_arr_25_35_0 
-         312  untrack temp_24_ele_of_arr_25_38_0 
+         328  untrack son_27_3 
+         327  untrack temp_20_cmp_35_0 
+         326  untrack temp_13_cmp_32_0 
+         325  untrack temp_23_ptr_of_arr_25_38 
+         324  untrack temp_10_arithop_41_0 
+         323  untrack temp_18_ptr_of_arr_25_35 
+         322  untrack temp_19_ele_of_arr_25_35_0 
+         321  untrack temp_17_ele_of_arr_25_35_0 
+         320  untrack temp_21_ptr_of_arr_25_38 
+         319  untrack temp_9_arithop_41_0 
+         318  untrack temp_16_ptr_of_arr_25_35 
+         317  untrack temp_14_cmp_35_0 
+         316  untrack temp_25_cmp_38_0 
+         315  untrack dad_27_4 
+         314  untrack temp_15_arithop_35_0 
+         313  untrack temp_24_ele_of_arr_25_38_0 
+         312  untrack temp_22_ele_of_arr_25_38_0 
          71   ret 0_0 
      120  label branch_false_39: 
          62   temp_8_ret_of_swap_41_0 =  Call i32 swap_0(arr_25, dad_27_2, son_27_3) 
@@ -305,11 +305,11 @@
          278  son_27_3 = i32 son_27_2 
               jump label: branch_short_circuit_c_false_198 
      81   label while.exit_33: 
-         301  untrack end_25_0 
-         300  untrack son_27_2 
-         299  untrack arr_25 
-         298  untrack dad_27_2 
-         297  untrack temp_12_arithop_32_0 
+         301  untrack son_27_2 
+         300  untrack dad_27_2 
+         299  untrack temp_12_arithop_32_0 
+         298  untrack end_25_0 
+         297  untrack arr_25 
          60   ret 0_0 
  18   Define swap_0 "array_17,i_17_0,j_17_0," -> swap_ret_0 
          24   alloc i32 [temp_19] 
@@ -330,18 +330,18 @@
          33   (nop) 
          35   temp_3_ptr_of_array_17_19 = GEP array_17:Array:i32:[None] [Some(j_17_0)] 
          37   temp_4_ele_of_array_17_19_0 = load temp_3_ptr_of_array_17_19:ptr->i32 
-         291  untrack temp_3_ptr_of_array_17_19 
+         289  untrack temp_3_ptr_of_array_17_19 
          38   mu array_17:37 
          39   store temp_4_ele_of_array_17_19_0:i32 temp_0_ptr_of_array_17_19:ptr->i32 
-         288  untrack temp_0_ptr_of_array_17_19 
-         287  untrack temp_4_ele_of_array_17_19_0 
+         291  untrack temp_4_ele_of_array_17_19_0 
+         285  untrack temp_0_ptr_of_array_17_19 
          40   array_17 = chi array_17:39 
          42   temp_5_ptr_of_array_17_19 = GEP array_17:ptr->i32 [Some(j_17_0)] 
-         289  untrack j_17_0 
+         286  untrack j_17_0 
          43   store temp_1_ele_of_array_17_19_0:i32 temp_5_ptr_of_array_17_19:ptr->i32 
-         290  untrack temp_1_ele_of_array_17_19_0 
-         286  untrack temp_5_ptr_of_array_17_19 
+         290  untrack temp_5_ptr_of_array_17_19 
+         288  untrack temp_1_ele_of_array_17_19_0 
          44   array_17 = chi array_17:43 
          257  mu array_17:46 
-         285  untrack array_17 
+         287  untrack array_17 
          46   ret 0_0 

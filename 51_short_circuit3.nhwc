@@ -20,8 +20,8 @@
  14   global Fn[zz_dest_15, zz_ptr_15, zz_len_15]->memcpy_ret_0 memcpy_0 
  22   Define main_0 "" -> main_ret_0 
          285  b_0_3 = chi b_0_0:22 
-         286  a_0_3 = chi a_0_0:22 
-         287  d_0_3 = chi d_0_0:22 
+         286  d_0_3 = chi d_0_0:22 
+         287  a_0_3 = chi a_0_0:22 
          54   alloc i32 [temp_3_value_from_ptr_33] 
          59   alloc i32 [temp_4_value_from_ptr_33] 
          68   alloc i32 [temp_5_value_from_ptr_33] 
@@ -96,9 +96,9 @@
      126  label branch_short_circuit_c_true_311: 
          341  untrack temp_12_i32_to_bool_36_0 
          340  untrack temp_12_i32_to_bool_36_0 
-         313  untrack temp_12_i32_to_bool_36_0 
-         312  untrack temp_10_ret_of_set_b_36_0 
-         311  untrack temp_11_i32_to_bool_36_0 
+         313  untrack temp_11_i32_to_bool_36_0 
+         312  untrack temp_12_i32_to_bool_36_0 
+         311  untrack temp_10_ret_of_set_b_36_0 
               jump label: L2_0 
           label L2_0: 
          55   temp_3_value_from_ptr_33_0 = load *a_0:ptr->i32 
@@ -136,20 +136,20 @@
               jump label: branch_short_circuit_c_false_329 
      140  label branch_short_circuit_c_false_329: 
          338  untrack temp_16_i32_to_bool_45_0 
-         320  untrack temp_15_i32_to_bool_45_0 
-         319  untrack temp_14_ret_of_set_b_45_0 
-         318  untrack temp_16_i32_to_bool_45_0 
+         320  untrack temp_16_i32_to_bool_45_0 
+         319  untrack temp_15_i32_to_bool_45_0 
+         318  untrack temp_14_ret_of_set_b_45_0 
               jump label: L4_0 
           label L4_0: 
          69   temp_5_value_from_ptr_33_0 = load *a_0:ptr->i32 
          70   mu a_0_7:69 
          71    Call void putint_0(temp_5_value_from_ptr_33_0) 
-         322  untrack temp_5_value_from_ptr_33_0 
+         323  untrack temp_5_value_from_ptr_33_0 
          72    Call void putch_0(32_0) 
          74   temp_6_value_from_ptr_33_0 = load *b_0:ptr->i32 
          75   mu b_0_7:74 
          76    Call void putint_0(temp_6_value_from_ptr_33_0) 
-         323  untrack temp_6_value_from_ptr_33_0 
+         322  untrack temp_6_value_from_ptr_33_0 
          77    Call void putch_0(10_0) 
          78   (nop) 
          80   store 2_0:i32 *d_0:ptr->i32 
@@ -184,8 +184,8 @@
      159  label branch_short_circuit_c_true_361: 
          332  untrack temp_20_i32_to_bool_59_0 
          331  untrack temp_20_i32_to_bool_59_0 
-         328  untrack temp_19_ret_of_set_d_59_0 
-         327  untrack temp_20_i32_to_bool_59_0 
+         328  untrack temp_20_i32_to_bool_59_0 
+         327  untrack temp_19_ret_of_set_d_59_0 
               jump label: L8_0 
           label L8_0: 
          88   temp_8_value_from_ptr_33_0 = load *d_0:ptr->i32 
@@ -314,8 +314,8 @@
           label L20_0: 
          103   Call void putch_0(10_0) 
          292  mu b_0_7:105 
-         293  mu a_0_7:105 
-         294  mu d_0_6:105 
+         293  mu d_0_6:105 
+         294  mu a_0_7:105 
          105  ret 0_0 
      273  label branch_short_circuit_p_false_504: 
          265  (nop) 

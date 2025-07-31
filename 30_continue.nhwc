@@ -28,8 +28,8 @@
          19   (nop) 
          21    
          22   (nop) 
-         49   i_17_2 = i32 0_0 
-         50   sum_17_2 = i32 0_0 
+         49   sum_17_2 = i32 0_0 
+         50   i_17_2 = i32 0_0 
               jump label: while.head_23 
      36   label while.head_23: 
          35   temp_3_cmp_22_0 = icmp i32 Slt i_17_2, 100_0 

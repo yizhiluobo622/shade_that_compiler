@@ -50,11 +50,11 @@
          68   i_17_1 = i32 temp_7_arithop_21_0 
               jump label: while.head_20 
      66   label UP_2_0: 
-         77   untrack temp_9__490_0 
-         76   untrack temp_5_ptr_of_arr_17_21 
-         75   untrack temp_8_ret_of_getint_19_0 
+         77   untrack temp_8_ret_of_getint_19_0 
+         76   untrack temp_9__490_0 
+         75   untrack temp_6_ret_of_getint_21_0 
          74   untrack temp_7_arithop_21_0 
-         73   untrack temp_6_ret_of_getint_21_0 
+         73   untrack temp_5_ptr_of_arr_17_21 
          69   i_17_3 = i32 i_17_1 
          70   sum_17_1 = i32 0_0 
               jump label: while.exit_20 

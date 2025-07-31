@@ -33,14 +33,14 @@
  28    
  30    
  43   Define main_0 "" -> main_ret_0 
-         1210 ints_0_6 = chi ints_0_0:43 
-         1211 intt_0_5 = chi intt_0_0:43 
+         1210 chat_0_7 = chi chat_0_0:43 
+         1211 c_0_3 = chi c_0_0:43 
          1212 i_0_1 = chi i_0_0:43 
-         1213 get2_0_4 = chi get2_0_0:43 
-         1214 c_0_3 = chi c_0_0:43 
-         1215 chat_0_7 = chi chat_0_0:43 
+         1213 ii_0_3 = chi ii_0_0:43 
+         1214 intt_0_5 = chi intt_0_0:43 
+         1215 get2_0_4 = chi get2_0_0:43 
          1216 chas_0_3 = chi chas_0_0:43 
-         1217 ii_0_3 = chi ii_0_0:43 
+         1217 ints_0_6 = chi ints_0_0:43 
          267  alloc i32 [temp_54_ret_of_getstr_87] 
          270  alloc i32 [lengets_87] 
          271  alloc i32 [temp_55_value_from_ptr_87] 
@@ -344,64 +344,64 @@
          716  temp_186_cmp_94_0 = icmp i32 Eq temp_185_ret_of_isdigit_94_0, 1_0 
          719  br i1 temp_186_cmp_94_0, label branch_true_95, label branch_false_95 
      717  label branch_true_95: 
-         1599 untrack temp_93_value_from_ptr_99_0 
-         1598 untrack temp_90_ptr_of_*get2_0_172 
-         1597 untrack temp_60_arithop_181_0 
-         1596 untrack temp_80_arithop_200_0 
-         1595 untrack temp_194_cmp_103_0 
-         1594 untrack temp_87_ptr_of_*get2_0_172 
-         1593 untrack temp_118_value_from_ptr_170_0 
-         1592 untrack temp_135_cmp_182_0 
-         1591 untrack temp_181_cmp_203_0 
-         1590 untrack temp_84_arithop_188_0 
-         1589 untrack temp_214_cmp_147_0 
-         1588 untrack temp_198_cmp_106_0 
-         1587 untrack temp_202_cmp_117_0 
-         1586 untrack temp_96_arithop_99_0 
-         1585 untrack temp_77_ret_of_intpop_184_0 
-         1584 untrack temp_94_ptr_of_*get2_0_99 
-         1583 untrack temp_79_ret_of_power_203_0 
-         1582 untrack temp_92_arithop_172_0 
-         1581 untrack temp_64_arithop_210_0 
-         1580 untrack temp_123_cmp_179_0 
-         1579 untrack temp_186_cmp_94_0 
-         1578 untrack temp_131_cmp_182_0 
-         1577 untrack temp_120_value_from_ptr_179_0 
-         1576 untrack temp_183_ptr_of_*get_0_94 
-         1575 untrack temp_218_cmp_157_0 
-         1574 untrack temp_59_value_from_ptr_181_0 
-         1573 untrack temp_210_cmp_137_0 
-         1572 untrack temp_82_arithop_194_0 
-         1571 untrack temp_151_cmp_208_0 
-         1570 untrack temp_206_cmp_127_0 
-         1569 untrack temp_122_ele_of_*get2_0_179_0 
-         1568 untrack temp_83_arithop_191_0 
-         1567 untrack temp_143_cmp_182_0 
-         1566 untrack temp_68_arithop_210_0 
-         1565 untrack temp_190_cmp_100_0 
-         1564 untrack temp_185_ret_of_isdigit_94_0 
-         1563 untrack temp_121_ptr_of_*get2_0_179 
-         1562 untrack temp_169_cmp_194_0 
-         1561 untrack temp_117_cmp_91_0 
+         1599 untrack temp_122_ele_of_*get2_0_179_0 
+         1598 untrack temp_121_ptr_of_*get2_0_179 
+         1597 untrack temp_198_cmp_106_0 
+         1596 untrack temp_96_arithop_99_0 
+         1595 untrack temp_86_value_from_ptr_172_0 
+         1594 untrack temp_173_cmp_197_0 
+         1593 untrack temp_89_arithop_172_0 
+         1592 untrack c_184_8 
+         1591 untrack c_184_10 
+         1590 untrack temp_177_cmp_200_0 
+         1589 untrack c_184_12 
+         1588 untrack c_184_2 
+         1587 untrack temp_194_cmp_103_0 
+         1586 untrack c_184_6 
+         1585 untrack c_184_4 
+         1584 untrack temp_83_arithop_191_0 
+         1583 untrack temp_123_cmp_179_0 
+         1582 untrack temp_85_ret_of_chapop_172_0 
+         1581 untrack temp_147_cmp_182_0 
+         1580 untrack temp_165_cmp_191_0 
+         1579 untrack temp_81_arithop_197_0 
+         1578 untrack temp_118_value_from_ptr_170_0 
+         1577 untrack temp_218_cmp_157_0 
+         1576 untrack temp_206_cmp_127_0 
+         1575 untrack temp_84_arithop_188_0 
+         1574 untrack temp_68_arithop_210_0 
+         1573 untrack temp_183_ptr_of_*get_0_94 
+         1572 untrack temp_210_cmp_137_0 
+         1571 untrack temp_181_cmp_203_0 
+         1570 untrack temp_78_ret_of_intpop_184_0 
+         1569 untrack temp_202_cmp_117_0 
+         1568 untrack temp_99_ret_of_chapop_108_0 
+         1567 untrack temp_90_ptr_of_*get2_0_172 
+         1566 untrack temp_94_ptr_of_*get2_0_99 
+         1565 untrack temp_131_cmp_182_0 
+         1564 untrack temp_87_ptr_of_*get2_0_172 
+         1563 untrack temp_117_cmp_91_0 
+         1562 untrack temp_82_arithop_194_0 
+         1561 untrack temp_120_value_from_ptr_179_0 
          1560 untrack temp_127_cmp_182_0 
-         1559 untrack temp_78_ret_of_intpop_184_0 
-         1558 untrack temp_173_cmp_197_0 
-         1557 untrack temp_99_ret_of_chapop_108_0 
-         1556 untrack temp_165_cmp_191_0 
-         1555 untrack temp_177_cmp_200_0 
-         1554 untrack temp_86_value_from_ptr_172_0 
-         1553 untrack c_184_8 
-         1552 untrack c_184_12 
-         1551 untrack c_184_10 
-         1550 untrack c_184_6 
-         1549 untrack c_184_4 
-         1548 untrack c_184_2 
-         1547 untrack temp_147_cmp_182_0 
-         1546 untrack temp_89_arithop_172_0 
-         1545 untrack temp_119_cmp_170_0 
-         1544 untrack temp_139_cmp_182_0 
-         1543 untrack temp_85_ret_of_chapop_172_0 
-         1542 untrack temp_81_arithop_197_0 
+         1559 untrack temp_93_value_from_ptr_99_0 
+         1558 untrack temp_92_arithop_172_0 
+         1557 untrack temp_151_cmp_208_0 
+         1556 untrack temp_139_cmp_182_0 
+         1555 untrack temp_190_cmp_100_0 
+         1554 untrack temp_60_arithop_181_0 
+         1553 untrack temp_80_arithop_200_0 
+         1552 untrack temp_119_cmp_170_0 
+         1551 untrack temp_59_value_from_ptr_181_0 
+         1550 untrack temp_143_cmp_182_0 
+         1549 untrack temp_169_cmp_194_0 
+         1548 untrack temp_79_ret_of_power_203_0 
+         1547 untrack temp_185_ret_of_isdigit_94_0 
+         1546 untrack temp_135_cmp_182_0 
+         1545 untrack temp_64_arithop_210_0 
+         1544 untrack temp_186_cmp_94_0 
+         1543 untrack temp_77_ret_of_intpop_184_0 
+         1542 untrack temp_214_cmp_147_0 
          462  temp_109_value_from_ptr_96_0 = load *ii_0:ptr->i32 
          463  mu ii_0_4:462 
          465  temp_110_ptr_of_*get2_0_96 = GEP *get2_0:ptr->i32 [Some(temp_109_value_from_ptr_96_0)] 
@@ -412,14 +412,14 @@
          473  mu get_0_1:472 
          474  store temp_184_ele_of_*get_0_94_0:i32 temp_110_ptr_of_*get2_0_96:ptr->i32 
          1603 untrack temp_184_ele_of_*get_0_94_0 
-         1601 untrack temp_110_ptr_of_*get2_0_96 
+         1602 untrack temp_110_ptr_of_*get2_0_96 
          475  get2_0_6 = chi get2_0_5:474 
          477  (nop) 
          478  mu ii_0_4:477 
          480  temp_115_arithop_96_0 = Add i32 temp_109_value_from_ptr_96_0, 1_0 
-         1600 untrack temp_109_value_from_ptr_96_0 
+         1601 untrack temp_109_value_from_ptr_96_0 
          481  store temp_115_arithop_96_0:i32 *ii_0:ptr->i32 
-         1602 untrack temp_115_arithop_96_0 
+         1600 untrack temp_115_arithop_96_0 
          482  ii_0_5 = chi ii_0_4:481 
               jump label: gather_93 
      824  label gather_93: 
@@ -440,63 +440,63 @@
          729  temp_190_cmp_100_0 = icmp i32 Eq temp_184_ele_of_*get_0_94_0, 40_0 
          732  br i1 temp_190_cmp_100_0, label branch_true_101, label branch_false_101 
      730  label branch_true_101: 
-         1655 untrack temp_116_value_from_ptr_91_0 
-         1654 untrack temp_118_value_from_ptr_170_0 
-         1653 untrack temp_173_cmp_197_0 
-         1652 untrack temp_79_ret_of_power_203_0 
-         1651 untrack temp_185_ret_of_isdigit_94_0 
-         1650 untrack temp_135_cmp_182_0 
-         1649 untrack temp_98_arithop_93_0 
-         1648 untrack temp_68_arithop_210_0 
-         1647 untrack temp_183_ptr_of_*get_0_94 
-         1646 untrack temp_117_cmp_91_0 
-         1645 untrack temp_77_ret_of_intpop_184_0 
+         1655 untrack temp_120_value_from_ptr_179_0 
+         1654 untrack temp_173_cmp_197_0 
+         1653 untrack temp_135_cmp_182_0 
+         1652 untrack temp_190_cmp_100_0 
+         1651 untrack temp_122_ele_of_*get2_0_179_0 
+         1650 untrack temp_186_cmp_94_0 
+         1649 untrack temp_109_value_from_ptr_96_0 
+         1648 untrack temp_185_ret_of_isdigit_94_0 
+         1647 untrack temp_123_cmp_179_0 
+         1646 untrack temp_78_ret_of_intpop_184_0 
+         1645 untrack temp_81_arithop_197_0 
          1644 untrack temp_110_ptr_of_*get2_0_96 
-         1643 untrack c_184_4 
-         1642 untrack c_184_2 
-         1641 untrack c_184_8 
-         1640 untrack c_184_12 
-         1639 untrack c_184_10 
-         1638 untrack c_184_6 
-         1637 untrack temp_89_arithop_172_0 
-         1636 untrack temp_190_cmp_100_0 
-         1635 untrack temp_177_cmp_200_0 
-         1634 untrack temp_81_arithop_197_0 
-         1633 untrack temp_127_cmp_182_0 
-         1632 untrack temp_169_cmp_194_0 
-         1631 untrack temp_86_value_from_ptr_172_0 
-         1630 untrack temp_87_ptr_of_*get2_0_172 
-         1629 untrack temp_181_cmp_203_0 
-         1628 untrack temp_109_value_from_ptr_96_0 
-         1627 untrack temp_83_arithop_191_0 
-         1626 untrack temp_84_arithop_188_0 
-         1625 untrack temp_131_cmp_182_0 
-         1624 untrack temp_122_ele_of_*get2_0_179_0 
-         1623 untrack temp_143_cmp_182_0 
-         1622 untrack temp_120_value_from_ptr_179_0 
-         1621 untrack temp_139_cmp_182_0 
-         1620 untrack temp_60_arithop_181_0 
-         1619 untrack temp_78_ret_of_intpop_184_0 
-         1618 untrack temp_186_cmp_94_0 
-         1617 untrack temp_82_arithop_194_0 
-         1616 untrack temp_85_ret_of_chapop_172_0 
-         1615 untrack temp_147_cmp_182_0 
-         1614 untrack temp_59_value_from_ptr_181_0 
-         1613 untrack temp_123_cmp_179_0 
-         1612 untrack temp_151_cmp_208_0 
-         1611 untrack temp_80_arithop_200_0 
-         1610 untrack temp_90_ptr_of_*get2_0_172 
-         1609 untrack temp_121_ptr_of_*get2_0_179 
-         1608 untrack temp_165_cmp_191_0 
-         1607 untrack temp_64_arithop_210_0 
-         1606 untrack temp_92_arithop_172_0 
-         1605 untrack temp_115_arithop_96_0 
-         1604 untrack temp_119_cmp_170_0 
+         1643 untrack temp_83_arithop_191_0 
+         1642 untrack temp_117_cmp_91_0 
+         1641 untrack temp_181_cmp_203_0 
+         1640 untrack temp_139_cmp_182_0 
+         1639 untrack temp_177_cmp_200_0 
+         1638 untrack temp_118_value_from_ptr_170_0 
+         1637 untrack temp_80_arithop_200_0 
+         1636 untrack temp_98_arithop_93_0 
+         1635 untrack temp_79_ret_of_power_203_0 
+         1634 untrack temp_151_cmp_208_0 
+         1633 untrack temp_143_cmp_182_0 
+         1632 untrack temp_84_arithop_188_0 
+         1631 untrack temp_60_arithop_181_0 
+         1630 untrack temp_68_arithop_210_0 
+         1629 untrack temp_131_cmp_182_0 
+         1628 untrack temp_64_arithop_210_0 
+         1627 untrack temp_116_value_from_ptr_91_0 
+         1626 untrack temp_90_ptr_of_*get2_0_172 
+         1625 untrack temp_127_cmp_182_0 
+         1624 untrack temp_169_cmp_194_0 
+         1623 untrack temp_119_cmp_170_0 
+         1622 untrack temp_165_cmp_191_0 
+         1621 untrack temp_87_ptr_of_*get2_0_172 
+         1620 untrack temp_121_ptr_of_*get2_0_179 
+         1619 untrack temp_89_arithop_172_0 
+         1618 untrack temp_77_ret_of_intpop_184_0 
+         1617 untrack temp_115_arithop_96_0 
+         1616 untrack temp_183_ptr_of_*get_0_94 
+         1615 untrack temp_59_value_from_ptr_181_0 
+         1614 untrack temp_85_ret_of_chapop_172_0 
+         1613 untrack temp_82_arithop_194_0 
+         1612 untrack temp_147_cmp_182_0 
+         1611 untrack c_184_8 
+         1610 untrack c_184_10 
+         1609 untrack c_184_12 
+         1608 untrack c_184_4 
+         1607 untrack c_184_2 
+         1606 untrack c_184_6 
+         1605 untrack temp_92_arithop_172_0 
+         1604 untrack temp_86_value_from_ptr_172_0 
          460   Call void chapush_0(40_0) 
          1220 mu chat_0_9:460 
          1221 mu chas_0_4:460 
-         1222 chat_0_11 = chi chat_0_9:460 
-         1223 chas_0_6 = chi chas_0_4:460 
+         1222 chas_0_6 = chi chas_0_4:460 
+         1223 chat_0_11 = chi chat_0_9:460 
               jump label: branch_false_101 
      731  label branch_false_101: 
               jump label: L2_0 
@@ -509,64 +509,64 @@
          742  temp_194_cmp_103_0 = icmp i32 Eq temp_184_ele_of_*get_0_94_0, 94_0 
          745  br i1 temp_194_cmp_103_0, label branch_true_104, label branch_false_104 
      743  label branch_true_104: 
-         1708 untrack temp_165_cmp_191_0 
-         1707 untrack temp_127_cmp_182_0 
-         1706 untrack temp_190_cmp_100_0 
-         1705 untrack temp_139_cmp_182_0 
-         1704 untrack temp_86_value_from_ptr_172_0 
-         1703 untrack temp_194_cmp_103_0 
-         1702 untrack c_184_8 
+         1708 untrack temp_181_cmp_203_0 
+         1707 untrack temp_190_cmp_100_0 
+         1706 untrack temp_81_arithop_197_0 
+         1705 untrack temp_84_arithop_188_0 
+         1704 untrack temp_115_arithop_96_0 
+         1703 untrack c_184_8 
+         1702 untrack c_184_10 
          1701 untrack c_184_12 
-         1700 untrack c_184_10 
-         1699 untrack c_184_6 
-         1698 untrack c_184_4 
-         1697 untrack c_184_2 
-         1696 untrack temp_109_value_from_ptr_96_0 
-         1695 untrack temp_186_cmp_94_0 
-         1694 untrack temp_68_arithop_210_0 
-         1693 untrack temp_60_arithop_181_0 
-         1692 untrack temp_181_cmp_203_0 
-         1691 untrack temp_92_arithop_172_0 
-         1690 untrack temp_131_cmp_182_0 
-         1689 untrack temp_177_cmp_200_0 
-         1688 untrack temp_173_cmp_197_0 
-         1687 untrack temp_64_arithop_210_0 
-         1686 untrack temp_119_cmp_170_0 
-         1685 untrack temp_135_cmp_182_0 
-         1684 untrack temp_121_ptr_of_*get2_0_179 
-         1683 untrack temp_85_ret_of_chapop_172_0 
-         1682 untrack temp_110_ptr_of_*get2_0_96 
-         1681 untrack temp_82_arithop_194_0 
-         1680 untrack temp_84_arithop_188_0 
-         1679 untrack temp_117_cmp_91_0 
-         1678 untrack temp_78_ret_of_intpop_184_0 
-         1677 untrack temp_123_cmp_179_0 
-         1676 untrack temp_77_ret_of_intpop_184_0 
-         1675 untrack temp_81_arithop_197_0 
-         1674 untrack temp_147_cmp_182_0 
-         1673 untrack temp_185_ret_of_isdigit_94_0 
-         1672 untrack temp_183_ptr_of_*get_0_94 
-         1671 untrack temp_143_cmp_182_0 
-         1670 untrack temp_98_arithop_93_0 
-         1669 untrack temp_116_value_from_ptr_91_0 
-         1668 untrack temp_83_arithop_191_0 
-         1667 untrack temp_118_value_from_ptr_170_0 
-         1666 untrack temp_115_arithop_96_0 
-         1665 untrack temp_120_value_from_ptr_179_0 
-         1664 untrack temp_80_arithop_200_0 
-         1663 untrack temp_151_cmp_208_0 
-         1662 untrack temp_122_ele_of_*get2_0_179_0 
-         1661 untrack temp_89_arithop_172_0 
-         1660 untrack temp_59_value_from_ptr_181_0 
-         1659 untrack temp_169_cmp_194_0 
-         1658 untrack temp_79_ret_of_power_203_0 
-         1657 untrack temp_90_ptr_of_*get2_0_172 
-         1656 untrack temp_87_ptr_of_*get2_0_172 
+         1700 untrack c_184_4 
+         1699 untrack c_184_2 
+         1698 untrack c_184_6 
+         1697 untrack temp_89_arithop_172_0 
+         1696 untrack temp_90_ptr_of_*get2_0_172 
+         1695 untrack temp_185_ret_of_isdigit_94_0 
+         1694 untrack temp_59_value_from_ptr_181_0 
+         1693 untrack temp_118_value_from_ptr_170_0 
+         1692 untrack temp_135_cmp_182_0 
+         1691 untrack temp_173_cmp_197_0 
+         1690 untrack temp_117_cmp_91_0 
+         1689 untrack temp_80_arithop_200_0 
+         1688 untrack temp_119_cmp_170_0 
+         1687 untrack temp_122_ele_of_*get2_0_179_0 
+         1686 untrack temp_110_ptr_of_*get2_0_96 
+         1685 untrack temp_85_ret_of_chapop_172_0 
+         1684 untrack temp_78_ret_of_intpop_184_0 
+         1683 untrack temp_83_arithop_191_0 
+         1682 untrack temp_139_cmp_182_0 
+         1681 untrack temp_60_arithop_181_0 
+         1680 untrack temp_87_ptr_of_*get2_0_172 
+         1679 untrack temp_68_arithop_210_0 
+         1678 untrack temp_82_arithop_194_0 
+         1677 untrack temp_116_value_from_ptr_91_0 
+         1676 untrack temp_186_cmp_94_0 
+         1675 untrack temp_147_cmp_182_0 
+         1674 untrack temp_169_cmp_194_0 
+         1673 untrack temp_120_value_from_ptr_179_0 
+         1672 untrack temp_86_value_from_ptr_172_0 
+         1671 untrack temp_92_arithop_172_0 
+         1670 untrack temp_77_ret_of_intpop_184_0 
+         1669 untrack temp_143_cmp_182_0 
+         1668 untrack temp_109_value_from_ptr_96_0 
+         1667 untrack temp_131_cmp_182_0 
+         1666 untrack temp_151_cmp_208_0 
+         1665 untrack temp_64_arithop_210_0 
+         1664 untrack temp_183_ptr_of_*get_0_94 
+         1663 untrack temp_177_cmp_200_0 
+         1662 untrack temp_123_cmp_179_0 
+         1661 untrack temp_127_cmp_182_0 
+         1660 untrack temp_121_ptr_of_*get2_0_179 
+         1659 untrack temp_79_ret_of_power_203_0 
+         1658 untrack temp_165_cmp_191_0 
+         1657 untrack temp_98_arithop_93_0 
+         1656 untrack temp_194_cmp_103_0 
          459   Call void chapush_0(94_0) 
          1224 mu chat_0_12:459 
          1225 mu chas_0_7:459 
-         1226 chat_0_13 = chi chat_0_12:459 
-         1227 chas_0_8 = chi chas_0_7:459 
+         1226 chas_0_8 = chi chas_0_7:459 
+         1227 chat_0_13 = chi chat_0_12:459 
               jump label: branch_false_104 
      744  label branch_false_104: 
               jump label: L3_0 
@@ -579,63 +579,63 @@
          755  temp_198_cmp_106_0 = icmp i32 Eq temp_184_ele_of_*get_0_94_0, 41_0 
          758  br i1 temp_198_cmp_106_0, label branch_true_107, label branch_false_107 
      756  label branch_true_107: 
-         1762 untrack temp_85_ret_of_chapop_172_0 
-         1761 untrack temp_181_cmp_203_0 
-         1760 untrack temp_84_arithop_188_0 
-         1759 untrack temp_169_cmp_194_0 
-         1758 untrack temp_151_cmp_208_0 
-         1757 untrack temp_131_cmp_182_0 
-         1756 untrack temp_98_arithop_93_0 
-         1755 untrack temp_147_cmp_182_0 
+         1762 untrack temp_190_cmp_100_0 
+         1761 untrack temp_82_arithop_194_0 
+         1760 untrack temp_131_cmp_182_0 
+         1759 untrack temp_117_cmp_91_0 
+         1758 untrack temp_81_arithop_197_0 
+         1757 untrack temp_181_cmp_203_0 
+         1756 untrack temp_109_value_from_ptr_96_0 
+         1755 untrack temp_120_value_from_ptr_179_0 
          1754 untrack temp_110_ptr_of_*get2_0_96 
-         1753 untrack c_184_8 
-         1752 untrack c_184_12 
-         1751 untrack c_184_10 
-         1750 untrack c_184_6 
-         1749 untrack c_184_4 
-         1748 untrack c_184_2 
-         1747 untrack temp_59_value_from_ptr_181_0 
-         1746 untrack temp_183_ptr_of_*get_0_94 
-         1745 untrack temp_190_cmp_100_0 
-         1744 untrack temp_117_cmp_91_0 
-         1743 untrack temp_119_cmp_170_0 
-         1742 untrack temp_64_arithop_210_0 
-         1741 untrack temp_82_arithop_194_0 
-         1740 untrack temp_81_arithop_197_0 
-         1739 untrack temp_186_cmp_94_0 
-         1738 untrack temp_120_value_from_ptr_179_0 
-         1737 untrack temp_89_arithop_172_0 
-         1736 untrack temp_173_cmp_197_0 
-         1735 untrack temp_135_cmp_182_0 
-         1734 untrack temp_118_value_from_ptr_170_0 
-         1733 untrack temp_127_cmp_182_0 
-         1732 untrack temp_165_cmp_191_0 
-         1731 untrack temp_185_ret_of_isdigit_94_0 
-         1730 untrack temp_198_cmp_106_0 
-         1729 untrack temp_109_value_from_ptr_96_0 
-         1728 untrack temp_122_ele_of_*get2_0_179_0 
-         1727 untrack temp_60_arithop_181_0 
-         1726 untrack temp_77_ret_of_intpop_184_0 
-         1725 untrack temp_115_arithop_96_0 
-         1724 untrack temp_116_value_from_ptr_91_0 
-         1723 untrack temp_194_cmp_103_0 
-         1722 untrack temp_143_cmp_182_0 
-         1721 untrack temp_68_arithop_210_0 
-         1720 untrack temp_86_value_from_ptr_172_0 
-         1719 untrack temp_78_ret_of_intpop_184_0 
-         1718 untrack temp_177_cmp_200_0 
-         1717 untrack temp_87_ptr_of_*get2_0_172 
-         1716 untrack temp_123_cmp_179_0 
-         1715 untrack temp_90_ptr_of_*get2_0_172 
-         1714 untrack temp_83_arithop_191_0 
-         1713 untrack temp_92_arithop_172_0 
-         1712 untrack temp_121_ptr_of_*get2_0_179 
-         1711 untrack temp_79_ret_of_power_203_0 
-         1710 untrack temp_80_arithop_200_0 
-         1709 untrack temp_139_cmp_182_0 
+         1753 untrack temp_115_arithop_96_0 
+         1752 untrack temp_89_arithop_172_0 
+         1751 untrack temp_77_ret_of_intpop_184_0 
+         1750 untrack c_184_8 
+         1749 untrack c_184_10 
+         1748 untrack c_184_12 
+         1747 untrack c_184_4 
+         1746 untrack c_184_2 
+         1745 untrack c_184_6 
+         1744 untrack temp_183_ptr_of_*get_0_94 
+         1743 untrack temp_165_cmp_191_0 
+         1742 untrack temp_143_cmp_182_0 
+         1741 untrack temp_83_arithop_191_0 
+         1740 untrack temp_169_cmp_194_0 
+         1739 untrack temp_147_cmp_182_0 
+         1738 untrack temp_135_cmp_182_0 
+         1737 untrack temp_173_cmp_197_0 
+         1736 untrack temp_80_arithop_200_0 
+         1735 untrack temp_86_value_from_ptr_172_0 
+         1734 untrack temp_79_ret_of_power_203_0 
+         1733 untrack temp_151_cmp_208_0 
+         1732 untrack temp_68_arithop_210_0 
+         1731 untrack temp_177_cmp_200_0 
+         1730 untrack temp_85_ret_of_chapop_172_0 
+         1729 untrack temp_92_arithop_172_0 
+         1728 untrack temp_127_cmp_182_0 
+         1727 untrack temp_98_arithop_93_0 
+         1726 untrack temp_198_cmp_106_0 
+         1725 untrack temp_60_arithop_181_0 
+         1724 untrack temp_139_cmp_182_0 
+         1723 untrack temp_116_value_from_ptr_91_0 
+         1722 untrack temp_122_ele_of_*get2_0_179_0 
+         1721 untrack temp_90_ptr_of_*get2_0_172 
+         1720 untrack temp_78_ret_of_intpop_184_0 
+         1719 untrack temp_186_cmp_94_0 
+         1718 untrack temp_194_cmp_103_0 
+         1717 untrack temp_121_ptr_of_*get2_0_179 
+         1716 untrack temp_119_cmp_170_0 
+         1715 untrack temp_123_cmp_179_0 
+         1714 untrack temp_59_value_from_ptr_181_0 
+         1713 untrack temp_84_arithop_188_0 
+         1712 untrack temp_185_ret_of_isdigit_94_0 
+         1711 untrack temp_118_value_from_ptr_170_0 
+         1710 untrack temp_64_arithop_210_0 
+         1709 untrack temp_87_ptr_of_*get2_0_172 
          426  temp_99_ret_of_chapop_108_0 =  Call i32 chapop_0() 
-         1228 mu chas_0_9:426 
-         1229 mu chat_0_14:426 
+         1228 mu chat_0_14:426 
+         1229 mu chas_0_9:426 
          1230 chat_0_15 = chi chat_0_14:426 
          427  store temp_99_ret_of_chapop_108_0:i32 *c_0:ptr->i32 
          1763 untrack temp_99_ret_of_chapop_108_0 
@@ -666,8 +666,8 @@
          453  store temp_107_arithop_112_0:i32 *ii_0:ptr->i32 
          454  ii_0_8 = chi ii_0_7:453 
          456  temp_108_ret_of_chapop_112_0 =  Call i32 chapop_0() 
-         1231 mu chas_0_9:456 
-         1232 mu chat_0_16:456 
+         1231 mu chat_0_16:456 
+         1232 mu chas_0_9:456 
          1233 chat_0_17 = chi chat_0_16:456 
          457  store temp_108_ret_of_chapop_112_0:i32 *c_0:ptr->i32 
          458  c_0_8 = chi c_0_7:457 
@@ -683,21 +683,21 @@
          768  temp_202_cmp_117_0 = icmp i32 Eq temp_184_ele_of_*get_0_94_0, 43_0 
          771  br i1 temp_202_cmp_117_0, label branch_true_118, label branch_false_118 
      769  label branch_true_118: 
-         1778 untrack temp_108_ret_of_chapop_112_0 
-         1777 untrack temp_74_arithop_215_0 
-         1776 untrack temp_154_arithop_213_0 
-         1775 untrack temp_326_cmp_110_0 
-         1774 untrack temp_104_ptr_of_*get2_0_112 
-         1773 untrack temp_155_ptr_of_*get2_0_213 
-         1772 untrack temp_153_value_from_ptr_213_0 
-         1771 untrack temp_325_value_from_ptr_110_0 
-         1770 untrack temp_76_arithop_215_0 
-         1769 untrack temp_100_value_from_ptr_112_0 
+         1778 untrack temp_100_value_from_ptr_112_0 
+         1777 untrack temp_154_arithop_213_0 
+         1776 untrack temp_155_ptr_of_*get2_0_213 
+         1775 untrack temp_103_arithop_112_0 
+         1774 untrack temp_108_ret_of_chapop_112_0 
+         1773 untrack temp_107_arithop_112_0 
+         1772 untrack temp_101_ptr_of_*get2_0_112 
+         1771 untrack temp_326_cmp_110_0 
+         1770 untrack temp_156_ele_of_*get2_0_213_0 
+         1769 untrack temp_74_arithop_215_0 
          1768 untrack temp_157_cmp_213_0 
-         1767 untrack temp_156_ele_of_*get2_0_213_0 
-         1766 untrack temp_107_arithop_112_0 
-         1765 untrack temp_101_ptr_of_*get2_0_112 
-         1764 untrack temp_103_arithop_112_0 
+         1767 untrack temp_325_value_from_ptr_110_0 
+         1766 untrack temp_104_ptr_of_*get2_0_112 
+         1765 untrack temp_76_arithop_215_0 
+         1764 untrack temp_153_value_from_ptr_213_0 
          1088 temp_299_value_from_ptr_120_0 = load *chat_0:ptr->i32 
          1089 mu chat_0_19:1088 
          1091 temp_300_ptr_of_*chas_0_120 = GEP *chas_0:Array:i32:[None] [Some(temp_299_value_from_ptr_120_0)] 
@@ -707,36 +707,36 @@
          1164 br i1 temp_302_cmp_120_0, label branch_short_circuit_c_true_1077, label branch_short_circuit_p_false_1049 
      1147 label branch_short_circuit_c_true_1077: 
          1166 temp_323_ret_of_find_123_0 =  Call i32 find_0() 
-         1234 mu ii_0_10:1166 
-         1235 mu chat_0_19:1166 
+         1234 mu get2_0_12:1166 
+         1235 mu ii_0_10:1166 
          1236 mu c_0_10:1166 
-         1237 mu get2_0_12:1166 
+         1237 mu chat_0_19:1166 
          1238 mu chas_0_9:1166 
-         1239 c_0_11 = chi c_0_10:1166 
-         1240 ii_0_11 = chi ii_0_10:1166 
+         1239 get2_0_13 = chi get2_0_12:1166 
+         1240 c_0_11 = chi c_0_10:1166 
          1241 chat_0_20 = chi chat_0_19:1166 
-         1242 get2_0_13 = chi get2_0_12:1166 
+         1242 ii_0_11 = chi ii_0_10:1166 
          1168 temp_324_cmp_123_0 = icmp i32 Eq temp_323_ret_of_find_123_0, 0_0 
          1171 br i1 temp_324_cmp_123_0, label branch_true_124, label branch_false_124 
      1169 label branch_true_124: 
-         1789 untrack temp_300_ptr_of_*chas_0_120 
-         1788 untrack temp_322_cmp_120_0 
+         1789 untrack temp_322_cmp_120_0 
+         1788 untrack temp_301_ele_of_*chas_0_120_0 
          1787 untrack temp_323_ret_of_find_123_0 
-         1786 untrack temp_306_cmp_120_0 
-         1785 untrack temp_302_cmp_120_0 
-         1784 untrack temp_318_cmp_120_0 
-         1783 untrack temp_301_ele_of_*chas_0_120_0 
-         1782 untrack temp_299_value_from_ptr_120_0 
-         1781 untrack temp_314_cmp_120_0 
-         1780 untrack temp_324_cmp_123_0 
-         1779 untrack temp_310_cmp_120_0 
+         1786 untrack temp_318_cmp_120_0 
+         1785 untrack temp_324_cmp_123_0 
+         1784 untrack temp_310_cmp_120_0 
+         1783 untrack temp_300_ptr_of_*chas_0_120 
+         1782 untrack temp_306_cmp_120_0 
+         1781 untrack temp_302_cmp_120_0 
+         1780 untrack temp_314_cmp_120_0 
+         1779 untrack temp_299_value_from_ptr_120_0 
               jump label: branch_short_circuit_c_false_1077 
      1148 label branch_short_circuit_c_false_1077: 
          424   Call void chapush_0(43_0) 
          1243 mu chat_0_21:424 
          1244 mu chas_0_9:424 
-         1245 chat_0_22 = chi chat_0_21:424 
-         1246 chas_0_10 = chi chas_0_9:424 
+         1245 chas_0_10 = chi chas_0_9:424 
+         1246 chat_0_22 = chi chat_0_21:424 
               jump label: branch_false_118 
      770  label branch_false_118: 
               jump label: L5_0 
@@ -749,32 +749,32 @@
          781  temp_206_cmp_127_0 = icmp i32 Eq temp_184_ele_of_*get_0_94_0, 45_0 
          784  br i1 temp_206_cmp_127_0, label branch_true_128, label branch_false_128 
      782  label branch_true_128: 
-         1853 untrack temp_76_arithop_215_0 
-         1852 untrack temp_301_ele_of_*chas_0_120_0 
-         1851 untrack temp_326_cmp_110_0 
-         1850 untrack temp_318_cmp_120_0 
-         1849 untrack temp_153_value_from_ptr_213_0 
-         1848 untrack temp_101_ptr_of_*get2_0_112 
-         1847 untrack temp_154_arithop_213_0 
-         1846 untrack temp_103_arithop_112_0 
-         1845 untrack temp_107_arithop_112_0 
-         1844 untrack temp_302_cmp_120_0 
-         1843 untrack temp_324_cmp_123_0 
-         1842 untrack temp_323_ret_of_find_123_0 
-         1841 untrack temp_108_ret_of_chapop_112_0 
-         1840 untrack temp_300_ptr_of_*chas_0_120 
-         1839 untrack temp_322_cmp_120_0 
-         1838 untrack temp_314_cmp_120_0 
-         1837 untrack temp_155_ptr_of_*get2_0_213 
-         1836 untrack temp_299_value_from_ptr_120_0 
-         1835 untrack temp_325_value_from_ptr_110_0 
-         1834 untrack temp_157_cmp_213_0 
-         1833 untrack temp_156_ele_of_*get2_0_213_0 
-         1832 untrack temp_74_arithop_215_0 
-         1831 untrack temp_104_ptr_of_*get2_0_112 
-         1830 untrack temp_100_value_from_ptr_112_0 
-         1829 untrack temp_310_cmp_120_0 
-         1828 untrack temp_306_cmp_120_0 
+         1853 untrack temp_107_arithop_112_0 
+         1852 untrack temp_154_arithop_213_0 
+         1851 untrack temp_104_ptr_of_*get2_0_112 
+         1850 untrack temp_101_ptr_of_*get2_0_112 
+         1849 untrack temp_310_cmp_120_0 
+         1848 untrack temp_324_cmp_123_0 
+         1847 untrack temp_301_ele_of_*chas_0_120_0 
+         1846 untrack temp_326_cmp_110_0 
+         1845 untrack temp_76_arithop_215_0 
+         1844 untrack temp_153_value_from_ptr_213_0 
+         1843 untrack temp_108_ret_of_chapop_112_0 
+         1842 untrack temp_325_value_from_ptr_110_0 
+         1841 untrack temp_103_arithop_112_0 
+         1840 untrack temp_100_value_from_ptr_112_0 
+         1839 untrack temp_157_cmp_213_0 
+         1838 untrack temp_300_ptr_of_*chas_0_120 
+         1837 untrack temp_318_cmp_120_0 
+         1836 untrack temp_314_cmp_120_0 
+         1835 untrack temp_306_cmp_120_0 
+         1834 untrack temp_322_cmp_120_0 
+         1833 untrack temp_302_cmp_120_0 
+         1832 untrack temp_155_ptr_of_*get2_0_213 
+         1831 untrack temp_156_ele_of_*get2_0_213_0 
+         1830 untrack temp_74_arithop_215_0 
+         1829 untrack temp_299_value_from_ptr_120_0 
+         1828 untrack temp_323_ret_of_find_123_0 
          1003 temp_273_value_from_ptr_130_0 = load *chat_0:ptr->i32 
          1004 mu chat_0_24:1003 
          1006 temp_274_ptr_of_*chas_0_130 = GEP *chas_0:Array:i32:[None] [Some(temp_273_value_from_ptr_130_0)] 
@@ -784,36 +784,36 @@
          1079 br i1 temp_276_cmp_130_0, label branch_short_circuit_c_true_1041, label branch_short_circuit_p_false_1013 
      1062 label branch_short_circuit_c_true_1041: 
          1081 temp_297_ret_of_find_133_0 =  Call i32 find_0() 
-         1247 mu ii_0_14:1081 
-         1248 mu chat_0_24:1081 
+         1247 mu get2_0_16:1081 
+         1248 mu ii_0_14:1081 
          1249 mu c_0_14:1081 
-         1250 mu get2_0_16:1081 
+         1250 mu chat_0_24:1081 
          1251 mu chas_0_11:1081 
-         1252 c_0_15 = chi c_0_14:1081 
-         1253 ii_0_15 = chi ii_0_14:1081 
+         1252 get2_0_17 = chi get2_0_16:1081 
+         1253 c_0_15 = chi c_0_14:1081 
          1254 chat_0_25 = chi chat_0_24:1081 
-         1255 get2_0_17 = chi get2_0_16:1081 
+         1255 ii_0_15 = chi ii_0_14:1081 
          1083 temp_298_cmp_133_0 = icmp i32 Eq temp_297_ret_of_find_133_0, 0_0 
          1086 br i1 temp_298_cmp_133_0, label branch_true_134, label branch_false_134 
      1084 label branch_true_134: 
-         1864 untrack temp_275_ele_of_*chas_0_130_0 
-         1863 untrack temp_296_cmp_130_0 
-         1862 untrack temp_297_ret_of_find_133_0 
-         1861 untrack temp_284_cmp_130_0 
+         1864 untrack temp_297_ret_of_find_133_0 
+         1863 untrack temp_292_cmp_130_0 
+         1862 untrack temp_273_value_from_ptr_130_0 
+         1861 untrack temp_296_cmp_130_0 
          1860 untrack temp_274_ptr_of_*chas_0_130 
-         1859 untrack temp_276_cmp_130_0 
-         1858 untrack temp_273_value_from_ptr_130_0 
-         1857 untrack temp_298_cmp_133_0 
-         1856 untrack temp_288_cmp_130_0 
-         1855 untrack temp_280_cmp_130_0 
-         1854 untrack temp_292_cmp_130_0 
+         1859 untrack temp_288_cmp_130_0 
+         1858 untrack temp_284_cmp_130_0 
+         1857 untrack temp_280_cmp_130_0 
+         1856 untrack temp_275_ele_of_*chas_0_130_0 
+         1855 untrack temp_298_cmp_133_0 
+         1854 untrack temp_276_cmp_130_0 
               jump label: branch_short_circuit_c_false_1041 
      1063 label branch_short_circuit_c_false_1041: 
          423   Call void chapush_0(45_0) 
          1256 mu chat_0_26:423 
          1257 mu chas_0_11:423 
-         1258 chat_0_27 = chi chat_0_26:423 
-         1259 chas_0_12 = chi chas_0_11:423 
+         1258 chas_0_12 = chi chas_0_11:423 
+         1259 chat_0_27 = chi chat_0_26:423 
               jump label: branch_false_128 
      783  label branch_false_128: 
               jump label: L6_0 
@@ -826,43 +826,43 @@
          794  temp_210_cmp_137_0 = icmp i32 Eq temp_184_ele_of_*get_0_94_0, 42_0 
          797  br i1 temp_210_cmp_137_0, label branch_true_138, label branch_false_138 
      795  label branch_true_138: 
-         1928 untrack temp_314_cmp_120_0 
-         1927 untrack temp_274_ptr_of_*chas_0_130 
-         1926 untrack temp_100_value_from_ptr_112_0 
-         1925 untrack temp_284_cmp_130_0 
-         1924 untrack temp_104_ptr_of_*get2_0_112 
-         1923 untrack temp_74_arithop_215_0 
-         1922 untrack temp_301_ele_of_*chas_0_120_0 
-         1921 untrack temp_155_ptr_of_*get2_0_213 
-         1920 untrack temp_276_cmp_130_0 
-         1919 untrack temp_107_arithop_112_0 
-         1918 untrack temp_273_value_from_ptr_130_0 
-         1917 untrack temp_288_cmp_130_0 
-         1916 untrack temp_292_cmp_130_0 
-         1915 untrack temp_296_cmp_130_0 
-         1914 untrack temp_299_value_from_ptr_120_0 
-         1913 untrack temp_310_cmp_120_0 
-         1912 untrack temp_326_cmp_110_0 
-         1911 untrack temp_156_ele_of_*get2_0_213_0 
-         1910 untrack temp_323_ret_of_find_123_0 
+         1928 untrack temp_288_cmp_130_0 
+         1927 untrack temp_324_cmp_123_0 
+         1926 untrack temp_276_cmp_130_0 
+         1925 untrack temp_322_cmp_120_0 
+         1924 untrack temp_107_arithop_112_0 
+         1923 untrack temp_298_cmp_133_0 
+         1922 untrack temp_155_ptr_of_*get2_0_213 
+         1921 untrack temp_296_cmp_130_0 
+         1920 untrack temp_302_cmp_120_0 
+         1919 untrack temp_326_cmp_110_0 
+         1918 untrack temp_76_arithop_215_0 
+         1917 untrack temp_74_arithop_215_0 
+         1916 untrack temp_310_cmp_120_0 
+         1915 untrack temp_153_value_from_ptr_213_0 
+         1914 untrack temp_273_value_from_ptr_130_0 
+         1913 untrack temp_104_ptr_of_*get2_0_112 
+         1912 untrack temp_103_arithop_112_0 
+         1911 untrack temp_318_cmp_120_0 
+         1910 untrack temp_299_value_from_ptr_120_0 
          1909 untrack temp_157_cmp_213_0 
          1908 untrack temp_101_ptr_of_*get2_0_112 
-         1907 untrack temp_306_cmp_120_0 
-         1906 untrack temp_154_arithop_213_0 
-         1905 untrack temp_108_ret_of_chapop_112_0 
-         1904 untrack temp_302_cmp_120_0 
-         1903 untrack temp_153_value_from_ptr_213_0 
-         1902 untrack temp_325_value_from_ptr_110_0 
+         1907 untrack temp_275_ele_of_*chas_0_130_0 
+         1906 untrack temp_280_cmp_130_0 
+         1905 untrack temp_323_ret_of_find_123_0 
+         1904 untrack temp_100_value_from_ptr_112_0 
+         1903 untrack temp_108_ret_of_chapop_112_0 
+         1902 untrack temp_274_ptr_of_*chas_0_130 
          1901 untrack temp_300_ptr_of_*chas_0_120 
-         1900 untrack temp_297_ret_of_find_133_0 
-         1899 untrack temp_324_cmp_123_0 
-         1898 untrack temp_280_cmp_130_0 
-         1897 untrack temp_103_arithop_112_0 
-         1896 untrack temp_322_cmp_120_0 
-         1895 untrack temp_275_ele_of_*chas_0_130_0 
-         1894 untrack temp_298_cmp_133_0 
-         1893 untrack temp_76_arithop_215_0 
-         1892 untrack temp_318_cmp_120_0 
+         1900 untrack temp_301_ele_of_*chas_0_120_0 
+         1899 untrack temp_292_cmp_130_0 
+         1898 untrack temp_314_cmp_120_0 
+         1897 untrack temp_306_cmp_120_0 
+         1896 untrack temp_297_ret_of_find_133_0 
+         1895 untrack temp_156_ele_of_*get2_0_213_0 
+         1894 untrack temp_284_cmp_130_0 
+         1893 untrack temp_154_arithop_213_0 
+         1892 untrack temp_325_value_from_ptr_110_0 
          944  temp_255_value_from_ptr_140_0 = load *chat_0:ptr->i32 
          945  mu chat_0_29:944 
          947  temp_256_ptr_of_*chas_0_140 = GEP *chas_0:Array:i32:[None] [Some(temp_255_value_from_ptr_140_0)] 
@@ -872,34 +872,34 @@
          994  br i1 temp_258_cmp_140_0, label branch_short_circuit_c_true_1005, label branch_short_circuit_p_false_991 
      983  label branch_short_circuit_c_true_1005: 
          996  temp_271_ret_of_find_143_0 =  Call i32 find_0() 
-         1260 mu ii_0_18:996 
-         1261 mu chat_0_29:996 
+         1260 mu get2_0_20:996 
+         1261 mu ii_0_18:996 
          1262 mu c_0_18:996 
-         1263 mu get2_0_20:996 
+         1263 mu chat_0_29:996 
          1264 mu chas_0_13:996 
-         1265 c_0_19 = chi c_0_18:996 
-         1266 ii_0_19 = chi ii_0_18:996 
+         1265 get2_0_21 = chi get2_0_20:996 
+         1266 c_0_19 = chi c_0_18:996 
          1267 chat_0_30 = chi chat_0_29:996 
-         1268 get2_0_21 = chi get2_0_20:996 
+         1268 ii_0_19 = chi ii_0_18:996 
          998  temp_272_cmp_143_0 = icmp i32 Eq temp_271_ret_of_find_143_0, 0_0 
          1001 br i1 temp_272_cmp_143_0, label branch_true_144, label branch_false_144 
      999  label branch_true_144: 
-         1937 untrack temp_266_cmp_140_0 
-         1936 untrack temp_262_cmp_140_0 
+         1937 untrack temp_270_cmp_140_0 
+         1936 untrack temp_266_cmp_140_0 
          1935 untrack temp_256_ptr_of_*chas_0_140 
-         1934 untrack temp_258_cmp_140_0 
-         1933 untrack temp_271_ret_of_find_143_0 
-         1932 untrack temp_270_cmp_140_0 
+         1934 untrack temp_271_ret_of_find_143_0 
+         1933 untrack temp_258_cmp_140_0 
+         1932 untrack temp_257_ele_of_*chas_0_140_0 
          1931 untrack temp_255_value_from_ptr_140_0 
-         1930 untrack temp_272_cmp_143_0 
-         1929 untrack temp_257_ele_of_*chas_0_140_0 
+         1930 untrack temp_262_cmp_140_0 
+         1929 untrack temp_272_cmp_143_0 
               jump label: branch_short_circuit_c_false_1005 
      984  label branch_short_circuit_c_false_1005: 
          422   Call void chapush_0(42_0) 
          1269 mu chat_0_31:422 
          1270 mu chas_0_13:422 
-         1271 chat_0_32 = chi chat_0_31:422 
-         1272 chas_0_14 = chi chas_0_13:422 
+         1271 chas_0_14 = chi chas_0_13:422 
+         1272 chat_0_32 = chi chat_0_31:422 
               jump label: branch_false_138 
      796  label branch_false_138: 
               jump label: L7_0 
@@ -912,52 +912,52 @@
          807  temp_214_cmp_147_0 = icmp i32 Eq temp_184_ele_of_*get_0_94_0, 47_0 
          810  br i1 temp_214_cmp_147_0, label branch_true_148, label branch_false_148 
      808  label branch_true_148: 
-         2001 untrack temp_302_cmp_120_0 
-         2000 untrack temp_300_ptr_of_*chas_0_120 
-         1999 untrack temp_153_value_from_ptr_213_0 
-         1998 untrack temp_280_cmp_130_0 
-         1997 untrack temp_296_cmp_130_0 
-         1996 untrack temp_100_value_from_ptr_112_0 
-         1995 untrack temp_270_cmp_140_0 
-         1994 untrack temp_104_ptr_of_*get2_0_112 
-         1993 untrack temp_306_cmp_120_0 
-         1992 untrack temp_301_ele_of_*chas_0_120_0 
-         1991 untrack temp_101_ptr_of_*get2_0_112 
-         1990 untrack temp_314_cmp_120_0 
-         1989 untrack temp_262_cmp_140_0 
-         1988 untrack temp_292_cmp_130_0 
-         1987 untrack temp_156_ele_of_*get2_0_213_0 
-         1986 untrack temp_103_arithop_112_0 
-         1985 untrack temp_326_cmp_110_0 
-         1984 untrack temp_266_cmp_140_0 
-         1983 untrack temp_324_cmp_123_0 
-         1982 untrack temp_258_cmp_140_0 
-         1981 untrack temp_155_ptr_of_*get2_0_213 
-         1980 untrack temp_276_cmp_130_0 
-         1979 untrack temp_323_ret_of_find_123_0 
-         1978 untrack temp_299_value_from_ptr_120_0 
-         1977 untrack temp_108_ret_of_chapop_112_0 
-         1976 untrack temp_322_cmp_120_0 
-         1975 untrack temp_318_cmp_120_0 
-         1974 untrack temp_288_cmp_130_0 
-         1973 untrack temp_76_arithop_215_0 
-         1972 untrack temp_275_ele_of_*chas_0_130_0 
-         1971 untrack temp_298_cmp_133_0 
-         1970 untrack temp_74_arithop_215_0 
-         1969 untrack temp_310_cmp_120_0 
-         1968 untrack temp_274_ptr_of_*chas_0_130 
-         1967 untrack temp_257_ele_of_*chas_0_140_0 
-         1966 untrack temp_256_ptr_of_*chas_0_140 
-         1965 untrack temp_284_cmp_130_0 
-         1964 untrack temp_107_arithop_112_0 
-         1963 untrack temp_157_cmp_213_0 
-         1962 untrack temp_273_value_from_ptr_130_0 
-         1961 untrack temp_297_ret_of_find_133_0 
-         1960 untrack temp_271_ret_of_find_143_0 
-         1959 untrack temp_325_value_from_ptr_110_0 
-         1958 untrack temp_255_value_from_ptr_140_0 
-         1957 untrack temp_272_cmp_143_0 
-         1956 untrack temp_154_arithop_213_0 
+         2001 untrack temp_292_cmp_130_0 
+         2000 untrack temp_74_arithop_215_0 
+         1999 untrack temp_155_ptr_of_*get2_0_213 
+         1998 untrack temp_100_value_from_ptr_112_0 
+         1997 untrack temp_262_cmp_140_0 
+         1996 untrack temp_302_cmp_120_0 
+         1995 untrack temp_310_cmp_120_0 
+         1994 untrack temp_101_ptr_of_*get2_0_112 
+         1993 untrack temp_274_ptr_of_*chas_0_130 
+         1992 untrack temp_322_cmp_120_0 
+         1991 untrack temp_271_ret_of_find_143_0 
+         1990 untrack temp_324_cmp_123_0 
+         1989 untrack temp_301_ele_of_*chas_0_120_0 
+         1988 untrack temp_104_ptr_of_*get2_0_112 
+         1987 untrack temp_326_cmp_110_0 
+         1986 untrack temp_276_cmp_130_0 
+         1985 untrack temp_108_ret_of_chapop_112_0 
+         1984 untrack temp_154_arithop_213_0 
+         1983 untrack temp_280_cmp_130_0 
+         1982 untrack temp_298_cmp_133_0 
+         1981 untrack temp_258_cmp_140_0 
+         1980 untrack temp_103_arithop_112_0 
+         1979 untrack temp_306_cmp_120_0 
+         1978 untrack temp_318_cmp_120_0 
+         1977 untrack temp_323_ret_of_find_123_0 
+         1976 untrack temp_275_ele_of_*chas_0_130_0 
+         1975 untrack temp_284_cmp_130_0 
+         1974 untrack temp_300_ptr_of_*chas_0_120 
+         1973 untrack temp_297_ret_of_find_133_0 
+         1972 untrack temp_314_cmp_120_0 
+         1971 untrack temp_266_cmp_140_0 
+         1970 untrack temp_76_arithop_215_0 
+         1969 untrack temp_299_value_from_ptr_120_0 
+         1968 untrack temp_153_value_from_ptr_213_0 
+         1967 untrack temp_256_ptr_of_*chas_0_140 
+         1966 untrack temp_270_cmp_140_0 
+         1965 untrack temp_156_ele_of_*get2_0_213_0 
+         1964 untrack temp_157_cmp_213_0 
+         1963 untrack temp_272_cmp_143_0 
+         1962 untrack temp_288_cmp_130_0 
+         1961 untrack temp_255_value_from_ptr_140_0 
+         1960 untrack temp_257_ele_of_*chas_0_140_0 
+         1959 untrack temp_296_cmp_130_0 
+         1958 untrack temp_325_value_from_ptr_110_0 
+         1957 untrack temp_273_value_from_ptr_130_0 
+         1956 untrack temp_107_arithop_112_0 
          885  temp_237_value_from_ptr_150_0 = load *chat_0:ptr->i32 
          886  mu chat_0_34:885 
          888  temp_238_ptr_of_*chas_0_150 = GEP *chas_0:Array:i32:[None] [Some(temp_237_value_from_ptr_150_0)] 
@@ -967,34 +967,34 @@
          935  br i1 temp_240_cmp_150_0, label branch_short_circuit_c_true_983, label branch_short_circuit_p_false_969 
      924  label branch_short_circuit_c_true_983: 
          937  temp_253_ret_of_find_153_0 =  Call i32 find_0() 
-         1273 mu ii_0_22:937 
-         1274 mu chat_0_34:937 
+         1273 mu get2_0_24:937 
+         1274 mu ii_0_22:937 
          1275 mu c_0_22:937 
-         1276 mu get2_0_24:937 
+         1276 mu chat_0_34:937 
          1277 mu chas_0_15:937 
-         1278 c_0_23 = chi c_0_22:937 
-         1279 ii_0_23 = chi ii_0_22:937 
+         1278 get2_0_25 = chi get2_0_24:937 
+         1279 c_0_23 = chi c_0_22:937 
          1280 chat_0_35 = chi chat_0_34:937 
-         1281 get2_0_25 = chi get2_0_24:937 
+         1281 ii_0_23 = chi ii_0_22:937 
          939  temp_254_cmp_153_0 = icmp i32 Eq temp_253_ret_of_find_153_0, 0_0 
          942  br i1 temp_254_cmp_153_0, label branch_true_154, label branch_false_154 
      940  label branch_true_154: 
-         2010 untrack temp_253_ret_of_find_153_0 
+         2010 untrack temp_254_cmp_153_0 
          2009 untrack temp_238_ptr_of_*chas_0_150 
-         2008 untrack temp_248_cmp_150_0 
-         2007 untrack temp_237_value_from_ptr_150_0 
-         2006 untrack temp_244_cmp_150_0 
-         2005 untrack temp_254_cmp_153_0 
-         2004 untrack temp_252_cmp_150_0 
-         2003 untrack temp_240_cmp_150_0 
-         2002 untrack temp_239_ele_of_*chas_0_150_0 
+         2008 untrack temp_237_value_from_ptr_150_0 
+         2007 untrack temp_248_cmp_150_0 
+         2006 untrack temp_252_cmp_150_0 
+         2005 untrack temp_239_ele_of_*chas_0_150_0 
+         2004 untrack temp_240_cmp_150_0 
+         2003 untrack temp_244_cmp_150_0 
+         2002 untrack temp_253_ret_of_find_153_0 
               jump label: branch_short_circuit_c_false_983 
      925  label branch_short_circuit_c_false_983: 
          421   Call void chapush_0(47_0) 
          1282 mu chat_0_36:421 
          1283 mu chas_0_15:421 
-         1284 chat_0_37 = chi chat_0_36:421 
-         1285 chas_0_16 = chi chas_0_15:421 
+         1284 chas_0_16 = chi chas_0_15:421 
+         1285 chat_0_37 = chi chat_0_36:421 
               jump label: branch_false_148 
      809  label branch_false_148: 
               jump label: L8_0 
@@ -1007,61 +1007,61 @@
          820  temp_218_cmp_157_0 = icmp i32 Eq temp_184_ele_of_*get_0_94_0, 37_0 
          823  br i1 temp_218_cmp_157_0, label branch_true_158, label branch_false_158 
      821  label branch_true_158: 
-         2074 untrack temp_258_cmp_140_0 
-         2073 untrack temp_273_value_from_ptr_130_0 
-         2072 untrack temp_156_ele_of_*get2_0_213_0 
-         2071 untrack temp_107_arithop_112_0 
-         2070 untrack temp_252_cmp_150_0 
-         2069 untrack temp_276_cmp_130_0 
-         2068 untrack temp_296_cmp_130_0 
-         2067 untrack temp_314_cmp_120_0 
-         2066 untrack temp_253_ret_of_find_153_0 
-         2065 untrack temp_262_cmp_140_0 
-         2064 untrack temp_300_ptr_of_*chas_0_120 
-         2063 untrack temp_238_ptr_of_*chas_0_150 
-         2062 untrack temp_299_value_from_ptr_120_0 
-         2061 untrack temp_157_cmp_213_0 
-         2060 untrack temp_100_value_from_ptr_112_0 
-         2059 untrack temp_280_cmp_130_0 
-         2058 untrack temp_257_ele_of_*chas_0_140_0 
-         2057 untrack temp_324_cmp_123_0 
-         2056 untrack temp_272_cmp_143_0 
-         2055 untrack temp_104_ptr_of_*get2_0_112 
-         2054 untrack temp_306_cmp_120_0 
-         2053 untrack temp_297_ret_of_find_133_0 
-         2052 untrack temp_284_cmp_130_0 
-         2051 untrack temp_310_cmp_120_0 
-         2050 untrack temp_274_ptr_of_*chas_0_130 
-         2049 untrack temp_322_cmp_120_0 
-         2048 untrack temp_154_arithop_213_0 
-         2047 untrack temp_323_ret_of_find_123_0 
-         2046 untrack temp_255_value_from_ptr_140_0 
-         2045 untrack temp_76_arithop_215_0 
-         2044 untrack temp_248_cmp_150_0 
-         2043 untrack temp_271_ret_of_find_143_0 
-         2042 untrack temp_301_ele_of_*chas_0_120_0 
-         2041 untrack temp_302_cmp_120_0 
-         2040 untrack temp_326_cmp_110_0 
-         2039 untrack temp_318_cmp_120_0 
-         2038 untrack temp_155_ptr_of_*get2_0_213 
-         2037 untrack temp_101_ptr_of_*get2_0_112 
-         2036 untrack temp_266_cmp_140_0 
-         2035 untrack temp_108_ret_of_chapop_112_0 
-         2034 untrack temp_275_ele_of_*chas_0_130_0 
-         2033 untrack temp_244_cmp_150_0 
-         2032 untrack temp_103_arithop_112_0 
-         2031 untrack temp_237_value_from_ptr_150_0 
-         2030 untrack temp_153_value_from_ptr_213_0 
-         2029 untrack temp_254_cmp_153_0 
-         2028 untrack temp_298_cmp_133_0 
-         2027 untrack temp_288_cmp_130_0 
-         2026 untrack temp_240_cmp_150_0 
-         2025 untrack temp_270_cmp_140_0 
-         2024 untrack temp_256_ptr_of_*chas_0_140 
-         2023 untrack temp_239_ele_of_*chas_0_150_0 
-         2022 untrack temp_292_cmp_130_0 
-         2021 untrack temp_325_value_from_ptr_110_0 
-         2020 untrack temp_74_arithop_215_0 
+         2074 untrack temp_153_value_from_ptr_213_0 
+         2073 untrack temp_300_ptr_of_*chas_0_120 
+         2072 untrack temp_239_ele_of_*chas_0_150_0 
+         2071 untrack temp_154_arithop_213_0 
+         2070 untrack temp_323_ret_of_find_123_0 
+         2069 untrack temp_266_cmp_140_0 
+         2068 untrack temp_310_cmp_120_0 
+         2067 untrack temp_276_cmp_130_0 
+         2066 untrack temp_108_ret_of_chapop_112_0 
+         2065 untrack temp_256_ptr_of_*chas_0_140 
+         2064 untrack temp_258_cmp_140_0 
+         2063 untrack temp_253_ret_of_find_153_0 
+         2062 untrack temp_74_arithop_215_0 
+         2061 untrack temp_254_cmp_153_0 
+         2060 untrack temp_275_ele_of_*chas_0_130_0 
+         2059 untrack temp_325_value_from_ptr_110_0 
+         2058 untrack temp_103_arithop_112_0 
+         2057 untrack temp_271_ret_of_find_143_0 
+         2056 untrack temp_274_ptr_of_*chas_0_130 
+         2055 untrack temp_322_cmp_120_0 
+         2054 untrack temp_156_ele_of_*get2_0_213_0 
+         2053 untrack temp_284_cmp_130_0 
+         2052 untrack temp_100_value_from_ptr_112_0 
+         2051 untrack temp_101_ptr_of_*get2_0_112 
+         2050 untrack temp_244_cmp_150_0 
+         2049 untrack temp_292_cmp_130_0 
+         2048 untrack temp_298_cmp_133_0 
+         2047 untrack temp_299_value_from_ptr_120_0 
+         2046 untrack temp_240_cmp_150_0 
+         2045 untrack temp_255_value_from_ptr_140_0 
+         2044 untrack temp_272_cmp_143_0 
+         2043 untrack temp_288_cmp_130_0 
+         2042 untrack temp_107_arithop_112_0 
+         2041 untrack temp_324_cmp_123_0 
+         2040 untrack temp_273_value_from_ptr_130_0 
+         2039 untrack temp_104_ptr_of_*get2_0_112 
+         2038 untrack temp_262_cmp_140_0 
+         2037 untrack temp_238_ptr_of_*chas_0_150 
+         2036 untrack temp_314_cmp_120_0 
+         2035 untrack temp_237_value_from_ptr_150_0 
+         2034 untrack temp_326_cmp_110_0 
+         2033 untrack temp_155_ptr_of_*get2_0_213 
+         2032 untrack temp_297_ret_of_find_133_0 
+         2031 untrack temp_296_cmp_130_0 
+         2030 untrack temp_157_cmp_213_0 
+         2029 untrack temp_306_cmp_120_0 
+         2028 untrack temp_257_ele_of_*chas_0_140_0 
+         2027 untrack temp_301_ele_of_*chas_0_120_0 
+         2026 untrack temp_252_cmp_150_0 
+         2025 untrack temp_248_cmp_150_0 
+         2024 untrack temp_302_cmp_120_0 
+         2023 untrack temp_318_cmp_120_0 
+         2022 untrack temp_76_arithop_215_0 
+         2021 untrack temp_270_cmp_140_0 
+         2020 untrack temp_280_cmp_130_0 
          826  temp_219_value_from_ptr_160_0 = load *chat_0:ptr->i32 
          827  mu chat_0_39:826 
          829  temp_220_ptr_of_*chas_0_160 = GEP *chas_0:Array:i32:[None] [Some(temp_219_value_from_ptr_160_0)] 
@@ -1071,34 +1071,34 @@
          876  br i1 temp_222_cmp_160_0, label branch_short_circuit_c_true_961, label branch_short_circuit_p_false_947 
      865  label branch_short_circuit_c_true_961: 
          878  temp_235_ret_of_find_163_0 =  Call i32 find_0() 
-         1286 mu ii_0_26:878 
-         1287 mu chat_0_39:878 
+         1286 mu get2_0_28:878 
+         1287 mu ii_0_26:878 
          1288 mu c_0_26:878 
-         1289 mu get2_0_28:878 
+         1289 mu chat_0_39:878 
          1290 mu chas_0_17:878 
-         1291 c_0_27 = chi c_0_26:878 
-         1292 ii_0_27 = chi ii_0_26:878 
+         1291 get2_0_29 = chi get2_0_28:878 
+         1292 c_0_27 = chi c_0_26:878 
          1293 chat_0_40 = chi chat_0_39:878 
-         1294 get2_0_29 = chi get2_0_28:878 
+         1294 ii_0_27 = chi ii_0_26:878 
          880  temp_236_cmp_163_0 = icmp i32 Eq temp_235_ret_of_find_163_0, 0_0 
          883  br i1 temp_236_cmp_163_0, label branch_true_164, label branch_false_164 
      881  label branch_true_164: 
-         2083 untrack temp_235_ret_of_find_163_0 
-         2082 untrack temp_234_cmp_160_0 
-         2081 untrack temp_226_cmp_160_0 
+         2083 untrack temp_226_cmp_160_0 
+         2082 untrack temp_220_ptr_of_*chas_0_160 
+         2081 untrack temp_219_value_from_ptr_160_0 
          2080 untrack temp_230_cmp_160_0 
-         2079 untrack temp_221_ele_of_*chas_0_160_0 
-         2078 untrack temp_236_cmp_163_0 
-         2077 untrack temp_219_value_from_ptr_160_0 
-         2076 untrack temp_220_ptr_of_*chas_0_160 
-         2075 untrack temp_222_cmp_160_0 
+         2079 untrack temp_235_ret_of_find_163_0 
+         2078 untrack temp_222_cmp_160_0 
+         2077 untrack temp_221_ele_of_*chas_0_160_0 
+         2076 untrack temp_236_cmp_163_0 
+         2075 untrack temp_234_cmp_160_0 
               jump label: branch_short_circuit_c_false_961 
      866  label branch_short_circuit_c_false_961: 
          420   Call void chapush_0(37_0) 
          1295 mu chat_0_41:420 
          1296 mu chas_0_17:420 
-         1297 chat_0_42 = chi chat_0_41:420 
-         1298 chas_0_18 = chi chas_0_17:420 
+         1297 chas_0_18 = chi chas_0_17:420 
+         1298 chat_0_42 = chi chat_0_41:420 
               jump label: branch_false_158 
      822  label branch_false_158: 
               jump label: L9_0 
@@ -1141,15 +1141,15 @@
          864  temp_234_cmp_160_0 = icmp i32 Eq temp_221_ele_of_*chas_0_160_0, 94_0 
          869  br i1 temp_234_cmp_160_0, label branch_short_circuit_c_true_961, label branch_short_circuit_c_false_961 
      941  label branch_false_154: 
-         2019 untrack temp_236_cmp_163_0 
-         2018 untrack temp_221_ele_of_*chas_0_160_0 
-         2017 untrack temp_220_ptr_of_*chas_0_160 
-         2016 untrack temp_235_ret_of_find_163_0 
-         2015 untrack temp_230_cmp_160_0 
-         2014 untrack temp_219_value_from_ptr_160_0 
-         2013 untrack temp_222_cmp_160_0 
-         2012 untrack temp_234_cmp_160_0 
-         2011 untrack temp_226_cmp_160_0 
+         2019 untrack temp_226_cmp_160_0 
+         2018 untrack temp_234_cmp_160_0 
+         2017 untrack temp_222_cmp_160_0 
+         2016 untrack temp_230_cmp_160_0 
+         2015 untrack temp_235_ret_of_find_163_0 
+         2014 untrack temp_221_ele_of_*chas_0_160_0 
+         2013 untrack temp_219_value_from_ptr_160_0 
+         2012 untrack temp_220_ptr_of_*chas_0_160 
+         2011 untrack temp_236_cmp_163_0 
               jump label: branch_true_148 
      932  label branch_short_circuit_p_false_969: 
          895  (nop) 
@@ -1176,24 +1176,24 @@
          923  temp_252_cmp_150_0 = icmp i32 Eq temp_239_ele_of_*chas_0_150_0, 94_0 
          928  br i1 temp_252_cmp_150_0, label branch_short_circuit_c_true_983, label branch_short_circuit_c_false_983 
      1000 label branch_false_144: 
-         1955 untrack temp_253_ret_of_find_153_0 
+         1955 untrack temp_237_value_from_ptr_150_0 
          1954 untrack temp_235_ret_of_find_163_0 
-         1953 untrack temp_222_cmp_160_0 
-         1952 untrack temp_234_cmp_160_0 
-         1951 untrack temp_252_cmp_150_0 
-         1950 untrack temp_219_value_from_ptr_160_0 
-         1949 untrack temp_254_cmp_153_0 
-         1948 untrack temp_238_ptr_of_*chas_0_150 
-         1947 untrack temp_248_cmp_150_0 
-         1946 untrack temp_220_ptr_of_*chas_0_160 
-         1945 untrack temp_221_ele_of_*chas_0_160_0 
-         1944 untrack temp_240_cmp_150_0 
-         1943 untrack temp_244_cmp_150_0 
-         1942 untrack temp_236_cmp_163_0 
-         1941 untrack temp_239_ele_of_*chas_0_150_0 
-         1940 untrack temp_237_value_from_ptr_150_0 
-         1939 untrack temp_230_cmp_160_0 
-         1938 untrack temp_226_cmp_160_0 
+         1953 untrack temp_238_ptr_of_*chas_0_150 
+         1952 untrack temp_239_ele_of_*chas_0_150_0 
+         1951 untrack temp_253_ret_of_find_153_0 
+         1950 untrack temp_248_cmp_150_0 
+         1949 untrack temp_220_ptr_of_*chas_0_160 
+         1948 untrack temp_230_cmp_160_0 
+         1947 untrack temp_226_cmp_160_0 
+         1946 untrack temp_234_cmp_160_0 
+         1945 untrack temp_219_value_from_ptr_160_0 
+         1944 untrack temp_254_cmp_153_0 
+         1943 untrack temp_236_cmp_163_0 
+         1942 untrack temp_240_cmp_150_0 
+         1941 untrack temp_222_cmp_160_0 
+         1940 untrack temp_252_cmp_150_0 
+         1939 untrack temp_221_ele_of_*chas_0_160_0 
+         1938 untrack temp_244_cmp_150_0 
               jump label: branch_true_138 
      991  label branch_short_circuit_p_false_991: 
          954  (nop) 
@@ -1220,33 +1220,33 @@
          982  temp_270_cmp_140_0 = icmp i32 Eq temp_257_ele_of_*chas_0_140_0, 94_0 
          987  br i1 temp_270_cmp_140_0, label branch_short_circuit_c_true_1005, label branch_short_circuit_c_false_1005 
      1085 label branch_false_134: 
-         1891 untrack temp_234_cmp_160_0 
-         1890 untrack temp_239_ele_of_*chas_0_150_0 
-         1889 untrack temp_253_ret_of_find_153_0 
-         1888 untrack temp_235_ret_of_find_163_0 
-         1887 untrack temp_262_cmp_140_0 
-         1886 untrack temp_221_ele_of_*chas_0_160_0 
-         1885 untrack temp_248_cmp_150_0 
-         1884 untrack temp_244_cmp_150_0 
-         1883 untrack temp_237_value_from_ptr_150_0 
-         1882 untrack temp_257_ele_of_*chas_0_140_0 
-         1881 untrack temp_220_ptr_of_*chas_0_160 
-         1880 untrack temp_258_cmp_140_0 
-         1879 untrack temp_236_cmp_163_0 
-         1878 untrack temp_238_ptr_of_*chas_0_150 
-         1877 untrack temp_256_ptr_of_*chas_0_140 
-         1876 untrack temp_254_cmp_153_0 
-         1875 untrack temp_230_cmp_160_0 
-         1874 untrack temp_270_cmp_140_0 
-         1873 untrack temp_219_value_from_ptr_160_0 
-         1872 untrack temp_255_value_from_ptr_140_0 
-         1871 untrack temp_271_ret_of_find_143_0 
-         1870 untrack temp_222_cmp_160_0 
-         1869 untrack temp_240_cmp_150_0 
-         1868 untrack temp_252_cmp_150_0 
-         1867 untrack temp_266_cmp_140_0 
-         1866 untrack temp_226_cmp_160_0 
-         1865 untrack temp_272_cmp_143_0 
+         1891 untrack temp_219_value_from_ptr_160_0 
+         1890 untrack temp_234_cmp_160_0 
+         1889 untrack temp_235_ret_of_find_163_0 
+         1888 untrack temp_262_cmp_140_0 
+         1887 untrack temp_236_cmp_163_0 
+         1886 untrack temp_220_ptr_of_*chas_0_160 
+         1885 untrack temp_252_cmp_150_0 
+         1884 untrack temp_272_cmp_143_0 
+         1883 untrack temp_255_value_from_ptr_140_0 
+         1882 untrack temp_256_ptr_of_*chas_0_140 
+         1881 untrack temp_230_cmp_160_0 
+         1880 untrack temp_239_ele_of_*chas_0_150_0 
+         1879 untrack temp_237_value_from_ptr_150_0 
+         1878 untrack temp_257_ele_of_*chas_0_140_0 
+         1877 untrack temp_266_cmp_140_0 
+         1876 untrack temp_248_cmp_150_0 
+         1875 untrack temp_258_cmp_140_0 
+         1874 untrack temp_240_cmp_150_0 
+         1873 untrack temp_221_ele_of_*chas_0_160_0 
+         1872 untrack temp_271_ret_of_find_143_0 
+         1871 untrack temp_222_cmp_160_0 
+         1870 untrack temp_238_ptr_of_*chas_0_150 
+         1869 untrack temp_270_cmp_140_0 
+         1868 untrack temp_254_cmp_153_0 
+         1867 untrack temp_253_ret_of_find_153_0 
+         1866 untrack temp_244_cmp_150_0 
+         1865 untrack temp_226_cmp_160_0 
               jump label: branch_true_128 
      1076 label branch_short_circuit_p_false_1013: 
          1013 (nop) 
@@ -1289,44 +1289,44 @@
          1061 temp_296_cmp_130_0 = icmp i32 Eq temp_275_ele_of_*chas_0_130_0, 94_0 
          1066 br i1 temp_296_cmp_130_0, label branch_short_circuit_c_true_1041, label branch_short_circuit_c_false_1041 
      1170 label branch_false_124: 
-         1827 untrack temp_298_cmp_133_0 
-         1826 untrack temp_270_cmp_140_0 
-         1825 untrack temp_239_ele_of_*chas_0_150_0 
-         1824 untrack temp_275_ele_of_*chas_0_130_0 
-         1823 untrack temp_248_cmp_150_0 
-         1822 untrack temp_284_cmp_130_0 
-         1821 untrack temp_221_ele_of_*chas_0_160_0 
-         1820 untrack temp_292_cmp_130_0 
-         1819 untrack temp_235_ret_of_find_163_0 
-         1818 untrack temp_274_ptr_of_*chas_0_130 
-         1817 untrack temp_234_cmp_160_0 
-         1816 untrack temp_230_cmp_160_0 
-         1815 untrack temp_226_cmp_160_0 
-         1814 untrack temp_280_cmp_130_0 
-         1813 untrack temp_272_cmp_143_0 
-         1812 untrack temp_276_cmp_130_0 
-         1811 untrack temp_266_cmp_140_0 
-         1810 untrack temp_262_cmp_140_0 
-         1809 untrack temp_253_ret_of_find_153_0 
-         1808 untrack temp_236_cmp_163_0 
+         1827 untrack temp_273_value_from_ptr_130_0 
+         1826 untrack temp_220_ptr_of_*chas_0_160 
+         1825 untrack temp_238_ptr_of_*chas_0_150 
+         1824 untrack temp_236_cmp_163_0 
+         1823 untrack temp_254_cmp_153_0 
+         1822 untrack temp_271_ret_of_find_143_0 
+         1821 untrack temp_252_cmp_150_0 
+         1820 untrack temp_296_cmp_130_0 
+         1819 untrack temp_256_ptr_of_*chas_0_140 
+         1818 untrack temp_222_cmp_160_0 
+         1817 untrack temp_275_ele_of_*chas_0_130_0 
+         1816 untrack temp_270_cmp_140_0 
+         1815 untrack temp_253_ret_of_find_153_0 
+         1814 untrack temp_234_cmp_160_0 
+         1813 untrack temp_255_value_from_ptr_140_0 
+         1812 untrack temp_237_value_from_ptr_150_0 
+         1811 untrack temp_239_ele_of_*chas_0_150_0 
+         1810 untrack temp_266_cmp_140_0 
+         1809 untrack temp_298_cmp_133_0 
+         1808 untrack temp_262_cmp_140_0 
          1807 untrack temp_297_ret_of_find_133_0 
-         1806 untrack temp_258_cmp_140_0 
-         1805 untrack temp_254_cmp_153_0 
-         1804 untrack temp_219_value_from_ptr_160_0 
-         1803 untrack temp_296_cmp_130_0 
-         1802 untrack temp_255_value_from_ptr_140_0 
-         1801 untrack temp_273_value_from_ptr_130_0 
-         1800 untrack temp_237_value_from_ptr_150_0 
-         1799 untrack temp_256_ptr_of_*chas_0_140 
-         1798 untrack temp_252_cmp_150_0 
-         1797 untrack temp_271_ret_of_find_143_0 
-         1796 untrack temp_257_ele_of_*chas_0_140_0 
-         1795 untrack temp_288_cmp_130_0 
-         1794 untrack temp_238_ptr_of_*chas_0_150 
-         1793 untrack temp_244_cmp_150_0 
-         1792 untrack temp_220_ptr_of_*chas_0_160 
-         1791 untrack temp_222_cmp_160_0 
-         1790 untrack temp_240_cmp_150_0 
+         1806 untrack temp_292_cmp_130_0 
+         1805 untrack temp_240_cmp_150_0 
+         1804 untrack temp_244_cmp_150_0 
+         1803 untrack temp_284_cmp_130_0 
+         1802 untrack temp_235_ret_of_find_163_0 
+         1801 untrack temp_258_cmp_140_0 
+         1800 untrack temp_280_cmp_130_0 
+         1799 untrack temp_272_cmp_143_0 
+         1798 untrack temp_288_cmp_130_0 
+         1797 untrack temp_248_cmp_150_0 
+         1796 untrack temp_230_cmp_160_0 
+         1795 untrack temp_221_ele_of_*chas_0_160_0 
+         1794 untrack temp_257_ele_of_*chas_0_140_0 
+         1793 untrack temp_219_value_from_ptr_160_0 
+         1792 untrack temp_274_ptr_of_*chas_0_130 
+         1791 untrack temp_276_cmp_130_0 
+         1790 untrack temp_226_cmp_160_0 
               jump label: branch_true_118 
      1161 label branch_short_circuit_p_false_1049: 
          1098 (nop) 
@@ -1369,36 +1369,36 @@
          1146 temp_322_cmp_120_0 = icmp i32 Eq temp_301_ele_of_*chas_0_120_0, 94_0 
          1151 br i1 temp_322_cmp_120_0, label branch_short_circuit_c_true_1077, label branch_short_circuit_c_false_1077 
      490  label while.exit_92: 
-         1541 untrack temp_185_ret_of_isdigit_94_0 
-         1540 untrack temp_115_arithop_96_0 
-         1539 untrack temp_98_arithop_93_0 
+         1541 untrack temp_206_cmp_127_0 
+         1540 untrack temp_96_arithop_99_0 
+         1539 untrack temp_183_ptr_of_*get_0_94 
          1538 untrack temp_99_ret_of_chapop_108_0 
-         1537 untrack temp_94_ptr_of_*get2_0_99 
-         1536 untrack temp_206_cmp_127_0 
-         1535 untrack temp_218_cmp_157_0 
-         1534 untrack temp_190_cmp_100_0 
-         1533 untrack temp_110_ptr_of_*get2_0_96 
-         1532 untrack temp_210_cmp_137_0 
-         1531 untrack temp_117_cmp_91_0 
-         1530 untrack temp_194_cmp_103_0 
-         1529 untrack temp_109_value_from_ptr_96_0 
-         1528 untrack temp_186_cmp_94_0 
-         1527 untrack temp_202_cmp_117_0 
-         1526 untrack temp_96_arithop_99_0 
-         1525 untrack temp_214_cmp_147_0 
-         1524 untrack temp_198_cmp_106_0 
-         1523 untrack temp_93_value_from_ptr_99_0 
-         1522 untrack temp_183_ptr_of_*get_0_94 
-         1521 untrack temp_116_value_from_ptr_91_0 
-         1520 untrack temp_184_ele_of_*get_0_94_0 
+         1537 untrack temp_110_ptr_of_*get2_0_96 
+         1536 untrack temp_210_cmp_137_0 
+         1535 untrack temp_198_cmp_106_0 
+         1534 untrack temp_214_cmp_147_0 
+         1533 untrack temp_115_arithop_96_0 
+         1532 untrack temp_109_value_from_ptr_96_0 
+         1531 untrack temp_93_value_from_ptr_99_0 
+         1530 untrack temp_117_cmp_91_0 
+         1529 untrack temp_190_cmp_100_0 
+         1528 untrack temp_194_cmp_103_0 
+         1527 untrack temp_218_cmp_157_0 
+         1526 untrack temp_98_arithop_93_0 
+         1525 untrack temp_186_cmp_94_0 
+         1524 untrack temp_184_ele_of_*get_0_94_0 
+         1523 untrack temp_116_value_from_ptr_91_0 
+         1522 untrack temp_202_cmp_117_0 
+         1521 untrack temp_185_ret_of_isdigit_94_0 
+         1520 untrack temp_94_ptr_of_*get2_0_99 
          493  temp_118_value_from_ptr_170_0 = load *chat_0:ptr->i32 
          494  mu chat_0_44:493 
          496  temp_119_cmp_170_0 = icmp i32 Sgt temp_118_value_from_ptr_170_0, 0_0 
          499  br i1 temp_119_cmp_170_0, label while.body_171, label while.exit_171 
      497  label while.body_171: 
          373  temp_85_ret_of_chapop_172_0 =  Call i32 chapop_0() 
-         1299 mu chas_0_4:373 
-         1300 mu chat_0_44:373 
+         1299 mu chat_0_44:373 
+         1300 mu chas_0_4:373 
          1301 chat_0_45 = chi chat_0_44:373 
          374  (nop) 
          377  temp_86_value_from_ptr_172_0 = load *ii_0:ptr->i32 
@@ -1446,72 +1446,72 @@
          525  temp_127_cmp_182_0 = icmp i32 Eq temp_122_ele_of_*get2_0_179_0, 43_0 
          593  br i1 temp_127_cmp_182_0, label branch_short_circuit_c_true_850, label branch_short_circuit_p_false_822 
      576  label branch_short_circuit_c_true_850: 
-         2203 untrack temp_131_cmp_182_0 
-         2202 untrack temp_139_cmp_182_0 
-         2201 untrack temp_147_cmp_182_0 
-         2200 untrack temp_143_cmp_182_0 
-         2199 untrack temp_121_ptr_of_*get2_0_179 
-         2198 untrack temp_135_cmp_182_0 
+         2203 untrack temp_64_arithop_210_0 
+         2202 untrack temp_143_cmp_182_0 
+         2201 untrack temp_68_arithop_210_0 
+         2200 untrack temp_135_cmp_182_0 
+         2199 untrack temp_139_cmp_182_0 
+         2198 untrack temp_121_ptr_of_*get2_0_179 
          2197 untrack temp_123_cmp_179_0 
-         2196 untrack temp_68_arithop_210_0 
-         2195 untrack temp_120_value_from_ptr_179_0 
+         2196 untrack temp_131_cmp_182_0 
+         2195 untrack temp_147_cmp_182_0 
          2194 untrack temp_151_cmp_208_0 
-         2193 untrack temp_64_arithop_210_0 
-         2192 untrack temp_147_cmp_182_0 
-         2191 untrack temp_151_cmp_208_0 
-         2190 untrack temp_123_cmp_179_0 
-         2189 untrack temp_131_cmp_182_0 
-         2188 untrack temp_135_cmp_182_0 
-         2187 untrack temp_139_cmp_182_0 
-         2186 untrack temp_64_arithop_210_0 
-         2185 untrack temp_121_ptr_of_*get2_0_179 
-         2184 untrack temp_143_cmp_182_0 
-         2183 untrack temp_120_value_from_ptr_179_0 
-         2182 untrack temp_68_arithop_210_0 
-         2181 untrack temp_68_arithop_210_0 
-         2180 untrack temp_64_arithop_210_0 
-         2179 untrack temp_123_cmp_179_0 
-         2178 untrack temp_120_value_from_ptr_179_0 
-         2177 untrack temp_131_cmp_182_0 
-         2176 untrack temp_139_cmp_182_0 
-         2175 untrack temp_143_cmp_182_0 
-         2174 untrack temp_135_cmp_182_0 
-         2173 untrack temp_151_cmp_208_0 
-         2172 untrack temp_121_ptr_of_*get2_0_179 
-         2171 untrack temp_147_cmp_182_0 
-         2170 untrack temp_131_cmp_182_0 
-         2169 untrack temp_143_cmp_182_0 
-         2168 untrack temp_135_cmp_182_0 
+         2193 untrack temp_120_value_from_ptr_179_0 
+         2192 untrack temp_135_cmp_182_0 
+         2191 untrack temp_64_arithop_210_0 
+         2190 untrack temp_121_ptr_of_*get2_0_179 
+         2189 untrack temp_120_value_from_ptr_179_0 
+         2188 untrack temp_139_cmp_182_0 
+         2187 untrack temp_151_cmp_208_0 
+         2186 untrack temp_143_cmp_182_0 
+         2185 untrack temp_123_cmp_179_0 
+         2184 untrack temp_131_cmp_182_0 
+         2183 untrack temp_68_arithop_210_0 
+         2182 untrack temp_147_cmp_182_0 
+         2181 untrack temp_64_arithop_210_0 
+         2180 untrack temp_139_cmp_182_0 
+         2179 untrack temp_147_cmp_182_0 
+         2178 untrack temp_131_cmp_182_0 
+         2177 untrack temp_68_arithop_210_0 
+         2176 untrack temp_121_ptr_of_*get2_0_179 
+         2175 untrack temp_123_cmp_179_0 
+         2174 untrack temp_151_cmp_208_0 
+         2173 untrack temp_135_cmp_182_0 
+         2172 untrack temp_143_cmp_182_0 
+         2171 untrack temp_120_value_from_ptr_179_0 
+         2170 untrack temp_121_ptr_of_*get2_0_179 
+         2169 untrack temp_131_cmp_182_0 
+         2168 untrack temp_123_cmp_179_0 
          2167 untrack temp_68_arithop_210_0 
-         2166 untrack temp_123_cmp_179_0 
-         2165 untrack temp_139_cmp_182_0 
-         2164 untrack temp_64_arithop_210_0 
-         2163 untrack temp_121_ptr_of_*get2_0_179 
+         2166 untrack temp_143_cmp_182_0 
+         2165 untrack temp_147_cmp_182_0 
+         2164 untrack temp_139_cmp_182_0 
+         2163 untrack temp_64_arithop_210_0 
          2162 untrack temp_151_cmp_208_0 
          2161 untrack temp_120_value_from_ptr_179_0 
-         2160 untrack temp_147_cmp_182_0 
-         2159 untrack temp_147_cmp_182_0 
-         2158 untrack temp_135_cmp_182_0 
-         2157 untrack temp_143_cmp_182_0 
-         2156 untrack temp_151_cmp_208_0 
-         2155 untrack temp_131_cmp_182_0 
-         2154 untrack temp_123_cmp_179_0 
-         2153 untrack temp_120_value_from_ptr_179_0 
-         2152 untrack temp_139_cmp_182_0 
-         2151 untrack temp_64_arithop_210_0 
+         2160 untrack temp_135_cmp_182_0 
+         2159 untrack temp_120_value_from_ptr_179_0 
+         2158 untrack temp_64_arithop_210_0 
+         2157 untrack temp_139_cmp_182_0 
+         2156 untrack temp_135_cmp_182_0 
+         2155 untrack temp_123_cmp_179_0 
+         2154 untrack temp_151_cmp_208_0 
+         2153 untrack temp_147_cmp_182_0 
+         2152 untrack temp_143_cmp_182_0 
+         2151 untrack temp_68_arithop_210_0 
          2150 untrack temp_121_ptr_of_*get2_0_179 
-         2149 untrack temp_68_arithop_210_0 
-         2096 untrack temp_147_cmp_182_0 
-         2095 untrack temp_139_cmp_182_0 
-         2094 untrack temp_135_cmp_182_0 
-         2093 untrack temp_143_cmp_182_0 
-         2092 untrack temp_64_arithop_210_0 
-         2091 untrack temp_68_arithop_210_0 
-         2090 untrack temp_123_cmp_179_0 
-         2089 untrack temp_151_cmp_208_0 
-         2088 untrack temp_120_value_from_ptr_179_0 
-         2087 untrack temp_121_ptr_of_*get2_0_179 
-         2086 untrack temp_131_cmp_182_0 
+         2149 untrack temp_131_cmp_182_0 
+         2096 untrack temp_120_value_from_ptr_179_0 
+         2095 untrack temp_68_arithop_210_0 
+         2094 untrack temp_64_arithop_210_0 
+         2093 untrack temp_139_cmp_182_0 
+         2092 untrack temp_135_cmp_182_0 
+         2091 untrack temp_131_cmp_182_0 
+         2090 untrack temp_147_cmp_182_0 
+         2089 untrack temp_123_cmp_179_0 
+         2088 untrack temp_143_cmp_182_0 
+         2087 untrack temp_151_cmp_208_0 
+         2086 untrack temp_121_ptr_of_*get2_0_179 
          344  temp_77_ret_of_intpop_184_0 =  Call i32 intpop_0() 
          1302 mu ints_0_7:344 
          1303 mu intt_0_7:344 
@@ -1534,8 +1534,8 @@
          639  br i1 temp_127_cmp_182_0, label branch_true_189, label UP_42_0 
      637  label branch_true_189: 
          2099 untrack temp_60_arithop_181_0 
-         2098 untrack temp_59_value_from_ptr_181_0 
-         2097 untrack temp_127_cmp_182_0 
+         2098 untrack temp_127_cmp_182_0 
+         2097 untrack temp_59_value_from_ptr_181_0 
          370  temp_84_arithop_188_0 = Add i32 temp_77_ret_of_intpop_184_0, temp_78_ret_of_intpop_184_0 
          371  (nop) 
          1457 c_184_2 = i32 temp_84_arithop_188_0 
@@ -1552,8 +1552,8 @@
          649  temp_165_cmp_191_0 = icmp i32 Eq temp_122_ele_of_*get2_0_179_0, 45_0 
          652  br i1 temp_165_cmp_191_0, label branch_true_192, label UP_35_0 
      650  label branch_true_192: 
-         2106 untrack c_184_2 
-         2105 untrack temp_59_value_from_ptr_181_0 
+         2106 untrack temp_59_value_from_ptr_181_0 
+         2105 untrack c_184_2 
          2104 untrack temp_165_cmp_191_0 
          2103 untrack temp_60_arithop_181_0 
          367  temp_83_arithop_191_0 = Sub i32 temp_78_ret_of_intpop_184_0, temp_77_ret_of_intpop_184_0 
@@ -1572,9 +1572,9 @@
          662  temp_169_cmp_194_0 = icmp i32 Eq temp_122_ele_of_*get2_0_179_0, 42_0 
          665  br i1 temp_169_cmp_194_0, label branch_true_195, label UP_29_0 
      663  label branch_true_195: 
-         2113 untrack temp_60_arithop_181_0 
-         2112 untrack temp_59_value_from_ptr_181_0 
-         2111 untrack temp_169_cmp_194_0 
+         2113 untrack temp_169_cmp_194_0 
+         2112 untrack temp_60_arithop_181_0 
+         2111 untrack temp_59_value_from_ptr_181_0 
          2110 untrack c_184_4 
          364  temp_82_arithop_194_0 = Mul i32 temp_77_ret_of_intpop_184_0, temp_78_ret_of_intpop_184_0 
          365  (nop) 
@@ -1592,10 +1592,10 @@
          675  temp_173_cmp_197_0 = icmp i32 Eq temp_122_ele_of_*get2_0_179_0, 47_0 
          678  br i1 temp_173_cmp_197_0, label branch_true_198, label UP_26_0 
      676  label branch_true_198: 
-         2120 untrack temp_59_value_from_ptr_181_0 
-         2119 untrack c_184_6 
-         2118 untrack temp_60_arithop_181_0 
-         2117 untrack temp_173_cmp_197_0 
+         2120 untrack c_184_6 
+         2119 untrack temp_173_cmp_197_0 
+         2118 untrack temp_59_value_from_ptr_181_0 
+         2117 untrack temp_60_arithop_181_0 
          361  temp_81_arithop_197_0 = Div i32 temp_78_ret_of_intpop_184_0, temp_77_ret_of_intpop_184_0 
          362  (nop) 
          1460 c_184_8 = i32 temp_81_arithop_197_0 
@@ -1613,9 +1613,9 @@
          691  br i1 temp_177_cmp_200_0, label branch_true_201, label UP_14_0 
      689  label branch_true_201: 
          2127 untrack temp_59_value_from_ptr_181_0 
-         2126 untrack temp_60_arithop_181_0 
-         2125 untrack temp_177_cmp_200_0 
-         2124 untrack c_184_8 
+         2126 untrack temp_177_cmp_200_0 
+         2125 untrack c_184_8 
+         2124 untrack temp_60_arithop_181_0 
          358  temp_80_arithop_200_0 = Mod i32 temp_78_ret_of_intpop_184_0, temp_77_ret_of_intpop_184_0 
          359  (nop) 
          1461 c_184_10 = i32 temp_80_arithop_200_0 
@@ -1633,13 +1633,13 @@
          2131 untrack temp_122_ele_of_*get2_0_179_0 
          704  br i1 temp_181_cmp_203_0, label branch_true_204, label UP_8_0 
      702  label branch_true_204: 
-         2135 untrack temp_59_value_from_ptr_181_0 
-         2134 untrack c_184_10 
-         2133 untrack temp_60_arithop_181_0 
+         2135 untrack temp_60_arithop_181_0 
+         2134 untrack temp_59_value_from_ptr_181_0 
+         2133 untrack c_184_10 
          2132 untrack temp_181_cmp_203_0 
          355  temp_79_ret_of_power_203_0 =  Call i32 power_0(temp_78_ret_of_intpop_184_0, temp_77_ret_of_intpop_184_0) 
-         2142 untrack temp_78_ret_of_intpop_184_0 
-         2141 untrack temp_77_ret_of_intpop_184_0 
+         2142 untrack temp_77_ret_of_intpop_184_0 
+         2141 untrack temp_78_ret_of_intpop_184_0 
          356  (nop) 
          1462 c_184_12 = i32 temp_79_ret_of_power_203_0 
          2140 untrack temp_79_ret_of_power_203_0 
@@ -1651,8 +1651,8 @@
          2143 untrack c_184_12 
          1308 mu ints_0_7:353 
          1309 mu intt_0_9:353 
-         1310 ints_0_8 = chi ints_0_7:353 
-         1311 intt_0_10 = chi intt_0_9:353 
+         1310 intt_0_10 = chi intt_0_9:353 
+         1311 ints_0_8 = chi ints_0_7:353 
               jump label: gather_126 
      607  label gather_126: 
               jump label: L17_0 
@@ -1665,27 +1665,27 @@
               jump label: while.head_180 
      1456 label UP_8_0: 
          2139 untrack temp_77_ret_of_intpop_184_0 
-         2138 untrack temp_79_ret_of_power_203_0 
+         2138 untrack temp_78_ret_of_intpop_184_0 
          2137 untrack temp_181_cmp_203_0 
-         2136 untrack temp_78_ret_of_intpop_184_0 
+         2136 untrack temp_79_ret_of_power_203_0 
          1463 c_184_12 = i32 c_184_10 
          2144 untrack c_184_10 
               jump label: branch_false_204 
      1455 label UP_14_0: 
-         2129 untrack temp_80_arithop_200_0 
-         2128 untrack temp_177_cmp_200_0 
+         2129 untrack temp_177_cmp_200_0 
+         2128 untrack temp_80_arithop_200_0 
          1464 c_184_10 = i32 c_184_8 
          2145 untrack c_184_8 
               jump label: branch_false_201 
      1454 label UP_26_0: 
-         2122 untrack temp_81_arithop_197_0 
-         2121 untrack temp_173_cmp_197_0 
+         2122 untrack temp_173_cmp_197_0 
+         2121 untrack temp_81_arithop_197_0 
          1465 c_184_8 = i32 c_184_6 
          2146 untrack c_184_6 
               jump label: branch_false_198 
      1453 label UP_29_0: 
-         2115 untrack temp_82_arithop_194_0 
-         2114 untrack temp_169_cmp_194_0 
+         2115 untrack temp_169_cmp_194_0 
+         2114 untrack temp_82_arithop_194_0 
          1466 c_184_6 = i32 c_184_4 
          2147 untrack c_184_4 
               jump label: branch_false_195 
@@ -1696,8 +1696,8 @@
          2148 untrack c_184_2 
               jump label: branch_false_192 
      1451 label UP_42_0: 
-         2101 untrack temp_84_arithop_188_0 
-         2100 untrack temp_127_cmp_182_0 
+         2101 untrack temp_127_cmp_182_0 
+         2100 untrack temp_84_arithop_188_0 
          1468 c_184_2 = i32 0_0 
               jump label: branch_false_189 
      590  label branch_short_circuit_p_false_822: 
@@ -1749,47 +1749,47 @@
          603  temp_151_cmp_208_0 = icmp i32 Ne temp_122_ele_of_*get2_0_179_0, 32_0 
          606  br i1 temp_151_cmp_208_0, label branch_true_209, label branch_false_209 
      604  label branch_true_209: 
-         2231 untrack temp_82_arithop_194_0 
-         2230 untrack temp_131_cmp_182_0 
-         2229 untrack temp_173_cmp_197_0 
-         2228 untrack temp_83_arithop_191_0 
-         2227 untrack temp_143_cmp_182_0 
-         2226 untrack temp_77_ret_of_intpop_184_0 
-         2225 untrack temp_181_cmp_203_0 
-         2224 untrack temp_177_cmp_200_0 
-         2223 untrack temp_127_cmp_182_0 
-         2222 untrack temp_81_arithop_197_0 
-         2221 untrack temp_123_cmp_179_0 
-         2220 untrack temp_135_cmp_182_0 
-         2219 untrack temp_80_arithop_200_0 
-         2218 untrack temp_79_ret_of_power_203_0 
-         2217 untrack temp_78_ret_of_intpop_184_0 
-         2216 untrack temp_165_cmp_191_0 
-         2215 untrack temp_151_cmp_208_0 
-         2214 untrack temp_147_cmp_182_0 
-         2213 untrack temp_84_arithop_188_0 
-         2212 untrack temp_121_ptr_of_*get2_0_179 
-         2211 untrack temp_139_cmp_182_0 
-         2210 untrack c_184_10 
-         2209 untrack c_184_6 
-         2208 untrack c_184_4 
-         2207 untrack c_184_8 
-         2206 untrack c_184_2 
-         2205 untrack c_184_12 
-         2204 untrack temp_169_cmp_194_0 
+         2231 untrack temp_169_cmp_194_0 
+         2230 untrack temp_139_cmp_182_0 
+         2229 untrack temp_79_ret_of_power_203_0 
+         2228 untrack temp_82_arithop_194_0 
+         2227 untrack temp_131_cmp_182_0 
+         2226 untrack temp_173_cmp_197_0 
+         2225 untrack temp_84_arithop_188_0 
+         2224 untrack c_184_2 
+         2223 untrack c_184_10 
+         2222 untrack c_184_12 
+         2221 untrack c_184_6 
+         2220 untrack c_184_4 
+         2219 untrack c_184_8 
+         2218 untrack temp_151_cmp_208_0 
+         2217 untrack temp_147_cmp_182_0 
+         2216 untrack temp_81_arithop_197_0 
+         2215 untrack temp_80_arithop_200_0 
+         2214 untrack temp_121_ptr_of_*get2_0_179 
+         2213 untrack temp_77_ret_of_intpop_184_0 
+         2212 untrack temp_181_cmp_203_0 
+         2211 untrack temp_83_arithop_191_0 
+         2210 untrack temp_123_cmp_179_0 
+         2209 untrack temp_177_cmp_200_0 
+         2208 untrack temp_127_cmp_182_0 
+         2207 untrack temp_165_cmp_191_0 
+         2206 untrack temp_143_cmp_182_0 
+         2205 untrack temp_135_cmp_182_0 
+         2204 untrack temp_78_ret_of_intpop_184_0 
          296  (nop) 
          297  mu i_0_5:296 
          299  (nop) 
          301  (nop) 
          302  mu get2_0_36:301 
          304  temp_64_arithop_210_0 = Sub i32 temp_122_ele_of_*get2_0_179_0, 48_0 
-         2232 untrack temp_122_ele_of_*get2_0_179_0 
+         2233 untrack temp_122_ele_of_*get2_0_179_0 
          305   Call void intpush_0(temp_64_arithop_210_0) 
-         2233 untrack temp_64_arithop_210_0 
+         2232 untrack temp_64_arithop_210_0 
          1312 mu ints_0_7:305 
          1313 mu intt_0_7:305 
-         1314 ints_0_10 = chi ints_0_7:305 
-         1315 intt_0_12 = chi intt_0_7:305 
+         1314 intt_0_12 = chi intt_0_7:305 
+         1315 ints_0_10 = chi ints_0_7:305 
          306  store 1_0:i32 *ii_0:ptr->i32 
          307  ii_0_35 = chi ii_0_33:306 
          609  (nop) 
@@ -1815,8 +1815,8 @@
          332  mu get2_0_36:331 
          334  temp_74_arithop_215_0 = Sub i32 temp_156_ele_of_*get2_0_213_0, 48_0 
          335   Call void intadd_0(temp_74_arithop_215_0) 
-         1316 mu intt_0_12:335 
-         1317 mu ints_0_11:335 
+         1316 mu ints_0_11:335 
+         1317 mu intt_0_12:335 
          1318 ints_0_12 = chi ints_0_11:335 
          337  (nop) 
          338  mu ii_0_36:337 
@@ -1845,20 +1845,20 @@
          284  mu ints_0_7:283 
          285   Call void putint_0(temp_58_ele_of_*ints_0_87_0) 
          2236 untrack temp_58_ele_of_*ints_0_87_0 
-         1319 mu ints_0_7:287 
-         1320 mu intt_0_7:287 
+         1319 mu chat_0_44:287 
+         1320 mu c_0_4:287 
          1321 mu i_0_5:287 
-         1322 mu get2_0_36:287 
-         1323 mu c_0_4:287 
-         1324 mu chat_0_44:287 
+         1322 mu ii_0_33:287 
+         1323 mu intt_0_7:287 
+         1324 mu get2_0_36:287 
          1325 mu chas_0_4:287 
-         1326 mu ii_0_33:287 
+         1326 mu ints_0_7:287 
          287  ret 0_0 
  42   Define find_0 "" -> find_ret_0 
-         1195 c_0_1 = chi c_0_0:42 
-         1196 ii_0_1 = chi ii_0_0:42 
+         1195 get2_0_1 = chi get2_0_0:42 
+         1196 c_0_1 = chi c_0_0:42 
          1197 chat_0_5 = chi chat_0_0:42 
-         1198 get2_0_1 = chi get2_0_0:42 
+         1198 ii_0_1 = chi ii_0_0:42 
          219  alloc i32 [temp_43_ret_of_chapop_77] 
          223  alloc i32 [temp_44_value_from_ptr_77] 
          226  alloc ptr->i32 [temp_45_ptr_of_*get2_0_77] 
@@ -1872,35 +1872,35 @@
          256  alloc i1 [temp_53_cmp_82] 
           label L18_0: 
          220  temp_43_ret_of_chapop_77_0 =  Call i32 chapop_0() 
-         1199 mu chas_0_0:220 
-         1200 mu chat_0_5:220 
+         1199 mu chat_0_5:220 
+         1200 mu chas_0_0:220 
          1201 chat_0_6 = chi chat_0_5:220 
          221  store temp_43_ret_of_chapop_77_0:i32 *c_0:ptr->i32 
-         1512 untrack temp_43_ret_of_chapop_77_0 
+         1516 untrack temp_43_ret_of_chapop_77_0 
          222  c_0_2 = chi c_0_1:221 
          224  temp_44_value_from_ptr_77_0 = load *ii_0:ptr->i32 
          225  mu ii_0_1:224 
          227  temp_45_ptr_of_*get2_0_77 = GEP *get2_0:ptr->i32 [Some(temp_44_value_from_ptr_77_0)] 
          228  store 32_0:i32 temp_45_ptr_of_*get2_0_77:ptr->i32 
-         1514 untrack temp_45_ptr_of_*get2_0_77 
+         1512 untrack temp_45_ptr_of_*get2_0_77 
          229  get2_0_2 = chi get2_0_1:228 
          231  (nop) 
          232  mu ii_0_1:231 
          234  temp_47_arithop_77_0 = Add i32 temp_44_value_from_ptr_77_0, 1_0 
          236  temp_48_ptr_of_*get2_0_77 = GEP *get2_0:ptr->i32 [Some(temp_47_arithop_77_0)] 
-         1515 untrack temp_47_arithop_77_0 
+         1510 untrack temp_47_arithop_77_0 
          238  temp_49_value_from_ptr_77_0 = load *c_0:ptr->i32 
          239  mu c_0_2:238 
          240  store temp_49_value_from_ptr_77_0:i32 temp_48_ptr_of_*get2_0_77:ptr->i32 
-         1516 untrack temp_48_ptr_of_*get2_0_77 
+         1514 untrack temp_48_ptr_of_*get2_0_77 
          1511 untrack temp_49_value_from_ptr_77_0 
          241  get2_0_3 = chi get2_0_2:240 
          243  (nop) 
          244  mu ii_0_1:243 
          246  temp_51_arithop_77_0 = Add i32 temp_44_value_from_ptr_77_0, 2_0 
-         1513 untrack temp_44_value_from_ptr_77_0 
+         1515 untrack temp_44_value_from_ptr_77_0 
          247  store temp_51_arithop_77_0:i32 *ii_0:ptr->i32 
-         1510 untrack temp_51_arithop_77_0 
+         1513 untrack temp_51_arithop_77_0 
          248  ii_0_2 = chi ii_0_1:247 
               jump label: L19_0 
           label L19_0: 
@@ -1911,19 +1911,19 @@
          260  br i1 temp_53_cmp_82_0, label branch_true_83, label branch_false_83 
      258  label branch_true_83: 
          1518 untrack temp_53_cmp_82_0 
-         1202 mu c_0_2:252 
-         1203 mu ii_0_2:252 
+         1202 mu get2_0_3:252 
+         1203 mu c_0_2:252 
          1204 mu chat_0_6:252 
-         1205 mu get2_0_3:252 
+         1205 mu ii_0_2:252 
          252  ret 0_0 
      259  label branch_false_83: 
          1519 untrack temp_53_cmp_82_0 
               jump label: L20_0 
           label L20_0: 
-         1206 mu c_0_2:250 
-         1207 mu ii_0_2:250 
+         1206 mu get2_0_3:250 
+         1207 mu c_0_2:250 
          1208 mu chat_0_6:250 
-         1209 mu get2_0_3:250 
+         1209 mu ii_0_2:250 
          250  ret 1_0 
  41   Define intadd_0 "x_71_0," -> intadd_ret_0 
          1193 ints_0_3 = chi ints_0_0:41 
@@ -1943,16 +1943,16 @@
          184  temp_31_value_from_ptr_73_0 = load *intt_0:ptr->i32 
          185  mu intt_0_0:184 
          187  temp_32_ptr_of_*ints_0_73 = GEP *ints_0:ptr->i32 [Some(temp_31_value_from_ptr_73_0)] 
-         1508 untrack temp_31_value_from_ptr_73_0 
+         1506 untrack temp_31_value_from_ptr_73_0 
          189  (nop) 
          190  mu intt_0_0:189 
          192  (nop) 
          194  temp_35_ele_of_*ints_0_73_0 = load temp_32_ptr_of_*ints_0_73:ptr->i32 
          195  mu ints_0_3:194 
          197  temp_36_arithop_73_0 = Mul i32 temp_35_ele_of_*ints_0_73_0, 10_0 
-         1509 untrack temp_35_ele_of_*ints_0_73_0 
+         1507 untrack temp_35_ele_of_*ints_0_73_0 
          198  store temp_36_arithop_73_0:i32 temp_32_ptr_of_*ints_0_73:ptr->i32 
-         1503 untrack temp_36_arithop_73_0 
+         1505 untrack temp_36_arithop_73_0 
          199  ints_0_4 = chi ints_0_3:198 
          201  (nop) 
          202  mu intt_0_0:201 
@@ -1963,11 +1963,11 @@
          211  temp_41_ele_of_*ints_0_73_0 = load temp_32_ptr_of_*ints_0_73:ptr->i32 
          212  mu ints_0_4:211 
          214  temp_42_arithop_73_0 = Add i32 temp_41_ele_of_*ints_0_73_0, x_71_0 
-         1507 untrack temp_41_ele_of_*ints_0_73_0 
-         1506 untrack x_71_0 
+         1509 untrack temp_41_ele_of_*ints_0_73_0 
+         1504 untrack x_71_0 
          215  store temp_42_arithop_73_0:i32 temp_32_ptr_of_*ints_0_73:ptr->i32 
-         1505 untrack temp_42_arithop_73_0 
-         1504 untrack temp_32_ptr_of_*ints_0_73 
+         1508 untrack temp_32_ptr_of_*ints_0_73 
+         1503 untrack temp_42_arithop_73_0 
          216  ints_0_5 = chi ints_0_4:215 
               jump label: exit_32 
      218  label exit_32: 
@@ -1987,16 +1987,16 @@
          166  temp_26_arithop_68_0 = Sub i32 temp_25_value_from_ptr_68_0, 1_0 
          1500 untrack temp_25_value_from_ptr_68_0 
          167  store temp_26_arithop_68_0:i32 *chat_0:ptr->i32 
-         1498 untrack temp_26_arithop_68_0 
+         1501 untrack temp_26_arithop_68_0 
          168  chat_0_4 = chi chat_0_3:167 
          171  temp_27_value_from_ptr_68_0 = load *chat_0:ptr->i32 
          172  mu chat_0_4:171 
          174  temp_28_arithop_68_0 = Add i32 temp_27_value_from_ptr_68_0, 1_0 
-         1502 untrack temp_27_value_from_ptr_68_0 
+         1499 untrack temp_27_value_from_ptr_68_0 
          176  temp_29_ptr_of_*chas_0_68 = GEP *chas_0:Array:i32:[None] [Some(temp_28_arithop_68_0)] 
-         1501 untrack temp_28_arithop_68_0 
+         1498 untrack temp_28_arithop_68_0 
          178  temp_30_ele_of_*chas_0_68_0 = load temp_29_ptr_of_*chas_0_68:ptr->i32 
-         1499 untrack temp_29_ptr_of_*chas_0_68 
+         1502 untrack temp_29_ptr_of_*chas_0_68 
          179  mu chas_0_0:178 
          1192 mu chat_0_4:180 
          180  ret temp_30_ele_of_*chas_0_68_0 
@@ -2012,24 +2012,24 @@
          142  temp_19_value_from_ptr_64_0 = load *intt_0:ptr->i32 
          143  mu intt_0_3:142 
          145  temp_20_arithop_64_0 = Sub i32 temp_19_value_from_ptr_64_0, 1_0 
-         1494 untrack temp_19_value_from_ptr_64_0 
+         1496 untrack temp_19_value_from_ptr_64_0 
          146  store temp_20_arithop_64_0:i32 *intt_0:ptr->i32 
-         1493 untrack temp_20_arithop_64_0 
+         1497 untrack temp_20_arithop_64_0 
          147  intt_0_4 = chi intt_0_3:146 
          150  temp_21_value_from_ptr_64_0 = load *intt_0:ptr->i32 
          151  mu intt_0_4:150 
          153  temp_22_arithop_64_0 = Add i32 temp_21_value_from_ptr_64_0, 1_0 
-         1497 untrack temp_21_value_from_ptr_64_0 
+         1495 untrack temp_21_value_from_ptr_64_0 
          155  temp_23_ptr_of_*ints_0_64 = GEP *ints_0:Array:i32:[None] [Some(temp_22_arithop_64_0)] 
-         1495 untrack temp_22_arithop_64_0 
+         1493 untrack temp_22_arithop_64_0 
          157  temp_24_ele_of_*ints_0_64_0 = load temp_23_ptr_of_*ints_0_64:ptr->i32 
-         1496 untrack temp_23_ptr_of_*ints_0_64 
+         1494 untrack temp_23_ptr_of_*ints_0_64 
          158  mu ints_0_0:157 
          1190 mu intt_0_4:159 
          159  ret temp_24_ele_of_*ints_0_64_0 
  38   Define chapush_0 "x_58_0," -> chapush_ret_0 
-         1185 chat_0_1 = chi chat_0_0:38 
-         1186 chas_0_1 = chi chas_0_0:38 
+         1185 chas_0_1 = chi chas_0_0:38 
+         1186 chat_0_1 = chi chat_0_0:38 
          125  alloc i32 [temp_15_value_from_ptr_60] 
          128  alloc i32 [temp_16_arithop_60] 
          132  alloc i32 [temp_17_value_from_ptr_60] 
@@ -2038,7 +2038,7 @@
          126  temp_15_value_from_ptr_60_0 = load *chat_0:ptr->i32 
          127  mu chat_0_1:126 
          129  temp_16_arithop_60_0 = Add i32 temp_15_value_from_ptr_60_0, 1_0 
-         1489 untrack temp_15_value_from_ptr_60_0 
+         1492 untrack temp_15_value_from_ptr_60_0 
          130  store temp_16_arithop_60_0:i32 *chat_0:ptr->i32 
          1488 untrack temp_16_arithop_60_0 
          131  chat_0_2 = chi chat_0_1:130 
@@ -2047,17 +2047,17 @@
          136  temp_18_ptr_of_*chas_0_60 = GEP *chas_0:ptr->i32 [Some(temp_17_value_from_ptr_60_0)] 
          1491 untrack temp_17_value_from_ptr_60_0 
          137  store x_58_0:i32 temp_18_ptr_of_*chas_0_60:ptr->i32 
-         1492 untrack x_58_0 
-         1490 untrack temp_18_ptr_of_*chas_0_60 
+         1490 untrack x_58_0 
+         1489 untrack temp_18_ptr_of_*chas_0_60 
          138  chas_0_2 = chi chas_0_1:137 
               jump label: exit_23 
      140  label exit_23: 
-         1187 mu chat_0_2:139 
-         1188 mu chas_0_2:139 
+         1187 mu chas_0_2:139 
+         1188 mu chat_0_2:139 
          139  ret 
  37   Define intpush_0 "x_53_0," -> intpush_ret_0 
-         1181 ints_0_1 = chi ints_0_0:37 
-         1182 intt_0_1 = chi intt_0_0:37 
+         1181 intt_0_1 = chi intt_0_0:37 
+         1182 ints_0_1 = chi ints_0_0:37 
          109  alloc i32 [temp_11_value_from_ptr_55] 
          112  alloc i32 [temp_12_arithop_55] 
          116  alloc i32 [temp_13_value_from_ptr_55] 
@@ -2066,22 +2066,22 @@
          110  temp_11_value_from_ptr_55_0 = load *intt_0:ptr->i32 
          111  mu intt_0_1:110 
          113  temp_12_arithop_55_0 = Add i32 temp_11_value_from_ptr_55_0, 1_0 
-         1485 untrack temp_11_value_from_ptr_55_0 
+         1483 untrack temp_11_value_from_ptr_55_0 
          114  store temp_12_arithop_55_0:i32 *intt_0:ptr->i32 
          1487 untrack temp_12_arithop_55_0 
          115  intt_0_2 = chi intt_0_1:114 
          117  temp_13_value_from_ptr_55_0 = load *intt_0:ptr->i32 
          118  mu intt_0_2:117 
          120  temp_14_ptr_of_*ints_0_55 = GEP *ints_0:ptr->i32 [Some(temp_13_value_from_ptr_55_0)] 
-         1483 untrack temp_13_value_from_ptr_55_0 
+         1485 untrack temp_13_value_from_ptr_55_0 
          121  store x_53_0:i32 temp_14_ptr_of_*ints_0_55:ptr->i32 
          1486 untrack temp_14_ptr_of_*ints_0_55 
          1484 untrack x_53_0 
          122  ints_0_2 = chi ints_0_1:121 
               jump label: exit_20 
      124  label exit_20: 
-         1183 mu ints_0_2:123 
-         1184 mu intt_0_2:123 
+         1183 mu intt_0_2:123 
+         1184 mu ints_0_2:123 
          123  ret 
  36   Define getstr_0 "get_41," -> getstr_ret_0 
          78   alloc i32 [temp_5_ret_of_getch_43] 
@@ -2143,12 +2143,12 @@
          66   (nop) 
          68   temp_3_arithop_37_0 = Sub i32 a_31_1, 1_0 
          69   (nop) 
-         1445 result_33_1 = i32 temp_2_arithop_37_0 
-         1446 a_31_1 = i32 temp_3_arithop_37_0 
+         1445 a_31_1 = i32 temp_3_arithop_37_0 
+         1446 result_33_1 = i32 temp_2_arithop_37_0 
               jump label: while.head_36 
      74   label while.exit_36: 
-         1478 untrack b_31_0 
-         1477 untrack a_31_1 
+         1478 untrack a_31_1 
+         1477 untrack b_31_0 
          63   ret result_33_1 
  33   Define isdigit_0 "x_24_0," -> isdigit_ret_0 
          48   alloc i1 [temp_0_cmp_27] 
@@ -2166,9 +2166,9 @@
          47   ret 1_0 
      53   label branch_short_circuit_c_false_240: 
          1475 untrack temp_1_cmp_27_0 
-         1471 untrack x_24_0 
+         1471 untrack temp_0_cmp_27_0 
          1470 untrack temp_1_cmp_27_0 
-         1469 untrack temp_0_cmp_27_0 
+         1469 untrack x_24_0 
               jump label: L29_0 
           label L29_0: 
          45   ret 0_0 

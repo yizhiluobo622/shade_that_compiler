@@ -49,7 +49,7 @@ sy_path=./for_auto_test/00performance
 mkdir -p $ours_out_path
 # 检查是否提供了单个 .sy 文件作为参数或 --performance 选项
 if [ "$#" -gt 0 ]; then
-    sy_files=("$1")
+    sy_files=("$@")
 else
     sy_files=($sy_path/*.sy)
 fi

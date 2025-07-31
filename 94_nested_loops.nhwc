@@ -20,8 +20,8 @@
  15    
  17    
  23   Define main_0 "" -> main_ret_0 
-         419  arr2_0_10 = chi arr2_0_0:23 
-         420  arr1_0_10 = chi arr1_0_0:23 
+         419  arr1_0_10 = chi arr1_0_0:23 
+         420  arr2_0_10 = chi arr2_0_0:23 
          371  alloc i32 [temp_70_ret_of_getint_161] 
          374  alloc i32 [x_161] 
          375  alloc i32 [temp_71_ret_of_getint_161] 
@@ -61,25 +61,25 @@
          404  temp_78_ret_of_getint_161_0 =  Call i32 getint_0() 
          405  (nop) 
          407   Call void loop1_0(temp_70_ret_of_getint_161_0, temp_71_ret_of_getint_161_0) 
-         709  untrack temp_71_ret_of_getint_161_0 
-         704  untrack temp_70_ret_of_getint_161_0 
+         709  untrack temp_70_ret_of_getint_161_0 
+         704  untrack temp_71_ret_of_getint_161_0 
          421  mu arr1_0_10:407 
          422  arr1_0_11 = chi arr1_0_10:407 
          408   Call void loop2_0() 
          423  mu arr2_0_10:408 
          424  arr2_0_11 = chi arr2_0_10:408 
          411  temp_79_ret_of_loop3_161_0 =  Call i32 loop3_0(temp_72_ret_of_getint_161_0, temp_73_ret_of_getint_161_0, temp_74_ret_of_getint_161_0, temp_75_ret_of_getint_161_0, temp_76_ret_of_getint_161_0, temp_77_ret_of_getint_161_0, temp_78_ret_of_getint_161_0) 
-         710  untrack temp_75_ret_of_getint_161_0 
-         708  untrack temp_77_ret_of_getint_161_0 
-         707  untrack temp_78_ret_of_getint_161_0 
-         706  untrack temp_73_ret_of_getint_161_0 
-         705  untrack temp_76_ret_of_getint_161_0 
-         703  untrack temp_74_ret_of_getint_161_0 
-         702  untrack temp_72_ret_of_getint_161_0 
+         710  untrack temp_77_ret_of_getint_161_0 
+         708  untrack temp_74_ret_of_getint_161_0 
+         707  untrack temp_73_ret_of_getint_161_0 
+         706  untrack temp_72_ret_of_getint_161_0 
+         705  untrack temp_78_ret_of_getint_161_0 
+         703  untrack temp_76_ret_of_getint_161_0 
+         702  untrack temp_75_ret_of_getint_161_0 
          425  mu arr2_0_11:411 
          426  mu arr1_0_11:411 
-         427  mu arr2_0_11:412 
-         428  mu arr1_0_11:412 
+         427  mu arr1_0_11:412 
+         428  mu arr2_0_11:412 
          412  ret temp_79_ret_of_loop3_161_0 
  22   Define loop3_0 "h_97_0,i_97_0,j_97_0,k_97_0,l_97_0,m_97_0,n_97_0," -> loop3_ret_0 
          229  alloc i32 [a_99] 
@@ -200,15 +200,15 @@
          367  temp_69_cmp_132_0 = icmp i32 Sge temp_55_arithop_129_0, n_97_0 
          370  br i1 temp_69_cmp_132_0, label branch_true_133, label branch_false_133 
      368  label branch_true_133: 
-         669  untrack temp_67_cmp_127_0 
+         669  untrack temp_53_ele_of_*arr2_0_129_0 
          668  untrack temp_51_arithop_129_0 
-         667  untrack temp_48_arithop_129_0 
-         666  untrack temp_52_ptr_of_*arr2_0_129 
-         665  untrack temp_49_ptr_of_*arr1_0_129 
-         664  untrack temp_50_ele_of_*arr1_0_129_0 
-         663  untrack temp_69_cmp_132_0 
-         662  untrack temp_53_ele_of_*arr2_0_129_0 
-         661  untrack temp_55_arithop_129_0 
+         667  untrack temp_49_ptr_of_*arr1_0_129 
+         666  untrack temp_55_arithop_129_0 
+         665  untrack temp_69_cmp_132_0 
+         664  untrack temp_48_arithop_129_0 
+         663  untrack temp_67_cmp_127_0 
+         662  untrack temp_52_ptr_of_*arr2_0_129 
+         661  untrack temp_50_ele_of_*arr1_0_129_0 
          618  ans_99_9 = i32 temp_54_arithop_129_0 
          670  untrack temp_54_arithop_129_0 
               jump label: while.exit_128 
@@ -220,11 +220,11 @@
          362  temp_68_cmp_136_0 = icmp i32 Sge temp_47_arithop_125_0, m_97_0 
          365  br i1 temp_68_cmp_136_0, label branch_true_137, label branch_false_137 
      363  label branch_true_137: 
-         675  untrack temp_65_cmp_123_0 
-         674  untrack g_99_8 
-         673  untrack temp_68_cmp_136_0 
-         672  untrack ans_99_7 
-         671  untrack temp_47_arithop_125_0 
+         675  untrack temp_47_arithop_125_0 
+         674  untrack temp_68_cmp_136_0 
+         673  untrack ans_99_7 
+         672  untrack temp_65_cmp_123_0 
+         671  untrack g_99_8 
          619  ans_99_10 = i32 ans_99_9 
               jump label: while.exit_124 
      348  label while.exit_124: 
@@ -235,9 +235,9 @@
          351  temp_66_cmp_140_0 = icmp i32 Sge temp_46_arithop_121_0, l_97_0 
          354  br i1 temp_66_cmp_140_0, label branch_true_141, label branch_false_141 
      352  label branch_true_141: 
-         680  untrack temp_66_cmp_140_0 
+         680  untrack f_99_7 
          679  untrack temp_63_cmp_119_0 
-         678  untrack f_99_7 
+         678  untrack temp_66_cmp_140_0 
          677  untrack temp_46_arithop_121_0 
          676  untrack ans_99_6 
          620  ans_99_11 = i32 ans_99_10 
@@ -250,11 +250,11 @@
          340  temp_64_cmp_144_0 = icmp i32 Sge temp_45_arithop_117_0, k_97_0 
          343  br i1 temp_64_cmp_144_0, label branch_true_145, label branch_false_145 
      341  label branch_true_145: 
-         685  untrack temp_64_cmp_144_0 
-         684  untrack e_99_6 
-         683  untrack temp_45_arithop_117_0 
-         682  untrack ans_99_5 
-         681  untrack temp_61_cmp_115_0 
+         685  untrack ans_99_5 
+         684  untrack temp_45_arithop_117_0 
+         683  untrack temp_61_cmp_115_0 
+         682  untrack e_99_6 
+         681  untrack temp_64_cmp_144_0 
          621  ans_99_12 = i32 ans_99_11 
               jump label: while.exit_116 
      326  label while.exit_116: 
@@ -265,11 +265,11 @@
          329  temp_62_cmp_148_0 = icmp i32 Sge temp_44_arithop_113_0, j_97_0 
          332  br i1 temp_62_cmp_148_0, label branch_true_149, label branch_false_149 
      330  label branch_true_149: 
-         690  untrack ans_99_4 
-         689  untrack temp_59_cmp_111_0 
-         688  untrack temp_44_arithop_113_0 
-         687  untrack d_99_5 
-         686  untrack temp_62_cmp_148_0 
+         690  untrack temp_62_cmp_148_0 
+         689  untrack d_99_5 
+         688  untrack temp_59_cmp_111_0 
+         687  untrack temp_44_arithop_113_0 
+         686  untrack ans_99_4 
          622  ans_99_13 = i32 ans_99_12 
               jump label: while.exit_112 
      315  label while.exit_112: 
@@ -280,11 +280,11 @@
          318  temp_60_cmp_152_0 = icmp i32 Sge temp_43_arithop_109_0, i_97_0 
          321  br i1 temp_60_cmp_152_0, label branch_true_153, label branch_false_153 
      319  label branch_true_153: 
-         695  untrack ans_99_3 
-         694  untrack temp_60_cmp_152_0 
-         693  untrack c_99_4 
-         692  untrack temp_57_cmp_107_0 
-         691  untrack temp_43_arithop_109_0 
+         695  untrack temp_57_cmp_107_0 
+         694  untrack temp_43_arithop_109_0 
+         693  untrack temp_60_cmp_152_0 
+         692  untrack ans_99_3 
+         691  untrack c_99_4 
          623  ans_99_14 = i32 ans_99_13 
               jump label: while.exit_108 
      304  label while.exit_108: 
@@ -295,8 +295,8 @@
          307  temp_58_cmp_156_0 = icmp i32 Sge temp_42_arithop_105_0, h_97_0 
          310  br i1 temp_58_cmp_156_0, label branch_true_157, label branch_false_157 
      308  label branch_true_157: 
-         700  untrack b_99_3 
-         699  untrack temp_56_cmp_103_0 
+         700  untrack temp_56_cmp_103_0 
+         699  untrack b_99_3 
          698  untrack temp_58_cmp_156_0 
          697  untrack ans_99_2 
          696  untrack temp_42_arithop_105_0 
@@ -305,12 +305,12 @@
      296  label while.exit_104: 
          247  ret ans_99_15 
      309  label branch_false_157: 
-         625  ans_99_1 = i32 ans_99_14 
-         626  a_99_2 = i32 temp_42_arithop_105_0 
+         625  a_99_2 = i32 temp_42_arithop_105_0 
+         626  ans_99_1 = i32 ans_99_14 
               jump label: while.head_104 
      320  label branch_false_153: 
-         627  b_99_3 = i32 temp_43_arithop_109_0 
-         628  ans_99_2 = i32 ans_99_13 
+         627  ans_99_2 = i32 ans_99_13 
+         628  b_99_3 = i32 temp_43_arithop_109_0 
               jump label: while.head_108 
      331  label branch_false_149: 
          629  ans_99_3 = i32 ans_99_12 
@@ -321,12 +321,12 @@
          632  ans_99_4 = i32 ans_99_11 
               jump label: while.head_116 
      353  label branch_false_141: 
-         633  e_99_6 = i32 temp_46_arithop_121_0 
-         634  ans_99_5 = i32 ans_99_10 
+         633  ans_99_5 = i32 ans_99_10 
+         634  e_99_6 = i32 temp_46_arithop_121_0 
               jump label: while.head_120 
      364  label branch_false_137: 
-         635  ans_99_6 = i32 ans_99_9 
-         636  f_99_7 = i32 temp_47_arithop_125_0 
+         635  f_99_7 = i32 temp_47_arithop_125_0 
+         636  ans_99_6 = i32 ans_99_9 
               jump label: while.head_124 
      369  label branch_false_133: 
          637  g_99_8 = i32 temp_55_arithop_129_0 
@@ -351,14 +351,14 @@
          644  ans_99_14 = i32 ans_99_2 
               jump label: while.exit_108 
      603  label UP_100_0: 
-         660  untrack j_97_0 
-         659  untrack a_99_2 
-         658  untrack n_97_0 
+         660  untrack n_97_0 
+         659  untrack l_97_0 
+         658  untrack j_97_0 
          657  untrack m_97_0 
-         656  untrack l_97_0 
-         655  untrack h_97_0 
-         654  untrack k_97_0 
-         653  untrack i_97_0 
+         656  untrack i_97_0 
+         655  untrack a_99_2 
+         654  untrack h_97_0 
+         653  untrack k_97_0 
          645  ans_99_15 = i32 ans_99_1 
          701  untrack ans_99_1 
               jump label: while.exit_104 
@@ -629,8 +629,8 @@
          582  a_20_2 = i32 temp_0_arithop_25_0 
               jump label: while.head_24 
      91   label branch_short_circuit_c_false_315: 
-         651  untrack x_18_0 
-         650  untrack y_18_0 
+         651  untrack y_18_0 
+         650  untrack x_18_0 
          649  untrack a_20_2 
          648  untrack a_20_2 
          647  untrack x_18_0 

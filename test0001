@@ -1,0 +1,19 @@
+# 创建quick_test.sh
+cat > quick_test.sh << 'EOF'
+#!/bin/bash
+
+# 只测试这几个文件
+test_files=(
+    "./for_auto_test/00performance/09_BFS.sy"
+    "./for_auto_test/00performance/10_DFS.sy"
+    "./for_auto_test/00performance/12_DSU.sy"
+)
+
+for file in "${test_files[@]}"; do
+    echo "Testing $file"
+    bash auto_test_performance "$file"
+done
+EOF
+
+chmod +x quick_test.sh
+./quick_test.sh

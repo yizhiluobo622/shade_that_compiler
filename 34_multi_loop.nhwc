@@ -67,8 +67,8 @@
           label L0_0: 
          17   (nop) 
          19   (nop) 
-         223  a_17_1 = i32 0_0 
-         224  i_17_1 = i32 0_0 
+         223  i_17_1 = i32 0_0 
+         224  a_17_1 = i32 0_0 
               jump label: while.head_21 
      103  label while.head_21: 
          102  temp_17_cmp_20_0 = icmp i32 Slt i_17_1, 1_0 
@@ -233,20 +233,20 @@
      155  label while.exit_53: 
          61   temp_7_arithop_50_0 = Add i32 jjj_46_1, 1_0 
          62   (nop) 
-         267  jjj_46_1 = i32 temp_7_arithop_50_0 
-         268  a_17_8 = i32 a_17_9 
+         267  a_17_8 = i32 a_17_9 
+         268  jjj_46_1 = i32 temp_7_arithop_50_0 
               jump label: while.head_49 
      149  label while.exit_49: 
          56   temp_6_arithop_46_0 = Add i32 iii_42_1, 1_0 
          57   (nop) 
-         269  a_17_7 = i32 a_17_8 
-         270  iii_42_1 = i32 temp_6_arithop_46_0 
+         269  iii_42_1 = i32 temp_6_arithop_46_0 
+         270  a_17_7 = i32 a_17_8 
               jump label: while.head_45 
      143  label while.exit_45: 
          51   temp_5_arithop_42_0 = Add i32 kk_38_1, 1_0 
          52   (nop) 
-         271  a_17_6 = i32 a_17_7 
-         272  kk_38_1 = i32 temp_5_arithop_42_0 
+         271  kk_38_1 = i32 temp_5_arithop_42_0 
+         272  a_17_6 = i32 a_17_7 
               jump label: while.head_41 
      137  label while.exit_41: 
          46   temp_4_arithop_38_0 = Add i32 jj_34_1, 1_0 
@@ -257,14 +257,14 @@
      131  label while.exit_37: 
          41   temp_3_arithop_34_0 = Add i32 ii_30_1, 1_0 
          42   (nop) 
-         275  a_17_4 = i32 a_17_5 
-         276  ii_30_1 = i32 temp_3_arithop_34_0 
+         275  ii_30_1 = i32 temp_3_arithop_34_0 
+         276  a_17_4 = i32 a_17_5 
               jump label: while.head_33 
      125  label while.exit_33: 
          36   temp_2_arithop_30_0 = Add i32 k_26_1, 1_0 
          37   (nop) 
-         277  k_26_1 = i32 temp_2_arithop_30_0 
-         278  a_17_3 = i32 a_17_4 
+         277  a_17_3 = i32 a_17_4 
+         278  k_26_1 = i32 temp_2_arithop_30_0 
               jump label: while.head_29 
      119  label while.exit_29: 
          31   temp_1_arithop_26_0 = Add i32 j_22_1, 1_0 
@@ -275,8 +275,8 @@
      113  label while.exit_25: 
          26   temp_0_arithop_22_0 = Add i32 i_17_1, 1_0 
          27   (nop) 
-         281  i_17_1 = i32 temp_0_arithop_22_0 
-         282  a_17_1 = i32 a_17_2 
+         281  a_17_1 = i32 a_17_2 
+         282  i_17_1 = i32 temp_0_arithop_22_0 
               jump label: while.head_21 
      105  label while.exit_21: 
          283  untrack i_17_1 

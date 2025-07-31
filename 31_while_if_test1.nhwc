@@ -43,11 +43,11 @@
          43   temp_3_cmp_25_0 = icmp i32 Eq a_17_2, 5_0 
          46   br i1 temp_3_cmp_25_0, label branch_true_26, label branch_false_26 
      44   label branch_true_26: 
-         77   untrack temp_3_cmp_25_0 
-         76   untrack temp_0_arithop_33_0 
-         75   untrack b_17_6 
-         74   untrack temp_4_cmp_29_0 
-         73   untrack temp_2_cmp_22_0 
+         77   untrack temp_0_arithop_33_0 
+         76   untrack b_17_6 
+         75   untrack temp_4_cmp_29_0 
+         74   untrack temp_2_cmp_22_0 
+         73   untrack temp_3_cmp_25_0 
          33   (nop) 
          66   b_17_4 = i32 25_0 
               jump label: gather_10 
@@ -63,9 +63,9 @@
          48   temp_4_cmp_29_0 = icmp i32 Eq a_17_2, 10_0 
          51   br i1 temp_4_cmp_29_0, label branch_true_30, label branch_false_30 
      49   label branch_true_30: 
-         81   untrack temp_2_cmp_22_0 
+         81   untrack temp_0_arithop_33_0 
          80   untrack temp_3_cmp_25_0 
-         79   untrack temp_0_arithop_33_0 
+         79   untrack temp_2_cmp_22_0 
          78   untrack temp_4_cmp_29_0 
          32   (nop) 
          69   b_17_6 = i32 42_0 

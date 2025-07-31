@@ -83,12 +83,12 @@
          163  i_44_1 = i32 temp_19_arithop_48_0 
               jump label: while.head_47 
      159  label UP_8_0: 
-         194  untrack temp_15_ptr_of_b_44_48 
-         193  untrack temp_19_arithop_48_0 
-         192  untrack temp_17_arithop_48_0 
-         191  untrack temp_20_cmp_46_0 
-         190  untrack temp_16_arithop_48_0 
-         189  untrack temp_18_arithop_48_0 
+         194  untrack temp_20_cmp_46_0 
+         193  untrack temp_16_arithop_48_0 
+         192  untrack temp_18_arithop_48_0 
+         191  untrack temp_15_ptr_of_b_44_48 
+         190  untrack temp_17_arithop_48_0 
+         189  untrack temp_19_arithop_48_0 
          164  i_44_3 = i32 i_44_1 
               jump label: while.exit_47 
      111  label while.exit_47: 
@@ -144,9 +144,9 @@
          72   temp_11_cmp_24_0 = icmp i32 Sgt temp_5_arithop_22_0, 9_0 
          77   br i1 temp_11_cmp_24_0, label branch_short_circuit_c_true_142, label branch_short_circuit_c_false_142 
      74   label branch_short_circuit_c_false_142: 
-         171  untrack temp_10_cmp_24_0 
-         170  untrack temp_11_cmp_24_0 
-         169  untrack temp_4_ret_of_getch_22_0 
+         171  untrack temp_11_cmp_24_0 
+         170  untrack temp_4_ret_of_getch_22_0 
+         169  untrack temp_10_cmp_24_0 
          155  c_18_3 = i32 temp_5_arithop_22_0 
          172  untrack temp_5_arithop_22_0 
               jump label: while.exit_21 
@@ -179,17 +179,17 @@
          157  sum_18_2 = i32 temp_3_arithop_37_0 
               jump label: while.head_32 
      63   label branch_short_circuit_c_false_144: 
-         186  untrack temp_2_arithop_37_0 
-         185  untrack temp_1_arithop_33_0 
-         184  untrack temp_3_arithop_37_0 
-         183  untrack temp_9_cmp_35_0 
-         182  untrack temp_0_ret_of_getch_33_0 
+         186  untrack temp_9_cmp_35_0 
+         185  untrack temp_0_ret_of_getch_33_0 
+         184  untrack temp_1_arithop_33_0 
+         183  untrack temp_2_arithop_37_0 
+         182  untrack temp_3_arithop_37_0 
          181  untrack temp_8_cmp_35_0 
-         180  untrack temp_3_arithop_37_0 
-         179  untrack temp_1_arithop_33_0 
+         180  untrack temp_2_arithop_37_0 
+         179  untrack temp_3_arithop_37_0 
          178  untrack temp_9_cmp_35_0 
-         177  untrack temp_2_arithop_37_0 
-         176  untrack temp_0_ret_of_getch_33_0 
+         177  untrack temp_0_ret_of_getch_33_0 
+         176  untrack temp_1_arithop_33_0 
          175  untrack temp_8_cmp_35_0 
               jump label: while.exit_32 
      54   label while.exit_32: 
