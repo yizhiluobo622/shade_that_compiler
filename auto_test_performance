@@ -83,10 +83,10 @@ for filename in "${sy_files[@]}"; do
         # 根据标志变量的值输出结果
         if $has_d_option; then
             echo "存在 -d 选项"
-            $compiler "$filename" -o "$s_path/${base_name}.s" -a 2> /dev/null
+            $compiler "$filename" -o "$s_path/${base_name}.s" -a -d
         else
             echo "不存在 -d 选项"
-            $compiler "$filename" -o "$s_path/${base_name}.s" 2> /dev/null
+            $compiler "$filename" -o "$s_path/${base_name}.s" -a
         fi
         compile_status=$?
 
