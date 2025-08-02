@@ -24,7 +24,7 @@ impl GvnGcmPass {
 impl Pass for GvnGcmPass {
     // 运行这个pass
     fn run(&mut self, ctx:&mut NhwcCtx) -> Result<()> { 
-        println!("GvnGcmPass: 开始GVN/GCM优化");
+        //println!("GvnGcmPass: 开始GVN/GCM优化");
         
         // 在GVN/GCM优化前记录数组相关的变量
         let mut array_vars_before = Vec::new();
@@ -52,14 +52,14 @@ impl Pass for GvnGcmPass {
                             let ptr_name = ptr_symidx.as_ref_borrow().symbol_name.clone();
                             if self.is_array_related(&ptr_name) {
                                 array_vars_before.push((ptr_name.clone(), instr_struct.text.clone()));
-                                println!("  GVN/GCM前发现数组相关变量: {} -> {}", ptr_name, instr_struct.text);
+                                //println!("  GVN/GCM前发现数组相关变量: {} -> {}", ptr_name, instr_struct.text);
                             }
                         },
                         crate::toolkit::nhwc_instr::NhwcInstrType::GetElementPtr { ptr_symidx, .. } => {
                             let ptr_name = ptr_symidx.as_ref_borrow().symbol_name.clone();
                             if self.is_array_related(&ptr_name) {
                                 array_vars_before.push((ptr_name.clone(), instr_struct.text.clone()));
-                                println!("  GVN/GCM前发现数组相关变量: {} -> {}", ptr_name, instr_struct.text);
+                                //println!("  GVN/GCM前发现数组相关变量: {} -> {}", ptr_name, instr_struct.text);
                             }
                         },
                         _ => {}
@@ -68,7 +68,7 @@ impl Pass for GvnGcmPass {
             }
         }
         
-        println!("  GVN/GCM前发现 {} 个数组相关变量", array_vars_before.len());
+        //println!("  GVN/GCM前发现 {} 个数组相关变量", array_vars_before.len());
         
         // for gvn we should traverse through the cfg node of dominant tree 
 
@@ -112,14 +112,14 @@ impl Pass for GvnGcmPass {
                             let ptr_name = ptr_symidx.as_ref_borrow().symbol_name.clone();
                             if self.is_array_related(&ptr_name) {
                                 array_vars_after.push((ptr_name.clone(), instr_struct.text.clone()));
-                                println!("  GVN/GCM后发现数组相关变量: {} -> {}", ptr_name, instr_struct.text);
+                                //println!("  GVN/GCM后发现数组相关变量: {} -> {}", ptr_name, instr_struct.text);
                             }
                         },
                         crate::toolkit::nhwc_instr::NhwcInstrType::GetElementPtr { ptr_symidx, .. } => {
                             let ptr_name = ptr_symidx.as_ref_borrow().symbol_name.clone();
                             if self.is_array_related(&ptr_name) {
                                 array_vars_after.push((ptr_name.clone(), instr_struct.text.clone()));
-                                println!("  GVN/GCM后发现数组相关变量: {} -> {}", ptr_name, instr_struct.text);
+                                //println!("  GVN/GCM后发现数组相关变量: {} -> {}", ptr_name, instr_struct.text);
                             }
                         },
                         _ => {}
@@ -128,8 +128,8 @@ impl Pass for GvnGcmPass {
             }
         }
         
-        println!("  GVN/GCM后发现 {} 个数组相关变量", array_vars_after.len());
-        println!("  GVN/GCM优化完成，变量数量变化: {} -> {}", array_vars_before.len(), array_vars_after.len());
+        //println!("  GVN/GCM后发现 {} 个数组相关变量", array_vars_after.len());
+        //println!("  GVN/GCM优化完成，变量数量变化: {} -> {}", array_vars_before.len(), array_vars_after.len());
         
         if self.is_gen_gvngcm_cfg{
             for (idx,instr_struct) in ctx.nhwc_instr_slab.iter_mut(){

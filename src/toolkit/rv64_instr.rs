@@ -300,6 +300,7 @@ pub enum BaseIntInstr {
     Trans(Trans),
     MulAdd(MulAdd),
     MinMax(MinMax),
+    
 }
 impl Debug for BaseIntInstr{
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
@@ -556,6 +557,7 @@ pub enum Arithmetic {
     FMULS { rd:Register, rs1:Register, rs2:Register },
     FDIVS { rd:Register, rs1:Register, rs2:Register },
     FSQRTS { rd:Register, rs1:Register },
+    FNMULS {rd:Register,rs1:Register,rs2:Register}
 }
 impl Arithmetic {
 }
@@ -582,6 +584,7 @@ impl Debug for Arithmetic {
             Arithmetic::FMULS { rd, rs1, rs2 } => write!(f, "{:7} {:?},{:?},{:?}","fmul.s", rd, rs1, rs2),
             Arithmetic::FDIVS { rd, rs1, rs2 } => write!(f, "{:7} {:?},{:?},{:?}","fdiv.s", rd, rs1, rs2),   
             Arithmetic::FSQRTS { rd, rs1 } => write!(f, "{:7} {:?},{:?}","fsqrt.s", rd, rs1),
+            Arithmetic::FNMULS { rd, rs1, rs2 } => write!(f, "{:7} {:?},{:?},{:?}","fnmul.s", rd, rs1, rs2),
         }
     }
 }

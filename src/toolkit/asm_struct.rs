@@ -3,7 +3,7 @@ use anyhow::*;
 use itertools::Itertools;
 use strum_macros::EnumIs;
 
-use crate::{debug_info_blue, debug_info_red};
+use crate::{debug_info_blue, debug_info_red, toolkit::rv64_instr::{Arithmetic, BaseIntInstr}};
 
 use super::{field::Value, rv64_instr::{Imm, RV64Instr}, symtab::{RcSymIdx, SymIdx}};
 
@@ -33,7 +33,7 @@ impl AsmSection{
         }
     }
     pub fn annotate(&mut self, annotation:String){
-        self.stmts.push(AsmAttr::Annotation { annotation }.into())
+        //self.stmts.push(AsmAttr::Annotation { annotation }.into())
     }
     pub fn global(&mut self, imm:Imm){
         self.stmts.push(AsmAttr::Global { label: imm }.into())
@@ -75,6 +75,140 @@ impl AsmSection{
     }
     pub fn asm(&mut self, riscv_instr:RV64Instr){
         debug_info_blue!("asm:{:?}", riscv_instr);
+        match self.stmts.last(){
+            Some(former_asm) => {
+                match former_asm {
+                    Asm::Attr { attr } => () ,
+                    Asm::Riscv { instr } => {
+                        println!("{:?}",instr);
+                        match instr{
+                            RV64Instr::BaseIntInstr(baseintinstr)=>{
+                                //println!("{:?}",baseintinstr);
+                                match baseintinstr {           
+                                    BaseIntInstr::Arithmetic(arithmetic) => {
+                                        match arithmetic {
+                                            
+                                            Arithmetic::FMULS { rd: mul_rd, rs1: mul_rs1, rs2: mul_rs2 } => {
+                                                 println!("匹配到FMULS指令!");
+                                                 
+                                                 // 检查当前指令是否是浮点加法
+                                                 match &riscv_instr {
+                                                     RV64Instr::BaseIntInstr(super::rv64_instr::BaseIntInstr::Arithmetic(super::rv64_instr::Arithmetic::FADDS { rd: add_rd, rs1: add_rs1, rs2: add_rs2 })) => {
+                                                         // 检查是否可以合并为FMADD: add_rs1 == mul_rd
+                                                         if add_rs1 == mul_rd {
+                                                             println!("优化: FMULS + FADDS -> FMADD");
+                                                             
+                                                             // 创建FMADD指令
+                                                             let fmadd_instr = RV64Instr::BaseIntInstr(super::rv64_instr::BaseIntInstr::MulAdd(super::rv64_instr::MulAdd::Fmadds {
+                                                                 rd: add_rd.clone(),
+                                                                 rs1: mul_rs1.clone(),
+                                                                 rs2: mul_rs2.clone(),
+                                                                 rs3: add_rs2.clone(),
+                                                             }));
+                                                             
+                                                             // 替换最后一条指令（FMULS）
+                                                             if let Some(last_stmt) = self.stmts.last_mut() {
+                                                                 if let Asm::Riscv { instr } = last_stmt {
+                                                                     *instr = fmadd_instr;
+                                                                 }
+                                                             }
+                                                             
+                                                             return; // 不添加新指令，因为已经合并了
+                                                         }
+                                                     },
+                                                     RV64Instr::BaseIntInstr(super::rv64_instr::BaseIntInstr::Arithmetic(super::rv64_instr::Arithmetic::FSUBS { rd: sub_rd, rs1: sub_rs1, rs2: sub_rs2 })) => {
+                                                         // 检查是否可以合并为FMSUB: sub_rs1 == mul_rd
+                                                         if sub_rs1 == mul_rd {
+                                                             println!("优化: FMULS + FSUBS -> FMSUB");
+                                                             
+                                                             // 创建FMSUB指令
+                                                             let fmsub_instr = RV64Instr::BaseIntInstr(super::rv64_instr::BaseIntInstr::MulAdd(super::rv64_instr::MulAdd::Fmsubs {
+                                                                 rd: sub_rd.clone(),
+                                                                 rs1: mul_rs1.clone(),
+                                                                 rs2: mul_rs2.clone(),
+                                                                 rs3: sub_rs2.clone(),
+                                                             }));
+                                                             
+                                                             // 替换最后一条指令（FMULS）
+                                                             if let Some(last_stmt) = self.stmts.last_mut() {
+                                                                 if let Asm::Riscv { instr } = last_stmt {
+                                                                     *instr = fmsub_instr;
+                                                                 }
+                                                             }
+                                                             
+                                                             return; // 不添加新指令，因为已经合并了
+                                                         }
+                                                     },
+                                                     _ => {}
+                                                 }
+                                             },
+                                            _ => (),
+                                        }
+                                                                         },
+                                     super::rv64_instr::BaseIntInstr::MulAdd(muladd) => {
+                                         match muladd {
+                                             super::rv64_instr::MulAdd::Fnmadds { rd: mul_rd, rs1: mul_rs1, rs2: mul_rs2, rs3: mul_rs3 } => {
+                                                 println!("匹配到FNMULS指令!");
+                                                 
+                                                 // 检查当前指令是否是浮点加法或减法
+                                                 match &riscv_instr {
+                                                     RV64Instr::BaseIntInstr(super::rv64_instr::BaseIntInstr::Arithmetic(super::rv64_instr::Arithmetic::FADDS { rd: add_rd, rs1: add_rs1, rs2: add_rs2 })) => {
+                                                         if add_rs1 == mul_rd {
+                                                             println!("优化: FNMULS + FADDS -> FNMADD");
+                                                             
+                                                             let fnmadd_instr = RV64Instr::BaseIntInstr(super::rv64_instr::BaseIntInstr::MulAdd(super::rv64_instr::MulAdd::Fnmadds {
+                                                                 rd: add_rd.clone(),
+                                                                 rs1: mul_rs1.clone(),
+                                                                 rs2: mul_rs2.clone(),
+                                                                 rs3: add_rs2.clone(),
+                                                             }));
+                                                             
+                                                             if let Some(last_stmt) = self.stmts.last_mut() {
+                                                                 if let Asm::Riscv { instr } = last_stmt {
+                                                                     *instr = fnmadd_instr;
+                                                                 }
+                                                             }
+                                                             return;
+                                                         }
+                                                     },
+                                                     RV64Instr::BaseIntInstr(super::rv64_instr::BaseIntInstr::Arithmetic(super::rv64_instr::Arithmetic::FSUBS { rd: sub_rd, rs1: sub_rs1, rs2: sub_rs2 })) => {
+                                                         if sub_rs1 == mul_rd {
+                                                             println!("优化: FNMULS + FSUBS -> FNMSUB");
+                                                             
+                                                             let fnmsub_instr = RV64Instr::BaseIntInstr(super::rv64_instr::BaseIntInstr::MulAdd(super::rv64_instr::MulAdd::Fnmsubs {
+                                                                 rd: sub_rd.clone(),
+                                                                 rs1: mul_rs1.clone(),
+                                                                 rs2: mul_rs2.clone(),
+                                                                 rs3: sub_rs2.clone(),
+                                                             }));
+                                                             
+                                                             if let Some(last_stmt) = self.stmts.last_mut() {
+                                                                 if let Asm::Riscv { instr } = last_stmt {
+                                                                     *instr = fnmsub_instr;
+                                                                 }
+                                                             }
+                                                             return;
+                                                         }
+                                                     },
+                                                     _ => {}
+                                                 }
+                                             },
+                                             _ => {}
+                                         }
+                                     },
+                                     _ => {},
+                                 }
+                            }
+                                                      
+                            _ => {},
+                        }
+                    },
+                }
+            },
+            None => todo!(),
+        }
+
+        
         self.stmts.push(Asm::Riscv { instr: riscv_instr })
     }
 

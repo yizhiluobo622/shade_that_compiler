@@ -10,7 +10,7 @@ impl SsaPass {
 impl Pass for SsaPass {
    // 运行这个pass
     fn run(&mut self, ctx:&mut crate::toolkit::context::NhwcCtx) -> Result<()> { 
-        println!("SSAPass: 开始SSA转换");
+        //println!("SSAPass: 开始SSA转换");
         
         // 在SSA转换前记录数组相关的变量
         let mut array_vars_before = Vec::new();
@@ -38,14 +38,14 @@ impl Pass for SsaPass {
                             let ptr_name = ptr_symidx.as_ref_borrow().symbol_name.clone();
                             if self.is_array_related(&ptr_name) {
                                 array_vars_before.push((ptr_name.clone(), instr_struct.text.clone()));
-                                println!("  SSA前发现数组相关变量: {} -> {}", ptr_name, instr_struct.text);
+                                //println!("  SSA前发现数组相关变量: {} -> {}", ptr_name, instr_struct.text);
                             }
                         },
                         crate::toolkit::nhwc_instr::NhwcInstrType::GetElementPtr { ptr_symidx, .. } => {
                             let ptr_name = ptr_symidx.as_ref_borrow().symbol_name.clone();
                             if self.is_array_related(&ptr_name) {
                                 array_vars_before.push((ptr_name.clone(), instr_struct.text.clone()));
-                                println!("  SSA前发现数组相关变量: {} -> {}", ptr_name, instr_struct.text);
+                                //println!("  SSA前发现数组相关变量: {} -> {}", ptr_name, instr_struct.text);
                             }
                         },
                         _ => {}
@@ -54,7 +54,7 @@ impl Pass for SsaPass {
             }
         }
         
-        println!("  SSA前发现 {} 个数组相关变量", array_vars_before.len());
+        //println!("  SSA前发现 {} 个数组相关变量", array_vars_before.len());
         
         let add_phi_rst = add_phi_nodes(&mut ctx.cfg_graph, &mut ctx.dj_graph, &mut ctx.symtab, &mut ctx.nhwc_instr_slab);
         let variable_renaming_rst = variable_renaming(&mut ctx.cfg_graph, &mut ctx.dj_graph, &mut ctx.symtab, &mut ctx.nhwc_instr_slab);
@@ -101,8 +101,8 @@ impl Pass for SsaPass {
             }
         }
         
-        println!("  SSA后发现 {} 个数组相关变量", array_vars_after.len());
-        println!("  SSA转换完成，变量数量变化: {} -> {}", array_vars_before.len(), array_vars_after.len());
+        //println!("  SSA后发现 {} 个数组相关变量", array_vars_after.len());
+        //println!("  SSA转换完成，变量数量变化: {} -> {}", array_vars_before.len(), array_vars_after.len());
         
         if self.is_gen_ssa_cfg_png{
             for (idx,instr_struct) in ctx.nhwc_instr_slab.iter_mut(){
