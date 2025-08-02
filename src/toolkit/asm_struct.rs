@@ -207,8 +207,138 @@ impl AsmSection{
             },
             None => todo!(),
         }
+        if self.stmts.len() >= 2{
+        match &self.stmts[self.stmts.len() - 2]{
+            Asm::Attr { attr } => (),
+            Asm::Riscv { instr } => {
+                println!("{:?}",instr);
+                match instr{
+                    RV64Instr::BaseIntInstr(base_int_instr) => (),
+                    RV64Instr::PseudoInstr(pseudo_instr) => {
+                        match pseudo_instr{  
+                            //
+                            //check whether it is Li (len-2)
+                            //                       
+                            crate::toolkit::rv64_instr::PseudoInstr::Li { rd, imm } => {
+                                match  &self.stmts[self.stmts.len() - 1]{
+                                    Asm::Attr { attr } => (),
+                                    Asm::Riscv { instr } => {
+                                        match instr{
+                                            RV64Instr::BaseIntInstr(base_int_instr) => (),
+                                            RV64Instr::PseudoInstr(pseudo_instr) => {
+                                                match pseudo_instr {
+                                                    //
+                                                    //check whether it is Fmv_w_x (len-1)
+                                                    //
+                                                    crate::toolkit::rv64_instr::PseudoInstr::Fmv_w_x { rd: fmv_rd, rs: fmv_rs } => {
+                                                        // 检查当前指令是否是fsub.s
+                                                        match &riscv_instr {
+                                                            RV64Instr::BaseIntInstr(super::rv64_instr::BaseIntInstr::Arithmetic(super::rv64_instr::Arithmetic::FSUBS { rd: sub_rd, rs1: sub_rs1, rs2: sub_rs2 })) => {
+                                                                // 检查是否可以合并为Fneg_s: li(0) + fmv.w.x(fa0,a0) + fsub.s(fa3,fa0,fa2) -> fneg.s fa3,fa2
+                                                                if fmv_rs == rd && sub_rs1 == fmv_rd && sub_rs2 != fmv_rd {
+                                                                    println!("优化: LI(0) + FMV_W_X + FSUBS -> FNEG_S");
+                                                                    
+                                                                    // 创建Fneg_s指令
+                                                                    let fneg_instr = RV64Instr::PseudoInstr(super::rv64_instr::PseudoInstr::Fneg_s {
+                                                                        rd: sub_rd.clone(),
+                                                                        rs: sub_rs2.clone(),
+                                                                    });
+                                                                    
+                                                                    // 替换最后一条指令（FSUBS）
+                                                                    if let Some(last_stmt) = self.stmts.last_mut() {
+                                                                        if let Asm::Riscv { instr } = last_stmt {
+                                                                            *instr = fneg_instr;
+                                                                        }
+                                                                    }
+                                                                    self.stmts.remove(self.stmts.len() - 2);
+                                                                    return; // 不添加新指令，因为已经合并了
+                                                                }
+                                                            },
+                                                            _ => {}
+                                                        }
+                                                    },
+                                                    _ => ()
+                                                }
+                                            }
+                                        }
+                                    },
+                                }
+                            },                            
+                            _ =>(),
+                        }
+                    },
+                }
+                        
+            },
+            
+        }
+        }
+        match &self.stmts[self.stmts.len() - 1]{
+            Asm::Attr { attr } => (),
+            Asm::Riscv { instr } => {
+                match instr{
+                    RV64Instr::BaseIntInstr(base_int_instr) => (),
+                    RV64Instr::PseudoInstr(pseudo_instr) => {
+                        match pseudo_instr{ 
 
-        
+                            crate::toolkit::rv64_instr::PseudoInstr::Fneg_s { rd: fneg_rd, rs: fneg_rs } => {
+                                // 检查当前指令是否是浮点加法或减法
+                                match &riscv_instr {
+                                    RV64Instr::BaseIntInstr(super::rv64_instr::BaseIntInstr::Arithmetic(super::rv64_instr::Arithmetic::FADDS { rd: add_rd, rs1: add_rs1, rs2: add_rs2 })) => {
+                                        // 检查是否可以合并为Fnmadd: fneg_s(rd,rs) + fadd.s(rd,rd,rs2) -> fnmadd.s rd,rs,rs2,rs2
+                                        if add_rs1 == fneg_rd && add_rs2 != fneg_rd {
+                                            println!("优化: FNEG_S + FADDS -> FNMADD");
+                                            
+                                            // 创建Fnmadds指令
+                                            let fnmadd_instr = RV64Instr::BaseIntInstr(super::rv64_instr::BaseIntInstr::MulAdd(super::rv64_instr::MulAdd::Fnmadds {
+                                                rd: add_rd.clone(),
+                                                rs1: fneg_rs.clone(),
+                                                rs2: add_rs2.clone(),
+                                                rs3: add_rs2.clone(),
+                                            }));
+                                            
+                                            // 替换最后一条指令（FNEG_S）
+                                            if let Some(last_stmt) = self.stmts.last_mut() {
+                                                if let Asm::Riscv { instr } = last_stmt {
+                                                    *instr = fnmadd_instr;
+                                                }
+                                            }
+                                            
+                                            return; // 不添加新指令，因为已经合并了
+                                        }
+                                    },
+                                    RV64Instr::BaseIntInstr(super::rv64_instr::BaseIntInstr::Arithmetic(super::rv64_instr::Arithmetic::FSUBS { rd: sub_rd, rs1: sub_rs1, rs2: sub_rs2 })) => {
+                                        // 检查是否可以合并为Fnmsub: fneg_s(rd,rs) + fsub.s(rd,rd,rs2) -> fnmsub.s rd,rs,rs2,rs2
+                                        if sub_rs1 == fneg_rd && sub_rs2 != fneg_rd {
+                                            println!("优化: FNEG_S + FSUBS -> FNMSUB");
+                                            
+                                            // 创建Fnmsubs指令
+                                            let fnmsub_instr = RV64Instr::BaseIntInstr(super::rv64_instr::BaseIntInstr::MulAdd(super::rv64_instr::MulAdd::Fnmsubs {
+                                                rd: sub_rd.clone(),
+                                                rs1: fneg_rs.clone(),
+                                                rs2: sub_rs2.clone(),
+                                                rs3: sub_rs2.clone(),
+                                            }));
+                                            
+                                            // 替换最后一条指令（FNEG_S）
+                                            if let Some(last_stmt) = self.stmts.last_mut() {
+                                                if let Asm::Riscv { instr } = last_stmt {
+                                                    *instr = fnmsub_instr;
+                                                }
+                                            }
+                                            
+                                            return; // 不添加新指令，因为已经合并了
+                                        }
+                                    },
+                                    _ => {}
+                                }
+                            },
+                            _ =>()
+                        }
+                    },
+                }
+            },
+        }
         self.stmts.push(Asm::Riscv { instr: riscv_instr })
     }
 
