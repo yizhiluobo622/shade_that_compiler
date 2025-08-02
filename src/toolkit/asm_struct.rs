@@ -31,7 +31,7 @@ impl AsmSection{
             sect_name: name,
             stmts: Vec::new(),
             symtab: None,
-            enable_division_optimization: true  // 重新启用除法优化
+            enable_division_optimization: false  // 暂时完全禁用除法优化
         }
     }
     
@@ -40,7 +40,7 @@ impl AsmSection{
             sect_name: name,
             stmts: Vec::new(),
             symtab: Some(symtab),
-            enable_division_optimization: true  // 重新启用除法优化
+            enable_division_optimization: false  // 暂时完全禁用除法优化
         }
     }
     pub fn annotate(&mut self, annotation:String){
