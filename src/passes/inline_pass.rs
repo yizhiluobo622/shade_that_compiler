@@ -471,6 +471,11 @@ impl InlinePass {
         let mut cfg_mapping = AHashMap::new(); // 旧节点 -> 新节点
         let mut instr_mapping = AHashMap::new(); // 旧指令 -> 新指令
         
+        // 获取调用者头节点
+        let caller_sym = symtab.get(&caller_func.as_ref_borrow())?;
+        let caller_entry = caller_sym.get_cfg_entry_node()?;
+        let caller_head_node = *caller_entry;
+        
         // 第三步：复制被调用函数的CFG节点
         self.copy_cfg_nodes(
             &callee_cfg_info,
@@ -492,6 +497,7 @@ impl InlinePass {
             &cfg_mapping,
             cfg_graph,
             instr_slab,
+            caller_head_node,
         )?;
         
         // 第五步：删除原始调用指令
@@ -642,11 +648,27 @@ impl InlinePass {
         symtab: &mut SymTab,
         instr_slab: &mut crate::toolkit::nhwc_instr::InstrSlab<NhwcInstr>,
     ) -> Result<()> {
+        // 获取调用者的头节点
+        let caller_sym = symtab.get(&caller_func.as_ref_borrow())?;
+        let caller_entry = caller_sym.get_cfg_entry_node()?;
+        let caller_head_node = *caller_entry;
+        
+        debug_info_yellow!("调用者头节点: {}", caller_head_node);
+        debug_info_yellow!("被调用函数入口: {}", cfg_info.entry);
+        
         // 为每个节点创建新节点
         for (&old_node_idx, old_node) in &cfg_info.nodes {
+            // 跳过被调用函数的头节点，因为我们要把它的alloc指令放到调用者的头节点中
+            if old_node_idx == cfg_info.entry {
+                debug_info_yellow!("跳过被调用函数头节点: {}", old_node_idx);
+                continue;
+            }
+            
             // 创建新节点
             let new_node_idx = cfg_graph.add_node(old_node.clone()).index() as u32;
             cfg_mapping.insert(old_node_idx, new_node_idx);
+            
+            debug_info_yellow!("复制节点: {} -> {}", old_node_idx, new_node_idx);
             
             // 复制并映射指令
             let mut new_instrs = Vec::new();
@@ -671,10 +693,56 @@ impl InlinePass {
             new_node.instrs.outdated = true;
         }
         
-        // 复制CFG边
+        // 处理被调用函数头节点的alloc指令
+        let callee_head_node_idx = cfg_info.entry;
+        let callee_instrs: Vec<usize> = {
+            let callee_head_node = node!(at callee_head_node_idx in cfg_graph);
+            callee_head_node.iter_all_instrs().cloned().collect()
+        };
+        
+        debug_info_yellow!("将alloc指令从被调用函数头节点 {} 移动到调用者头节点 {}", 
+            cfg_info.entry, caller_head_node);
+        
+        // 将alloc指令添加到调用者的头节点
+        for &instr_idx in &callee_instrs {
+            let old_instr = instr!(at instr_idx in instr_slab)?;
+            match &old_instr.instr_type {
+                NhwcInstrType::Alloc { .. } => {
+                    // 复制alloc指令并映射
+                    let new_instr = self.copy_and_map_instr_complete(
+                        old_instr,
+                        param_mapping,
+                        ret_var.clone(),
+                        caller_func,
+                        callee_func,
+                        symtab,
+                    )?;
+                    let new_instr_idx = instr_slab.insert_instr(new_instr);
+                    instr_mapping.insert(instr_idx, new_instr_idx);
+                    
+                    // 添加到调用者头节点
+                    let caller_head_node_mut = node_mut!(at caller_head_node in cfg_graph);
+                    caller_head_node_mut.instrs.instr_vec.push(new_instr_idx);
+                    debug_info_yellow!("添加alloc指令到调用者头节点: {}", new_instr_idx);
+                }
+                _ => {
+                    // 跳过非alloc指令
+                    debug_info_yellow!("跳过非alloc指令: {:?}", old_instr.instr_type);
+                }
+            }
+        }
+        
+        // 复制CFG边，但跳过与被调用函数头节点相关的边
         for &(from, to) in &cfg_info.edges {
+            // 跳过涉及被调用函数头节点的边
+            if from == cfg_info.entry || to == cfg_info.entry {
+                debug_info_yellow!("跳过涉及被调用函数头节点的边: {} -> {}", from, to);
+                continue;
+            }
+            
             if let (Some(&new_from), Some(&new_to)) = (cfg_mapping.get(&from), cfg_mapping.get(&to)) {
                 cfg_graph.add_edge(new_from.into(), new_to.into(), crate::toolkit::cfg_edge::CfgEdge::new_direct());
+                debug_info_yellow!("添加CFG边: {} -> {}", new_from, new_to);
             }
         }
         
@@ -689,6 +757,7 @@ impl InlinePass {
         cfg_mapping: &AHashMap<u32, u32>,
         cfg_graph: &mut crate::toolkit::cfg_node::CfgGraph,
         instr_slab: &crate::toolkit::nhwc_instr::InstrSlab<NhwcInstr>,
+        caller_head_node: u32,
     ) -> Result<()> {
         // 获取调用节点的前驱和后继
         let call_node_predecessors: Vec<u32> = cfg_graph
@@ -702,18 +771,40 @@ impl InlinePass {
             .collect();
         
         // 获取内联函数的入口和出口节点
-        let inline_entry = cfg_mapping.get(&cfg_info.entry).unwrap();
+        let inline_entry = if cfg_mapping.is_empty() {
+            // 如果没有复制任何节点，说明被调用函数只有一个头节点
+            // 在这种情况下，我们直接使用调用者头节点作为入口
+            caller_head_node
+        } else {
+            cfg_mapping.values().next()
+                .ok_or_else(|| anyhow!("没有找到内联入口节点"))?
+                .clone()
+        };
         let inline_exits = self.find_exit_nodes(cfg_info, cfg_mapping, cfg_graph, instr_slab)?;
+        
+        debug_info_yellow!("内联入口节点: {}", inline_entry);
+        debug_info_yellow!("内联出口节点: {:?}", inline_exits);
         
         // 连接前驱到内联入口
         for &pred in &call_node_predecessors {
-            cfg_graph.add_edge(pred.into(), (*inline_entry).into(), crate::toolkit::cfg_edge::CfgEdge::new_direct());
+            cfg_graph.add_edge(pred.into(), inline_entry.into(), crate::toolkit::cfg_edge::CfgEdge::new_direct());
+            debug_info_yellow!("连接前驱 {} 到内联入口 {}", pred, inline_entry);
         }
         
         // 连接内联出口到后继
-        for exit in inline_exits {
+        if inline_exits.is_empty() {
+            // 如果没有出口节点，直接连接内联入口到后继
             for &succ in &call_node_successors {
-                cfg_graph.add_edge(exit.into(), succ.into(), crate::toolkit::cfg_edge::CfgEdge::new_direct());
+                cfg_graph.add_edge(inline_entry.into(), succ.into(), crate::toolkit::cfg_edge::CfgEdge::new_direct());
+                debug_info_yellow!("连接内联入口 {} 到后继 {}", inline_entry, succ);
+            }
+        } else {
+            // 连接内联出口到后继
+            for exit in inline_exits {
+                for &succ in &call_node_successors {
+                    cfg_graph.add_edge(exit.into(), succ.into(), crate::toolkit::cfg_edge::CfgEdge::new_direct());
+                    debug_info_yellow!("连接内联出口 {} 到后继 {}", exit, succ);
+                }
             }
         }
         
@@ -811,8 +902,8 @@ impl InlinePass {
         
         match &mut new_instr.instr_type {
             NhwcInstrType::DefineFunc { .. } => {
-                // 跳过函数定义指令
-                return Err(anyhow!("不应该复制函数定义指令"));
+                // 跳过函数定义指令，返回一个空指令
+                return Ok(NhwcInstrType::Nope{}.into());
             }
             NhwcInstrType::Call { op_lhs, func_op } => {
                 // 映射函数调用中的符号
@@ -836,12 +927,12 @@ impl InlinePass {
                                 // 将返回值赋给调用者的变量
                                 let ret_type = ret_sym.as_ref_borrow().get_ty(symtab)?;
                                 
-                                // 创建赋值指令
-                                new_instr = NhwcInstrType::new_assign(
-                                    caller_ret.clone(),
-                                    ret_sym.clone(),
-                                    ret_type,
-                                ).into();
+                                // 创建赋值指令，确保变量定义顺序正确
+                                return Ok(NhwcInstrType::SimpleAssign {
+                                    lhs: caller_ret.clone(),
+                                    rhs: ret_sym.clone(),
+                                    vartype: ret_type,
+                                }.into());
                             }
                         }
                     }
