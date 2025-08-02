@@ -24,5 +24,6 @@ pub mod chi_mu_insertion_pass;
 pub mod cfg2lpt_pass;
 pub mod untrack_insertion_pass;
 pub mod strength_reduction_pass;
-pub mod column_major_pass;
 pub mod riscv_cache_opt_pass;
+pub mod loop_detection_pass;
+pub mod inline_pass;

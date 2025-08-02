@@ -10,32 +10,8 @@ use std::{path::PathBuf, time::Instant};
 use antlr_parser::cparser::{RULE_compoundStatement, RULE_functionDefinition};
 use clap::Parser;
 
-use passes::{ast2cfg_pass::Ast2CfgPass, ast2et_debug_pass::Ast2EtDebugPass, ast2st_pass::Ast2StPass, call_graph_pass::CallGraphPass, cfg2lpt_pass::Cfg2LptPass, cfg2ncfg_pass::Cfg2NcfgPass, chi_mu_insertion_pass::ChiMuInsertionPass, code2ast_pass::Code2AstPass, dead_code_elimination_pass::{self, DeadCodeEliminationPass}, gvngcm_pass::GvnGcmPass, nhwc2et_pass::Nhwc2EtPass, nhwc2riscv_pass::Nhwc2RiscvPass, nhwc_dump_pass::NhwcDumpPass, ssa_deconstruction_pass::SsaDeconstructionPass, symtab_debug_pass::SymtabDebugPass, untrack_insertion_pass::{self, UntrackInsertionPass}, strength_reduction_pass::StrengthReductionPass, column_major_pass::ColumnMajorPass, riscv_cache_opt_pass::RiscvCacheOptPass};
+use passes::{ast2cfg_pass::Ast2CfgPass, ast2et_debug_pass::Ast2EtDebugPass, ast2st_pass::Ast2StPass, call_graph_pass::CallGraphPass, cfg2lpt_pass::Cfg2LptPass, cfg2ncfg_pass::Cfg2NcfgPass, chi_mu_insertion_pass::ChiMuInsertionPass, code2ast_pass::Code2AstPass, dead_code_elimination_pass::{self, DeadCodeEliminationPass}, gvngcm_pass::GvnGcmPass, inline_pass::InlinePass, nhwc2et_pass::Nhwc2EtPass, nhwc2riscv_pass::Nhwc2RiscvPass, nhwc_dump_pass::NhwcDumpPass, ssa_deconstruction_pass::SsaDeconstructionPass, symtab_debug_pass::SymtabDebugPass, untrack_insertion_pass::{self, UntrackInsertionPass}, strength_reduction_pass::StrengthReductionPass, riscv_cache_opt_pass::RiscvCacheOptPass};
 use toolkit::symtab::SymIdx;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -106,7 +82,9 @@ fn main() {
     let gvngcm_pass = GvnGcmPass::new(debug,debug);
     let untrack_insertion_pass = UntrackInsertionPass::new(debug,debug);
     let strength_reduction_pass = StrengthReductionPass::new(debug);
-    let column_major_pass = ColumnMajorPass::new(debug);
+
+    let inline_pass = InlinePass::new(debug);
+
     let riscv_cache_opt_pass = RiscvCacheOptPass::new(debug);
     if pass_manager.ctx.args.test{
         add_passes!(
@@ -116,15 +94,16 @@ fn main() {
             then cfg2ncfg_pass
             // then cfg2lpt_pass
             then func_call_pass
+            then inline_pass
             then chi_mu_insertion_pass
             then ncfg2djg_pass
             then ssa_pass
             
             // 结构化优化阶段
-            then column_major_pass
             then gvngcm_pass
             then def_use_chain_pass
-            // then dce_pass
+            then dce_pass
+            //then loop_detection_pass
             // then simulator_debug_pass
             then ast2et_debug_pass
             then symtab_debug_pass
@@ -153,12 +132,12 @@ fn main() {
             then cfg2ncfg_pass
             // then cfg2lpt_pass
             then func_call_pass
+            then inline_pass
             then chi_mu_insertion_pass
             then ncfg2djg_pass
             then ssa_pass
             
             // 结构化优化阶段
-            then column_major_pass
             then gvngcm_pass
             then def_use_chain_pass
             then dce_pass
