@@ -10,7 +10,7 @@ use std::{path::PathBuf, time::Instant};
 use antlr_parser::cparser::{RULE_compoundStatement, RULE_functionDefinition};
 use clap::Parser;
 
-use passes::{ast2cfg_pass::Ast2CfgPass, ast2et_debug_pass::Ast2EtDebugPass, ast2st_pass::Ast2StPass, call_graph_pass::CallGraphPass, cfg2lpt_pass::Cfg2LptPass, cfg2ncfg_pass::Cfg2NcfgPass, chi_mu_insertion_pass::ChiMuInsertionPass, code2ast_pass::Code2AstPass, dead_code_elimination_pass::{self, DeadCodeEliminationPass}, gvngcm_pass::GvnGcmPass, inline_pass::InlinePass, nhwc2et_pass::Nhwc2EtPass, nhwc2riscv_pass::Nhwc2RiscvPass, nhwc_dump_pass::NhwcDumpPass, ssa_deconstruction_pass::SsaDeconstructionPass, symtab_debug_pass::SymtabDebugPass, untrack_insertion_pass::{self, UntrackInsertionPass},  riscv_cache_opt_pass::RiscvCacheOptPass};
+use passes::{ast2cfg_pass::Ast2CfgPass, ast2et_debug_pass::Ast2EtDebugPass, ast2st_pass::Ast2StPass, bitset_pass::BitsetPass, call_graph_pass::CallGraphPass, cfg2lpt_pass::Cfg2LptPass, cfg2ncfg_pass::Cfg2NcfgPass, chi_mu_insertion_pass::ChiMuInsertionPass, code2ast_pass::Code2AstPass, dead_code_elimination_pass::{self, DeadCodeEliminationPass}, gvngcm_pass::GvnGcmPass, inline_pass::InlinePass, nhwc2et_pass::Nhwc2EtPass, nhwc2riscv_pass::Nhwc2RiscvPass, nhwc_dump_pass::NhwcDumpPass, ssa_deconstruction_pass::SsaDeconstructionPass, symtab_debug_pass::SymtabDebugPass, untrack_insertion_pass::{self, UntrackInsertionPass},  riscv_cache_opt_pass::RiscvCacheOptPass};
 use toolkit::symtab::SymIdx;
 
 
@@ -57,6 +57,7 @@ fn main() {
     let annotation = args.annotation;
     // args.c_file_path = PathBuf::from_str("./demos/demo1.c").unwrap();
     let mut pass_manager = PassManager::new(args);
+    let bitset_pass = BitsetPass::new(debug);
     let code2ast_pass = Code2AstPass::new(debug);
     let ast2cfg_pass = Ast2CfgPass::new(debug);
     let cfg2lpt_pass = Cfg2LptPass::new(debug);
@@ -87,7 +88,8 @@ fn main() {
     let riscv_cache_opt_pass = RiscvCacheOptPass::new(debug);
     if pass_manager.ctx.args.test{
         add_passes!(
-            code2ast_pass
+            bitset_pass
+            then code2ast_pass
             then ast2st_pass
             then ast2cfg_pass
             then cfg2ncfg_pass
@@ -125,7 +127,8 @@ fn main() {
         );
     }else {
         add_passes!(
-            code2ast_pass
+            bitset_pass
+            then code2ast_pass
             then ast2st_pass
             then ast2cfg_pass
             then cfg2ncfg_pass
