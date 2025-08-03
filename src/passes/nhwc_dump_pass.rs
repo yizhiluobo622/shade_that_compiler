@@ -123,8 +123,16 @@ impl Pass for NhwcDumpPass {
         }
         if self.is_gen_nhwc_ir_file{
             
-            // let mut f =fs::File::create(args.input.file_stem().unwrap().to_string_lossy().to_string() + ".nhwc")?;
-            let mut f =fs::File::create(args.output.file_stem().unwrap().to_string_lossy().to_string() + ".nhwc")?;
+            // 创建nhwc文件夹
+            let nhwc_dir = std::path::Path::new("./nhwc");
+            if !nhwc_dir.exists() {
+                fs::create_dir(nhwc_dir)?;
+            }
+            
+            // 使用输入文件名作为nhwc文件名
+            let nhwc_filename = args.input.file_stem().unwrap().to_string_lossy().to_string() + ".nhwc";
+            let nhwc_path = nhwc_dir.join(nhwc_filename);
+            let mut f = fs::File::create(nhwc_path)?;
             writeln!(f,"# input: {:?}",args.input)?;
             for &(instr,cur_tab) in nhwc_ir_vec.iter(){
                 // instr_mut!(at instr in instr_slab)?.text.clear();
