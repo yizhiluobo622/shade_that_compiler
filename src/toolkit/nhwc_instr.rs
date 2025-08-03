@@ -96,6 +96,35 @@ pub enum ArithOp {
         a:RcSymIdx,
         vartype:Type,
     },
+    BitwiseOr {
+        a:RcSymIdx,
+        b:RcSymIdx,
+        vartype:Type,
+    },
+    RightShift {
+        a:RcSymIdx,
+        b:RcSymIdx,
+        vartype:Type,
+    },
+    LeftShift {
+        a:RcSymIdx,
+        b:RcSymIdx,
+        vartype:Type,
+    },
+    BitwiseAnd {
+        a:RcSymIdx,
+        b:RcSymIdx,
+        vartype:Type,
+    },
+    BitwiseXor {
+        a:RcSymIdx,
+        b:RcSymIdx,
+        vartype:Type,
+    },
+    BitwiseNot {
+        a:RcSymIdx,
+        vartype:Type,
+    }
 }
 #[derive(Clone)]
 pub struct FuncOp {
@@ -266,6 +295,12 @@ impl NhwcInstr {
                 ArithOp::LogicAnd { a, b, vartype:_ } => vec![a,b],
                 ArithOp::LogicOr { a, b, vartype:_ } => vec![a,b],
                 ArithOp::LogicNot { a, vartype:_ } => vec![a],
+                ArithOp::BitwiseOr { a, b, vartype:_ } => vec![a,b],
+                ArithOp::RightShift { a, b, vartype:_ } => vec![a,b],
+                ArithOp::LeftShift { a, b, vartype:_ } => vec![a,b],
+                ArithOp::BitwiseAnd { a, b, vartype:_ } => vec![a,b],
+                ArithOp::BitwiseXor { a, b, vartype:_ } => vec![a,b],
+                ArithOp::BitwiseNot { a, vartype:_ } => vec![a],
             }},
             NhwcInstrType::SimpleAssign { lhs:_, rhs, vartype: _ } => {
                  vec![rhs] 
@@ -367,6 +402,10 @@ impl NhwcInstr {
                 ArithOp::LogicAnd { a, b, vartype:_ } => vec![a,b],
                 ArithOp::LogicOr { a, b, vartype:_ } => vec![a,b],
                 ArithOp::LogicNot { a, vartype :_} => vec![a],
+                ArithOp::BitwiseOr { a, b, vartype:_ } => vec![a,b],
+                ArithOp::RightShift { a, b, vartype:_ } => vec![a,b],
+                ArithOp::LeftShift { a, b, vartype:_ } => vec![a,b],
+                ArithOp::BitwiseAnd { a, b, vartype:_ } => vec![a,b],               
             }},
             NhwcInstrType::SimpleAssign { lhs:_, rhs, vartype: _ } => {
                  vec![rhs] 
@@ -541,7 +580,12 @@ impl NhwcInstrType {
     pub fn new_fcmp(lhs:RcSymIdx, plan:FcmpPlan, a:RcSymIdx, b:RcSymIdx, vartype:Type) -> Self { Self::Arith { lhs, rhs:ArithOp::Fcmp { plan, a, b, vartype } } }
     pub fn new_logic_and(lhs:RcSymIdx, a:RcSymIdx, b:RcSymIdx, vartype:Type) -> Self { Self::Arith { lhs, rhs:ArithOp::LogicAnd { a, b, vartype } } }
     pub fn new_logic_or(lhs:RcSymIdx, a:RcSymIdx, b:RcSymIdx, vartype:Type) -> Self { Self::Arith { lhs, rhs:ArithOp::LogicOr { a, b, vartype } } }
+    pub fn new_bitwise_or(lhs:RcSymIdx, a:RcSymIdx, b:RcSymIdx, vartype:Type) -> Self { Self::Arith { lhs, rhs:ArithOp::BitwiseOr { a, b, vartype } } }
+    pub fn new_right_shift(lhs:RcSymIdx, a:RcSymIdx, b:RcSymIdx, vartype:Type) -> Self { Self::Arith { lhs, rhs:ArithOp::RightShift { a, b, vartype } } }
+    pub fn new_left_shift(lhs:RcSymIdx, a:RcSymIdx, b:RcSymIdx, vartype:Type) -> Self { Self::Arith { lhs, rhs:ArithOp::LeftShift { a, b, vartype } } }
+    pub fn new_bitwise_and(lhs:RcSymIdx, a:RcSymIdx, b:RcSymIdx, vartype:Type) -> Self { Self::Arith { lhs, rhs:ArithOp::BitwiseAnd { a, b, vartype } } }
     pub fn new_logic_not(lhs:RcSymIdx, a:RcSymIdx, vartype:Type) -> Self { Self::Arith { lhs, rhs:ArithOp::LogicNot { a, vartype } } }
+  
     
     pub fn new_assign(lhs:RcSymIdx, rhs:RcSymIdx, vartype:Type) -> Self { Self::SimpleAssign { lhs, rhs, vartype } }
 
@@ -626,6 +670,11 @@ impl Debug for ArithOp {
             Self::LogicAnd { a, b, vartype } => write!(f, "And {:?} {:?}, {:?}", vartype, a.as_ref_borrow(), b.as_ref_borrow()),
             Self::LogicOr { a, b, vartype } => write!(f, "Or {:?} {:?}, {:?}", vartype, a.as_ref_borrow(), b.as_ref_borrow()),
             Self::LogicNot { a, vartype } => write!(f, "xor {:?} {:?}, true", vartype, a.as_ref_borrow()),
+            Self::BitwiseOr { a, b, vartype } => write!(f, "BitwiseOr {:?} {:?}, {:?}", vartype, a.as_ref_borrow(), b.as_ref_borrow()),
+            Self::RightShift { a, b, vartype } => write!(f, "RightShift {:?} {:?}, {:?}", vartype, a.as_ref_borrow(), b.as_ref_borrow()),
+            Self::LeftShift { a, b, vartype } => write!(f, "LeftShift {:?} {:?}, {:?}", vartype, a.as_ref_borrow(), b.as_ref_borrow()),
+            Self::BitwiseAnd { a, b, vartype } => write!(f, "BitwiseAnd {:?} {:?}, {:?}", vartype, a.as_ref_borrow(), b.as_ref_borrow()),
+         
         }
     }
 }

@@ -1031,7 +1031,11 @@ impl InlinePass {
             crate::toolkit::nhwc_instr::ArithOp::Icmp { a, b, vartype: _, plan: _ } |
             crate::toolkit::nhwc_instr::ArithOp::Fcmp { a, b, vartype: _, plan: _ } |
             crate::toolkit::nhwc_instr::ArithOp::LogicAnd { a, b, vartype: _ } |
-            crate::toolkit::nhwc_instr::ArithOp::LogicOr { a, b, vartype: _ } => {
+            crate::toolkit::nhwc_instr::ArithOp::LogicOr { a, b, vartype: _ } |
+            crate::toolkit::nhwc_instr::ArithOp::BitwiseOr { a, b, vartype: _ } |
+            crate::toolkit::nhwc_instr::ArithOp::RightShift { a, b, vartype: _ } |
+            crate::toolkit::nhwc_instr::ArithOp::LeftShift { a, b, vartype: _ } |
+            crate::toolkit::nhwc_instr::ArithOp::BitwiseAnd { a, b, vartype: _ } => {
                 if let Some(mapped) = param_mapping.get(a) {
                     *a = mapped.clone();
                 }

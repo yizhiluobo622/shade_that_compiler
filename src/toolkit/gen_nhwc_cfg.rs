@@ -1382,12 +1382,54 @@ fn process_et(
                         }
                     }
                     //位运算符
-                    super::et_node::ExprOp::BitwiseOr => todo!(),
-                    super::et_node::ExprOp::BitwiseAnd => todo!(),
-                    super::et_node::ExprOp::BitwiseXor => todo!(),
-                    super::et_node::ExprOp::BitwiseNot => todo!(),
-                    super::et_node::ExprOp::LShift => todo!(),
-                    super::et_node::ExprOp::RShift => todo!(),
+                    super::et_node::ExprOp::BitwiseOr => {
+                        if let Some(_) = direct_child_node!(at et_node in et_tree ret_option) {
+                            let (tmp_var_symidx, l_symidx, r_symidx, var_type, _) =
+                                process_arithop(ast_tree, cfg_graph, et_tree, et_node, scope_tree, symtab, et_node, scope_node, cfg_node, instr_slab, ast2scope,)?;
+                            let or_instr = NhwcInstrType::new_bitwise_or(tmp_var_symidx.clone(), l_symidx, r_symidx, var_type).into();
+                            node_mut!(at cfg_node in cfg_graph ).push_nhwc_instr(or_instr, instr_slab)?;
+                            Some(tmp_var_symidx)
+                        } else {
+                            return Err(anyhow!("操作符{}下缺少符号", et_node));
+                        }
+                    },
+                    super::et_node::ExprOp::BitwiseAnd => {
+                        if let Some(_) = direct_child_node!(at et_node in et_tree ret_option) {
+                            let (tmp_var_symidx, l_symidx, r_symidx, var_type, _) =
+                                process_arithop(ast_tree, cfg_graph, et_tree,et_node, scope_tree, symtab, et_node, scope_node, cfg_node, instr_slab, ast2scope,)?;
+                            let and_instr = NhwcInstrType::new_bitwise_and(tmp_var_symidx.clone(), l_symidx, r_symidx, var_type).into();
+                            node_mut!(at cfg_node in cfg_graph ).push_nhwc_instr(and_instr, instr_slab)?;
+
+                            Some(tmp_var_symidx)
+                        } else {
+                            return Err(anyhow!("操作符{}下缺少符号", et_node));
+                        }
+                    },
+                 
+                    super::et_node::ExprOp::LShift => {
+                        if let Some(_) = direct_child_node!(at et_node in et_tree ret_option) {
+                            let (tmp_var_symidx, l_symidx, r_symidx, var_type, _) =
+                                process_arithop(ast_tree, cfg_graph, et_tree,et_node, scope_tree, symtab, et_node, scope_node, cfg_node, instr_slab, ast2scope,)?;
+                            let lshift_instr = NhwcInstrType::new_left_shift(tmp_var_symidx.clone(), l_symidx, r_symidx, var_type).into();
+                            node_mut!(at cfg_node in cfg_graph ).push_nhwc_instr(lshift_instr, instr_slab)?;
+
+                            Some(tmp_var_symidx)
+                        } else {
+                            return Err(anyhow!("操作符{}下缺少符号", et_node));
+                        }
+                    },
+                    super::et_node::ExprOp::RShift => {
+                        if let Some(_) = direct_child_node!(at et_node in et_tree ret_option) {
+                            let (tmp_var_symidx, l_symidx, r_symidx, var_type, _) =
+                                process_arithop(ast_tree, cfg_graph, et_tree,et_node, scope_tree, symtab, et_node, scope_node, cfg_node, instr_slab, ast2scope,)?;
+                            let rshift_instr = NhwcInstrType::new_right_shift(tmp_var_symidx.clone(), l_symidx, r_symidx, var_type).into();
+                            node_mut!(at cfg_node in cfg_graph ).push_nhwc_instr(rshift_instr, instr_slab)?;
+
+                            Some(tmp_var_symidx)
+                        } else {
+                            return Err(anyhow!("操作符{}下缺少符号", et_node));
+                        }
+                    },
                     super::et_node::ExprOp::DivAssign => todo!(),
                     super::et_node::ExprOp::MulAssign => todo!(),
                     super::et_node::ExprOp::PlusAssign => todo!(),

@@ -625,7 +625,6 @@ impl ExprOp{
             },
             // ExprOp::LShift => (Value::from_symidx( &vec[0].as_ref_borrow())?<<Value::from_symidx( &vec[1].as_ref_borrow())?)?,
             // ExprOp::RShift => (Value::from_symidx( &vec[0].as_ref_borrow())?>>Value::from_symidx( &vec[1].as_ref_borrow())?)?,
-            ExprOp::BitwiseNot => (!Value::from_symidx( &vec[0].as_ref_borrow())?)?, //一元运算符
             ExprOp::LogicalNot => (!Value::from_symidx( &vec[0].as_ref_borrow())?)?, 
             ExprOp::Negative => (-Value::from_symidx( &vec[0].as_ref_borrow())?)?,
             ExprOp::Positive => Value::from_symidx( &vec[0].as_ref_borrow())?,
