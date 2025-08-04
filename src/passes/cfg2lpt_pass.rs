@@ -1169,6 +1169,55 @@ impl Cfg2LptPass {
                                     }
                                 }
                                 
+                                // 关键修复：检查节点是否真正属于当前循环
+                                // 基于CFG结构和支配关系进行精确判断
+                                if should_add_to_current_loop {
+                                    // 检查节点是否被当前循环头直接支配
+                                    let body_node_dj = match ctx.cfg_graph.node_weight(petgraph::graph::NodeIndex::new(body_node as usize)).unwrap().get_cor_dj_node() {
+                                        std::result::Result::Ok(dj) => dj,
+                                        Err(_) => {
+                                            should_add_to_current_loop = false;
+                                            continue;
+                                        }
+                                    };
+                                    
+                                    let header_dj = match ctx.cfg_graph.node_weight(petgraph::graph::NodeIndex::new(node_idx as usize)).unwrap().get_cor_dj_node() {
+                                        std::result::Result::Ok(dj) => dj,
+                                        Err(_) => {
+                                            should_add_to_current_loop = false;
+                                            continue;
+                                        }
+                                    };
+                                    
+                                    if !self.is_dominator(*header_dj, *body_node_dj, ctx) {
+                                        should_add_to_current_loop = false;
+                                        println!("节点 {} 不被循环头 {} 支配，不添加到当前循环", body_node, node_idx);
+                                    }
+                                    
+                                    // 检查节点是否在循环的执行路径上
+                                    if should_add_to_current_loop && !self.is_reachable_from(node_idx, body_node, ctx) {
+                                        should_add_to_current_loop = false;
+                                        println!("节点 {} 从循环头 {} 不可达，不添加到当前循环", body_node, node_idx);
+                                    }
+                                    
+                                    // 关键修复：检查节点是否属于更内层的循环
+                                    if should_add_to_current_loop {
+                                        for (other_header, other_loop_info) in loops {
+                                            if *other_header != node_idx && other_loop_info.body.contains(&body_node) {
+                                                // 检查其他循环是否嵌套在当前循环内部
+                                                if let Some(parent) = other_loop_info.parent {
+                                                    if parent == node_idx {
+                                                        // 如果节点属于嵌套在当前循环内部的循环，则不添加到当前循环
+                                                        should_add_to_current_loop = false;
+                                                        println!("节点 {} 属于嵌套循环 {}，不添加到当前循环 {}", body_node, other_header, node_idx);
+                                                        break;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                
                                 if should_add_to_current_loop {
                                     let body_node_type = ctx.cfg_graph.node_weight(petgraph::graph::NodeIndex::new(body_node as usize)).unwrap().cfg_node_type.clone();
                                     let body_tree_node = tree.add_node(LoopNode::new_terminal_node(body_node, body_node_type));
