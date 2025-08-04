@@ -30,7 +30,7 @@ pub fn process_loop_node(cfg_loop_node:u32,out_loop_node:u32,parent_loop_node:u3
         // println!("当前节点：{}",current_inner_cfgnode);
         let cfg_type = &node!(at current_inner_cfgnode in cfg_graph).cfg_node_type;
         if let CfgNodeType::WhileLoop { ast_expr_node:_ } = cfg_type.clone(){
-            let loop_node = add_node_with_edge!({LoopNode::new_loop_node()} from parent_loop_node in loop_tree);
+            let loop_node = add_node_with_edge!({LoopNode::new_loop_node(current_inner_cfgnode,cfg_type.clone())} from parent_loop_node in loop_tree);
             add_node_with_edge!({LoopNode::new_terminal_node(current_inner_cfgnode,cfg_type.clone())} from loop_node in loop_tree);
             process_loop_node(current_inner_cfgnode,next_inner_cfgnode,loop_node,cfg_graph,loop_tree)?;
         }else{
@@ -40,7 +40,7 @@ pub fn process_loop_node(cfg_loop_node:u32,out_loop_node:u32,parent_loop_node:u3
     if let Some(&last_node) = inner_cfgnode_vec.last(){
         let cfg_type = &node!(at last_node in cfg_graph).cfg_node_type;
         if let CfgNodeType::WhileLoop { ast_expr_node:_ } = cfg_type.clone(){
-            let loop_node = add_node_with_edge!({LoopNode::new_loop_node()} from parent_loop_node in loop_tree);
+            let loop_node = add_node_with_edge!({LoopNode::new_loop_node(last_node,cfg_type.clone())} from parent_loop_node in loop_tree);
             add_node_with_edge!({LoopNode::new_terminal_node(last_node,cfg_type.clone())} from loop_node in loop_tree);
             process_loop_node(last_node,last_node,loop_node,cfg_graph,loop_tree)?;
         }else{
@@ -73,7 +73,7 @@ pub fn parse_cfg2loop_tree(loop_tree:&mut LoopTree,cfg_graph:&CfgGraph) -> Resul
             let cfg_type   = &node!(at current_cfg_node in cfg_graph).cfg_node_type;
             //这里找到的是第一层循环
             if let CfgNodeType::WhileLoop { ast_expr_node:_ } = cfg_type{
-                let while_loop_node = add_node_with_edge!({LoopNode::new_loop_node()} from func_node in loop_tree);
+                let while_loop_node = add_node_with_edge!({LoopNode::new_loop_node(current_cfg_node,cfg_type.clone())} from func_node in loop_tree);
                 add_node_with_edge!({LoopNode::new_terminal_node(current_cfg_node,cfg_type.clone())} from while_loop_node in loop_tree);
                 //处理while内部
                 process_loop_node(current_cfg_node,next_cfg_node,while_loop_node,cfg_graph,loop_tree)?;
@@ -85,7 +85,7 @@ pub fn parse_cfg2loop_tree(loop_tree:&mut LoopTree,cfg_graph:&CfgGraph) -> Resul
             let cfg_type   = &node!(at last_node in cfg_graph).cfg_node_type;
             //这里找到的是第一层循环
             if let CfgNodeType::WhileLoop { ast_expr_node:_ } = cfg_type{
-                let while_loop_node = add_node_with_edge!({LoopNode::new_loop_node()} from func_node in loop_tree);
+                let while_loop_node = add_node_with_edge!({LoopNode::new_loop_node(last_node,cfg_type.clone())} from func_node in loop_tree);
                 add_node_with_edge!({LoopNode::new_terminal_node(last_node,cfg_type.clone())} from while_loop_node in loop_tree);
                 //处理while内部
                 process_loop_node(last_node,last_node,while_loop_node,cfg_graph,loop_tree)?;

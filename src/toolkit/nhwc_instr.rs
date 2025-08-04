@@ -116,15 +116,7 @@ pub enum ArithOp {
         b:RcSymIdx,
         vartype:Type,
     },
-    BitwiseXor {
-        a:RcSymIdx,
-        b:RcSymIdx,
-        vartype:Type,
-    },
-    BitwiseNot {
-        a:RcSymIdx,
-        vartype:Type,
-    }
+
 }
 #[derive(Clone)]
 pub struct FuncOp {
@@ -299,8 +291,7 @@ impl NhwcInstr {
                 ArithOp::RightShift { a, b, vartype:_ } => vec![a,b],
                 ArithOp::LeftShift { a, b, vartype:_ } => vec![a,b],
                 ArithOp::BitwiseAnd { a, b, vartype:_ } => vec![a,b],
-                ArithOp::BitwiseXor { a, b, vartype:_ } => vec![a,b],
-                ArithOp::BitwiseNot { a, vartype:_ } => vec![a],
+                
             }},
             NhwcInstrType::SimpleAssign { lhs:_, rhs, vartype: _ } => {
                  vec![rhs] 

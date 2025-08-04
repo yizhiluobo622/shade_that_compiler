@@ -392,28 +392,7 @@ pub fn parse_instr_list_to_et(instrs:impl Iterator<Item = usize>, instr_et:&mut 
                     super::nhwc_instr::ArithOp::BitwiseAnd { a, b, vartype } => {
                         let arith_et_struct:EtNode = EtNodeType::new_op_bitwise_and(0).into();
                         process_arith_et(rc_lhs,a, b,instr,arith_et_struct,instr_et,rc_symidx_et_node_map,scope_tree,instr_et_node_bimap)
-                    },
-                    super::nhwc_instr::ArithOp::BitwiseXor { a, b, vartype } => {
-                        let arith_et_struct:EtNode = EtNodeType::new_op_bitwise_xor(0).into();
-                        process_arith_et(rc_lhs,a, b,instr,arith_et_struct,instr_et,rc_symidx_et_node_map,scope_tree,instr_et_node_bimap)
-                    },
-                    super::nhwc_instr::ArithOp::BitwiseNot { a: rc_a, vartype } => {
-                        let mut arith_et_struct:EtNode = EtNodeType::new_op_bitwise_not(0).into();
-                        arith_et_struct.equivalent_symidx_vec.push(rc_lhs.clone());
-                        let arith_et_node = add_node!({arith_et_struct} to instr_et);
-                        let a = rc_a.as_ref_borrow();
-                        if let Some(&a_node) = rc_symidx_et_node_map.get(&rc_a){
-                            add_edge!({EtEdgeType::Direct.into()} from arith_et_node to a_node in instr_et);
-                        }else{
-                            let mut et_node_struct:EtNode = EtNodeType::new_symbol(0,rc_a.clone(),super::et_node::DeclOrDefOrUse::Use).into();
-                            et_node_struct.equivalent_symidx_vec.push(rc_a.clone());
-                            let a_et = add_node_with_edge!({ et_node_struct } with_edge {EtEdgeType::Direct.into()} from arith_et_node in instr_et);
-                            rc_symidx_et_node_map.insert(rc_a.clone(), a_et);
-                        }
-                        rc_symidx_et_node_map.insert(rc_lhs.clone(), arith_et_node);
-                        instr_et_node_bimap.insert(instr,arith_et_node);
-                        arith_et_node
-                    },
+                    },           
                     super::nhwc_instr::ArithOp::LogicNot { a: rc_a, vartype } => {
                         let mut arith_et_struct:EtNode = EtNodeType::new_op_logical_not(0).into();
                         arith_et_struct.equivalent_symidx_vec.push(rc_lhs.clone());
@@ -546,8 +525,17 @@ pub fn parse_instr_list_to_et(instrs:impl Iterator<Item = usize>, instr_et:&mut 
                         rc_symidx_et_node_map.insert(rc_lhs.clone(), symbol_et_node);
                         instr_et_node_bimap.insert(instr,symbol_et_node);
                     }else {
-                        let literal_et_node = last_et_node.unwrap();
-                        node_mut!(at literal_et_node in instr_et).equivalent_symidx_vec.push(rc_lhs.clone());
+                        // 检查last_et_node是否有值
+                        if let Some(literal_et_node) = last_et_node {
+                            node_mut!(at literal_et_node in instr_et).equivalent_symidx_vec.push(rc_lhs.clone());
+                        } else {
+                            // 如果没有找到literal et_node，创建一个新的symbol et_node
+                            let mut symbol_et_node_struct:EtNode = EtNodeType::new_symbol(0, rc_lhs.clone(), DeclOrDefOrUse::Use).into();
+                            symbol_et_node_struct.equivalent_symidx_vec.push(rc_lhs.clone());
+                            let symbol_et_node = add_node!({symbol_et_node_struct} to instr_et);
+                            rc_symidx_et_node_map.insert(rc_lhs.clone(), symbol_et_node);
+                            instr_et_node_bimap.insert(instr,symbol_et_node);
+                        }
                     }
                 }
             },

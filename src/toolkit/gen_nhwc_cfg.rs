@@ -1321,26 +1321,49 @@ fn process_et(
                     //逻辑运算符
                     super::et_node::ExprOp::LogicalOr | super::et_node::ExprOp::LogicalAnd => {
                         if let Some(_) = direct_child_node!(at et_node in et_tree ret_option) {
-                            let (br_node,new_br_node) = process_short_logic(cfg_node,cfg_graph,op,instr_slab)?;
-                            let (tmp_var_symidx, l_symidx, r_symidx) = process_logicop(ast_tree, cfg_graph, et_tree, scope_tree, symtab, et_node, scope_node, cfg_node,new_br_node, instr_slab,ast2scope, )?;
+                            // 检查 cfg_node 的类型，如果是 BasicBlock，使用普通逻辑运算
+                            match &node!(at cfg_node in cfg_graph).cfg_node_type {
+                                CfgNodeType::BasicBlock { ast_nodes: _ } => {
+                                    // 对于 BasicBlock，使用普通的逻辑运算而不是短路逻辑
+                                    let (tmp_var_symidx, l_symidx, r_symidx) = process_logicop(ast_tree, cfg_graph, et_tree, scope_tree, symtab, et_node, scope_node, cfg_node, cfg_node, instr_slab, ast2scope)?;
+                                    
+                                    match op {
+                                        super::et_node::ExprOp::LogicalAnd => {
+                                            let logic_and_instr = NhwcInstrType::new_logic_and(tmp_var_symidx.clone(), l_symidx, r_symidx, Type::I1).into();
+                                            node_mut!(at cfg_node in cfg_graph).push_nhwc_instr(logic_and_instr, instr_slab)?;
+                                        },
+                                        super::et_node::ExprOp::LogicalOr => {
+                                            let logic_or_instr = NhwcInstrType::new_logic_or(tmp_var_symidx.clone(), l_symidx, r_symidx, Type::I1).into();
+                                            node_mut!(at cfg_node in cfg_graph).push_nhwc_instr(logic_or_instr, instr_slab)?;
+                                        },
+                                        _ => return Err(anyhow!("未知的逻辑运算符")),
+                                    }
+                                    
+                                    Some(tmp_var_symidx)
+                                },
+                                _ => {
+                                    // 对于其他类型的节点，使用短路逻辑
+                                    let (br_node,new_br_node) = process_short_logic(cfg_node,cfg_graph,op,instr_slab)?;
+                                    let (tmp_var_symidx, l_symidx, r_symidx) = process_logicop(ast_tree, cfg_graph, et_tree, scope_tree, symtab, et_node, scope_node, cfg_node,new_br_node, instr_slab,ast2scope, )?;
 
-                            let c_cfg_true_node = direct_child_node!(at new_br_node in cfg_graph with_predicate {|e| e.weight().cfg_edge_type.is_if_true()|| e.weight().cfg_edge_type.is_body_head()});
-                            let c_cfg_false_node = direct_child_node!(at new_br_node in cfg_graph with_predicate {|e| e.weight().cfg_edge_type.is_if_false()|| e.weight().cfg_edge_type.is_direct() });
-                            let c_label_true_symidx = find_or_new_label_to_cfg_node(c_cfg_true_node,scope_node+et_node+new_br_node, "branch_short_circuit_c_true".to_string(), symtab,cfg_graph,instr_slab)?;
-                            let c_label_false_symidx = find_or_new_label_to_cfg_node(c_cfg_false_node,scope_node+et_node+new_br_node, "branch_short_circuit_c_false".to_string(), symtab,cfg_graph,instr_slab)?;
+                                    let c_cfg_true_node = direct_child_node!(at new_br_node in cfg_graph with_predicate {|e| e.weight().cfg_edge_type.is_if_true()|| e.weight().cfg_edge_type.is_body_head()});
+                                    let c_cfg_false_node = direct_child_node!(at new_br_node in cfg_graph with_predicate {|e| e.weight().cfg_edge_type.is_if_false()|| e.weight().cfg_edge_type.is_direct() });
+                                    let c_label_true_symidx = find_or_new_label_to_cfg_node(c_cfg_true_node,scope_node+et_node+new_br_node, "branch_short_circuit_c_true".to_string(), symtab,cfg_graph,instr_slab)?;
+                                    let c_label_false_symidx = find_or_new_label_to_cfg_node(c_cfg_false_node,scope_node+et_node+new_br_node, "branch_short_circuit_c_false".to_string(), symtab,cfg_graph,instr_slab)?;
 
-                            //  = NhwcInstrType::new_logic_and(tmp_var_symidx.clone(), l_symidx, r_symidx, Type::I2).into();
-                            let p_cfg_true_node = direct_child_node!(at br_node in cfg_graph with_predicate {|e| e.weight().cfg_edge_type.is_if_true() || e.weight().cfg_edge_type.is_body_head()});
-                            let p_cfg_false_node = direct_child_node!(at br_node in cfg_graph with_predicate {|e| e.weight().cfg_edge_type.is_if_false()  || e.weight().cfg_edge_type.is_direct() });
-                            let p_label_true_symidx = find_or_new_label_to_cfg_node(p_cfg_true_node,scope_node+et_node+new_br_node, "branch_short_circuit_p_true".to_string(), symtab,cfg_graph,instr_slab)?;
-                            let p_label_false_symidx = find_or_new_label_to_cfg_node(p_cfg_false_node,scope_node+et_node+new_br_node, "branch_short_circuit_p_false".to_string(), symtab,cfg_graph,instr_slab)?;
+                                    let p_cfg_true_node = direct_child_node!(at br_node in cfg_graph with_predicate {|e| e.weight().cfg_edge_type.is_if_true() || e.weight().cfg_edge_type.is_body_head()});
+                                    let p_cfg_false_node = direct_child_node!(at br_node in cfg_graph with_predicate {|e| e.weight().cfg_edge_type.is_if_false()  || e.weight().cfg_edge_type.is_direct() });
+                                    let p_label_true_symidx = find_or_new_label_to_cfg_node(p_cfg_true_node,scope_node+et_node+new_br_node, "branch_short_circuit_p_true".to_string(), symtab,cfg_graph,instr_slab)?;
+                                    let p_label_false_symidx = find_or_new_label_to_cfg_node(p_cfg_false_node,scope_node+et_node+new_br_node, "branch_short_circuit_p_false".to_string(), symtab,cfg_graph,instr_slab)?;
 
-                            let logic_a_br_instr = NhwcInstrType::new_br(l_symidx,p_label_true_symidx,p_label_false_symidx).into();
-                            node_mut!(at cfg_node in cfg_graph ).push_nhwc_instr(logic_a_br_instr, instr_slab)?;
-                            let logic_b_br_instr = NhwcInstrType::new_br(r_symidx,c_label_true_symidx,c_label_false_symidx).into();
-                            node_mut!(at new_br_node in cfg_graph ).push_nhwc_instr(logic_b_br_instr, instr_slab)?;
+                                    let logic_a_br_instr = NhwcInstrType::new_br(l_symidx,p_label_true_symidx,p_label_false_symidx).into();
+                                    node_mut!(at cfg_node in cfg_graph ).push_nhwc_instr(logic_a_br_instr, instr_slab)?;
+                                    let logic_b_br_instr = NhwcInstrType::new_br(r_symidx,c_label_true_symidx,c_label_false_symidx).into();
+                                    node_mut!(at new_br_node in cfg_graph ).push_nhwc_instr(logic_b_br_instr, instr_slab)?;
 
-                            Some(tmp_var_symidx)
+                                    Some(tmp_var_symidx)
+                                }
+                            }
                         } else {
                             return Err(anyhow!("操作符{}下缺少符号", et_node));
                         }
@@ -2352,7 +2375,7 @@ pub fn update_jump_instr_of_parents_of_cfg_node(cfg_node:u32, cfg_graph:&mut Cfg
                             update_br_instr_of_branch(parent_cfg_node, cfg_graph, instr_slab)?;
                         },
                         JumpOp::Switch { cond, default, compared } => {
-                            todo!()
+                            return Err(anyhow!("Switch 跳转指令暂未实现"))
                         },
                         JumpOp::DirectJump { label_symidx } => {
                             panic!("you can't insert direct jump before the nhwc dump pass")
@@ -2525,7 +2548,7 @@ pub fn process_short_logic(cfg_node:u32,cfg_graph:&mut CfgGraph,logic_op:&ExprOp
 
         },
         (CfgNodeType::BasicBlock { ast_nodes },bb_node) => {
-            todo!("no need to implement this ")
+            return Err(anyhow!("BasicBlock 不应该出现在短路逻辑处理中"))
         },
         _ => {
             return Err(anyhow!("逻辑语句不应该出现在{}中",cfg_node))

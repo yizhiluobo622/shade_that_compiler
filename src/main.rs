@@ -92,8 +92,7 @@ fn main() {
             then code2ast_pass
             then ast2st_pass
             then ast2cfg_pass
-            then cfg2ncfg_pass
-            // then cfg2lpt_pass
+            then cfg2ncfg_pass           
             then func_call_pass
             // then inline_pass
             then chi_mu_insertion_pass
@@ -117,6 +116,7 @@ fn main() {
             // 后端转换阶段
             then ssa_deconstruction_pass
             then ncfg2djg_pass2
+            then cfg2lpt_pass
             then untrack_insertion_pass
             then nhwc_dump_pass
             then mem_alloc_pass
@@ -132,11 +132,12 @@ fn main() {
             then ast2st_pass
             then ast2cfg_pass
             then cfg2ncfg_pass
-            // then cfg2lpt_pass
+            
             then func_call_pass
             //then inline_pass
             then chi_mu_insertion_pass
             then ncfg2djg_pass
+            then cfg2lpt_pass
             then ssa_pass
             
             // 结构化优化阶段

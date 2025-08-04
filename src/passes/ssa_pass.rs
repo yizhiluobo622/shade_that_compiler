@@ -85,14 +85,14 @@ impl Pass for SsaPass {
                             let ptr_name = ptr_symidx.as_ref_borrow().symbol_name.clone();
                             if self.is_array_related(&ptr_name) {
                                 array_vars_after.push((ptr_name.clone(), instr_struct.text.clone()));
-                                println!("  SSA后发现数组相关变量: {} -> {}", ptr_name, instr_struct.text);
+                                // println!("  SSA后发现数组相关变量: {} -> {}", ptr_name, instr_struct.text);
                             }
                         },
                         crate::toolkit::nhwc_instr::NhwcInstrType::GetElementPtr { ptr_symidx, .. } => {
                             let ptr_name = ptr_symidx.as_ref_borrow().symbol_name.clone();
                             if self.is_array_related(&ptr_name) {
                                 array_vars_after.push((ptr_name.clone(), instr_struct.text.clone()));
-                                println!("  SSA后发现数组相关变量: {} -> {}", ptr_name, instr_struct.text);
+                                // println!("  SSA后发现数组相关变量: {} -> {}", ptr_name, instr_struct.text);
                             }
                         },
                         _ => {}

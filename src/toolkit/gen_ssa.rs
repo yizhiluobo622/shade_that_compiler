@@ -18,14 +18,7 @@ reg_field_for_struct!(Symbol {
 );
 // 由于 每个 ssa symbol 都有唯一定义，因此我们可以把这个instr 存在里面
 // reg_field_name!(INSTR);
-reg_field_for_struct!(Symbol {
-    SSA_DEF_INSTR:usize,
-    NON_SSA_FIRST_DEF:usize,
-} with_fields fields);
-// 对应每一个src_symidx 对应的symbol 都有一个字段存储它所有的 ssa version
-reg_field_for_struct!(Symbol {
-    SSA_VERSIONS:Vec<RcSymIdx>,
-} with_fields fields);
+// 字段定义已移至 symbol.rs
 
 // parallel_copy_map is a map from rhs(to copy into) to lhs(to be copied )
 // last_use_set is a set to check wether this path contains last use of symidx
@@ -232,7 +225,14 @@ pub fn variable_renaming(cfg_graph:&mut CfgGraph,dj_graph:&mut DjGraph,symtab:&m
                         let lhs = rc_lhs.as_ref_borrow();
                         let phi_def_symidx =  lhs.to_src_symidx();
 
-                        update_reaching_def(*node!(at cfg_node in cfg_graph).iter_all_instrs().last().unwrap(), &phi_def_symidx, symtab, cfg_graph, dj_graph, instr_slab)?;
+                        // 检查CFG节点是否有指令
+                        if let Some(last_instr) = node!(at cfg_node in cfg_graph).iter_all_instrs().last() {
+                            update_reaching_def(*last_instr, &phi_def_symidx, symtab, cfg_graph, dj_graph, instr_slab)?;
+                        } else {
+                            // 如果CFG节点没有指令，跳过这个Phi节点的处理
+                            debug_info_yellow!("CFG节点 {} 没有指令，跳过Phi节点处理", cfg_node);
+                            continue;
+                        }
 
                         debug_info_yellow!("transform {:?} to {:?}",phi_def_symidx,symtab.get(&phi_def_symidx)?.get_ssa_reaching_def()?);
                         let rc_phi_use_symidx = symtab.get(&phi_def_symidx)?.get_ssa_reaching_def()?.clone().context(anyhow!("这个symbol {:?} 的reaching def = None",symtab.get(&phi_def_symidx)?))?;

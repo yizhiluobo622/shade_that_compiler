@@ -560,6 +560,38 @@ impl Simulator{
                     let result = (!a_val.clone())?;
                     self.simu_add_value(&lhs,result)?;
                 },
+                BitwiseOr { a, b, vartype: _ } => {
+                    let a = a.as_ref_borrow();
+                    let b = b.as_ref_borrow();
+                    let a_val = self.simu_symtab.get(&a)?.get_simu_val()?;
+                    let b_val = self.simu_symtab.get(&b)?.get_simu_val()?;
+                    let result = (a_val.clone() | b_val.clone())?;
+                    self.simu_add_value(&lhs,result)?;
+                },
+                BitwiseAnd { a, b, vartype: _ } => {
+                    let a = a.as_ref_borrow();
+                    let b = b.as_ref_borrow();
+                    let a_val = self.simu_symtab.get(&a)?.get_simu_val()?;
+                    let b_val = self.simu_symtab.get(&b)?.get_simu_val()?;
+                    let result = (a_val.clone() & b_val.clone())?;
+                    self.simu_add_value(&lhs,result)?;
+                },
+                LeftShift { a, b, vartype: _ } => {
+                    let a = a.as_ref_borrow();
+                    let b = b.as_ref_borrow();
+                    let a_val = self.simu_symtab.get(&a)?.get_simu_val()?;
+                    let b_val = self.simu_symtab.get(&b)?.get_simu_val()?;
+                    let result = (a_val.clone() << b_val.clone())?;
+                    self.simu_add_value(&lhs,result)?;
+                },
+                RightShift { a, b, vartype: _ } => {
+                    let a = a.as_ref_borrow();
+                    let b = b.as_ref_borrow();
+                    let a_val = self.simu_symtab.get(&a)?.get_simu_val()?;
+                    let b_val = self.simu_symtab.get(&b)?.get_simu_val()?;
+                    let result = (a_val.clone() >> b_val.clone())?;
+                    self.simu_add_value(&lhs,result)?;
+                },
             }}
             SimpleAssign { lhs, rhs, vartype: _ } => {
                 let rhs = rhs.as_ref_borrow();

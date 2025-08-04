@@ -557,7 +557,17 @@ pub enum Arithmetic {
     FMULS { rd:Register, rs1:Register, rs2:Register },
     FDIVS { rd:Register, rs1:Register, rs2:Register },
     FSQRTS { rd:Register, rs1:Register },
-    FNMULS {rd:Register,rs1:Register,rs2:Register}
+    FNMULS {rd:Register,rs1:Register,rs2:Register},
+    
+    /// Bitwise operations (按位运算)
+    /// Bitwise AND
+    AND { rd:Register, rs1:Register, rs2:Register },
+    /// Bitwise AND Immediate
+    ANDI { rd:Register, rs1:Register, imm:Imm },
+    /// Bitwise OR
+    OR { rd:Register, rs1:Register, rs2:Register },
+    /// Bitwise OR Immediate
+    ORI { rd:Register, rs1:Register, imm:Imm },
 }
 impl Arithmetic {
 }
@@ -585,35 +595,39 @@ impl Debug for Arithmetic {
             Arithmetic::FDIVS { rd, rs1, rs2 } => write!(f, "{:7} {:?},{:?},{:?}","fdiv.s", rd, rs1, rs2),   
             Arithmetic::FSQRTS { rd, rs1 } => write!(f, "{:7} {:?},{:?}","fsqrt.s", rd, rs1),
             Arithmetic::FNMULS { rd, rs1, rs2 } => write!(f, "{:7} {:?},{:?},{:?}","fnmul.s", rd, rs1, rs2),
+            Arithmetic::AND { rd, rs1, rs2 } => write!(f, "{:7} {:?},{:?},{:?}","and", rd, rs1, rs2),
+            Arithmetic::ANDI { rd, rs1, imm } => write!(f, "{:7} {:?},{:?},{:?}","andi", rd, rs1, imm),
+            Arithmetic::OR { rd, rs1, rs2 } => write!(f, "{:7} {:?},{:?},{:?}","or", rd, rs1, rs2),
+            Arithmetic::ORI { rd, rs1, imm } => write!(f, "{:7} {:?},{:?},{:?}","ori", rd, rs1, imm),
         }
     }
 }
-#[derive(Clone,new)]
+#[derive(Clone, new)]
 pub enum Logical {
-    /// XOR
-    Xor { rd:Register, rs1:Register, rs2:Register },
-    /// XOR Immediate
-    Xori { rd:Register, rs1:Register, imm:Imm },
-    /// OR
+    /// OR (逻辑或)
     Or { rd:Register, rs1:Register, rs2:Register },
-    /// OR Immdiate
+    /// OR Immediate (逻辑或立即数)
     Ori { rd:Register, rs1:Register, imm:Imm },
-    /// AND
+    /// AND (逻辑与)
     And { rd:Register, rs1:Register, rs2:Register },
-    /// AND Immediate
+    /// AND Immediate (逻辑与立即数)
     Andi { rd:Register, rs1:Register, imm:Imm },
+    /// XOR (逻辑异或)
+    Xor { rd:Register, rs1:Register, rs2:Register },
+    /// XOR Immediate (逻辑异或立即数)
+    Xori { rd:Register, rs1:Register, imm:Imm },
 }
+
+
 impl Debug for Logical {
     fn fmt(&self, f:&mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            Logical::Xor { rd, rs1, rs2 } => write!(f, "{:7} {:?},{:?},{:?}","xor", rd, rs1, rs2),
-            Logical::Xori { rd, rs1, imm } => write!(f, "{:7} {:?},{:?},{:?}","xori", rd, rs1, imm),
             Logical::Or { rd, rs1, rs2 } => write!(f, "{:7} {:?},{:?},{:?}","or", rd, rs1, rs2),
-            Logical::Ori { rd, rs1, imm } => {
-                write!(f, "{:7} {:?},{:?},{:?}","ORI", rd, rs1, imm)
-            }
+            Logical::Ori { rd, rs1, imm } => write!(f, "{:7} {:?},{:?},{:?}","ori", rd, rs1, imm),
             Logical::And { rd, rs1, rs2 } => write!(f, "{:7} {:?},{:?},{:?}","and", rd, rs1, rs2),
             Logical::Andi { rd, rs1, imm } => write!(f, "{:7} {:?},{:?},{:?}","andi", rd, rs1, imm),
+            Logical::Xor { rd, rs1, rs2 } => write!(f, "{:7} {:?},{:?},{:?}","xor", rd, rs1, rs2),
+            Logical::Xori { rd, rs1, imm } => write!(f, "{:7} {:?},{:?},{:?}","xori", rd, rs1, imm),
         }
     }
 }

@@ -106,25 +106,7 @@ impl BitsetPass {
         Ok(())
     }
 
-    /// 优化位异或表达式
-    fn optimize_xor_expressions(&mut self, ctx: &mut NhwcCtx) -> Result<()> {
-        if self.debug {
-            println!("BitsetPass: 优化位异或表达式");
-        }
-        
-        let mut new_code = ctx.code.clone();
-        
-        // x ^ 0 -> x
-        let xor_zero_pattern = Regex::new(r"(\w+)\s*\^\s*0").unwrap();
-        new_code = xor_zero_pattern.replace_all(&new_code, "$1").to_string();
-        
-        // x ^ x -> 0 (移除反向引用，因为Rust regex不支持)
-        // let xor_self_pattern = Regex::new(r"(\w+)\s*\^\s*\1").unwrap();
-        // new_code = xor_self_pattern.replace_all(&new_code, "0").to_string();
-        
-        ctx.code = new_code;
-        Ok(())
-    }
+
 
     /// 优化逻辑表达式
     fn optimize_logical_expressions(&mut self, ctx: &mut NhwcCtx) -> Result<()> {
@@ -173,10 +155,6 @@ impl BitsetPass {
         // x | (1 << n) -> 设置第n位
         let bit_set_pattern = Regex::new(r"(\w+)\s*\|\s*\(1\s*<<\s*(\d+)\)").unwrap();
         new_code = bit_set_pattern.replace_all(&new_code, "$1 | (1 << $2)").to_string();
-        
-        // x ^ (1 << n) -> 翻转第n位
-        let bit_toggle_pattern = Regex::new(r"(\w+)\s*\^\s*\(1\s*<<\s*(\d+)\)").unwrap();
-        new_code = bit_toggle_pattern.replace_all(&new_code, "$1 ^ (1 << $2)").to_string();
         
         ctx.code = new_code;
         Ok(())
@@ -262,7 +240,6 @@ impl Pass for BitsetPass {
         self.optimize_shift_expressions(ctx)?;
         self.optimize_and_expressions(ctx)?;
         self.optimize_or_expressions(ctx)?;
-        self.optimize_xor_expressions(ctx)?;
         self.optimize_logical_expressions(ctx)?;
         self.optimize_bit_masks(ctx)?;
         self.optimize_bit_assignments(ctx)?;

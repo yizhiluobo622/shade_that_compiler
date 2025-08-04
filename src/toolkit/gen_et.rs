@@ -560,9 +560,9 @@ fn process_shift_expr(et_tree:&mut EtTree, ast_tree:&AstTree, scope_tree:&ScopeT
         return;
     }
 
-    let additive_expr_nodes = find_nodes!(rule RULE_additiveExpression at shift_expr_node in ast_tree);
+    let shift_expr_child_nodes = direct_child_nodes!(at shift_expr_node in ast_tree);
     let get_expr_node_of_op_node = |op_node_index| {
-        let op_node = additive_expr_nodes[op_node_index];
+        let op_node = shift_expr_child_nodes[op_node_index];
         match term_id!(at op_node in ast_tree) {
             LeftShift => EtNodeType::new_op_left_shift(shift_expr_node).into(),
             RightShift => EtNodeType::new_op_right_shift(shift_expr_node).into(),
@@ -571,9 +571,9 @@ fn process_shift_expr(et_tree:&mut EtTree, ast_tree:&AstTree, scope_tree:&ScopeT
     };
 
     let mut op_last_ep_additive_node = None;
-    for (index, &additive_node) in additive_expr_nodes.iter().enumerate() {
+    for (index, &child_node) in shift_expr_child_nodes.iter().enumerate() {
         if index%2 == 1{ continue;}
-        if index != additive_expr_nodes.len() - 1 {
+        if index != shift_expr_child_nodes.len() - 1 {
             if op_last_ep_additive_node.is_none() {
                 // 由于是第一个节点，我们需要基于第一个操作符创建节点
                 op_last_ep_additive_node = Some(add_node_with_edge!({get_expr_node_of_op_node(1)} with_edge {EtEdgeType::Direct.into()} from parent_et_node in et_tree));
@@ -581,10 +581,10 @@ fn process_shift_expr(et_tree:&mut EtTree, ast_tree:&AstTree, scope_tree:&ScopeT
                 let last_ep_additive_node = op_last_ep_additive_node.unwrap();
                 op_last_ep_additive_node = Some(add_node_with_edge!({get_expr_node_of_op_node(index+1)} with_edge {EtEdgeType::Direct.into()} from last_ep_additive_node in et_tree));
             }
-            process_any_expr_inner_node(et_tree, ast_tree, scope_tree, additive_node, scope_node, op_last_ep_additive_node.unwrap());
+            process_any_expr_inner_node(et_tree, ast_tree, scope_tree, child_node, scope_node, op_last_ep_additive_node.unwrap());
         } else {
             // 最后一个节点使用同样的方法连接
-            process_any_expr_inner_node(et_tree, ast_tree, scope_tree, additive_node, scope_node, op_last_ep_additive_node.unwrap());
+            process_any_expr_inner_node(et_tree, ast_tree, scope_tree, child_node, scope_node, op_last_ep_additive_node.unwrap());
         }
     }
 }

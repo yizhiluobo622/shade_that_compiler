@@ -27,6 +27,9 @@ reg_field_for_struct! {Symbol {
     // USE_COUNTER:UseCounter,
     TYPE:Type, 
     VALUE:Value,
+    SSA_DEF_INSTR:usize,
+    NON_SSA_FIRST_DEF:usize,
+    SSA_VERSIONS:Vec<RcSymIdx>,
 } with_fields fields}
 
 impl Symbol {

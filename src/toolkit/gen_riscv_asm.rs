@@ -541,6 +541,54 @@ fn parse_funcs2riscv(cfg_graph:&mut CfgGraph, nhwc_instr_slab:&mut InstrSlab<Nhw
                                 regtab.unoccupied_reg(val_reg1,symtab,asm_sect,&mut default_store)?;
                                 regtab.unoccupied_reg(rst_reg,symtab,asm_sect,&mut default_store)?;
                             },
+                            super::nhwc_instr::ArithOp::BitwiseOr { a, b, vartype } => {
+                                let a = a.as_ref_borrow();
+                                let b = b.as_ref_borrow();
+
+                                let val_reg1= regtab.find_and_occupy_reg(&a, &vartype.into(), symtab, asm_sect, &mut default_store, &mut default_load).with_context(||format!("err when occupy reg {:?}",instr!(at instr in nhwc_instr_slab)))?;
+                                let val_reg2= regtab.find_and_occupy_reg(&b, &vartype.into(),symtab, asm_sect, &mut default_store, &mut default_load).with_context(||format!("err when occupy reg {:?}",instr!(at instr in nhwc_instr_slab)))?;
+                                let rst_reg= regtab.find_and_occupy_reg(&lhs, &vartype.into(),symtab, asm_sect, &mut default_store, &mut no_load).with_context(||format!("err when occupy reg {:?}",instr!(at instr in nhwc_instr_slab)))?;
+                                asm_sect.asm(Arithmetic::OR { rd: rst_reg.clone(), rs1: val_reg1.clone(), rs2: val_reg2.clone() }.into());
+                                regtab.unoccupied_reg(val_reg1,symtab,asm_sect,&mut default_store)?;
+                                regtab.unoccupied_reg(val_reg2,symtab,asm_sect,&mut default_store)?;
+                                regtab.unoccupied_reg(rst_reg,symtab,asm_sect,&mut default_store)?;
+                            },
+                            super::nhwc_instr::ArithOp::BitwiseAnd { a, b, vartype } => {
+                                let a = a.as_ref_borrow();
+                                let b = b.as_ref_borrow();
+
+                                let val_reg1= regtab.find_and_occupy_reg(&a, &vartype.into(), symtab, asm_sect, &mut default_store, &mut default_load).with_context(||format!("err when occupy reg {:?}",instr!(at instr in nhwc_instr_slab)))?;
+                                let val_reg2= regtab.find_and_occupy_reg(&b, &vartype.into(),symtab, asm_sect, &mut default_store, &mut default_load).with_context(||format!("err when occupy reg {:?}",instr!(at instr in nhwc_instr_slab)))?;
+                                let rst_reg= regtab.find_and_occupy_reg(&lhs, &vartype.into(),symtab, asm_sect, &mut default_store, &mut no_load).with_context(||format!("err when occupy reg {:?}",instr!(at instr in nhwc_instr_slab)))?;
+                                asm_sect.asm(Arithmetic::AND { rd: rst_reg.clone(), rs1: val_reg1.clone(), rs2: val_reg2.clone() }.into());
+                                regtab.unoccupied_reg(val_reg1,symtab,asm_sect,&mut default_store)?;
+                                regtab.unoccupied_reg(val_reg2,symtab,asm_sect,&mut default_store)?;
+                                regtab.unoccupied_reg(rst_reg,symtab,asm_sect,&mut default_store)?;
+                            },
+                            super::nhwc_instr::ArithOp::LeftShift { a, b, vartype } => {
+                                let a = a.as_ref_borrow();
+                                let b = b.as_ref_borrow();
+
+                                let val_reg1= regtab.find_and_occupy_reg(&a, &vartype.into(), symtab, asm_sect, &mut default_store, &mut default_load).with_context(||format!("err when occupy reg {:?}",instr!(at instr in nhwc_instr_slab)))?;
+                                let val_reg2= regtab.find_and_occupy_reg(&b, &vartype.into(),symtab, asm_sect, &mut default_store, &mut default_load).with_context(||format!("err when occupy reg {:?}",instr!(at instr in nhwc_instr_slab)))?;
+                                let rst_reg= regtab.find_and_occupy_reg(&lhs, &vartype.into(),symtab, asm_sect, &mut default_store, &mut no_load).with_context(||format!("err when occupy reg {:?}",instr!(at instr in nhwc_instr_slab)))?;
+                                asm_sect.asm(Shifts::new_sll(rst_reg.clone(),val_reg1.clone(),val_reg2.clone()).into());
+                                regtab.unoccupied_reg(val_reg1,symtab,asm_sect,&mut default_store)?;
+                                regtab.unoccupied_reg(val_reg2,symtab,asm_sect,&mut default_store)?;
+                                regtab.unoccupied_reg(rst_reg,symtab,asm_sect,&mut default_store)?;
+                            },
+                            super::nhwc_instr::ArithOp::RightShift { a, b, vartype } => {
+                                let a = a.as_ref_borrow();
+                                let b = b.as_ref_borrow();
+
+                                let val_reg1= regtab.find_and_occupy_reg(&a, &vartype.into(), symtab, asm_sect, &mut default_store, &mut default_load).with_context(||format!("err when occupy reg {:?}",instr!(at instr in nhwc_instr_slab)))?;
+                                let val_reg2= regtab.find_and_occupy_reg(&b, &vartype.into(),symtab, asm_sect, &mut default_store, &mut default_load).with_context(||format!("err when occupy reg {:?}",instr!(at instr in nhwc_instr_slab)))?;
+                                let rst_reg= regtab.find_and_occupy_reg(&lhs, &vartype.into(),symtab, asm_sect, &mut default_store, &mut no_load).with_context(||format!("err when occupy reg {:?}",instr!(at instr in nhwc_instr_slab)))?;
+                                asm_sect.asm(Shifts::new_srl(rst_reg.clone(),val_reg1.clone(),val_reg2.clone()).into());
+                                regtab.unoccupied_reg(val_reg1,symtab,asm_sect,&mut default_store)?;
+                                regtab.unoccupied_reg(val_reg2,symtab,asm_sect,&mut default_store)?;
+                                regtab.unoccupied_reg(rst_reg,symtab,asm_sect,&mut default_store)?;
+                            },
                         }
                         // store reg to lhs
                     },

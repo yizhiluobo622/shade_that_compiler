@@ -81,26 +81,28 @@ impl Pass for NhwcDumpPass {
         for &cfg_node in dfs_node_vec.iter(){
             if cfg_node == CFG_ROOT|| node!(at cfg_node in cfg_graph).cfg_node_type.is_entry() || direct_child_nodes!(at cfg_node in cfg_graph).len()==0{continue;}
             // println!("{:?}",node!(at cfg_node in cfg_graph));
-            let &jump_instr = node!(at cfg_node in cfg_graph).op_jump_instr.as_ref().unwrap();
-            match &instr!(at jump_instr in instr_slab)?.instr_type{
-                NhwcInstrType::Jump { jump_op } => {
-                    match jump_op{
-                        crate::toolkit::nhwc_instr::JumpOp::Br { cond, t1, t2 } => {
-                            // if cond is constant then replace it 
-                            if cond.as_ref_borrow().symbol_name == "false"{
-                                let jump_instr_struct = NhwcInstrType::new_jump(t2.clone()).into();
-                                let jump_instr = instr_slab.insert_instr(jump_instr_struct);
-                                node_mut!(at cfg_node in cfg_graph).op_jump_instr = Some(jump_instr);
-                            }else if cond.as_ref_borrow().symbol_name == "true"{
-                                let jump_instr_struct = NhwcInstrType::new_jump(t1.clone()).into();
-                                let jump_instr = instr_slab.insert_instr(jump_instr_struct);
-                                node_mut!(at cfg_node in cfg_graph).op_jump_instr = Some(jump_instr);
-                            }
-                        },
-                        _ => {}
-                    }
-                },
-                _ => {}
+            // 检查CFG节点是否有jump指令
+            if let Some(&jump_instr) = node!(at cfg_node in cfg_graph).op_jump_instr.as_ref() {
+                match &instr!(at jump_instr in instr_slab)?.instr_type{
+                    NhwcInstrType::Jump { jump_op } => {
+                        match jump_op{
+                            crate::toolkit::nhwc_instr::JumpOp::Br { cond, t1, t2 } => {
+                                // if cond is constant then replace it 
+                                if cond.as_ref_borrow().symbol_name == "false"{
+                                    let jump_instr_struct = NhwcInstrType::new_jump(t2.clone()).into();
+                                    let jump_instr = instr_slab.insert_instr(jump_instr_struct);
+                                    node_mut!(at cfg_node in cfg_graph).op_jump_instr = Some(jump_instr);
+                                }else if cond.as_ref_borrow().symbol_name == "true"{
+                                    let jump_instr_struct = NhwcInstrType::new_jump(t1.clone()).into();
+                                    let jump_instr = instr_slab.insert_instr(jump_instr_struct);
+                                    node_mut!(at cfg_node in cfg_graph).op_jump_instr = Some(jump_instr);
+                                }
+                            },
+                            _ => {}
+                        }
+                    },
+                    _ => {}
+                }
             }
         }
         for cfg_node in dfs_node_vec{

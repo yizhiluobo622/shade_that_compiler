@@ -1,5 +1,5 @@
 use core::panic;
-use std::{any::Any, cell::RefCell, collections::{hash_map::Iter, HashMap}, fmt::Debug, ops::{Add, BitAnd, BitOr, Div, Mul, Neg, Not, Rem, Sub}, rc::Rc, vec };
+use std::{any::Any, cell::RefCell, collections::{hash_map::Iter, HashMap}, fmt::Debug, ops::{Add, BitAnd, BitOr, Div, Mul, Neg, Not, Rem, Shl, Shr, Sub}, rc::Rc, vec };
 
 use ahash::AHashMap;
 use itertools::Itertools;
@@ -1129,6 +1129,40 @@ impl Neg for Value{
             Value::I1(Some(v1)) => Err(anyhow!("I1 can't neg")),
             Value::Void => Err(anyhow!("Void 类型无法进行按位非运算")),
             _ => Err(anyhow!("其他类型无法进行按位非运算")),
+        }
+    }
+}
+
+impl Shl for Value {
+    type Output = Result<Value>;
+    
+    fn shl(self, rhs: Self) -> Self::Output {
+        let pub_ty = self.adapt(&rhs).with_context(||format!("无法得出{:?} 和 {:?}的兼容类型",self,rhs))?;
+        let l_val = self.trans_to_specific_type(&pub_ty)?;
+        let r_val = rhs.trans_to_specific_type(&pub_ty)?;
+        match (l_val, r_val) {
+            (Value::I32(Some(v1)), Value::I32(Some(v2))) => Ok(Value::new_i32(v1 << v2)),
+            (Value::F32(Some(_v1)), Value::F32(Some(_v2))) => Err(anyhow!("F32 can't shl")),
+            (Value::I1(Some(_v1)), Value::I1(Some(_v2))) => Err(anyhow!("I1 can't shl")),
+            (Value::Void, Value::Void) => Err(anyhow!("Void can't shl")),
+            (_,_) => Err(anyhow!("can't shl")),
+        }
+    }
+}
+
+impl Shr for Value {
+    type Output = Result<Value>;
+    
+    fn shr(self, rhs: Self) -> Self::Output {
+        let pub_ty = self.adapt(&rhs).with_context(||format!("无法得出{:?} 和 {:?}的兼容类型",self,rhs))?;
+        let l_val = self.trans_to_specific_type(&pub_ty)?;
+        let r_val = rhs.trans_to_specific_type(&pub_ty)?;
+        match (l_val, r_val) {
+            (Value::I32(Some(v1)), Value::I32(Some(v2))) => Ok(Value::new_i32(v1 >> v2)),
+            (Value::F32(Some(_v1)), Value::F32(Some(_v2))) => Err(anyhow!("F32 can't shr")),
+            (Value::I1(Some(_v1)), Value::I1(Some(_v2))) => Err(anyhow!("I1 can't shr")),
+            (Value::Void, Value::Void) => Err(anyhow!("Void can't shr")),
+            (_,_) => Err(anyhow!("can't shr")),
         }
     }
 }
