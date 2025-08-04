@@ -320,6 +320,8 @@ impl Cfg2LptPass {
         let mut back_edges = Vec::new();
         let mut exits = Vec::new();
         
+        println!("开始识别循环头 {} 的循环体", header);
+        
         // 添加循环头到循环体
         loop_body.insert(header);
         
@@ -329,13 +331,22 @@ impl Cfg2LptPass {
             if self.is_back_edge(source, header, ctx) {
                 back_edges.push((source, header));
                 loop_body.insert(source);
+                println!("发现回边: {} -> {}", source, header);
             }
         }
         
-        // 使用工作列表算法扩展循环体
+        // 使用改进的工作列表算法扩展循环体
         let mut worklist: Vec<u32> = loop_body.iter().cloned().collect();
+        let mut processed = AHashSet::new();
         
         while let Some(node) = worklist.pop() {
+            if processed.contains(&node) {
+                continue;
+            }
+            processed.insert(node);
+            
+            println!("处理节点 {} 的前驱", node);
+            
             // 处理前驱节点
             for edge in ctx.cfg_graph.edges_directed(petgraph::graph::NodeIndex::new(node as usize), petgraph::Direction::Incoming) {
                 let pred = edge.source().index() as u32;
@@ -345,6 +356,64 @@ impl Cfg2LptPass {
                     // 获取前驱和循环头的DJ节点
                     let pred_dj = match ctx.cfg_graph.node_weight(petgraph::graph::NodeIndex::new(pred as usize)).unwrap().get_cor_dj_node() {
                         std::result::Result::Ok(dj) => dj,
+                        Err(_) => {
+                            println!("跳过节点 {} (无法获取DJ节点)", pred);
+                            continue;
+                        }
+                    };
+                    
+                    let header_dj = match ctx.cfg_graph.node_weight(petgraph::graph::NodeIndex::new(header as usize)).unwrap().get_cor_dj_node() {
+                        std::result::Result::Ok(dj) => dj,
+                        Err(_) => {
+                            println!("跳过节点 {} (无法获取循环头DJ节点)", pred);
+                            continue;
+                        }
+                    };
+                    
+                    // 检查支配关系
+                    if self.is_dominator(*header_dj, *pred_dj, ctx) {
+                        println!("节点 {} 被循环头 {} 支配", pred, header);
+                        
+                        // 检查是否可达
+                        if self.is_reachable_from(header, pred, ctx) {
+                            println!("节点 {} 从循环头 {} 可达", pred, header);
+                            
+                            // 简化判断：只排除其他循环头
+                            let should_exclude = self.is_in_other_loop(pred, header, ctx);
+                            
+                            if should_exclude {
+                                println!("节点 {} 属于其他循环，检查嵌套关系", pred);
+                                // 检查是否是内层循环头
+                                if self.is_loop_header(pred, ctx) {
+                                    // 如果内层循环头被外层循环头支配，则包含它
+                                    if self.is_dominator(*header_dj, *pred_dj, ctx) {
+                                        println!("包含内层循环头 {} 到循环体", pred);
+                                        loop_body.insert(pred);
+                                        worklist.push(pred);
+                                    }
+                                }
+                            } else {
+                                println!("添加节点 {} 到循环体", pred);
+                                loop_body.insert(pred);
+                                worklist.push(pred);
+                            }
+                        } else {
+                            println!("节点 {} 从循环头 {} 不可达", pred, header);
+                        }
+                    } else {
+                        println!("节点 {} 不被循环头 {} 支配", pred, header);
+                    }
+                }
+            }
+            
+            // 处理后继节点（扩展循环体）
+            for edge in ctx.cfg_graph.edges(petgraph::graph::NodeIndex::new(node as usize)) {
+                let succ = edge.target().index() as u32;
+                
+                if !loop_body.contains(&succ) {
+                    // 获取后继和循环头的DJ节点
+                    let succ_dj = match ctx.cfg_graph.node_weight(petgraph::graph::NodeIndex::new(succ as usize)).unwrap().get_cor_dj_node() {
+                        std::result::Result::Ok(dj) => dj,
                         Err(_) => continue,
                     };
                     
@@ -353,37 +422,115 @@ impl Cfg2LptPass {
                         Err(_) => continue,
                     };
                     
-                    // 关键修改：更精确的支配关系检查
-                    if self.is_dominator(*header_dj, *pred_dj, ctx) 
-                        && self.is_reachable_from(header, pred, ctx)
-                    {
-                        // 检查是否应该排除这个节点
-                        let should_exclude = self.is_in_other_loop(pred, header, ctx);
+                    // 检查支配关系
+                    if self.is_dominator(*header_dj, *succ_dj, ctx) {
+                        // 简化判断：只排除其他循环头
+                        let should_exclude = self.is_in_other_loop(succ, header, ctx);
                         
-                        // 如果节点属于其他循环，检查是否是嵌套关系
-                        if should_exclude {
-                            // 检查是否是内层循环头
-                            if self.is_loop_header(pred, ctx) {
-                                // 检查是否是嵌套关系
-                                let pred_dj = match ctx.cfg_graph.node_weight(petgraph::graph::NodeIndex::new(pred as usize)).unwrap().get_cor_dj_node() {
-                                    std::result::Result::Ok(dj) => dj,
-                                    Err(_) => continue,
-                                };
-                                
-                                // 如果内层循环头被外层循环头支配，则包含它
-                                if self.is_dominator(*header_dj, *pred_dj, ctx) {
-                                    loop_body.insert(pred);
-                                    worklist.push(pred);
-                                }
-                            }
+                        if !should_exclude {
+                            println!("添加后继节点 {} 到循环体", succ);
+                            loop_body.insert(succ);
+                            worklist.push(succ);
                         } else {
-                            loop_body.insert(pred);
-                            worklist.push(pred);
+                            println!("排除后继节点 {} (属于其他循环)", succ);
                         }
+                    } else {
+                        println!("后继节点 {} 不被循环头 {} 支配", succ, header);
                     }
                 }
             }
         }
+        
+        // 进一步扩展循环体：包含所有被循环头支配的节点
+        let mut additional_nodes = AHashSet::new();
+        for node_idx in ctx.cfg_graph.node_indices() {
+            let node = node_idx.index() as u32;
+            if !loop_body.contains(&node) && node != header {
+                // 获取节点和循环头的DJ节点
+                let node_dj = match ctx.cfg_graph.node_weight(petgraph::graph::NodeIndex::new(node as usize)).unwrap().get_cor_dj_node() {
+                    std::result::Result::Ok(dj) => dj,
+                    Err(_) => continue,
+                };
+                
+                let header_dj = match ctx.cfg_graph.node_weight(petgraph::graph::NodeIndex::new(header as usize)).unwrap().get_cor_dj_node() {
+                    std::result::Result::Ok(dj) => dj,
+                    Err(_) => continue,
+                };
+                
+                // 如果节点被循环头支配，且从循环头可达
+                if self.is_dominator(*header_dj, *node_dj, ctx) && self.is_reachable_from(header, node, ctx) {
+                    // 检查是否应该排除这个节点
+                    let should_exclude = self.is_in_other_loop(node, header, ctx);
+                    
+                    if !should_exclude {
+                        println!("额外添加节点 {} 到循环体", node);
+                        additional_nodes.insert(node);
+                    }
+                }
+            }
+        }
+        
+        // 合并额外的节点到循环体
+        for node in additional_nodes {
+            loop_body.insert(node);
+        }
+        
+        // 关键修复：确保循环体包含所有被循环头支配且在循环执行路径上的节点
+        // 这包括循环头直接支配的所有节点，以及这些节点的后继节点（如果它们也被循环头支配）
+        let mut final_nodes = AHashSet::new();
+        for &node in &loop_body {
+            final_nodes.insert(node);
+            
+            // 添加所有被循环头支配的后继节点
+            for edge in ctx.cfg_graph.edges(petgraph::graph::NodeIndex::new(node as usize)) {
+                let succ = edge.target().index() as u32;
+                if !final_nodes.contains(&succ) && succ != header {
+                    let succ_dj = match ctx.cfg_graph.node_weight(petgraph::graph::NodeIndex::new(succ as usize)).unwrap().get_cor_dj_node() {
+                        std::result::Result::Ok(dj) => dj,
+                        Err(_) => continue,
+                    };
+                    
+                    let header_dj = match ctx.cfg_graph.node_weight(petgraph::graph::NodeIndex::new(header as usize)).unwrap().get_cor_dj_node() {
+                        std::result::Result::Ok(dj) => dj,
+                        Err(_) => continue,
+                    };
+                    
+                    if self.is_dominator(*header_dj, *succ_dj, ctx) {
+                        final_nodes.insert(succ);
+                        println!("添加后继节点 {} 到循环体", succ);
+                    }
+                }
+            }
+        }
+        
+        // 使用最终的循环体
+        loop_body = final_nodes;
+        
+        // 关键修复：排除其他循环头，避免循环体过于宽泛
+        let mut cleaned_loop_body = AHashSet::new();
+        for &node in &loop_body {
+            // 检查节点是否是其他循环头
+            let mut is_other_loop_header = false;
+            for node_idx in ctx.cfg_graph.node_indices() {
+                let potential_header = node_idx.index() as u32;
+                if potential_header != header && potential_header == node {
+                    if self.is_loop_header(potential_header, ctx) {
+                        is_other_loop_header = true;
+                        println!("排除其他循环头 {} 从循环 {} 的循环体", potential_header, header);
+                        break;
+                    }
+                }
+            }
+            
+            if !is_other_loop_header {
+                cleaned_loop_body.insert(node);
+            }
+        }
+        
+        // 使用清理后的循环体
+        loop_body = cleaned_loop_body;
+        
+        println!("循环头 {} 的循环体: {:?}", header, loop_body);
         
         // 识别循环出口
         for &node in &loop_body {
@@ -394,6 +541,8 @@ impl Cfg2LptPass {
                 }
             }
         }
+        
+        println!("循环头 {} 的出口: {:?}", header, exits);
         
         Ok(LoopInfo {
             header,
@@ -440,33 +589,92 @@ impl Cfg2LptPass {
 
     /// 检查节点是否属于其他循环
     fn is_in_other_loop(&self, node: u32, exclude_header: u32, ctx: &NhwcCtx) -> bool {
-        // 简单实现：检查节点是否被其他循环头支配
-        // 这里可以根据需要扩展更复杂的逻辑
+        // 改进实现：只检查节点是否是其他循环头，而不是被其他循环头支配
+        // 这样可以避免误判循环体中的普通节点
         for node_idx in ctx.cfg_graph.node_indices() {
             let potential_header = node_idx.index() as u32;
             if potential_header == exclude_header {
                 continue;
             }
             
-            // 检查是否是循环头
-            if self.is_loop_header(potential_header, ctx) {
-                let header_dj = match ctx.cfg_graph.node_weight(petgraph::graph::NodeIndex::new(potential_header as usize)).unwrap().get_cor_dj_node() {
-                    std::result::Result::Ok(dj) => dj,
-                    Err(_) => continue,
-                };
-                
-                let node_dj = match ctx.cfg_graph.node_weight(petgraph::graph::NodeIndex::new(node as usize)).unwrap().get_cor_dj_node() {
-                    std::result::Result::Ok(dj) => dj,
-                    Err(_) => continue,
-                };
-                
-                if self.is_dominator(*header_dj, *node_dj, ctx) {
-                    return true;
-                }
+            // 只检查节点本身是否是循环头
+            if node == potential_header && self.is_loop_header(potential_header, ctx) {
+                return true;
             }
         }
         
         false
+    }
+
+    /// 获取循环体（简化版本，用于嵌套关系判断）
+    fn get_loop_body(&self, header: u32, ctx: &NhwcCtx) -> AHashSet<u32> {
+        let mut loop_body = AHashSet::new();
+        loop_body.insert(header);
+        
+        // 识别回边并收集循环体
+        for edge in ctx.cfg_graph.edges_directed(petgraph::graph::NodeIndex::new(header as usize), petgraph::Direction::Incoming) {
+            let source = edge.source().index() as u32;
+            if self.is_back_edge(source, header, ctx) {
+                loop_body.insert(source);
+            }
+        }
+        
+        // 使用工作列表算法扩展循环体
+        let mut worklist: Vec<u32> = loop_body.iter().cloned().collect();
+        let mut processed = AHashSet::new();
+        
+        while let Some(node) = worklist.pop() {
+            if processed.contains(&node) {
+                continue;
+            }
+            processed.insert(node);
+            
+            // 处理前驱节点
+            for edge in ctx.cfg_graph.edges_directed(petgraph::graph::NodeIndex::new(node as usize), petgraph::Direction::Incoming) {
+                let pred = edge.source().index() as u32;
+                
+                if !loop_body.contains(&pred) {
+                    let pred_dj = match ctx.cfg_graph.node_weight(petgraph::graph::NodeIndex::new(pred as usize)).unwrap().get_cor_dj_node() {
+                        std::result::Result::Ok(dj) => dj,
+                        Err(_) => continue,
+                    };
+                    
+                    let header_dj = match ctx.cfg_graph.node_weight(petgraph::graph::NodeIndex::new(header as usize)).unwrap().get_cor_dj_node() {
+                        std::result::Result::Ok(dj) => dj,
+                        Err(_) => continue,
+                    };
+                    
+                    if self.is_dominator(*header_dj, *pred_dj, ctx) && self.is_reachable_from(header, pred, ctx) {
+                        loop_body.insert(pred);
+                        worklist.push(pred);
+                    }
+                }
+            }
+            
+            // 处理后继节点
+            for edge in ctx.cfg_graph.edges(petgraph::graph::NodeIndex::new(node as usize)) {
+                let succ = edge.target().index() as u32;
+                
+                if !loop_body.contains(&succ) {
+                    let succ_dj = match ctx.cfg_graph.node_weight(petgraph::graph::NodeIndex::new(succ as usize)).unwrap().get_cor_dj_node() {
+                        std::result::Result::Ok(dj) => dj,
+                        Err(_) => continue,
+                    };
+                    
+                    let header_dj = match ctx.cfg_graph.node_weight(petgraph::graph::NodeIndex::new(header as usize)).unwrap().get_cor_dj_node() {
+                        std::result::Result::Ok(dj) => dj,
+                        Err(_) => continue,
+                    };
+                    
+                    if self.is_dominator(*header_dj, *succ_dj, ctx) {
+                        loop_body.insert(succ);
+                        worklist.push(succ);
+                    }
+                }
+            }
+        }
+        
+        loop_body
     }
 
     /// 基于支配树构建循环嵌套关系
@@ -485,29 +693,92 @@ impl Cfg2LptPass {
             a_dj.cmp(&b_dj)
         });
         
-        // 构建嵌套关系
+        println!("循环头排序结果: {:?}", loop_headers);
+        
+        // 构建嵌套关系 - 完全重写版本，基于CFG结构
         for i in 0..loop_headers.len() {
             let header = loop_headers[i];
             let loop_info = loops[&header].clone();
             
-            // 寻找直接父循环
+            println!("检查循环 {} 的嵌套关系", header);
+            
+            // 寻找直接父循环 - 基于CFG边的连接关系
+            let mut best_parent = None;
+            let mut best_depth = 0;
+            
             for j in (0..i).rev() {
                 let potential_parent = loop_headers[j];
                 let parent_loop = &loops[&potential_parent];
                 
-                // 检查是否应该嵌套
-                if self.should_nest(&loop_info, parent_loop, ctx) {
-                    loops.get_mut(&header).unwrap().parent = Some(potential_parent);
-                    loops.get_mut(&potential_parent).unwrap().children.push(header);
-                    println!("发现嵌套关系：循环 {} 嵌套在循环 {} 内部", header, potential_parent);
-                    break;
+                // 检查是否有CFG边从父循环头直接连接到子循环头
+                let mut has_direct_edge = false;
+                for edge in ctx.cfg_graph.edges(petgraph::graph::NodeIndex::new(potential_parent as usize)) {
+                    let target = edge.target().index() as u32;
+                    if target == header {
+                        has_direct_edge = true;
+                        println!("发现从循环 {} 到循环 {} 的直接CFG边", potential_parent, header);
+                        break;
+                    }
                 }
+                
+                // 检查子循环头是否在父循环的循环体内
+                let mut is_in_parent_body = false;
+                for &body_node in &parent_loop.body {
+                    if body_node == header {
+                        is_in_parent_body = true;
+                        println!("循环 {} 在循环 {} 的循环体内", header, potential_parent);
+                        break;
+                    }
+                }
+                
+                // 检查支配关系
+                let child_dj = match ctx.cfg_graph.node_weight(petgraph::graph::NodeIndex::new(header as usize)).unwrap().get_cor_dj_node() {
+                    std::result::Result::Ok(dj) => dj,
+                    Err(_) => continue,
+                };
+                
+                let parent_dj = match ctx.cfg_graph.node_weight(petgraph::graph::NodeIndex::new(potential_parent as usize)).unwrap().get_cor_dj_node() {
+                    std::result::Result::Ok(dj) => dj,
+                    Err(_) => continue,
+                };
+                
+                if self.is_dominator(*parent_dj, *child_dj, ctx) {
+                    // 如果有直接CFG边连接或在循环体内，说明是嵌套关系
+                    if has_direct_edge || is_in_parent_body {
+                        println!("循环 {} 被循环 {} 支配且有直接CFG边连接或在循环体内，确认嵌套关系", header, potential_parent);
+                        if parent_loop.depth >= best_depth {
+                            best_parent = Some(potential_parent);
+                            best_depth = parent_loop.depth;
+                            println!("找到更好的父循环: {} (深度: {})", potential_parent, best_depth);
+                        }
+                    }
+                }
+            }
+            
+            // 设置嵌套关系
+            if let Some(parent_header) = best_parent {
+                loops.get_mut(&header).unwrap().parent = Some(parent_header);
+                loops.get_mut(&parent_header).unwrap().children.push(header);
+                println!("设置嵌套关系：循环 {} 嵌套在循环 {} 内部", header, parent_header);
+            } else {
+                println!("循环 {} 没有找到父循环，是根循环", header);
             }
         }
         
         // 计算嵌套深度
+        println!("开始计算循环嵌套深度...");
+        
+        // 先初始化所有循环的深度为0
+        for loop_info in loops.values_mut() {
+            loop_info.depth = 0;
+        }
+        
+        // 只从根循环开始计算深度，避免重复计算
         for &header in &loop_headers {
-            self.compute_loop_depth(header, loops, 0);
+            if loops[&header].parent.is_none() {
+                println!("从根循环 {} 开始计算嵌套深度", header);
+                self.compute_loop_depth(header, loops, 0);
+            }
         }
         
         Ok(())
@@ -531,7 +802,188 @@ impl Cfg2LptPass {
             Err(_) => return false,
         };
         
-        self.is_dominator(*parent_dj, *child_dj, ctx)
+        if !self.is_dominator(*parent_dj, *child_dj, ctx) {
+            return false;
+        }
+        
+        // 3. 检查循环执行顺序 - 关键修改
+        // 如果两个循环是顺序执行的（有直接的CFG边连接），则不应该嵌套
+        for &parent_node in &parent.body {
+            for edge in ctx.cfg_graph.edges(petgraph::graph::NodeIndex::new(parent_node as usize)) {
+                let target = edge.target().index() as u32;
+                if target == child.header {
+                    // 如果父循环体中的节点直接连接到子循环头，说明它们是顺序执行的
+                    println!("发现顺序执行关系：父循环 {} 的节点 {} 直接连接到子循环头 {}", 
+                        parent.header, parent_node, child.header);
+                    return false;
+                }
+            }
+        }
+        
+        // 4. 检查是否有其他循环头在支配路径上
+        // 如果子循环头被父循环头直接支配，且没有其他循环头在它们之间
+        let mut current = child.header;
+        let mut found_parent = false;
+        
+        // 沿着支配树向上查找，看是否直接连接到父循环头
+        while current != parent.header {
+            let current_dj = match ctx.cfg_graph.node_weight(petgraph::graph::NodeIndex::new(current as usize)).unwrap().get_cor_dj_node() {
+                std::result::Result::Ok(dj) => dj,
+                Err(_) => return false,
+            };
+            
+            // 获取当前节点的父节点（在支配树中）
+            let parent_nodes: Vec<_> = ctx.dj_graph.edges_directed(petgraph::graph::NodeIndex::new(*current_dj as usize), petgraph::Direction::Incoming)
+                .filter(|e| e.weight().is_dom())
+                .map(|e| e.source().index() as u32)
+                .collect();
+            
+            let parent_node = match parent_nodes.first() {
+                Some(&parent) => parent,
+                None => return false,
+            };
+            
+            // 检查这个父节点是否是其他循环头
+            // 遍历所有CFG节点，检查是否有其他循环头
+            for node_idx in ctx.cfg_graph.node_indices() {
+                let potential_header = node_idx.index() as u32;
+                if potential_header != parent.header && potential_header != child.header {
+                    // 检查是否是循环头
+                    if self.is_loop_header(potential_header, ctx) {
+                        let other_dj = match ctx.cfg_graph.node_weight(petgraph::graph::NodeIndex::new(potential_header as usize)).unwrap().get_cor_dj_node() {
+                            std::result::Result::Ok(dj) => dj,
+                            Err(_) => continue,
+                        };
+                        
+                        if *other_dj == parent_node {
+                            // 发现中间有其他循环头，说明不是直接嵌套
+                            println!("发现中间循环头：{} 在 {} 和 {} 之间", potential_header, parent.header, child.header);
+                            return false;
+                        }
+                    }
+                }
+            }
+            
+            if parent_node == current {
+                return false; // 防止循环
+            }
+            
+            current = parent_node;
+            found_parent = true;
+        }
+        
+        found_parent
+    }
+
+    /// 改进的循环嵌套关系检查 - 专门用于construct_loop_tree
+    fn should_nest_improved(&self, child_header: u32, parent_header: u32, ctx: &NhwcCtx) -> bool {
+        // 简化的嵌套关系判断逻辑
+        
+        // 1. 检查支配关系
+        let child_dj = match ctx.cfg_graph.node_weight(petgraph::graph::NodeIndex::new(child_header as usize)).unwrap().get_cor_dj_node() {
+            std::result::Result::Ok(dj) => dj,
+            Err(_) => return false,
+        };
+        
+        let parent_dj = match ctx.cfg_graph.node_weight(petgraph::graph::NodeIndex::new(parent_header as usize)).unwrap().get_cor_dj_node() {
+            std::result::Result::Ok(dj) => dj,
+            Err(_) => return false,
+        };
+        
+        if !self.is_dominator(*parent_dj, *child_dj, ctx) {
+            return false;
+        }
+        
+        // 2. 检查是否有直接的CFG边连接（顺序执行关系）
+        // 只检查Direct类型的边，BodyHead类型的边是正常的嵌套关系
+        for edge in ctx.cfg_graph.edges(petgraph::graph::NodeIndex::new(parent_header as usize)) {
+            let target = edge.target().index() as u32;
+            if target == child_header {
+                // 只检查Direct类型的边，BodyHead是正常的嵌套关系
+                match edge.weight().cfg_edge_type {
+                    CfgEdgeType::Direct { } => {
+                        println!("发现顺序执行关系：父循环头 {} 直接连接到子循环头 {} (Direct边)", parent_header, child_header);
+                        return false;
+                    }
+                    CfgEdgeType::BodyHead { } => {
+                        // BodyHead边是正常的嵌套关系，不阻止嵌套
+                        println!("发现嵌套关系：父循环头 {} 通过BodyHead边连接到子循环头 {}", parent_header, child_header);
+                    }
+                    _ => {
+                        // 其他类型的边也不阻止嵌套
+                    }
+                }
+            }
+        }
+        
+        // 3. 检查父循环体中的节点是否直接连接到子循环头
+        // 只检查非循环体节点，避免误判循环内部的正常连接
+        for node_idx in ctx.cfg_graph.node_indices() {
+            let node = node_idx.index() as u32;
+            if node != parent_header && node != child_header {
+                // 检查节点是否是循环头
+                if self.is_loop_header(node, ctx) {
+                    continue; // 跳过循环头节点
+                }
+                
+                let node_dj = match ctx.cfg_graph.node_weight(petgraph::graph::NodeIndex::new(node as usize)).unwrap().get_cor_dj_node() {
+                    std::result::Result::Ok(dj) => dj,
+                    Err(_) => continue,
+                };
+                
+                // 如果节点被父循环头支配
+                if self.is_dominator(*parent_dj, *node_dj, ctx) {
+                    // 检查这个节点是否直接连接到子循环头
+                    for edge in ctx.cfg_graph.edges(petgraph::graph::NodeIndex::new(node as usize)) {
+                        let target = edge.target().index() as u32;
+                        if target == child_header {
+                            // 检查边的类型，只有Direct边才表示顺序执行关系
+                            match edge.weight().cfg_edge_type {
+                                CfgEdgeType::Direct { } => {
+                                    // 进一步检查：如果子循环头被父循环头支配，则允许嵌套
+                                    let child_dj = match ctx.cfg_graph.node_weight(petgraph::graph::NodeIndex::new(child_header as usize)).unwrap().get_cor_dj_node() {
+                                        std::result::Result::Ok(dj) => dj,
+                                        Err(_) => continue,
+                                    };
+                                    
+                                    if self.is_dominator(*parent_dj, *child_dj, ctx) {
+                                        // 如果子循环头被父循环头支配，则允许嵌套
+                                        println!("发现嵌套关系：父循环 {} 的节点 {} 通过Direct边连接到子循环头 {}，但子循环被父循环支配，允许嵌套", 
+                                            parent_header, node, child_header);
+                                    } else {
+                                        println!("发现顺序执行关系：父循环 {} 的节点 {} 通过Direct边连接到子循环头 {}", 
+                                            parent_header, node, child_header);
+                                        return false;
+                                    }
+                                }
+                                CfgEdgeType::BodyHead { } => {
+                                    // BodyHead边是正常的循环内部关系，不阻止嵌套
+                                    println!("发现循环内部关系：父循环 {} 的节点 {} 通过BodyHead边连接到子循环头 {}", 
+                                        parent_header, node, child_header);
+                                }
+                                _ => {
+                                    // 其他类型的边也不阻止嵌套
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        // 4. 关键修复：检查循环体包含关系
+        // 如果子循环头在父循环体内，且父循环头支配子循环头，则应该是嵌套关系
+        // 获取父循环信息（需要从外部传入或重新计算）
+        let parent_loop_body = self.get_loop_body(parent_header, ctx);
+        if parent_loop_body.contains(&child_header) {
+            println!("子循环头 {} 在父循环 {} 的循环体内，确认嵌套关系", child_header, parent_header);
+            return true;
+        }
+        
+        // 5. 简化检查：只检查是否有直接的CFG边阻止嵌套
+        // 不再检查中间循环头，因为对于嵌套循环这是正常情况
+        
+        true
     }
 
     /// 计算循环嵌套深度
@@ -554,9 +1006,11 @@ impl Cfg2LptPass {
         
         if let Some(loop_info) = loops.get_mut(&header) {
             loop_info.depth = depth;
+            println!("设置循环 {} 的深度为 {}", header, depth);
             
             // 递归计算子循环深度
             for &child_header in &loop_info.children.clone() {
+                println!("递归计算子循环 {} 的深度", child_header);
                 self.compute_loop_depth_inner(child_header, loops, depth + 1, visited);
             }
         }
@@ -642,17 +1096,18 @@ impl Cfg2LptPass {
                                 };
                                 
                                 if self.is_dominator(*parent_dj, *current_dj, ctx) {
-                                    // 检查是否有CFG边连接
-                                    for edge in ctx.cfg_graph.edges_directed(petgraph::graph::NodeIndex::new(node_idx as usize), petgraph::Direction::Incoming) {
-                                        let source = edge.source().index() as u32;
-                                        if source == *potential_parent_header {
-                                            // 找到嵌套关系
-                                            if let Some(parent_loop_idx) = node_to_tree_node.get(potential_parent_header) {
-                                                parent_node = *parent_loop_idx;
-                                                println!("发现嵌套关系：循环 {} 嵌套在循环 {} 内部 (基于CFG边)", node_idx, potential_parent_header);
-                                                break;
-                                            }
+                                    // 检查是否应该嵌套 - 使用改进的逻辑
+                                    let should_nest = self.should_nest_improved(node_idx, *potential_parent_header, ctx);
+                                    
+                                    if should_nest {
+                                        // 找到嵌套关系
+                                        if let Some(parent_loop_idx) = node_to_tree_node.get(potential_parent_header) {
+                                            parent_node = *parent_loop_idx;
+                                            println!("发现嵌套关系：循环 {} 嵌套在循环 {} 内部 (改进的判断)", node_idx, potential_parent_header);
+                                            break;
                                         }
+                                    } else {
+                                        println!("循环 {} 和循环 {} 是顺序执行关系，不嵌套", node_idx, potential_parent_header);
                                     }
                                 }
                             }
@@ -664,7 +1119,7 @@ impl Cfg2LptPass {
                     tree.add_edge(parent_node, loop_idx, ());
                     node_to_tree_node.insert(node_idx, loop_idx);
                     
-                    // 添加循环体中的所有节点作为循环内部节点
+                    // 添加循环体中的基本块节点（不包括循环头）
                     println!("循环体节点: {:?}", loop_info.body);
                     for &body_node in &loop_info.body {
                         if body_node != node_idx { // 避免重复添加循环头
@@ -676,11 +1131,59 @@ impl Cfg2LptPass {
                                     continue;
                                 }
                                 
-                                let body_node_type = ctx.cfg_graph.node_weight(petgraph::graph::NodeIndex::new(body_node as usize)).unwrap().cfg_node_type.clone();
-                                let body_tree_node = tree.add_node(LoopNode::new_terminal_node(body_node, body_node_type));
-                                tree.add_edge(loop_idx, body_tree_node, ());
-                                node_to_tree_node.insert(body_node, body_tree_node);
-                                println!("添加循环体节点: {} -> 树节点: {:?}", body_node, body_tree_node);
+                                // 检查节点是否是其他循环头，如果是则跳过
+                                if loops.contains_key(&body_node) {
+                                    println!("跳过循环体中的其他循环头节点: {}", body_node);
+                                    continue;
+                                }
+                                
+                                // 关键修复：检查节点是否真正属于当前循环
+                                // 基于CFG结构和支配关系判断
+                                let mut should_add_to_current_loop = true;
+                                
+                                // 检查节点是否被当前循环头支配
+                                let body_node_dj = match ctx.cfg_graph.node_weight(petgraph::graph::NodeIndex::new(body_node as usize)).unwrap().get_cor_dj_node() {
+                                    std::result::Result::Ok(dj) => dj,
+                                    Err(_) => {
+                                        println!("跳过节点 {} (无法获取DJ节点)", body_node);
+                                        continue;
+                                    }
+                                };
+                                
+                                let header_dj = match ctx.cfg_graph.node_weight(petgraph::graph::NodeIndex::new(node_idx as usize)).unwrap().get_cor_dj_node() {
+                                    std::result::Result::Ok(dj) => dj,
+                                    Err(_) => {
+                                        println!("跳过节点 {} (无法获取循环头DJ节点)", body_node);
+                                        continue;
+                                    }
+                                };
+                                
+                                if !self.is_dominator(*header_dj, *body_node_dj, ctx) {
+                                    should_add_to_current_loop = false;
+                                    println!("节点 {} 不被循环头 {} 支配，不添加到当前循环", body_node, node_idx);
+                                }
+                                
+                                // 检查节点是否属于其他更内层循环
+                                for (other_header, other_loop_info) in loops {
+                                    if *other_header != node_idx && other_loop_info.body.contains(&body_node) {
+                                        // 检查其他循环是否嵌套在当前循环内部
+                                        if let Some(parent) = other_loop_info.parent {
+                                            if parent == node_idx {
+                                                should_add_to_current_loop = false;
+                                                println!("节点 {} 属于嵌套在当前循环 {} 内部的循环 {}，不添加到当前循环", body_node, node_idx, other_header);
+                                                break;
+                                            }
+                                        }
+                                    }
+                                }
+                                
+                                if should_add_to_current_loop {
+                                    let body_node_type = ctx.cfg_graph.node_weight(petgraph::graph::NodeIndex::new(body_node as usize)).unwrap().cfg_node_type.clone();
+                                    let body_tree_node = tree.add_node(LoopNode::new_terminal_node(body_node, body_node_type));
+                                    tree.add_edge(loop_idx, body_tree_node, ());
+                                    node_to_tree_node.insert(body_node, body_tree_node);
+                                    println!("添加循环体节点: {} -> 树节点: {:?} (挂在当前循环 {:?} 下)", body_node, body_tree_node, loop_idx);
+                                }
                             } else {
                                 println!("循环体节点 {} 已经被处理过", body_node);
                             }
