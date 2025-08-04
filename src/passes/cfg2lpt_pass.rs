@@ -721,15 +721,7 @@ impl Cfg2LptPass {
                     }
                 }
                 
-                // 检查子循环头是否在父循环的循环体内
-                let mut is_in_parent_body = false;
-                for &body_node in &parent_loop.body {
-                    if body_node == header {
-                        is_in_parent_body = true;
-                        println!("循环 {} 在循环 {} 的循环体内", header, potential_parent);
-                        break;
-                    }
-                }
+
                 
                 // 检查支配关系
                 let child_dj = match ctx.cfg_graph.node_weight(petgraph::graph::NodeIndex::new(header as usize)).unwrap().get_cor_dj_node() {
@@ -743,9 +735,9 @@ impl Cfg2LptPass {
                 };
                 
                 if self.is_dominator(*parent_dj, *child_dj, ctx) {
-                    // 如果有直接CFG边连接或在循环体内，说明是嵌套关系
-                    if has_direct_edge || is_in_parent_body {
-                        println!("循环 {} 被循环 {} 支配且有直接CFG边连接或在循环体内，确认嵌套关系", header, potential_parent);
+                    // 如果有直接CFG边连接，说明是嵌套关系
+                    if has_direct_edge {
+                        println!("循环 {} 被循环 {} 支配且有直接CFG边连接，确认嵌套关系", header, potential_parent);
                         if parent_loop.depth >= best_depth {
                             best_parent = Some(potential_parent);
                             best_depth = parent_loop.depth;
