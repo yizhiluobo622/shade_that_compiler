@@ -335,7 +335,7 @@ impl Cfg2LptPass {
             }
         }
         
-        // 简化的工作列表算法：只包含被循环头支配且在循环执行路径上的节点
+        // 改进的工作列表算法：双向遍历，确保包含循环体内的所有节点
         let mut worklist: Vec<u32> = loop_body.iter().cloned().collect();
         let mut processed = AHashSet::new();
         
@@ -345,7 +345,7 @@ impl Cfg2LptPass {
             }
             processed.insert(node);
             
-            // 只处理后继节点，确保循环体的连续性
+            // 向前遍历：处理后继节点
             for edge in ctx.cfg_graph.edges(petgraph::graph::NodeIndex::new(node as usize)) {
                 let succ = edge.target().index() as u32;
                 
@@ -405,6 +405,70 @@ impl Cfg2LptPass {
                             }
                         } else {
                             println!("排除节点 {} 从循环体 (边类型: {:?} 表示顺序执行)", succ, edge_type);
+                        }
+                    }
+                }
+            }
+            
+            // 向后遍历：处理前驱节点（关键修复）
+            for edge in ctx.cfg_graph.edges_directed(petgraph::graph::NodeIndex::new(node as usize), petgraph::Direction::Incoming) {
+                let pred = edge.source().index() as u32;
+                
+                if !loop_body.contains(&pred) && pred != header {
+                    // 检查前驱是否被循环头支配
+                    let pred_dj = match ctx.cfg_graph.node_weight(petgraph::graph::NodeIndex::new(pred as usize)).unwrap().get_cor_dj_node() {
+                        std::result::Result::Ok(dj) => dj,
+                        Err(_) => continue,
+                    };
+                    
+                    let header_dj = match ctx.cfg_graph.node_weight(petgraph::graph::NodeIndex::new(header as usize)).unwrap().get_cor_dj_node() {
+                        std::result::Result::Ok(dj) => dj,
+                        Err(_) => continue,
+                    };
+                    
+                    if self.is_dominator(*header_dj, *pred_dj, ctx) {
+                        // 检查边的类型
+                        let edge_type = &edge.weight().cfg_edge_type;
+                        let should_include = match edge_type {
+                            CfgEdgeType::BodyHead { } => {
+                                // BodyHead边表示循环内部关系
+                                true
+                            }
+                            CfgEdgeType::BodyTail { } => {
+                                // BodyTail边表示循环内部关系
+                                true
+                            }
+                            CfgEdgeType::Direct { } => {
+                                // Direct边表示顺序执行，不包含在循环体内
+                                false
+                            }
+                            _ => {
+                                // 其他类型的边也包含
+                                true
+                            }
+                        };
+                        
+                        if should_include {
+                            // 检查是否是其他循环头
+                            let node_type = &ctx.cfg_graph.node_weight(petgraph::graph::NodeIndex::new(pred as usize)).unwrap().cfg_node_type;
+                            if let CfgNodeType::WhileLoop { .. } = node_type {
+                                // 如果是循环头，检查是否应该包含
+                                let should_include_loop = self.is_direct_child_loop(pred, header, ctx);
+                                if should_include_loop {
+                                    println!("包含子循环头 {} 到循环体 (向后遍历)", pred);
+                                    loop_body.insert(pred);
+                                    worklist.push(pred);
+                                } else {
+                                    println!("排除其他循环头 {} 从循环体 (向后遍历)", pred);
+                                }
+                            } else {
+                                // 普通节点，直接包含
+                                println!("添加前驱节点 {} 到循环体 (边类型: {:?})", pred, edge_type);
+                                loop_body.insert(pred);
+                                worklist.push(pred);
+                            }
+                        } else {
+                            println!("排除节点 {} 从循环体 (边类型: {:?} 表示顺序执行)", pred, edge_type);
                         }
                     }
                 }
